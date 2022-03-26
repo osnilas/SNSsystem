@@ -7,13 +7,14 @@ _Specifies functionalities that:_
 - _are common across several US/UC;_
 - _are not related to US/UC, namely: Audit, Reporting and Security._
 
-_User_
-- introduce SNS number;
-- select the vaccination center;
-- select the data and time;
-- check the availability of the center selected;
+|   **_Function_**   | Description/Example                                                                   |
+|:------------------:|:--------------------------------------------------------------------------------------|
+|     **Email**      | Adding services related to sending email                                              |
+|   **Reporting**    | Support for generating reports                                                        |
+| **Authentication** | Different functionalities depending on the user (example: Administrator, nurse, etc.) |
+|  **Communication**  | Communication and data sharing between different vaccination centers                  |
+|    **Security**    | Controlled access to certain system features or data                                  |
 
-_Nurse_
 
 
 
