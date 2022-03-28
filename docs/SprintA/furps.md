@@ -2,30 +2,29 @@
 
 ## Functionality
 
-_Specifies functionalities that:_
-
-- _are common across several US/UC;_
-- _are not related to US/UC, namely: Audit, Reporting and Security._
 
 |   **_Function_**   | Description/Example                                                                   |
 |:------------------:|:--------------------------------------------------------------------------------------|
 |     **Email**      | Adding services related to sending email                                              |
 |   **Reporting**    | Support for generating reports                                                        |
 | **Authentication** | Different functionalities depending on the user (example: Administrator, nurse, etc.) |
-|  **Communication**  | Communication and data sharing between different vaccination centers                  |
+| **Communication**  | Communication and data sharing between different vaccination centers                  |
 |    **Security**    | Controlled access to certain system features or data                                  |
+| **Accessibility**  | Support for English and Portuguese language                                           |
 
 
 
 
 ## Usability
 
-_Evaluates the user interface. It has several subcategories,
-among them: error prevention; interface aesthetics and design; help and
-documentation; consistency and standards._
 
+**Human Factor**
 
-(fill in here )
+Speed, ease, and error-free processing are paramount in the operation of an application, as the SNS user wishes 
+to leave quickly, or they perceive the vaccination process (and) as less positive. 
+The same can be said of the experience of the nurse or receptionist as delays can cause larger problems in the vaccination process
+
+    
 
 ## Reliability
 _Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures._
@@ -40,13 +39,12 @@ _Evaluates the performance requirements of the software, namely: response time, 
 (fill in here )
 
 ## Supportability
-_The supportability requirements gathers several characteristics, such as:
-testability, adaptability, maintainability, compatibility,
-configurability, installability, scalability and more._
 
+_**Configurability**_
 
-
-(fill in here )
+Different vaccination center will have different vaccines, vaccination capacities, number of personal and so on.
+They desire the ability to modify these configurations, to reflect evolution of the vaccination process and performance needs. 
+Therefore, the system will be somewhat configurable to reflect these needs.
 
 
 ## +
