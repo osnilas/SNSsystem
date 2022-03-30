@@ -7,7 +7,6 @@ package DGSStaff {
   actor Nurse
   actor CenterCoordinator
   actor Administrator
-  actor LaboratoryCoordinator
 
 }
 package Other {
