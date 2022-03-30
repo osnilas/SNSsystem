@@ -4,12 +4,13 @@
 
 The teams consists of students identified in the following table. 
 
-| Student Number	| Name |
-|--------------|----------------------------|
-| **1210001**  | Name of student 1          |
-| **1210002**  | Name of student 2          |
-| **1210003**  | Name of student 3          |
-| **1210004**  | Name of student 4          |
+| Student Number	 | Name             |
+|-----------------|------------------|
+| **1201082**     | João Veiga       |
+| **1211613**     | Pedro Nogueira   |
+| **1211606**     | Filipe Magalhães |
+| **1190325**     | Afonso Cunha     |
+| **1141236**     | André Moreira    |
 
 
 
