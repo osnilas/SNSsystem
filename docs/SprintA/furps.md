@@ -42,10 +42,8 @@ _Evaluates the performance requirements of the software, namely: response time, 
 
 _**Configurability**_
 
-Different vaccination center will have different vaccines, vaccination capacities, number of personal and so on.
-They desire the ability to modify these configurations, to reflect evolution of the vaccination process and performance needs. 
-Therefore, the system will be somewhat configurable to reflect these needs.
-
+Vaccines, vaccination capacities, personnel numbers, and so on will differ between vaccination centers.They desire the ability to modify these configurations to reflect the evolution of the vaccination process and performance needs.
+Therefore,the system will be somewhat configurable to reflect these needs.
 
 ## +
 
