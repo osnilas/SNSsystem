@@ -10,7 +10,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Business Transactions**
 
-*Vaccination Administration
+* Vaccination Administration
 
 ---
 
@@ -48,7 +48,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Places**
 
-*  Vaccination Center, Health Care Center
+* Vaccination Center
+* Health Care Center
 
 ---
 
@@ -56,13 +57,15 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 * Vaccine Schedule,
 * Vaccine Administration
+* Emission of certificate of vaccination
+* Statistical data of vaccination
 
 ---
 
 
 **Physical Objects**
 
-*Vaccine
+* Vaccine
 
 ---
 
@@ -77,21 +80,23 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Catalogs**
 
-*  
+*  Types of Vaccine
 
 ---
 
 
 **Containers**
 
-*  
+* TypesVaccine
+* VaccineTypes
 
 ---
 
 
 **Elements of Containers**
 
-*  
+* VaccineTypes
+* VaccineBrand
 
 ---
 
@@ -130,7 +135,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Documents mentioned/used to perform some work/**
 
-* 
+* SNS user,nurse data(identification number,phone )
 ---
 
 
@@ -149,10 +154,20 @@ An association is a relationship between instances of objects that indicates a r
 
 
 
-| Concept (A) 		|  Association   	|  Concept (B) |
-|----------	   		|:-------------:		|------:       |
-| C1  	| verb1    		 	| C2  |
-| ...  	| ...    		 	| ...  |
+| Concept (A) 		                            | Association   	 |                               Concept (B) |
+|-------------------------------------------|:---------------:|------------------------------------------:|
+| DGES  	                                   |     manages     |                              ARS<br/>AGES |
+| Coordinator                               |     part of     |                             ARS <br/>AGES |
+| Nurse<br/>Recepionist                     |     part of     | Health Care Center<br/>Vaccination Center |
+| Health Care Center<br/>Vaccination Center |   managed by    |                              Coordinatior |
+| VaccineType<br/>TypeVaccine               |   created by    |                             Administrator |
+| TypeVaccine                               |       has       |                               VaccineType |
+| Vaccine                                   |       has       |                               VaccineType |
+| VaccineSchedule                           |   created by    |                  SNS user<br/>Recepionist |
+|                                           |   for taking    |                               VaccineType |
+| Statistical data of vaccination           |   ordered by    |                               Coordinator |
+| Emission of certificate of vaccination    |    issued by    |                                     Nurse |
+|                                           |    given to     |                                  SNS user |
 
 
 
