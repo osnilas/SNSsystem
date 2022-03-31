@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object SNS_User
+object DGS
+object Administrator
+object Coordinator
+object Nurse
+object Recepionist
+object HealthCareCenter
+object VaccinationCenter
+object VaccineType
+object TypeVaccine
+object Vaccine
+object VaccineSchedule
+object StatisticalDataVaccination
+object CertificateVaccination
+object VaccineAdministration
+object Confirmation
+object SmsConfirmation
+object EmailConfirmation
+
+SNS_User -- DGS
+DGS -- Coordinator
+DGS -- Vaccine
+TypeVaccine -- VaccineType
+SNS_User -- CertificateVaccination
+Coordinator -- HealthCareCenter
+Coordinator -- VaccinationCenter
+Coordinator -- StatisticalDataVaccination
+HealthCareCenter -- VaccineType
+VaccinationCenter -- VaccineType
+VaccineSchedule -- SNS_User
+VaccineSchedule -- Recepionist
+Recepionist -- SNS_User
+VaccineType -- VaccineAdministration
+VaccineAdministration -- SNS_User
+Vaccine -- Nurse
+Vaccine -- VaccineAdministration
+Vaccine -- VaccineType
+VaccineType -- Administrator
+CertificateVaccination -- Nurse
+DGS -- Recepionist
+DGS -- Nurse
+Confirmation -- VaccineSchedule
+Confirmation -- SmsConfirmation
+Confirmation -- EmailConfirmation
+
+@enduml
