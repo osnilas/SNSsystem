@@ -20,28 +20,30 @@ object Confirmation
 object SmsConfirmation
 object EmailConfirmation
 
-SNS_User -- DGS
-DGS -- Coordinator
-DGS -- Vaccine
-TypeVaccine -- VaccineType
-SNS_User -- CertificateVaccination
-Coordinator -- HealthCareCenter
-Coordinator -- VaccinationCenter
+SNS_User"*"--"1" DGS : < owns
+DGS"1" -- "*"Coordinator : > owns
+DGS "1"--"1" Vaccine : > applies
+TypeVaccine "1"--"1"VaccineType : < is of
+SNS_User "1"--"*" CertificateVaccination: < requested by
+Coordinator"1" --"1" HealthCareCenter: > manages
+HealthCareCenter "1"--"*" Nurse: < part of
+VaccinationCenter "1"--"*" Nurse: < part of
+HealthCareCenter "1"--"*" Recepionist: < part of
+VaccinationCenter "1"--"*" Recepionist: < part of
+Nurse "1"--"*" VaccineType: > checks
 Coordinator -- StatisticalDataVaccination
-HealthCareCenter -- VaccineType
-VaccinationCenter -- VaccineType
-VaccineSchedule -- SNS_User
-VaccineSchedule -- Recepionist
-Recepionist -- SNS_User
-VaccineType -- VaccineAdministration
-VaccineAdministration -- SNS_User
+HealthCareCenter "*"--"*" VaccineType: > can administer
+VaccinationCenter "*"--"*" VaccineType: > can administer
+VaccineSchedule"*" -- "1"SNS_User: > created for
+VaccineSchedule"*" -- "1"Recepionist: > created for
+VaccineSchedule"*" -- "1"TypeVaccine: for taking
 Vaccine -- Nurse
 Vaccine -- VaccineAdministration
 Vaccine -- VaccineType
+Recepionist -- SNS_User
+VaccineAdministration -- SNS_User
 VaccineType -- Administrator
 CertificateVaccination -- Nurse
-DGS -- Recepionist
-DGS -- Nurse
 Confirmation -- VaccineSchedule
 Confirmation -- SmsConfirmation
 Confirmation -- EmailConfirmation
