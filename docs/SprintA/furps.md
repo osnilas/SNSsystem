@@ -51,9 +51,9 @@ Therefore,the system will be somewhat configurable to reflect these needs.
 
 _Specifies or constraints the system design process. Examples may include: programming languages, software process, mandatory standards/patterns, use of development tools, class library, etc._
 
-
-(fill in here )
-
+  During the system development, the team must: (i) adopt best practices for identifying
+ requirements, and for OO software analysis and design; (ii) adopt recognized coding standards (e.g.,
+ CamelCase); (iii) use Javadoc to generate useful documentation for Java code.
 
 ### Implementation Constraints
 
@@ -62,9 +62,15 @@ such as: mandatory standards/patterns, implementation languages,
 database integrity, resource limits, operating system._
 
 
-(fill in here )
+ The application must be developed in Java language using the IntelliJ IDE or NetBeans. The
+application graphical interface is to be developed in JavaFX 11.
 
+ The development team must implement unit tests for all methods, except for methods that
+implement Input/Output operations. The unit tests should be implemented using the JUnit 5
+framework. The JaCoCo plugin should be used to generate the coverage report.
 
+ The application should use object serialization to ensure data persistence between two runs of the
+application.
 ### Interface Constraints
 _Specifies or constraints the features inherent to the interaction of the
 system being developed with other external systems._
