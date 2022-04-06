@@ -1,15 +1,14 @@
 @startuml
 'https://plantuml.com/object-diagram
 
-object SNS_User
+object SNSuser
 object DGS
 object Administrator
 object Coordinator
 object Nurse
 object Recepionist
 object HealthCareCenter
-object VaccinationCenter
-object VaccineType
+object VaccineBrand
 object TypeVaccine
 object Vaccine
 object VaccineSchedule
@@ -19,33 +18,37 @@ object VaccineAdministration
 object Confirmation
 object SmsConfirmation
 object EmailConfirmation
+object Employee
 
-SNS_User"*"--"1" DGS : < owns
+SNSuser"*"--"1" DGS : < owns
 DGS"1" -- "*"Coordinator : > owns
 DGS "1"--"1" Vaccine : > applies
-TypeVaccine "1"--"1"VaccineType : < is of
-SNS_User "1"--"*" CertificateVaccination: < requested by
+Employee"1"--"1" Recepionist: > plays as
+Employee"1"--"1" Nurse: > plays as
+Employee"1"--"1" Coordinator: > plays as
+Employee"1"--"1" Administrator: > plays as
+TypeVaccine "1"--"*"VaccineBrand : < is of
+SNSuser "1"--"*" CertificateVaccination: < requested by
 Coordinator"1" --"1" HealthCareCenter: > manages
 HealthCareCenter "1"--"*" Nurse: < part of
-VaccinationCenter "1"--"*" Nurse: < part of
 HealthCareCenter "1"--"*" Recepionist: < part of
-VaccinationCenter "1"--"*" Recepionist: < part of
-Nurse "1"--"*" VaccineType: > checks
+Nurse "1"--"*" VaccineBrand: > checks
 Coordinator -- StatisticalDataVaccination
-HealthCareCenter "*"--"*" VaccineType: > can administer
-VaccinationCenter "*"--"*" VaccineType: > can administer
-VaccineSchedule"*" -- "1"SNS_User: > created for
+HealthCareCenter "*"--"*" VaccineBrand: > can administer
+VaccineSchedule"*" -- "1"SNSuser: > created for
 VaccineSchedule"*" -- "1"Recepionist: > created for
-VaccineSchedule"*" -- "1"TypeVaccine: for taking
-Vaccine -- Nurse
-Vaccine -- VaccineAdministration
-Vaccine -- VaccineType
-Recepionist -- SNS_User
-VaccineAdministration -- SNS_User
-VaccineType -- Administrator
-CertificateVaccination -- Nurse
-Confirmation -- VaccineSchedule
-Confirmation -- SmsConfirmation
-Confirmation -- EmailConfirmation
+VaccineSchedule"*" -- "*"TypeVaccine:> for taking
+Vaccine"1" -- "1"Nurse: > administered by
+Vaccine"1" -- "*"VaccineAdministration: < of
+Vaccine"1" --"1" VaccineBrand:> is of
+Recepionist"1" -- "*"SNSuser: < registered by
+VaccineAdministration"*" -- "1"SNSuser: > administer on
+VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling
+CertificateVaccination"*" -- "1"Nurse: < issued by
+Confirmation"1" -- "1"VaccineSchedule: < emits
+Confirmation"1" -- "1"SmsConfirmation:> sends
+Confirmation "1"--"1" EmailConfirmation: > sends
+
+
 
 @enduml
