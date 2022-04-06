@@ -1,40 +1,92 @@
 @startuml
 'https://plantuml.com/object-diagram
 
-object SNSuser
+interface login{
+-User name
+-Password
+}
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
 object DGS
 object Administrator
 object Coordinator
 object Nurse
 object Recepionist
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vacines per slot
+}
+object StatisticalReportVaccination
+object MassVaccinationCenter
 object HealthCareCenter
 object VaccineBrand
-object TypeVaccine
-object Vaccine
-object VaccineSchedule
-object StatisticalDataVaccination
-object CertificateVaccination
+object TypeVaccine{
+-disease
+}
+object Vaccine{
+-dosage
+-brand
+-age range
+-vaccine interval
+}
+object VaccineSchedule{
+-Date and Time
+}
+object VaccinationCertificate
 object VaccineAdministration
-object Confirmation
+object Confirmation{
+-Name of user
+-Address of vaccination facility
+-Date and time of vaccination
+}
 object SmsConfirmation
 object EmailConfirmation
-object Employee
+object Employees
+object StatisticsCharts
+object BruteforceAlgorithm
+object ApplicationUser
+object Address{
+-Street name
+-Door
+-City/town
+-Country
+-Postal code
+}
 
+ApplicationUser"*" -- "*"Employees: > is
+ApplicationUser"*" -- "*"SNSuser: > is
+Administrator"*" -- "*" ApplicationUser: > manages/registers
+login"1"--"1"ApplicationUser
 SNSuser"*"--"1" DGS : < owns
-DGS"1" -- "*"Coordinator : > owns
+DGS"1" -- "*"Employees : > owns
 DGS "1"--"1" Vaccine : > applies
-Employee"1"--"1" Recepionist: > plays as
-Employee"1"--"1" Nurse: > plays as
-Employee"1"--"1" Coordinator: > plays as
-Employee"1"--"1" Administrator: > plays as
+Employees"1"--"1" Recepionist: > plays as
+Employees"1"--"1" Nurse: > plays as
+Employees"1"--"1" Coordinator: > plays as
+Employees"1"--"1" Administrator: > plays as
+Address"1"--"1" VaccinationFacility: < has
+Address"1"--"1" SNSuser: < has
 TypeVaccine "1"--"*"VaccineBrand : < is of
-SNSuser "1"--"*" CertificateVaccination: < requested by
-Coordinator"1" --"1" HealthCareCenter: > manages
-HealthCareCenter "1"--"*" Nurse: < part of
-HealthCareCenter "1"--"*" Recepionist: < part of
-Nurse "1"--"*" VaccineBrand: > checks
-Coordinator -- StatisticalDataVaccination
-HealthCareCenter "*"--"*" VaccineBrand: > can administer
+SNSuser "1"--"*" VaccinationCertificate: < requested by
+Coordinator"1" --"1" VaccinationFacility: > manages
+VaccinationFacility"1"--"1" MassVaccinationCenter: < is
+VaccinationFacility"1"--"1" HealthCareCenter: < is
+Coordinator"1" -- "*"StatisticalReportVaccination: < requested by
+StatisticalReportVaccination"1" -- "*"StatisticsCharts: > has
+StatisticsCharts"*" -- "1"BruteforceAlgorithm: < with
+StatisticsCharts"*" -- "*"VaccinationFacility: > with data from
+VaccinationFacility "*"--"*" Vaccine: > can administer
 VaccineSchedule"*" -- "1"SNSuser: > created for
 VaccineSchedule"*" -- "1"Recepionist: > created for
 VaccineSchedule"*" -- "*"TypeVaccine:> for taking
@@ -44,7 +96,7 @@ Vaccine"1" --"1" VaccineBrand:> is of
 Recepionist"1" -- "*"SNSuser: < registered by
 VaccineAdministration"*" -- "1"SNSuser: > administer on
 VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling
-CertificateVaccination"*" -- "1"Nurse: < issued by
+VaccinationCertificate"*" -- "1"Nurse: > issued by
 Confirmation"1" -- "1"VaccineSchedule: < emits
 Confirmation"1" -- "1"SmsConfirmation:> sends
 Confirmation "1"--"1" EmailConfirmation: > sends
