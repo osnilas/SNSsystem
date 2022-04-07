@@ -30,7 +30,6 @@ object VaccinationFacility{
 object StatisticalReportVaccination
 object MassVaccinationCenter
 object HealthCareCenter
-object VaccineBrand
 object TypeVaccine{
 -disease
 }
@@ -77,11 +76,10 @@ Employees"1"--"1" Coordinator: > plays as
 Employees"1"--"1" Administrator: > plays as
 Address"1"--"1" VaccinationFacility: < has
 Address"1"--"1" SNSuser: < has
-TypeVaccine "1"--"*"VaccineBrand : < is of
 SNSuser "1"--"*" VaccinationCertificate: < requested by
 Coordinator"1" --"1" VaccinationFacility: > manages
-VaccinationFacility"1"--"1" MassVaccinationCenter: < is
-VaccinationFacility"1"--"1" HealthCareCenter: < is
+VaccinationFacility"1"--"*" MassVaccinationCenter: < is
+VaccinationFacility"1"--"*" HealthCareCenter: < is
 Coordinator"1" -- "*"StatisticalReportVaccination: < requested by
 StatisticalReportVaccination"1" -- "*"StatisticsCharts: > has
 StatisticsCharts"*" -- "1"BruteforceAlgorithm: < with
@@ -92,7 +90,7 @@ VaccineSchedule"*" -- "1"Recepionist: > created for
 VaccineSchedule"*" -- "*"TypeVaccine:> for taking
 Vaccine"1" -- "1"Nurse: > administered by
 Vaccine"1" -- "*"VaccineAdministration: < of
-Vaccine"1" --"1" VaccineBrand:> is of
+Vaccine"1" --"1" TypeVaccine:> is of
 Recepionist"1" -- "*"SNSuser: < registered by
 VaccineAdministration"*" -- "1"SNSuser: > administer on
 VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling

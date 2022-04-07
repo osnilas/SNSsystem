@@ -41,24 +41,28 @@ To identify domain conceptual classes, start by making a list of candidate conce
 * Nurse
 * Receptionist
 * Administrator 
-
+* Employees
+* Application User
+* 
 
 ---
 
 
 **Places**
 
-* Vaccination Center
+* Vaccination Facility
+* Mass Vaccination Center
 * Health Care Center
 
 ---
 
 **Noteworthy Events**
 
-* Vaccine Schedule,
+* Vaccine Schedule
 * Vaccine Administration
 * Emission of certificate of vaccination
-* Statistical data of vaccination
+* Statistical data of vaccinationº
+* Login
 
 ---
 
@@ -72,7 +76,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Descriptions of Things**
 
-*  Vaccine Type
+* Vaccine Type
+* Statistical Report of Vaccination
 
 
 ---
@@ -87,16 +92,21 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Containers**
 
-* TypesVaccine
-* VaccineTypes
+* Types Vaccine
+* Vaccine
+* Address
+* Login
 
 ---
 
 
 **Elements of Containers**
 
-* VaccineTypes
-* VaccineBrand
+* Vaccine Types
+* Vaccine Brand
+* Dosage of vaccine
+* Elements of a address
+* Login credentials
 
 ---
 
@@ -135,7 +145,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Documents mentioned/used to perform some work/**
 
-* SNS user,nurse data(identification number,phone )
+* SNS user data(identification number,phone,...)
+* Vaccination Facility info (address, opening hours, phone number,...)
 ---
 
 
@@ -154,21 +165,34 @@ An association is a relationship between instances of objects that indicates a r
 
 
 
-| Concept (A) 		                            | Association   	 |                               Concept (B) |
-|-------------------------------------------|:---------------:|------------------------------------------:|
-| DGES  	                                   |     manages     |                              ARS<br/>AGES |
-| Coordinator                               |     part of     |                             ARS <br/>AGES |
-| Nurse<br/>Recepionist                     |     part of     | Health Care Center<br/>Vaccination Center |
-| Health Care Center<br/>Vaccination Center |   managed by    |                              Coordinatior |
-| VaccineType<br/>TypeVaccine               |   created by    |                             Administrator |
-| TypeVaccine                               |       has       |                               VaccineType |
-| Vaccine                                   |       has       |                               VaccineType |
-| VaccineSchedule                           |   created by    |                  SNS user<br/>Recepionist |
-|                                           |   for taking    |                               VaccineType |
-| Statistical data of vaccination           |   ordered by    |                               Coordinator |
-| Emission of certificate of vaccination    |    issued by    |                                     Nurse |
-|                                           |    given to     |                                  SNS user |
-
+| Concept (A) 		                                |  Association   	  |                                          Concept (B) |
+|-----------------------------------------------|:-----------------:|-----------------------------------------------------:|
+| Application User   	                          |        is         |                              Employees <br> SNS user |
+| Administrator                                 | manages/registers |                                     Application User |
+| DGS                                           |       owns        |                                 SNSuser<br>Employees |
+| DGS                                           |      applies      |                                              Vaccine |
+| Employees                                     |     plays as      | Recepionist<br>Nurse<br>Coordinator<br>Administrator |
+| Vaccination Facility<br>SNS user              |        has        |                                              Address |
+| Vaccination Certificate                       |   requested by    |                                             SNS user |
+| Coordinator                                   |      manages      |                                 Vaccination Facility |
+| Mass Vaccination Center<br>Health Care Center |        is         |                                 Vaccination Facility |
+| Statistical Report Vaccination                |   requested by    |                                          Coordinator |
+| Statistical Report Vaccination                |        has        |                                  Stastistical Charts |
+| Statiscs Charts                               |       with        |                                Brute force Algorithm |
+| Statiscs Chats                                |  with data from   |                                 Vaccination Facility |
+| Vaccination Facility                          |  can administer   |                                              Vaccine |
+| Vaccine Schedule                              |    created for    |                              SNS user<br>Recepionist |
+| Vaccine Schedule                              |    for taking     |                                         Type Vaccine |
+| Vaccine                                       |        by         |                                                Nurse |
+| Vaccine Administration                        |        of         |                                              Vaccine |
+| Vaccine                                       |       is of       |                                         Type Vaccine |
+| SNS user                                      |   registered by   |                                          Recepionist |
+| Vaccine Administration                        |   administer on   |                                             SNS user |
+| Vaccine Administration                        |    fulfilling     |                                     Vaccine Schedule |
+| Vaccine Certificate                           |     issue by      |                                                nurse |
+| Vaccine Schedule                              |       emits       |                                         Confirmation |
+| Confirmation                                  |       sends       |                                     SMS confirmation |
+| Confirmation                                  |       sends       |                                  E-mail confirmation |
 
 
 ## Domain Model
@@ -178,6 +202,7 @@ An association is a relationship between instances of objects that indicates a r
 **Insert below the Domain Model Diagram in a SVG format**
 
 ![DM.svg](DM.svg)
+
 
 
 
