@@ -76,7 +76,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Descriptions of Things**
 
-* Vaccine Type
+* Vaccine Brand
 * Statistical Report of Vaccination
 
 
@@ -92,7 +92,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Containers**
 
-* Types Vaccine
+* Types of Vaccine
 * Vaccine
 * Address
 * Login
@@ -145,7 +145,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Documents mentioned/used to perform some work/**
 
-* SNS user data(identification number,phone,...)
+* SNS user data (identification number, cellphone number,...)
 * Vaccination Facility info (address, opening hours, phone number,...)
 ---
 
@@ -185,11 +185,11 @@ An association is a relationship between instances of objects that indicates a r
 | Vaccine Schedule                              |    for taking     |                                         Type Vaccine |
 | Vaccine                                       |        by         |                                                Nurse |
 | Vaccine Administration                        |        of         |                                              Vaccine |
-| Vaccine                                       |       is of       |                                         Type Vaccine |
+| Vaccine                                       |       is of       |                                      Type of Vaccine |
 | SNS user                                      |   registered by   |                                          Recepionist |
-| Vaccine Administration                        |   administer on   |                                             SNS user |
+| Vaccine Administration                        |  administered on  |                                             SNS user |
 | Vaccine Administration                        |    fulfilling     |                                     Vaccine Schedule |
-| Vaccine Certificate                           |     issue by      |                                                nurse |
+| Vaccine Certificate                           |     issued by     |                                                nurse |
 | Vaccine Schedule                              |       emits       |                                         Confirmation |
 | Confirmation                                  |       sends       |                                     SMS confirmation |
 | Confirmation                                  |       sends       |                                  E-mail confirmation |

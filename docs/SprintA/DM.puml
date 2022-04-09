@@ -92,7 +92,7 @@ Vaccine"1" -- "1"Nurse: > administered by
 Vaccine"1" -- "*"VaccineAdministration: < of
 Vaccine"1" --"1" TypeVaccine:> is of
 Recepionist"1" -- "*"SNSuser: < registered by
-VaccineAdministration"*" -- "1"SNSuser: > administer on
+VaccineAdministration"*" -- "1"SNSuser: > administered on
 VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling
 VaccinationCertificate"*" -- "1"Nurse: > issued by
 Confirmation"1" -- "1"VaccineSchedule: < emits
