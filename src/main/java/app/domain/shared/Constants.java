@@ -6,6 +6,9 @@ package app.domain.shared;
  */
 public class Constants {
     public static final String ROLE_ADMIN = "ADMINISTRATOR";
+    public static final String ROLE_NURSE = "NURSE";
+    public static final String ROLE_RES = "RECEPTIONIST";
+    public static final String ROLE_SNS= "SNS USER";
 
 
     public static final String PARAMS_FILENAME = "config.properties";
