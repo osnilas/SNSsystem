@@ -14,14 +14,15 @@ actor SNSUser
 }
 
 rectangle System {
-    Receptionist -- (UC03:Register the arrival of the patient on the system)
+    Receptionist -- (UC14: Register the arrival of the patient on the system)
     Receptionist -- (UC04: Check if the SNS user has a scheduled vaccination)
-    SNSUser -- (UC01:Schedule Vaccination)
+    Receptionist -- (UC03: Resgister a SNS user)
+    SNSUser -- (UC01: Schedule Vaccination)
     SNSUser -- (US02: Receive an SMS confirming SNS user scheduled vaccination)
     Nurse -- (UC05:Check the list of the SNS users in the waiting room)
     CenterCoordinator  -- (UC11:Generate reports and analyze reports from other vaccination centers)
-    Administrator -- (UC12:Register centers, SNS users, center coordinators, receptionists and nurses)
-    Administrator -- (UC14:Register type of vaccine)
+    Administrator -- (UC17:Register centers, SNS users, center coordinators, receptionists and nurses)
+    Administrator -- (UC12:Register type of vaccine)
     Nurse -- (UC06 -- receive informations about SNS users and instructions about the vaccination, dosage and brand of vaccine )
     Nurse -- (UC07 -- Register the vaccination on the system)
     SNSUser-- (UC08: receive an SMS/EMAIL notification that the recovery period is over)
