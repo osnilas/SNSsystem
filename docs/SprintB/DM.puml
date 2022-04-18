@@ -35,9 +35,11 @@ object TypeVaccine{
 }
 object Vaccine{
 -dosage
+-doses
 -brand
 -age range
 -vaccine interval
+
 }
 object VaccineSchedule{
 -Date and Time
