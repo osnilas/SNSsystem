@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Administrator" as admin
+
+activate admin
+admin-> "System:" : asks to create a list of employees
+activate "System:"
+"System:" --> admin : shows roles menu to chose from
+deactivate "System:"
+
+admin -> "System:" : types requested data (role desired)
+activate "System:"
+"System:" --> admin : shows list and informs sucess of the operation
+
+@enduml
