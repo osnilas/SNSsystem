@@ -29,9 +29,6 @@ rectangle System {
     Nurse -- (UC09: Register an adverse reaction to the vaccine during the recovery time)
     SNSUser-- (UC10: Receive an EU COVID Digital Certificate)
     Receptionist -- (UC01:Schedule Vaccination)
-
-
-
-
    }
+
 @enduml

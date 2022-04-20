@@ -30,22 +30,24 @@ object VaccinationFacility{
 object StatisticalReportVaccination
 object MassVaccinationCenter
 object HealthCareCenter
-object TypeVaccine{
--disease
-}
+
+
 object Vaccine{
--dosage
--doses
+-**disease**
 -brand
--age range
--vaccine interval
 
 }
+
 object VaccineSchedule{
 -Date and Time
 }
 object VaccinationCertificate
-object VaccineAdministration
+object VaccineAdministration {
+-**doses**
+-**dosage**
+-**age range**
+-**vaccine interval**
+}
 object Confirmation{
 -Name of user
 -Address of vaccination facility
@@ -89,10 +91,8 @@ StatisticsCharts"*" -- "*"VaccinationFacility: > with data from
 VaccinationFacility "*"--"*" Vaccine: > can administer
 VaccineSchedule"*" -- "1"SNSuser: > created for
 VaccineSchedule"*" -- "1"Recepionist: > created for
-VaccineSchedule"*" -- "*"TypeVaccine:> for taking
 Vaccine"1" -- "1"Nurse: > administered by
 Vaccine"1" -- "*"VaccineAdministration: < of
-Vaccine"1" --"1" TypeVaccine:> is of
 Recepionist"1" -- "*"SNSuser: < registered by
 VaccineAdministration"*" -- "1"SNSuser: > administered on
 VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling

@@ -72,8 +72,7 @@ framework. The JaCoCo plugin should be used to generate the coverage report.
  The application should use object serialization to ensure data persistence between two runs of the
 application.
 ### Interface Constraints
-_Specifies or constraints the features inherent to the interaction of the
-system being developed with other external systems._
+_Specifies or constraints the features inherent to the interaction of the system being developed with other external systems._
 
 
 (fill in here )
