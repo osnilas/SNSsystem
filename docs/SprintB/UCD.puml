@@ -1,6 +1,4 @@
 @startuml
-
-skinparam linetype ortho
 left to right direction
 
 package DGSStaff {
