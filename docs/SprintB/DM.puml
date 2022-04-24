@@ -30,10 +30,11 @@ object VaccinationFacility{
 object StatisticalReportVaccination
 object MassVaccinationCenter
 object HealthCareCenter
-
+object TypeVaccine{
+-disease
+}
 
 object Vaccine{
--**disease**
 -brand
 
 }
@@ -100,6 +101,7 @@ VaccinationCertificate"*" -- "1"Nurse: > issued by
 Confirmation"1" -- "1"VaccineSchedule: < emits
 Confirmation"1" -- "1"SmsConfirmation:> sends
 Confirmation "1"--"1" EmailConfirmation: > sends
-
+VaccineSchedule"*" -- "*"TypeVaccine:> for taking
+Vaccine"1" --"1" TypeVaccine:> is of
 
 @enduml

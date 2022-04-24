@@ -10,7 +10,6 @@
 | **Authentication** | Different functionalities depending on the user (example: Administrator, nurse, etc.) |
 | **Communication**  | Communication and data sharing between different vaccination centers                  |
 |    **Security**    | Controlled access to certain system features or data                                  |
-| **Accessibility**  | Support for English and Portuguese language                                           |
 
 
 
@@ -45,6 +44,19 @@ _**Configurability**_
 Vaccines, vaccination capacities, personnel numbers, and so on will differ between vaccination centers.They desire the ability to modify these configurations to reflect the evolution of the vaccination process and performance needs.
 Therefore,the system will be somewhat configurable to reflect these needs.
 
+_**Accessibility**_  
+
+Support for English and Portuguese language.
+
+_**Compatibility**_
+
+The application should run on Microsoft Windows, macOS and several Unix-like OSs.
+
+_**Reliability**_
+
+the application will run from the opening to the closing hours of the Healthcare/ Vaccination Center, can be activated any time by the Administrator ~~and Center Coordinator~~
+
+
 ## +
 
 ### Design Constraints
@@ -62,8 +74,7 @@ such as: mandatory standards/patterns, implementation languages,
 database integrity, resource limits, operating system._
 
 
- The application must be developed in Java language using the IntelliJ IDE or NetBeans. The
-application graphical interface is to be developed in JavaFX 11.
+ The application must be developed in Java language using the IntelliJ IDE or NetBeans.
 
  The development team must implement unit tests for all methods, except for methods that
 implement Input/Output operations. The unit tests should be implemented using the JUnit 5
@@ -77,6 +88,8 @@ application.
 _Specifies or constraints the features inherent to the interaction of the
 system being developed with other external systems._
 
+The
+application graphical interface is to be developed in JavaFX 11.
 
 (fill in here )
 
@@ -84,4 +97,4 @@ system being developed with other external systems._
 
 _Specifies a limitation or physical requirement regarding the hardware used to house the system, as for example: material, shape, size or weight._
 
-(fill in here )
+There are no known physical constraints.
