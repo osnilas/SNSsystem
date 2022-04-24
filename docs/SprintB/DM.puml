@@ -82,8 +82,9 @@ Address"1"--"1" VaccinationFacility: < has
 Address"1"--"1" SNSuser: < has
 SNSuser "1"--"*" VaccinationCertificate: < requested by
 Coordinator"1" --"1" VaccinationFacility: > manages
-VaccinationFacility"1"--"*" MassVaccinationCenter: < is
-VaccinationFacility"1"--"*" HealthCareCenter: < is
+VaccinationFacility"1"<--"*" MassVaccinationCenter: < is a
+
+VaccinationFacility"1"<--"*" HealthCareCenter: < is a
 Coordinator"1" -- "*"StatisticalReportVaccination: < requested by
 StatisticalReportVaccination"1" -- "*"StatisticsCharts: > has
 StatisticsCharts"*" -- "1"BruteforceAlgorithm: < with
@@ -91,11 +92,11 @@ StatisticsCharts"*" -- "*"VaccinationFacility: > with data from
 VaccinationFacility "*"--"*" Vaccine: > can administer
 VaccineSchedule"*" -- "1"SNSuser: > created for
 VaccineSchedule"*" -- "1"Recepionist: > created for
-Vaccine"1" -- "1"Nurse: > administered by
+VaccineAdministration"*" -- "1"Nurse: > administered by //change
 Vaccine"1" -- "*"VaccineAdministration: < of
 Recepionist"1" -- "*"SNSuser: < registered by
 VaccineAdministration"*" -- "1"SNSuser: > administered on
-VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling
+VaccineAdministration"0,1" -- "1"VaccineSchedule: < fulfilling //change
 VaccinationCertificate"*" -- "1"Nurse: > issued by
 Confirmation"1" -- "1"VaccineSchedule: < emits
 Confirmation"1" -- "1"SmsConfirmation:> sends

@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
 
@@ -25,6 +26,10 @@ public class App {
         this.company = new Company(props.getProperty(Constants.PARAMS_COMPANY_DESIGNATION));
         this.authFacade = this.company.getAuthFacade();
         bootstrap();
+    }
+
+    public void addUser(String name,String email,String roleId){
+        this.authFacade.addUserWithRole(name,email,Utils.generatePwd(),roleId);
     }
 
     public Company getCompany()

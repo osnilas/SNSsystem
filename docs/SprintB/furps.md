@@ -69,7 +69,7 @@ application graphical interface is to be developed in JavaFX 11.
 implement Input/Output operations. The unit tests should be implemented using the JUnit 5
 framework. The JaCoCo plugin should be used to generate the coverage report.
 
-The application should run on Microsoft Windows, macOS and several Unix-like OSs.
+**The application should run on Microsoft Windows, macOS and several Unix-like OSs.**
 
  The application should use object serialization to ensure data persistence between two runs of the
 application.
