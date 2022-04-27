@@ -122,7 +122,7 @@ public class Employee {
         return listOfEmployeesFromRole;
     }
 
-    public void ListEmployeesFromRole (List<Employee> listOfEmployeesFromRole){
+    public void PrintListEmployeesFromRole (List<Employee> listOfEmployeesFromRole){
 
         for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
             Employee em= listOfEmployeesFromRole.get(i);

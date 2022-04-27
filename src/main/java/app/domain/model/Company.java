@@ -35,7 +35,7 @@ public class Company {
     }
 
 
-    public  void addCardancials(String name, String email, String roleId){
+    public  void addCredencials(String name, String email, String roleId){
 
     }
 
@@ -78,5 +78,13 @@ public class Company {
 
     public void printEmployee(Employee employee){
         System.out.println(employee.toString());
+    }
+
+    public ArrayList <Employee> FillRoleArray(String role, List<Employee> EmployeeList){
+        return new ArrayList<Employee>();
+    }
+
+        public void PrintListEmployeesFromRole (){
+
     }
 }
