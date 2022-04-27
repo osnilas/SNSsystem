@@ -3,6 +3,9 @@ package app.domain.model;
 import app.domain.shared.Constants;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.management.relation.RoleList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Employee {
@@ -97,6 +100,34 @@ public class Employee {
             count++;
         }
         return count;
+    }
+
+    public boolean IsEmployee (String role){
+        if (role.equals(this.roleId)){
+            return true;
+        }
+            return false;
+    }
+
+    public ArrayList <Employee> FillRoleArray(String role, List<Employee> EmployeeList){
+        ArrayList<Employee> listOfEmployeesFromRole = new ArrayList<Employee>();
+
+
+            for (int i =0;i<EmployeeList.size();i++){
+               Employee em= EmployeeList.get(i);
+                if(em.IsEmployee(role)){
+                    listOfEmployeesFromRole.add(em);
+                }
+            }
+        return listOfEmployeesFromRole;
+    }
+
+    public void ListEmployeesFromRole (List<Employee> listOfEmployeesFromRole){
+
+        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
+            Employee em= listOfEmployeesFromRole.get(i);
+            System.out.println(em.toString());
+        }
     }
 
 
