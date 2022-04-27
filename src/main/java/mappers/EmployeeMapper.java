@@ -12,8 +12,8 @@ import java.util.Set;
 public class EmployeeMapper {
     public EmployeeMapper(){}
 
-    public dtoEmployee toDTO(Employee employee){
-        return new dtoEmployee(employee.getId(), employee.getName(), employee.getAdress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId(), Utils.generatePwd());
+    public void toDTO(Employee employee){
+        //return new dtoEmployee(employee.getId(), employee.getName(), employee.getAdress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId());
     }
 
     public List<dtoEmployee> toDTO(List<Employee> employees){
@@ -22,7 +22,7 @@ public class EmployeeMapper {
 
         while(var3.hasNext()) {
             Employee em = (Employee)var3.next();
-            employeesDTO.add(this.toDTO(em));
+            //employeesDTO.add(this.toDTO(em));
         }
 
         return employeesDTO;
@@ -34,7 +34,7 @@ public class EmployeeMapper {
 
         while (var3.hasNext()){
             Employee em= (Employee) var3.next();
-            dtoEmployees.add(this.toDTO(em));
+            //dtoEmployees.add(this.toDTO(em));
         }
         return dtoEmployees;
     }

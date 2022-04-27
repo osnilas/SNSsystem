@@ -14,6 +14,7 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
     private  static List<Employee> EmployeesList= new ArrayList<Employee>();
+    private static List<User> UserList=new ArrayList<>();
 
 
     public Company(String designation)
@@ -36,6 +37,24 @@ public class Company {
 
     public  void addCardancials(String name, String email, String roleId){
 
+    }
+
+    public User createUser(String id){
+        return new User(id);
+    }
+
+    public boolean validateUser(User user){
+        if(user==null){
+            return false;
+        }
+        return ! this.UserList.contains(user);
+    }
+
+    public boolean saveUser(User user){
+        if(!validateUser(user)){
+            return false;
+        }
+        return this.UserList.add(user);
     }
 
     public  Employee createEmployee(String name, String email, int phone, int cc,String adress, String roleId){
