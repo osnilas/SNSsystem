@@ -13,13 +13,10 @@ object VaccinationFacility{
 -maximum number of vacines per slot
 }
 object Vaccine{
-              -dosage
               -brand
-              -age range
-              -vaccine interval
               }
 object TypeVaccine{
--desease
+-disease
 }
 
 Administrator"*" -- "*" VaccinationFacility: > registers
