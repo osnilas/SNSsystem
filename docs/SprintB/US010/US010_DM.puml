@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface login{
+-User name
+-Password
+}
+object Administrator
+object Coordinator
+object Nurse
+object Recepionist
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+object ApplicationUser
+
+ApplicationUser"*" -- "*"Employees: > is
+Administrator"*" -- "*" ApplicationUser: > manages/registers
+login"1"--"1"ApplicationUser
+Employees"1"--"1" Recepionist: > plays as
+Employees"1"--"1" Nurse: > plays as
+Employees"1"--"1" Coordinator: > plays as
+Employees"1"--"1" Administrator: > plays as
+@enduml

@@ -29,7 +29,7 @@ public class App {
     }
 
     public void addUser(String name,String email,String roleId){
-        this.authFacade.addUserWithRole(name,email,Utils.generatePwd(),roleId);
+        this.authFacade.addUserWithRole(name,email,"123",roleId);
     }
 
     public Company getCompany()

@@ -56,7 +56,14 @@ object Confirmation{
 }
 object SmsConfirmation
 object EmailConfirmation
-object Employees
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
 object StatisticsCharts
 object BruteforceAlgorithm
 object ApplicationUser

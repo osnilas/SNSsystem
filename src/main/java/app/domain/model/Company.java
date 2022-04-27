@@ -1,10 +1,9 @@
 package app.domain.model;
 
-import app.controller.App;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -14,17 +13,16 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
-    private List<Employee> EmployeesList;
-    private static App app;
+    private  static List<Employee> EmployeesList= new ArrayList<Employee>();
 
 
     public Company(String designation)
     {
         if (StringUtils.isBlank(designation))
             throw new IllegalArgumentException("Designation cannot be blank.");
-
         this.designation = designation;
         this.authFacade = new AuthFacade();
+        EmployeesList.add(new Employee("null", "null", 111111111,1, "nullemail@nul.com", "null"));
     }
 
     public String getDesignation() {
@@ -35,19 +33,20 @@ public class Company {
         return authFacade;
     }
 
-    public static void addCardancials(String name,String email,String roleId){
-        app.addUser(name,email, roleId);
+
+    public  void addCardancials(String name, String email, String roleId){
+
     }
 
-    public static Employee createEmployee(String name, String email, int phone, Adress adress, String roleId){
-        return new Employee(name,adress,phone,email,roleId);
+    public  Employee createEmployee(String name, String email, int phone, int cc,String adress, String roleId){
+        return new Employee(name,adress,phone,cc,email,roleId);
     }
 
     public boolean validateEmployee(Employee employee){
         if(employee==null){
             return false;
         }
-        return ! this.EmployeesList.contains(employee);
+        return  ! this.EmployeesList.contains(employee);
     }
 
 
@@ -56,5 +55,9 @@ public class Company {
         return false;
     }
     return this.EmployeesList.add(employee);
+    }
+
+    public void printEmployee(Employee employee){
+        System.out.println(employee.toString());
     }
 }

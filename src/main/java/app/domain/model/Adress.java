@@ -25,4 +25,14 @@ public class Adress {
         this.city=adress[5];
     }
 
+    @Override
+    public String toString() {
+        return "Adress{" +
+                "streetName='" + streetName + '\'' +
+                ", number=" + number +
+                ", city='" + city + '\'' +
+                ", county='" + county + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
+    }
 }

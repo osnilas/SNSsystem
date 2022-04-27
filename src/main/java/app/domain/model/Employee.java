@@ -2,49 +2,53 @@ package app.domain.model;
 
 import app.domain.shared.Constants;
 import org.apache.commons.lang3.StringUtils;
-import pt.isep.lei.esoft.auth.AuthFacade;
 
 import java.util.regex.Pattern;
 
 public class Employee {
-    private AuthFacade auth;
     private int id;
     private String name;
-    private Adress adress;
+    private String adress;
     private String email;
-    private int phone;
+    private int phoneNumber;
+    private int ccNumber;
     private String roleId;
-    private Employee em;
 
     private static int count=0;
 
-    public Employee(String name,Adress adress,int phone,String email, String roleId){
+    public Employee(String name,String adress,int phone,int cc,String email, String roleId){
         count++;
         this.id=count;
         this.name=name;
         this.adress=adress;
+
         this.roleId=roleId;
-        if(this.validateEmail(email)){
-            this.email=email;
-        }
-        else{
+
+        if(!this.validateEmail(email)){
             throw new IllegalArgumentException("Invalid email.");
         }
-        if(this.validatePhone(phone)){
-            this.phone=phone;
+        else {
+            this.email = email;
         }
-        else{
+        if(!this.validatePhone(phone)){
             throw new IllegalArgumentException("Invalid phone number.");
         }
+        else {
+            this.phoneNumber = phone;
+        }
+        this.ccNumber=cc;
     }
+    //getters
+    public int getId() {return id;}
+    public String getName() {return name;}
+    public String getAdress() {return adress;}
+    public String getEmail() {return email;}
+    public int getPhone() {return phoneNumber;}
+    public int getCc() {return ccNumber;}
+    public String getRoleId() {return roleId;}
 
     public boolean validateEmail(String email){
-        if(StringUtils.isBlank(email)&&checkFormat(email)){
-            return true;
-        }
-        else{
-            return false;
-        }
+            return StringUtils.isBlank(email) ? false : this.checkFormat(email);
     }
 
     //from the email class
@@ -64,6 +68,28 @@ public class Employee {
 
     }
 
+    public boolean validateName(String name){
+        if(name.isEmpty()||name==null||name.trim().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateAdress(String Adress){
+        if(adress.isEmpty()||adress==null||adress.trim().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateCC(int cc){
+        if(getDigits(phoneNumber)!= Constants.CC_LENGHT){
+        return false;
+    }
+    else{
+        return true;
+    }}
+
     public int getDigits(int number){
         int count=0;
         while (number>0){
@@ -71,5 +97,18 @@ public class Employee {
             count++;
         }
         return count;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", adress=" + adress +
+                ", email='" + email + '\'' +
+                ", phone=" + phoneNumber +
+                ", roleId='" + roleId + '\'' +
+                '}';
     }
 }

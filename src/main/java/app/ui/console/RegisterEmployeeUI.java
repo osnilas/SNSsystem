@@ -1,25 +1,18 @@
 package app.ui.console;
 
-
 import app.controller.App;
 import app.controller.RegisterEmployeeController;
-import app.domain.model.Adress;
 import app.domain.model.Employee;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
-import pt.isep.lei.esoft.auth.domain.model.User;
-import pt.isep.lei.esoft.auth.domain.model.UserRole;
-import pt.isep.lei.esoft.auth.mappers.dto.UserDTO;
-import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RegisterEmployeeUI implements Runnable{
+
     private RegisterEmployeeController ctlr;
     private Employee em;
+    private App app;
 
+    //iniciates controller
     public RegisterEmployeeUI() {ctlr= new RegisterEmployeeController();}
 
     public void run()
@@ -28,15 +21,16 @@ public class RegisterEmployeeUI implements Runnable{
     }
 
     private boolean register() {
+        boolean sucess=false;
         System.out.println("\nRegistration UI:");
 
+
         String name = Utils.readLineFromConsole("Enter name: ");
-        String id = Utils.readLineFromConsole("Enter Email: ");
-        String adressfull= Utils.readLineFromConsole("Enter adress: ");
+        String adress= Utils.readLineFromConsole("Enter adress: ");
         String email= Utils.readLineFromConsole("Enter email adress: ");
-        Adress adress= new Adress();
-        adress.addAdress(adressfull);
-        int number =Utils.readIntegerFromConsole("Enter number: ");
+        int cc=Utils.readIntegerFromConsole("Enter CC number");
+        String id=email;
+        int number =Utils.readIntegerFromConsole("Enter phone number: ");
         String role=null;
         System.out.println("Select role for employee");
         System.out.println("1-Nurse");
@@ -57,13 +51,17 @@ public class RegisterEmployeeUI implements Runnable{
             throw new IllegalArgumentException("Role not chosen");
         }
         else {
-            ctlr.createEmployee(name, email, number, adress, role);
+            sucess=ctlr.createEmployee(name, email, number,cc, adress, role);
         }
-
-
-
-
-
-        return true;
+        if(sucess){
+            ctlr.printEmployee();
+        }
+        if(Utils.confirm("Is it correct?")){
+            sucess=ctlr.saveEmployee();
+        }
+        else{
+            sucess=false;
+        }
+        return sucess;
     }
 }
