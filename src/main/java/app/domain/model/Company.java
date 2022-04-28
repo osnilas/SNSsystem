@@ -81,10 +81,16 @@ public class Company {
     }
 
     public ArrayList <Employee> FillRoleArray(String role, List<Employee> EmployeeList){
-        return new ArrayList<Employee>();
+
+        ArrayList<Employee> ListOfEmployeesFromRole = new ArrayList<>();
+        return ListOfEmployeesFromRole;
     }
 
-        public void PrintListEmployeesFromRole (){
+    public void PrintListEmployeesFromRole(List<Employee> listOfEmployeesFromRole) {
 
+        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
+            Employee em = listOfEmployeesFromRole.get(i);
+            System.out.println(em.toString());
+        }
     }
 }

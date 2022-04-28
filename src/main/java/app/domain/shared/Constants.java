@@ -13,7 +13,7 @@ public class Constants {
     public static final String ROLE_NURSE = "NURSE";
     public static final String ROLE_RES = "RECEPTIONIST";
     public static final String ROLE_SNS= "SNS USER";
-    public static final String ROLE_COR="Coordinator";
+    public static final String ROLE_COR="CENTER COORDINATOR";
 
     public static final String[] RoleList={ROLE_NURSE,ROLE_COR,ROLE_RES,ROLE_SNS,ROLE_ADMIN};
 

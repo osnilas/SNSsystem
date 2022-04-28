@@ -14,19 +14,37 @@ public class RoleMenuController {
     private Employee em;
     private App app;
     private EmployeeMapper map;
+    private String roleId;
+
 
     public RoleMenuController() {
-        this.company=App.getInstance().getCompany();
-        this.app=App.getInstance();
+        this.company = App.getInstance().getCompany();
+        this.app = App.getInstance();
     }
 
-    public RoleMenuController (Company company){
-        this.company=company;
-        this.em=em;
+    public RoleMenuController(Company company) {
+        this.company = company;
+        this.em = em;
     }
+
     public ArrayList<Employee> FillRoleArray(String role, List<Employee> EmployeeList) {
-        return new ArrayList<Employee>();
-    }
+        ArrayList<Employee> listOfEmployeesFromRole = new ArrayList<Employee>();
 
 
+        for (int i = 0; i < EmployeeList.size(); i++) {
+            Employee em = EmployeeList.get(i);
+            if (em.IsEmployee(role)) {
+                listOfEmployeesFromRole.add(em);
+            }
+        }
+        return listOfEmployeesFromRole;
     }
+    public void PrintListEmployeesFromRole(List<Employee> listOfEmployeesFromRole) {
+
+        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
+            Employee em = listOfEmployeesFromRole.get(i);
+            System.out.println(em.toString());
+        }
+    }
+
+}

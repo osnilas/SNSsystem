@@ -106,30 +106,8 @@ public class Employee {
         if (role.equals(this.roleId)){
             return true;
         }
-            return false;
+        return false;
     }
-
-    public ArrayList <Employee> FillRoleArray(String role, List<Employee> EmployeeList){
-        ArrayList<Employee> listOfEmployeesFromRole = new ArrayList<Employee>();
-
-
-            for (int i =0;i<EmployeeList.size();i++){
-               Employee em= EmployeeList.get(i);
-                if(em.IsEmployee(role)){
-                    listOfEmployeesFromRole.add(em);
-                }
-            }
-        return listOfEmployeesFromRole;
-    }
-
-    public void PrintListEmployeesFromRole (List<Employee> listOfEmployeesFromRole){
-
-        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
-            Employee em= listOfEmployeesFromRole.get(i);
-            System.out.println(em.toString());
-        }
-    }
-
 
     @Override
     public String toString() {
