@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.ui.console.VaccineAdministrationUI;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
@@ -92,5 +93,14 @@ public class Company {
             Employee em = listOfEmployeesFromRole.get(i);
             System.out.println(em.toString());
         }
+    }
+
+
+    public VaccineAdministration createVaccineAdministration(List<Integer> age, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+        return new VaccineAdministration(age, dosage, doses, vaccineInterval);
+    }
+
+    public void printVaccineAdministration (VaccineAdministration vaxAdm) {
+        System.out.println(vaxAdm.toString());
     }
 }

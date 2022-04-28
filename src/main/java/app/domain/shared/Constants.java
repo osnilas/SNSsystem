@@ -25,4 +25,6 @@ public class Constants {
     public static final int CC_LENGHT=8;
 
     public static final int PWD_LENGHT=7;
+
+    public static final List<String> YES_OR_NO = new ArrayList<>(List.of("Yes", "No"));
 }
