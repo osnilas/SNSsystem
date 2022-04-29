@@ -2,7 +2,7 @@
 'https://plantuml.com/class-diagram
 
 interface login{
--User name
+-id
 -Password
 }
 object Administrator

@@ -24,7 +24,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        EmployeesList.add(new Employee("null", "null", 111111111,1, "nullemail@nul.com", "null"));
+        EmployeesList.add(new Employee("null", "null", 111111111,11111111, "nullemail@nul.com", "null"));
     }
 
     public String getDesignation() {
@@ -77,6 +77,9 @@ public class Company {
     return this.EmployeesList.add(employee);
     }
 
+    public void printUser(User user){
+        System.out.println(user.toString());
+    }
     public void printEmployee(Employee employee){
         System.out.println(employee.toString());
     }

@@ -3,17 +3,64 @@
 
 autonumber
     actor Administrator
+
+    participant ":RegisterEmployeeUI" as UI
+    participant ":RegisterEmployeeController" as  CTRL
+    participant "app:App" as _APP
+    participant "em:Employee" as EM
+    participant "us:User" as US
+    participant ":addUserController" as CTRL1
+
     activate Administrator
-    Administrator -> System: Request register new Employee
-    activate System
-    System --> Administrator: request data(Email, password)
-    deactivate System
-    System <- Administrator: Types requested data
-    activate System
-    Administrator <-- System: shows the data and requests confirmation
-    deactivate System
-    Administrator -> System: confirms the data
-    activate System
-    Administrator <-- System: informs operation success
-    deactivate System
+    Administrator -> UI: Request register new Employee
+    activate UI
+    UI --> Administrator: request data(Name, Email, Adress, Phone number,\n CC number,RoleID)
+   deactivate UI
+    UI <- Administrator: Types requested data
+    activate UI
+    activate CTRL
+    activate CTRL1
+    CTRL-->_APP:company=App.getInstance().getCompany();
+    CTRL-->_APP:app=App.getInstance();
+    CTRL1-->_APP:company=App.getInstance().getCompany();
+    CTRL1-->_APP:app=App.getInstance();
+    UI-->CTRL:createEmployee(Name, Email, Adress, \nPhone number, CC number,RoleID)
+    UI-->CTRL1:addUser(id)
+    activate Company
+    CTRL-->Company:em=createEmployee(Name, Email, Adress, Phone number, CC number,RoleID)
+    CTRL1-->Company:us=addUser(id)
+    deactivate CTRL
+    deactivate CTRL1
+    activate  EM
+    Company-->EM:Employee(Name, Email, Adress,\n Phone number, CC number,RoleID)
+    deactivate EM
+    activate US
+    Company-->US:User(id)
+    US-->US:generatePwd(Password lenght)
+    activate US
+    deactivate US
+    deactivate US
+    deactivate Company
+    deactivate CTRL1
+    deactivate CTRL
+    Administrator <-- UI: shows the data and requests confirmation
+    deactivate UI
+    Administrator -> UI: confirms the data
+    activate UI
+    UI-->CTRL:saveEmployee()
+    activate CTRL
+    CTRL-->Company:saveEmployee(em)
+    activate Company
+    Company-->Company:validateEmployee(em)
+    activate Company
+    deactivate Company
+    Company-->Company:addEmployee(emp)
+    activate Company
+    deactivate Company
+    deactivate Company
+    CTRL-->UI:result
+    deactivate CTRL
+    Administrator <-- UI: informs operation success
+    deactivate UI
+
 @enduml

@@ -1,7 +1,7 @@
 package mappers;
 
 import app.domain.model.Employee;
-import app.ui.console.utils.Utils;
+import app.domain.model.User;
 import mappers.dto.dtoEmployee;
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import java.util.Set;
 public class EmployeeMapper {
     public EmployeeMapper(){}
 
-    public void toDTO(Employee employee){
-        //return new dtoEmployee(employee.getId(), employee.getName(), employee.getAdress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId());
+    public dtoEmployee toDTO(Employee employee, User user){
+        return new dtoEmployee(employee.getId(), employee.getName(), employee.getAdress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId(), user.getPassword());
     }
 
     public List<dtoEmployee> toDTO(List<Employee> employees){

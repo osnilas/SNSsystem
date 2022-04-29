@@ -9,9 +9,9 @@ public class User {
     private String id;
     private String password;
 
-    public User(String id){
-        this.id=id;
-        password=generatePwd(Constants.PWD_LENGHT);
+    public User(String id) {
+        this.id = id;
+        password = generatePwd(Constants.PWD_LENGHT);
     }
 
     //ask teacher if okay
@@ -21,7 +21,7 @@ public class User {
         char[] LOWERCASE = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         char[] UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         char[] NUMBERS = "0123456789".toCharArray();
-        char[] ALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789^$*.[]{}()?-\"!@#%&/\\,><':;|_~`".toCharArray();
+        char[] ALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
         Random rand = new SecureRandom();
 
         char[] password = new char[lenght];
@@ -31,7 +31,7 @@ public class User {
         password[1] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
         password[2] = NUMBERS[rand.nextInt(NUMBERS.length)];
         password[3] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
-        password[4]= NUMBERS[rand.nextInt(NUMBERS.length)];
+        password[4] = NUMBERS[rand.nextInt(NUMBERS.length)];
 
         //populate rest of the password with random chars
         for (int i = 5; i < lenght; i++) {
@@ -46,5 +46,17 @@ public class User {
             password[randomPosition] = temp;
         }
         return new String(password);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

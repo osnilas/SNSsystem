@@ -17,90 +17,54 @@ public class Employee {
     private int ccNumber;
     private String roleId;
 
-    private static int count=0;
+    private static int count = 0;
 
-    public Employee(String name,String adress,int phone,int cc,String email, String roleId){
+    public Employee(String name, String adress, int phone, int cc, String email, String roleId) {
         count++;
-        this.id=count;
-        this.name=name;
-        this.adress=adress;
+        this.id = count;
 
-        this.roleId=roleId;
+        this.name = name;
 
-        if(!this.validateEmail(email)){
-            throw new IllegalArgumentException("Invalid email.");
-        }
-        else {
-            this.email = email;
-        }
-        if(!this.validatePhone(phone)){
-            throw new IllegalArgumentException("Invalid phone number.");
-        }
-        else {
-            this.phoneNumber = phone;
-        }
-        this.ccNumber=cc;
+        this.adress = adress;
+
+        this.roleId = roleId;
+
+        this.email = email;
+
+        this.phoneNumber = phone;
+
+        this.ccNumber = cc;
     }
+
     //getters
-    public int getId() {return id;}
-    public String getName() {return name;}
-    public String getAdress() {return adress;}
-    public String getEmail() {return email;}
-    public int getPhone() {return phoneNumber;}
-    public int getCc() {return ccNumber;}
-    public String getRoleId() {return roleId;}
-
-    public boolean validateEmail(String email){
-            return StringUtils.isBlank(email) ? false : this.checkFormat(email);
+    public int getId() {
+        return id;
     }
 
-    //from the email class
-    private boolean checkFormat(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pat = Pattern.compile(emailRegex);
-        return pat.matcher(email).matches();
+    public String getName() {
+        return name;
     }
 
-    public boolean validatePhone(int phone){
-        if(getDigits(phone)!= Constants.PHONE_NUMBER_LENGHT){
-            return false;
-        }
-        else{
-            return true;
-        }
-
+    public String getAdress() {
+        return adress;
     }
 
-    public boolean validateName(String name){
-        if(name.isEmpty()||name==null||name.trim().isEmpty()){
-            return false;
-        }
-        return true;
+    public String getEmail() {
+        return email;
     }
 
-    public boolean validateAdress(String Adress){
-        if(adress.isEmpty()||adress==null||adress.trim().isEmpty()){
-            return false;
-        }
-        return true;
+    public int getPhone() {
+        return phoneNumber;
     }
 
-    public boolean validateCC(int cc){
-        if(getDigits(phoneNumber)!= Constants.CC_LENGHT){
-        return false;
+    public int getCc() {
+        return ccNumber;
     }
-    else{
-        return true;
-    }}
 
-    public int getDigits(int number){
-        int count=0;
-        while (number>0){
-            number=number/10;
-            count++;
-        }
-        return count;
+    public String getRoleId() {
+        return roleId;
     }
+
 
     public boolean IsEmployee (String role){
         if (role.equals(this.roleId)){

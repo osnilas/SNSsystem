@@ -14,8 +14,7 @@ Class Employee{
 -ccNumber
 }
 Class User{
--name
--email
+-id
 -password
 }
 Class OrganizationRole{
