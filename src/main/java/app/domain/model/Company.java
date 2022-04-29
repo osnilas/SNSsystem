@@ -1,10 +1,10 @@
 package app.domain.model;
 
-<<<<<<< HEAD
+
 import app.ui.console.VaccineAdministrationUI;
-=======
+
 import org.apache.commons.lang3.ObjectUtils;
->>>>>>> 5f83403 (US11 - RoleMenuController,Company,RoleMenuUI and Employee classes code finished for this US)
+
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
