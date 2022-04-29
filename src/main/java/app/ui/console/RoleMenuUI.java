@@ -15,7 +15,9 @@ public class RoleMenuUI implements Runnable{
     private RoleMenuController ctrl = new RoleMenuController();
 
     @Override
-    public void run() {
+    public void run() {}
+    private boolean RoleMenu (){
+        boolean sucess = false;
 
             for (int i = 0; i < Constants.RoleList.length - 2; i++) {
                 System.out.println(i + 1 + "-" + Constants.RoleList[i]);
@@ -38,6 +40,7 @@ public class RoleMenuUI implements Runnable{
             if (role == null) {
                 throw new IllegalArgumentException("Role not chosen");
             }
+            return false;
         }
 
     }

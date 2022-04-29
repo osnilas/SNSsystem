@@ -1,5 +1,8 @@
 package app.domain.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employee {
     private int id;
     private String name;
@@ -63,6 +66,25 @@ public class Employee {
             return true;
         }
         return false;
+    }
+    public static ArrayList<Employee> FillRoleList(String role, List<Employee> EmployeesList) {
+        ArrayList<Employee> listOfEmployeesFromRole = new ArrayList<Employee>();
+
+
+        for (int i = 0; i < EmployeesList.size(); i++) {
+            Employee em = EmployeesList.get(i);
+            if (em.IsEmployee(role)) {
+                listOfEmployeesFromRole.add(em);
+            }
+        }
+        return listOfEmployeesFromRole;
+    }
+    public static void PrintListEmployees(List<Employee> listOfEmployeesFromRole) {
+
+        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
+            Employee em = listOfEmployeesFromRole.get(i);
+            System.out.println(em.toString());
+        }
     }
 
     @Override

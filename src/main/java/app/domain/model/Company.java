@@ -1,10 +1,13 @@
 package app.domain.model;
 
-import app.ui.console.VaccineAdministrationUI;
+import org.apache.commons.lang3.ObjectUtils;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+
+import static app.domain.model.Employee.FillRoleList;
+import static app.domain.model.Employee.PrintListEmployees;
 
 /**
  *
@@ -15,6 +18,8 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
     private  static List<Employee> EmployeesList= new ArrayList<Employee>();
+
+    private static List<Employee> EmployeesListRole=new ArrayList<Employee>();
     private static List<User> UserList=new ArrayList<>();
 
 
@@ -24,7 +29,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        EmployeesList.add(new Employee("null", "null", 111111111,11111111, "nullemail@nul.com", "null"));
+        EmployeesList.add(new Employee("null", "null", 111111111,1, "nullemail@nul.com", "null"));
     }
 
     public String getDesignation() {
@@ -71,39 +76,29 @@ public class Company {
 
 
     public boolean saveEmployees(Employee employee){
-    if(!validateEmployee(employee)){
-        return false;
-    }
-    return this.EmployeesList.add(employee);
+        if(!validateEmployee(employee)){
+            return false;
+        }
+        return this.EmployeesList.add(employee);
     }
 
-    public void printUser(User user){
-        System.out.println(user.toString());
-    }
     public void printEmployee(Employee employee){
         System.out.println(employee.toString());
     }
 
-    public ArrayList <Employee> FillRoleArray(String role, List<Employee> EmployeeList){
-
-        ArrayList<Employee> ListOfEmployeesFromRole = new ArrayList<>();
-        return ListOfEmployeesFromRole;
+    public ArrayList<Employee> FillRoleArray(String role) {
+        return FillRoleList(role, EmployeesList);
     }
 
-    public void PrintListEmployeesFromRole(List<Employee> listOfEmployeesFromRole) {
-
-        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
-            Employee em = listOfEmployeesFromRole.get(i);
-            System.out.println(em.toString());
+    public boolean validateRoleArray(ArrayList<Employee> EmployeesRoleList){
+        if(EmployeesRoleList== null){
+            return false;
         }
+        return true;
+
+    }
+    public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
+        PrintListEmployees(EmployeesRoleList);
     }
 
-
-    public VaccineAdministration createVaccineAdministration(List<Integer> age, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
-        return new VaccineAdministration(age, dosage, doses, vaccineInterval);
-    }
-
-    public void printVaccineAdministration (VaccineAdministration vaxAdm) {
-        System.out.println(vaxAdm.toString());
-    }
 }
