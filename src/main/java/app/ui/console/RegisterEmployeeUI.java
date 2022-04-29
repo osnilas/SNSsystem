@@ -5,6 +5,7 @@ import app.controller.App;
 import app.controller.RegisterEmployeeController;
 import app.domain.model.Employee;
 import app.domain.shared.Constants;
+import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
 
 public class RegisterEmployeeUI implements Runnable {
@@ -27,17 +28,48 @@ public class RegisterEmployeeUI implements Runnable {
     private boolean register() {
         boolean sucess = false;
         boolean sucess2=false;
+        boolean flag=false;
         System.out.println("\nRegistration UI:");
+        String email,name,address,id;
+        int cc,number;
 
+        do{
+           name=Utils.readLineFromConsole("Enter name: ");
+            if(name.isBlank()){
+               System.out.println("Input a valid name, it can not be empty");
+           }
+        }while(name.isBlank());
 
-        String name = Utils.readLineFromConsole("Enter name: ");
+        do {
+            address= Utils.readLineFromConsole("Enter adress: ");
+            if(address.isBlank()){
+                System.out.println("Input a valid address, it can not be empty");
+            }
+        }while(address.isBlank());
 
-        String adress = Utils.readLineFromConsole("Enter adress: ");
-        String email = Utils.readLineFromConsole("Enter email adress: ");
-        int cc = Utils.readIntegerFromConsole("Enter CC number");
-        String id = email;
-        int number = Utils.readIntegerFromConsole("Enter phone number: ");
-        String role = null;
+        do {
+             email = Utils.readLineFromConsole("Enter email adress: ");
+            if(!Validate.validateEmail(email)){
+                System.out.println("Input a valid email, for exemple: isep@gmail.com");
+            }
+        }while (!Validate.validateEmail(email));
+
+        do {
+            cc=Utils.readIntegerFromConsole("Enter CC number");
+            if(!Validate.validateCC(cc)){
+                System.out.println("Input a valid CC number, it has 8 digits");
+            }
+        }while (!Validate.validateCC(cc));
+         id = email;
+
+         do {
+             number = Utils.readIntegerFromConsole("Enter phone number: ");
+             if(!Validate.validatePhone(number)){
+                 System.out.println("Input a valid phone number, this system suports portuguese format with 9 digits");
+             }
+         }while (!Validate.validatePhone(number));
+
+         String role = null;
         for (int i = 0; i < 3; i++) {
             System.out.println(i + 1 + "-" + Constants.RoleList[i]);
         }
@@ -59,8 +91,8 @@ public class RegisterEmployeeUI implements Runnable {
         if (role == null) {
             throw new IllegalArgumentException("Role not chosen");
         } else {
-            sucess2=ctlr2.createUser(email);
-            sucess = ctlr.createEmployee(name, email, number, cc, adress, role);
+            sucess2=ctlr2.createUser(id);
+            sucess = ctlr.createEmployee(name, email, number, cc, address, role);
 
         }
         if (sucess&&sucess2) {

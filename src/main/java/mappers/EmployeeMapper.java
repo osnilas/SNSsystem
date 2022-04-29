@@ -13,7 +13,7 @@ public class EmployeeMapper {
     public EmployeeMapper(){}
 
     public dtoEmployee toDTO(Employee employee, User user){
-        return new dtoEmployee(employee.getId(), employee.getName(), employee.getAdress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId(), user.getPassword());
+        return new dtoEmployee(employee.getId(), employee.getName(), employee.getAddress(), employee.getEmail(), employee.getPhone(), employee.getCc(), employee.getRoleId(), user.getPassword());
     }
 
     public List<dtoEmployee> toDTO(List<Employee> employees){

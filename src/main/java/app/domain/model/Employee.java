@@ -1,17 +1,9 @@
 package app.domain.model;
 
-import app.domain.shared.Constants;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.management.relation.RoleList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 public class Employee {
     private int id;
     private String name;
-    private String adress;
+    private String address;
     private String email;
     private int phoneNumber;
     private int ccNumber;
@@ -19,13 +11,13 @@ public class Employee {
 
     private static int count = 0;
 
-    public Employee(String name, String adress, int phone, int cc, String email, String roleId) {
+    public Employee(String name, String address, int phone, int cc, String email, String roleId) {
         count++;
         this.id = count;
 
         this.name = name;
 
-        this.adress = adress;
+        this.address = address;
 
         this.roleId = roleId;
 
@@ -45,8 +37,8 @@ public class Employee {
         return name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
     public String getEmail() {
@@ -78,7 +70,7 @@ public class Employee {
         return "Employee{" +
                 ", id=" + id +
                 ", name='" + name + '\'' +
-                ", adress=" + adress +
+                ", adress=" + address +
                 ", email='" + email + '\'' +
                 ", phone=" + phoneNumber +
                 ", roleId='" + roleId + '\'' +

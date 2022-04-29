@@ -61,7 +61,7 @@ public class VaccineAdministrationUI implements Runnable{
 
         }while (op == 1);
 
-        ctrl.createVaccineAdministration(age, dosage, doses, vaccineInterval);
+       // ctrl.createVaccineAdministration(age, dosage, doses, vaccineInterval);
 
     }
 }
