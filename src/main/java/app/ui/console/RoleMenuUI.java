@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.domain.model.Employee;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.controller.RoleMenuController;
@@ -13,6 +14,7 @@ public class RoleMenuUI implements Runnable{
     {
     }
     private RoleMenuController ctrl = new RoleMenuController();
+    private ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
 
     @Override
     public void run() {}
@@ -40,7 +42,17 @@ public class RoleMenuUI implements Runnable{
             if (role == null) {
                 throw new IllegalArgumentException("Role not chosen");
             }
-            return false;
+            else{
+                sucess = ctrl.FillRoleArray(role);
+            }
+            if (sucess){
+                ctrl.PrintListEmployeesFromRole(EmployeesRoleList);
+            }
+            else {
+                sucess = false;
+
+            }
+            return sucess;
         }
 
     }
