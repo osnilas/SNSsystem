@@ -32,4 +32,5 @@ public class RoleMenuController {
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
         this.company.PrintListEmployeesFromRole(EmployeesRoleList);
     }
+
 }

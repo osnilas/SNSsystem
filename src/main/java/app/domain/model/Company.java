@@ -1,6 +1,10 @@
 package app.domain.model;
 
+<<<<<<< HEAD
+import app.ui.console.VaccineAdministrationUI;
+=======
 import org.apache.commons.lang3.ObjectUtils;
+>>>>>>> 5f83403 (US11 - RoleMenuController,Company,RoleMenuUI and Employee classes code finished for this US)
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
@@ -29,7 +33,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        EmployeesList.add(new Employee("null", "null", 111111111,1, "nullemail@nul.com", "null"));
+        EmployeesList.add(new Employee("null", "null", 111111111,11111111, "nullemail@nul.com", "null"));
     }
 
     public String getDesignation() {
@@ -82,6 +86,9 @@ public class Company {
         return this.EmployeesList.add(employee);
     }
 
+    public void printUser(User user){
+        System.out.println(user.toString());
+    }
     public void printEmployee(Employee employee){
         System.out.println(employee.toString());
     }
@@ -97,6 +104,15 @@ public class Company {
         return true;
 
     }
+
+    public VaccineAdministration createVaccineAdministration(List<Integer> age, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+        return new VaccineAdministration(age, dosage, doses, vaccineInterval);
+    }
+
+    public void printVaccineAdministration (VaccineAdministration vaxAdm) {
+        System.out.println(vaxAdm.toString());
+    }
+
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
         PrintListEmployees(EmployeesRoleList);
     }

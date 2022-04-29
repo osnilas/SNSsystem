@@ -6,6 +6,7 @@ import app.ui.console.utils.Utils;
 import app.controller.RoleMenuController;
 
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,9 @@ public class RoleMenuUI implements Runnable{
     private ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
 
     @Override
-    public void run() {}
+    public void run (){
+        boolean sucess = RoleMenu();
+    }
     private boolean RoleMenu (){
         boolean sucess = false;
 
