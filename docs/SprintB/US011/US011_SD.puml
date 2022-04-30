@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+    actor Administrator
+
+    participant ":RoleMenuUI" as UI
+    participant ":RoleMenuController" as  CTRL
+    participant "app:App" as _APP
+    participant "em:Employee" as EM
+
+
+
+    activate Administrator
+    Administrator -> UI: Get a list of employees with a given role
+    activate UI
+    UI --> Administrator: shows roles menu to chose from (Nurse,Center Coordinator,Receptionist)
+   deactivate UI
+    UI <- Administrator: Types requested data (role desired)
+    activate UI
+    activate CTRL
+
+    CTRL-->_APP:company=App.getInstance().getCompany();
+    CTRL-->_APP:app=App.getInstance();
+
+    UI-->CTRL:FillRoleArray(role);
+
+    activate Company
+    CTRL-->Company:EmployeesRoleList=FillRoleArray(role);
+
+    activate  EM
+    Company-->EM:FillRoleList(role, EmployeesList);
+    deactivate EM
+    deactivate Company
+
+
+
+    deactivate CTRL
+    Administrator <-- UI: shows the data and informs operation sucess
+
+
+@enduml

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="457px" preserveAspectRatio="none" style="width:1332px;height:457px;background:#FFFFFF;" version="1.1" viewBox="0 0 1332 457" width="1332px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="274.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="44.5" y="92.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="511.5" y="114.9609"/><rect fill="#FFFFFF" height="191.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="511.5" y="175.6641"/><rect fill="#FFFFFF" height="151.7578" style="stroke:#181818;stroke-width:1.0;" width="10" x="663.5" y="175.6641"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="1048.5" y="297.0703"/><rect fill="#FFFFFF" height="60.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="1284.5" y="266.7188"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="49" x2="49" y1="82.6094" y2="375.7734"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="516.5" x2="516.5" y1="82.6094" y2="375.7734"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="668.5" x2="668.5" y1="82.6094" y2="375.7734"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="960" x2="960" y1="82.6094" y2="375.7734"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1053" x2="1053" y1="82.6094" y2="375.7734"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1289.5" x2="1289.5" y1="82.6094" y2="375.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="5" y="79.5332">Administrator</text><ellipse cx="49.5" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M49.5,21.5 L49.5,48.5 M36.5,29.5 L62.5,29.5 M49.5,48.5 L36.5,63.5 M49.5,48.5 L62.5,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="5" y="389.3066">Administrator</text><ellipse cx="49.5" cy="400.8828" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M49.5,408.8828 L49.5,435.8828 M36.5,416.8828 L62.5,416.8828 M49.5,435.8828 L36.5,450.8828 M49.5,435.8828 L62.5,450.8828 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="469.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="476.5" y="71.5332">:RoleMenuUI</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="469.5" y="374.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="476.5" y="396.3066">:RoleMenuUI</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="144" x="596.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="603.5" y="71.5332">:RoleMenuController</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="144" x="596.5" y="374.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="603.5" y="396.3066">:RoleMenuController</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="67" x="927" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="934" y="71.5332">app:App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="67" x="927" y="374.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="934" y="396.3066">app:App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="99" x="1004" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="1011" y="71.5332">em:Employee</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="99" x="1004" y="374.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="1011" y="396.3066">em:Employee</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="1252.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="1259.5" y="71.5332">Company</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="1252.5" y="374.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="1259.5" y="396.3066">Company</text><rect fill="#FFFFFF" height="274.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="44.5" y="92.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="511.5" y="114.9609"/><rect fill="#FFFFFF" height="191.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="511.5" y="175.6641"/><rect fill="#FFFFFF" height="151.7578" style="stroke:#181818;stroke-width:1.0;" width="10" x="663.5" y="175.6641"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="1048.5" y="297.0703"/><rect fill="#FFFFFF" height="60.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="1284.5" y="266.7188"/><polygon fill="#181818" points="499.5,110.9609,509.5,114.9609,499.5,118.9609,503.5,114.9609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="54.5" x2="505.5" y1="114.9609" y2="114.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="61.5" y="110.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="230" x="72.5" y="110.1045">Get a list of employees with a given role</text><polygon fill="#181818" points="65.5,141.3125,55.5,145.3125,65.5,149.3125,61.5,145.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="59.5" x2="515.5" y1="145.3125" y2="145.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="71.5" y="140.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="422" x="82.5" y="140.4561">shows roles menu to chose from (Nurse,Center Coordinator,Receptionist)</text><polygon fill="#181818" points="499.5,171.6641,509.5,175.6641,499.5,179.6641,503.5,175.6641" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="54.5" x2="505.5" y1="175.6641" y2="175.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="61.5" y="170.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="204" x="72.5" y="170.8076">Types requested data (role desired)</text><polygon fill="#181818" points="948.5,202.0156,958.5,206.0156,948.5,210.0156,952.5,206.0156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="673.5" x2="954.5" y1="206.0156" y2="206.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="680.5" y="201.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252" x="691.5" y="201.1592">company=App.getInstance().getCompany();</text><polygon fill="#181818" points="948.5,232.3672,958.5,236.3672,948.5,240.3672,952.5,236.3672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="673.5" x2="954.5" y1="236.3672" y2="236.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="680.5" y="231.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="691.5" y="231.5107">app=App.getInstance();</text><polygon fill="#181818" points="651.5,262.7188,661.5,266.7188,651.5,270.7188,655.5,266.7188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="521.5" x2="657.5" y1="266.7188" y2="266.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="528.5" y="261.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="107" x="539.5" y="261.8623">FillRoleArray(role);</text><polygon fill="#181818" points="1272.5,293.0703,1282.5,297.0703,1272.5,301.0703,1276.5,297.0703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="673.5" x2="1278.5" y1="297.0703" y2="297.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="680.5" y="292.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="227" x="691.5" y="292.2139">EmployeesRoleList=FillRoleArray(role);</text><polygon fill="#181818" points="1064.5,323.4219,1054.5,327.4219,1064.5,331.4219,1060.5,327.4219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1058.5" x2="1288.5" y1="327.4219" y2="327.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1070.5" y="322.5654">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="191" x="1081.5" y="322.5654">FillRoleList(role, EmployeesList);</text><polygon fill="#181818" points="65.5,353.7734,55.5,357.7734,65.5,361.7734,61.5,357.7734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="59.5" x2="510.5" y1="357.7734" y2="357.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="71.5" y="352.917">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="262" x="82.5" y="352.917">shows the data and informs operation sucess</text><!--MD5=[ccb55315df62896c033f48647e58a74f]
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+    actor Administrator
+
+    participant ":RoleMenuUI" as UI
+    participant ":RoleMenuController" as  CTRL
+    participant "app:App" as _APP
+    participant "em:Employee" as EM
+
+
+
+    activate Administrator
+    Administrator -> UI: Get a list of employees with a given role
+    activate UI
+    UI - -> Administrator: shows roles menu to chose from (Nurse,Center Coordinator,Receptionist)
+   deactivate UI
+    UI <- Administrator: Types requested data (role desired)
+    activate UI
+    activate CTRL
+
+    CTRL- ->_APP:company=App.getInstance().getCompany();
+    CTRL- ->_APP:app=App.getInstance();
+
+    UI- ->CTRL:FillRoleArray(role);
+
+    activate Company
+    CTRL- ->Company:EmployeesRoleList=FillRoleArray(role);
+
+    activate  EM
+    Company- ->EM:FillRoleList(role, EmployeesList);
+    deactivate EM
+    deactivate Company
+
+
+
+    deactivate CTRL
+    Administrator <- - UI: shows the data and informs operation sucess
+
+
+@enduml
+
+@startuml
+
+autonumber
+    actor Administrator
+
+    participant ":RoleMenuUI" as UI
+    participant ":RoleMenuController" as  CTRL
+    participant "app:App" as _APP
+    participant "em:Employee" as EM
+
+
+
+    activate Administrator
+    Administrator -> UI: Get a list of employees with a given role
+    activate UI
+    UI - -> Administrator: shows roles menu to chose from (Nurse,Center Coordinator,Receptionist)
+   deactivate UI
+    UI <- Administrator: Types requested data (role desired)
+    activate UI
+    activate CTRL
+
+    CTRL- ->_APP:company=App.getInstance().getCompany();
+    CTRL- ->_APP:app=App.getInstance();
+
+    UI- ->CTRL:FillRoleArray(role);
+
+    activate Company
+    CTRL- ->Company:EmployeesRoleList=FillRoleArray(role);
+
+    activate  EM
+    Company- ->EM:FillRoleList(role, EmployeesList);
+    deactivate EM
+    deactivate Company
+
+
+
+    deactivate CTRL
+    Administrator <- - UI: shows the data and informs operation sucess
+
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
