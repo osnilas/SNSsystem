@@ -31,19 +31,19 @@ object StatisticalReportVaccination
 object MassVaccinationCenter
 object HealthCareCenter
 object TypeVaccine{
--disease
+-**disease**
+-**code**
+-**description**
 }
 
-object Vaccine{
--brand
-
-}
+object Vaccine
 
 object VaccineSchedule{
 -Date and Time
 }
 object VaccinationCertificate
 object VaccineAdministration {
+-**brand**
 -**doses**
 -**dosage**
 -**age range**

@@ -1,0 +1,63 @@
+@startuml
+autonumber
+actor "Administrator" as adm
+
+participant ":VaccineAdministrationUI" as UI
+participant ":VaccineAdministrationController" as ctrl
+participant "vaxAdm: VaccineAdministration" as vaxAdm
+participant ":Company" as comp
+
+activate adm
+
+
+
+adm -> UI : asks to specify a vaccine and administration process
+activate UI
+UI --> adm : shows vaccine types list and ask to select one
+deactivate UI
+
+adm -> UI : selects vaccine type
+activate UI
+UI --> adm : requests data (brand, minAge, maxAge, doses, dosage, vaccineInterval)
+deactivate UI
+
+adm -> UI : types requested data
+activate UI
+
+
+UI -> ctrl : createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+activate ctrl
+ctrl -> comp : vaxAdm = createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+activate comp
+comp --> vaxAdm : VaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+deactivate comp
+ctrl -> comp : validateVaccineAdministration(vaxAdm)
+activate comp
+deactivate comp
+deactivate ctrl
+
+
+
+UI --> adm : shows all data and requests confirmation
+deactivate UI
+
+adm -> UI : confirms the data
+activate UI
+UI -> ctrl : saveVaccineAdministration()
+activate ctrl
+ctrl -> comp : saveVaccineAdministration(vaxAdm)
+activate comp
+comp -> comp : validateVaccineAdministration(vaxAdm)
+activate comp
+deactivate comp
+
+comp -> comp : addVaccineAdministration(vaxAdm)
+activate comp
+deactivate comp
+
+UI --> adm : informs operation success
+
+
+
+deactivate adm
+@enduml

@@ -4,7 +4,10 @@ import java.util.List;
 
 public class VaccineAdministration {
 
-    private List<Integer> age;
+    private String brand;
+    private List<Integer> minAge;
+
+    private List<Integer> maxAge;
 
     private List<Float> dosage;
 
@@ -13,16 +16,23 @@ public class VaccineAdministration {
     private List<Integer> vaccineInterval;
 
 
-    public VaccineAdministration(List<Integer> age, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
-        this.age = age;
+    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+        this.brand = brand;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
         this.dosage = dosage;
         this.doses = doses;
         this.vaccineInterval = vaccineInterval;
     }
 
-    public List<Integer> getAge() {
-        return age;
+
+    public String getBrand() { return brand; }
+
+    public List<Integer> getMinAge() {
+        return minAge;
     }
+
+    public List<Integer> getMaxAge() { return maxAge; }
 
     public List<Float> getDosage() {
         return dosage;
@@ -36,13 +46,16 @@ public class VaccineAdministration {
         return vaccineInterval;
     }
 
+
     @Override
     public String toString() {
-        return "SpecifyVaccineAdministration{" +
-                "age=" + age +
-                ", dosage=" + dosage +
-                ", doses=" + doses +
-                ", vaccineInterval=" + vaccineInterval +
+        return "VaccineAdministration{" +
+                "brand: " + brand + '\'' +
+                ", minAge: " + minAge +
+                ", maxAge: " + maxAge +
+                ", dosage: " + dosage +
+                ", doses: " + doses +
+                ", vaccineInterval: " + vaccineInterval +
                 '}';
     }
 }

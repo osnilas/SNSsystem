@@ -3,17 +3,18 @@
 object DGS
 object Employees
 object Administrator
-object Vaccine{
--dosage
--doses
+object Vaccine
+object TypeVaccine {
+-disease
+-code
+-description
+}
+object VaccineAdministration {
 -brand
+-doses
+-dosage
 -age range
 -vaccine interval
-
-}
-object VaccineAdministration
-object TypeVaccine{
--disease
 }
 
 

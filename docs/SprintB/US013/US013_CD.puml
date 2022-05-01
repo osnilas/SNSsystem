@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class VaccineAdministrationUI
+class VaccineAdministrationController
+class Company
+class VaccineAdministration
+
+VaccineAdministrationUI .> VaccineAdministrationController
+
+class VaccineAdministrationController {
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +saveVaccineAdministration()
+    +printVaccineAdministration()
+}
+
+VaccineAdministrationController ..> Company
+
+class Company {
+    -VaccineAdministrationList
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +validateVaccineAdministration(vaxAdm)
+    +saveVaccineAdministration(vaxAdm)
+    +printVaccineAdministration(vaxAdm)
+    -addVaccineAdministration(vaxAdm)
+}
+
+Company  ->  VaccineAdministration : > administers
+VaccineAdministrationController .> VaccineAdministration
+
+class VaccineAdministration {
+    -brand
+    -minAge
+    -maxAge
+    -dosage
+    -doses
+    -vaccineInterval
+    +VaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+}
+
+@enduml

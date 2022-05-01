@@ -12,7 +12,7 @@ deactivate ":System"
 
 adm -> ":System" : selects vaccine type
 activate ":System"
-":System" --> adm : requests data (vaccine brand, age group, dosage, \n doses, interval between doses)
+":System" --> adm : requests data (brand, minAge, maxAge, doses, dosage, vaccineInterval)
 deactivate ":System"
 
 adm -> ":System" : types requested data
