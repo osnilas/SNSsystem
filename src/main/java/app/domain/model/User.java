@@ -9,13 +9,24 @@ public class User {
     private String id;
     private String password;
 
+    /** @author João Veiga
+     * Constructor
+     * @param id Id for login, normally email
+     */
     public User(String id) {
         this.id = id;
         password = generatePwd(Constants.PWD_LENGHT);
     }
 
-    //ask teacher if okay
-    //https://stackoverflow.com/questions/31260512/generate-a-secure-random-password-in-java-with-minimum-special-character-require
+    /**@author Jose Martinez from stackoverFlow
+     * @link https://stackoverflow.com/a/51823845
+     * This method generates a password with 7 alphanumeric characters,
+     * including three capital letters and two digits.
+     * The code was modifed to accomedate clients requirements
+     * @param lenght of password
+     * @return password with 7 alphanumeric characters, including three capital letters and two digits
+     */
+
     static public String generatePwd(int lenght) {
 
         char[] LOWERCASE = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -48,6 +59,10 @@ public class User {
         return new String(password);
     }
 
+    /** @author: João Veiga
+     * This method returns password of a User
+     * @return password String
+     */
     public String getPassword() {
         return password;
     }

@@ -14,6 +14,16 @@ public class Employee {
 
     private static int count = 0;
 
+    /**@author João Veiga
+     * Constructor
+     * Creates an Employee with the following arttributes
+     * @param name          The Employee name
+     * @param address       The Employee name
+     * @param phone         The Employee phone number
+     * @param cc            The Employee cc numer
+     * @param email         The Employee email address
+     * @param roleId        The Employee role
+     */
     public Employee(String name, String address, int phone, int cc, String email, String roleId) {
         count++;
         this.id = count;

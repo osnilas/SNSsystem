@@ -46,7 +46,7 @@ Therefore,the system will be somewhat configurable to reflect these needs.
 
 _**Accessibility**_  
 
-Support for English and Portuguese language.
+**Support for English and Portuguese language.**
 
 _**Compatibility**_
 
@@ -56,7 +56,9 @@ _**Reliability**_
 
 the application will run from the opening to the closing hours of the Healthcare/ Vaccination Center, can be activated any time by the Administrator ~~and Center Coordinator~~
 
+_**Testability**_
 
+**Will be created unitary test for all methods created**
 ## +
 
 ### Design Constraints
@@ -66,6 +68,7 @@ _Specifies or constraints the system design process. Examples may include: progr
   During the system development, the team must: (i) adopt best practices for identifying
  requirements, and for OO software analysis and design; (ii) adopt recognized coding standards (e.g.,
  CamelCase); (iii) use Javadoc to generate useful documentation for Java code.
+
 
 ### Implementation Constraints
 

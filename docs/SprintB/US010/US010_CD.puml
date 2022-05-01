@@ -4,6 +4,14 @@ skinparam classAttributeIconSize 0
 
 Class Company{
 -designation
+    +createUser(String id)
+    +validateUser(User user)
+    +saveUser(User user)
+    +createEmployee(String name, String email,\n int phone, int cc,String adress, String roleId)
+    +validateEmployee(Employee employee)
+    +saveEmployees(Employee employee)
+    +printUser(User user)
+    +printEmployee(Employee employee)
 }
 Class Employee{
 -id
@@ -16,15 +24,36 @@ Class Employee{
 Class User{
 -id
 -password
++generatePwd(int lenght)
 }
 Class OrganizationRole{
 -description
 }
+Class ResgisterEmployeeUI{
++register()
++run()
+}
+Class ResgisterEmployeeController{
++createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
++saveEmployee()
+printEmployee()
+}
 
-Company"1"--"*"Employee:employ >
-Employee"0.1"--"1"User:relates to >
-Company"1"--"*"OrganizationRole: comprehends >
-Employee"*"--"1"OrganizationRole:has/plays >
+Class AddUserController{
++createUser(String id)
++saveUser()
++printUser()
+}
 
+Company"1"-->"*"Employee:employ >
+Employee"0.1"-->"1"User:relates to >
+Company"1"-->"*"OrganizationRole: comprehends >
+Employee"*"-->"1"OrganizationRole:has/plays >
+ResgisterEmployeeController..>Company
+ResgisterEmployeeUI..> ResgisterEmployeeController
+ResgisterEmployeeUI..>AddUserController
+AddUserController..>Company
+AddUserController..>User
+ResgisterEmployeeController..>Employee
 
 @enduml
