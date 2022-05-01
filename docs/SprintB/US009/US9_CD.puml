@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Class company{
+-designation
+}
+Class vaccinationCenter{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vacines per slot
+}
+Class typeOfVaccine{
+-disease
+}
+
+
+company"1"--"*"vaccinationCenter:registers >
+vaccinationCenter"*"--"1"typeOfVaccine: has >
+
+@enduml

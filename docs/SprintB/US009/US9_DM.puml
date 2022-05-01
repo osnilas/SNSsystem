@@ -1,7 +1,7 @@
 @startuml
-object VaccinationCenter
+object VaccinationFacility
 object Administrator
-object VaccinationFacility{
+object VaccinationCenter{
 -name
 -address
 -phone number
@@ -19,8 +19,8 @@ object TypeVaccine{
 -disease
 }
 
-Administrator"*" -- "*" VaccinationFacility: > registers
+Administrator"*" -- "*" VaccinationCenter: > registers
 VaccinationFacility"*" -- "*" VaccinationCenter: < is
 VaccinationCenter "*"--"*" Vaccine: > can administer
-Vaccine"1" --"1" TypeVaccine:> is of
+Vaccine"*" --"1" TypeVaccine:> is of
 @enduml

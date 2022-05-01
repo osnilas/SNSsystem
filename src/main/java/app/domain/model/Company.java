@@ -22,6 +22,7 @@ public class Company {
     private AuthFacade authFacade;
     private static List<Employee> EmployeesList = new ArrayList<Employee>();
 
+    private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<VaccinationCenter>();
     private static List<Employee> EmployeesListRole = new ArrayList<Employee>();
     private static List<User> UserList = new ArrayList<>();
 
@@ -164,6 +165,29 @@ public class Company {
 
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
         PrintListEmployees(EmployeesRoleList);
+    }
+
+
+    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVacinesPerSlot, String typeOfVaccine){
+        return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVacinesPerSlot, typeOfVaccine);
+    }
+
+    public boolean validateVaccinationCenter(VaccinationCenter vaccinationCenter){
+        if(vaccinationCenter==null){
+            return false;
+        }
+        return  ! this.VaccinationCentersList.contains(vaccinationCenter);
+    }
+
+    public boolean saveVaccinationCenter(VaccinationCenter vaccinationCenter){
+        if(!validateVaccinationCenter(vaccinationCenter)){
+            return false;
+        }
+        return this.VaccinationCentersList.add(vaccinationCenter);
+    }
+
+    public void printVaccinationCenter(VaccinationCenter vaccinationCenter){
+        System.out.println(vaccinationCenter.toString());
     }
 
 }
