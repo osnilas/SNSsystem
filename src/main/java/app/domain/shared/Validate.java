@@ -108,4 +108,62 @@ public class Validate {
         return true;
     }
 
+    /**
+     * @author Afonso Cunha
+     * checks if the type of vaccine is on the type of vaccine list
+     * @param typeOfVaccine
+     * @return boolean true if the vaccine type exists
+     */
+
+    public static boolean validateTypeOfVaccine(String typeOfVaccine) {
+        if (VaccineTypeList.contains(typeOfVaccine)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * @author Afonso Cunha
+     * checks if the slot duration is above 0
+     * @param slotDuration
+     * @return boolean true if the number is above 0
+     */
+
+    public static boolean validateSlotDuration(int slotDuration) {
+        if (slotDuration > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * @author Afonso Cunha
+     * checks if the slot duration is above 0
+     * @param maximumNumberOfVaccinesPerSlot
+     * @return boolean true if the number is above 0
+     */
+
+    public static boolean validateMaximumNumberOfVaccinesPerSlot(int maximumNumberOfVaccinesPerSlot) {
+        if (maximumNumberOfVaccinesPerSlot > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * @author Afonso Cunha
+     * Checks url format, format: www.*something*.something
+     * @param websiteAdress
+     * @return boolean if website adress checks out format
+     */
+
+    public static boolean validateWebsiteAdress(String websiteAdress) {
+        return !StringUtils.isBlank(websiteAdress) && checkUrlFormat(websiteAdress);
+    }
+
+
+
 }
