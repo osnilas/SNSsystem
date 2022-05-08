@@ -15,6 +15,17 @@ public class VaccineAdministration {
 
     private List<Integer> vaccineInterval;
 
+    /**
+     * @param brand           The vaccine's brand
+     * @param minAge          The minimum age for that vaccine
+     * @param maxAge          The maximum age for that vaccine
+     * @param dosage          The quantity of vaccine in each dose
+     * @param doses           The number of doses
+     * @param vaccineInterval The number of days in between each dose
+     * @author Pedro Nogueira
+     * Constructor
+     * Creates a vaccine admnistration
+     */
 
     public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         this.brand = brand;
