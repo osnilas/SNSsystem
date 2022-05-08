@@ -24,6 +24,8 @@ public class Company {
 
     private static List<VaccineAdministration> VaccineAdministrationList = new ArrayList<>();
 
+    private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<VaccinationCenter>();
+
 
     public Company(String designation)
     {
@@ -131,5 +133,28 @@ public class Company {
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
         PrintListEmployees(EmployeesRoleList);
     }
+
+    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine){
+        return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+    }
+
+    public boolean validateVaccinationCenter(VaccinationCenter vaccinationCenter){
+        if(vaccinationCenter==null){
+            return false;
+        }
+        return  ! this.VaccinationCentersList.contains(vaccinationCenter);
+    }
+
+    public boolean saveVaccinationCenter(VaccinationCenter vaccinationCenter){
+        if(!validateVaccinationCenter(vaccinationCenter)){
+            return false;
+        }
+        return this.VaccinationCentersList.add(vaccinationCenter);
+    }
+
+    public void printVaccinationCenter(VaccinationCenter vaccinationCenter){
+        System.out.println(vaccinationCenter.toString());
+    }
+
 
 }

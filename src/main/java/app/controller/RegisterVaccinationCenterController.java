@@ -21,8 +21,8 @@ public class RegisterVaccinationCenterController {
         this.vc = vc;
     }
 
-   public boolean createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVacinesPerSlot, String typeOfVaccine) {
-        this.vc = this.company.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVacinesPerSlot, typeOfVaccine);
+    public boolean createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
+        this.vc = this.company.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
         return this.company.validateVaccinationCenter(vc);
     }
 
@@ -36,3 +36,4 @@ public class RegisterVaccinationCenterController {
     }
 
 }
+
