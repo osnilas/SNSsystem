@@ -2,6 +2,7 @@ package app.domain.shared;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 
@@ -70,6 +71,41 @@ public class Validate {
             count++;
         }
         return count;
+    }
+
+    public static boolean validateMinimumAge (List<Integer> age, int temp) {
+            if (age.get(temp) < 1 || age.get(temp) > 105) {
+                return false;
+            }
+        return true;
+    }
+
+    public static boolean validateMaximumAge (List<Integer> minAge, List<Integer> maxAge, int temp) {
+        if (maxAge.get(temp) < minAge.get(temp) || maxAge.get(temp) > 105) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateDosage (List<Double> dosage, int temp) {
+        if (dosage.get(temp) <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateDoses (List<Integer> doses, int temp) {
+        if (doses.get(temp) < 1) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateVaccineInterval (List<Integer> vaccineInterval, int temp) {
+        if (vaccineInterval.get(temp) < 1) {
+            return false;
+        }
+        return true;
     }
 
 }

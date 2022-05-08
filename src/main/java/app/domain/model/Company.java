@@ -104,7 +104,7 @@ public class Company {
     }
 
 
-    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         return new VaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
     }
 
@@ -112,22 +112,20 @@ public class Company {
         if(vaxAdm == null)  {
             return false;
         }
-        return addVaccineAdministration(vaxAdm);
+        return !VaccineAdministrationList.contains(vaxAdm);
     }
 
     public boolean saveVaccineAdministration (VaccineAdministration vaxAdm) {
         if (!validateVaccineAdministration(vaxAdm)) {
             return false;
         }
-        return true;
+        return addVaccineAdministration(vaxAdm);
     }
 
-    public void printVaccineAdministration (VaccineAdministration vaxAdm) {
-        System.out.println(vaxAdm.toString());
-    }
+    public void printVaccineAdministration (VaccineAdministration vaxAdm) { vaxAdm.toString(); }
 
     private boolean addVaccineAdministration (VaccineAdministration vaxAdm) {
-        return this.VaccineAdministrationList.add(vaxAdm);
+        return VaccineAdministrationList.add(vaxAdm);
     }
 
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {

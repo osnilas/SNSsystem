@@ -10,13 +10,13 @@ public class VaccineAdministrationController {
 
     private VaccineAdministration vaxAdm;
 
-    public boolean createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public boolean createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         this.vaxAdm = company.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
         return company.validateVaccineAdministration(vaxAdm);
     }
 
-    public void saveVaccineAdministration () {
-        company.saveVaccineAdministration(vaxAdm);
+    public boolean saveVaccineAdministration () {
+       return company.saveVaccineAdministration(vaxAdm);
     }
 
     public void printVaccineAdministration () {

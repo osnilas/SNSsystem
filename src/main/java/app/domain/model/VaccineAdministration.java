@@ -9,14 +9,14 @@ public class VaccineAdministration {
 
     private List<Integer> maxAge;
 
-    private List<Float> dosage;
+    private List<Double> dosage;
 
     private List<Integer> doses;
 
     private List<Integer> vaccineInterval;
 
 
-    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Float> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         this.brand = brand;
         this.minAge = minAge;
         this.maxAge = maxAge;
@@ -34,7 +34,7 @@ public class VaccineAdministration {
 
     public List<Integer> getMaxAge() { return maxAge; }
 
-    public List<Float> getDosage() {
+    public List<Double> getDosage() {
         return dosage;
     }
 
@@ -49,13 +49,22 @@ public class VaccineAdministration {
 
     @Override
     public String toString() {
-        return "VaccineAdministration{" +
-                "brand: " + brand + '\'' +
-                ", minAge: " + minAge +
-                ", maxAge: " + maxAge +
-                ", dosage: " + dosage +
-                ", doses: " + doses +
-                ", vaccineInterval: " + vaccineInterval +
-                '}';
+        int x = 0;
+        System.out.printf("Brand: %s%n", brand);
+        System.out.println();
+        for (int i = 0 ; i < minAge.size() ; i++) {
+            System.out.printf("Age Range: %d - %d%n", minAge.get(i), maxAge.get(i));
+            System.out.printf("Dosage: %.2f ml%n", dosage.get(i));
+            System.out.printf("Doses: %d%n", doses.get(i));
+            if (doses.get(i) > 1) {
+                for (int j = 0; j < doses.get(i) - 1; j++) {
+                    x += j;
+                    System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j+1, j+2, vaccineInterval.get(x));
+                }
+                x+=1;
+            }
+            System.out.println();
+        }
+        return null;
     }
 }
