@@ -13,7 +13,10 @@ public class VaccineAdministrationUI implements Runnable {
 
     private VaccineAdministrationController ctrl = new VaccineAdministrationController();
 
-
+    /**
+     * @author Pedro Nogueira
+     * Register's a vaccine administration
+     */
     @Override
     public void run() {
         boolean success;
