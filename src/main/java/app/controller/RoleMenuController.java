@@ -7,6 +7,10 @@ import mappers.EmployeeMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * @author Filipe Magalhães
+ * Controller of the Role Menu to list Employees in US011
+ */
 
 public class RoleMenuController {
 
@@ -25,10 +29,20 @@ public class RoleMenuController {
     public RoleMenuController(Company company) {
         this.company = company;
     }
+    /**
+     * @author João Veiga
+     * Asks company to fill an array with all the employees registered with the previously chosen role
+     * @param role      Chosen role
+     * @return boolean of the result of validation of this Role Array
+     */
     public boolean FillRoleArray(String role) {
         this.EmployeesRoleList=this.company.FillRoleArray(role);
-        return this.company.validateRoleArray(this.EmployeesRoleList);
+        return this.company.validateRoleArray(EmployeesRoleList);
     }
+    /**
+     * @author Filipe Magalhães
+     * Prints the list of employees from the chosen role
+     */
     public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
         this.company.PrintListEmployeesFromRole(EmployeesRoleList);
     }

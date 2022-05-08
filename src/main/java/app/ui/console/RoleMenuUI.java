@@ -14,6 +14,10 @@ public class RoleMenuUI implements Runnable{
     public RoleMenuUI()
     {
     }
+    /**
+     * @author Filipe Magalhães
+     * Iniciates controller
+     */
     private RoleMenuController ctrl = new RoleMenuController();
     private ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
 
@@ -21,6 +25,11 @@ public class RoleMenuUI implements Runnable{
     public void run (){
         boolean sucess = RoleMenu();
     }
+    /**
+     * @author Filipe Magalhães
+     * Menu for choosing the role to list the employees from
+     * @return boolean if registration was sucessful
+     */
     private boolean RoleMenu (){
         boolean sucess = false;
 
@@ -55,6 +64,11 @@ public class RoleMenuUI implements Runnable{
                 sucess = false;
 
             }
+        if (sucess) {
+            System.out.println("-----------List of Employees from chosen role done successfully-----------");
+        } else {
+            System.out.println("-----------List of Employees from chosen role done failed---------------");
+        }
             return sucess;
         }
 
