@@ -21,18 +21,20 @@ public class RegisterVaccinationCenterUI implements Runnable{
 
     private boolean register() {
         boolean sucess = false;
-        boolean sucess2=false;
-        boolean flag=false;
+        boolean sucess2 = false;
+        boolean flag = false;
         System.out.println("\nRegistration UI:");
         String name, adress, emailAdress, websiteAdress, openingAndClosingHours, typeOfVaccine;
         int phoneNumber, faxNumber, slotDuration, maximumNumberOfVacinesPerSlot;
 
         do {
-            name= Utils.readLineFromConsole("Enter name: ");
-            if (name.isBlank()){
-                System.out.println("Input a valid name, it can not be empty");
-            }
-        }
-        while (adress.isBlank());
+         name= Utils.readLineFromConsole("Enter name: ");
+         if (name.isBlank()){
+         System.out.println("Input a valid name, it can not be empty");
+         }
+         }
+         while (adress.isBlank());
+
+        return true;
     }
 }

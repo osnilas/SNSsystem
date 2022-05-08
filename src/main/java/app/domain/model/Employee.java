@@ -99,13 +99,12 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", adress=" + address +
-                ", email='" + email + '\'' +
-                ", phone=" + phoneNumber +
-                ", roleId='" + roleId + '\'' +
-                '}';
+        return "Employee: \n" +
+                "id: " + id + '\t' +
+                "name: " + name + '\t' +
+                "adress: " + address +'\t'+
+                "email: " + email + '\t' +
+                "phone: " + phoneNumber +'\t'+
+                "roleId: " + roleId;
     }
 }

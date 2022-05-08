@@ -78,7 +78,6 @@ public class RegisterEmployeeUI implements Runnable {
         for (int i = 0; i < 3; i++) {
             System.out.println(i + 1 + "-" + Constants.RoleList[i]);
         }
-        System.out.println("Choose the role of the employee");
         int option = Utils.readIntegerFromConsole("Option:");
         switch (option) {
             case 1:
@@ -101,10 +100,9 @@ public class RegisterEmployeeUI implements Runnable {
 
         }
         if (sucess && sucess2) {
-            ctlr2.printUser();
             ctlr.printEmployee();
         }
-        if (Utils.confirm("Is it correct?")) {
+        if (Utils.confirm("Is it correct?(s/n)")) {
             sucess2 = ctlr2.saveUser();
             sucess = ctlr.saveEmployee();
         } else {
