@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "SNS User" as user
+
+activate user
+user-> "System:" : asks to register a vaccine
+activate "System:"
+"System:" --> user : shows list and informs sucess of the operation
+deactivate "System:"
+@enduml

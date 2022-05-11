@@ -5,7 +5,12 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.controller.RoleMenuController;
 
+import java.util.Scanner;
+
 public class SNSUserUI implements Runnable{
+
+    public static Scanner ler = new Scanner(System.in);
+
     public SNSUserUI()
     {
     }
@@ -21,20 +26,32 @@ public class SNSUserUI implements Runnable{
     }
     /**
      * @author Filipe Magalhães
-     * Menu for choosing the role to list the employees from
+     * Menu for choosing the action from, for SNS users
      * @return boolean if registration was sucessful
      */
     private boolean SNSUserMenu (){
         boolean sucess = false;
+        int aux = 0;
+        String TypeVaccine;
+
 
         int option = Utils.readIntegerFromConsole("Option:");
         switch (option) {
             case 1:
                 System.out.println("Schedule a vaccine");
+                aux = 1;
                 break;
 
             default:
                 System.out.println("ERROR");
+        }
+        if (aux == 1){
+
+            System.out.println("VaccineType: ");
+            TypeVaccine = ler.nextLine();
+            System.out.println();
+            System.out.println("Choose a Vaccination Center: ");
+
         }
 
         if (sucess) {

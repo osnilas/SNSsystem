@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+object Vaccine{
+-dosage
+-brand
+-age range
+-vaccine interval
+}
+object VaccineSchedule{
+-Date and Time
+}
+object Confirmation{
+-Name of user
+-Address of vaccination facility
+-Date and time of vaccination
+}
+object TypeVaccine{
+-disease
+}
+object VaccineAdministration
+object SmsConfirmation
+object EmailConfirmation
+
+VaccineSchedule"*" -- "1"SNSuser: > created for
+Vaccine"1" -- "*"VaccineAdministration: < of
+VaccineAdministration"*" -- "1"SNSuser: > administered on
+Confirmation"1" -- "1"VaccineSchedule: < emits
+Confirmation"1" -- "1"SmsConfirmation:> sends
+VaccineAdministration"1" -- "1"VaccineSchedule: < fulfilling
+Confirmation "1"--"1" EmailConfirmation: > sends
+Vaccine"1" --"1" TypeVaccine:> is of
+VaccineSchedule"*" -- "*"TypeVaccine:> for taking
+
+@enduml
