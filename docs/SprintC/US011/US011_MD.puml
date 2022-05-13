@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+object Administrator
+object ApplicationUser
+object Employees
+
+Administrator"*" -- "*" ApplicationUser: > manages/registers
+ApplicationUser"*" -- "*"Employees: > is
+
+@enduml

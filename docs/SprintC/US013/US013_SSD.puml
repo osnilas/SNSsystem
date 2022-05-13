@@ -1,0 +1,29 @@
+@startuml
+autonumber
+actor "Administrator" as adm
+
+activate adm
+
+
+adm -> ":System" : asks to specify a vaccine and administration process
+activate ":System"
+":System" --> adm : shows vaccine types list and ask to select one
+deactivate ":System"
+
+adm -> ":System" : selects vaccine type
+activate ":System"
+":System" --> adm : requests data (brand, minAge, maxAge, doses, dosage, vaccineInterval)
+deactivate ":System"
+
+adm -> ":System" : types requested data
+activate ":System"
+":System" --> adm : shows all data and requests confirmation
+deactivate ":System"
+
+adm -> ":System" : confirms the data
+activate ":System"
+":System" --> adm : informs operation success
+
+
+deactivate adm
+@enduml

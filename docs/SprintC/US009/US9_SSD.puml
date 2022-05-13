@@ -1,0 +1,32 @@
+@startuml
+actor Administrator
+autonumber
+Administrator -> ":System" : starts the registation of a new vaccination center
+Administrator <-- ":System" : request name
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request adress
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request phone number
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request email adress
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request fax number
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request website adress
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request opening and closing hours
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request slot duration
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request the maximum number of vaccines that can be given per slot
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : request the type of vaccine
+Administrator -> ":System" : types requested data
+Administrator <-- ":System" : confirms the registation of a new vaccination center
+
+
+
+
+
+
+@enduml

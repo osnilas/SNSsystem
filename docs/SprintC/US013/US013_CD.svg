@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="347px" preserveAspectRatio="none" style="width:1227px;height:347px;background:#FFFFFF;" version="1.1" viewBox="0 0 1227 347" width="1227px" zoomAndPan="magnify"><defs/><g><!--MD5=[d0a5a65fe6f1caee67ac0dcb4193126d]
+class VaccineAdministrationUI--><g id="elem_VaccineAdministrationUI"><rect codeLine="3" fill="#F1F1F1" height="48" id="VaccineAdministrationUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="199.5" y="33.5"/><ellipse cx="214.5" cy="49.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M216.5,46 Q216.7031,45.5 216.9375,45.25 Q217.1719,45 217.4375,45 Q217.9063,45 218.2031,45.2813 Q218.5,45.5625 218.5,46.2188 L218.5,47.7813 Q218.5,48.4375 218.2188,48.7188 Q217.9375,49 217.5,49 Q217.1094,49 216.8594,48.8281 Q216.6094,48.6563 216.5,48.2031 Q216.4531,47.8906 216.2813,47.7188 Q215.9688,47.3906 215.4063,47.2031 Q214.8438,47 214.2813,47 Q213.5781,47 212.9844,47.2813 Q212.4063,47.5625 211.9531,48.1875 Q211.5,48.8125 211.5,49.6719 L211.5,50.5938 Q211.5,51.625 212.3438,52.3125 Q213.1875,53 214.6875,53 Q215.5781,53 216.2031,52.7969 Q216.5625,52.6875 216.9688,52.3281 Q217.2344,52.125 217.375,52.0625 Q217.5156,52 217.6875,52 Q218.0156,52 218.25,52.2656 Q218.5,52.5156 218.5,52.875 Q218.5,53.2188 218.1563,53.625 Q217.6563,54.2188 216.8594,54.5469 Q215.8125,55 214.5313,55 Q213.0313,55 211.8281,54.4063 Q210.8594,53.9375 210.1719,52.9219 Q209.5,51.9063 209.5,50.7031 L209.5,49.6094 Q209.5,48.3594 210.0938,47.2656 Q210.7031,46.1719 211.75,45.5938 Q212.8125,45 214,45 Q214.7188,45 215.3438,45.25 Q215.9688,45.5 216.5,46 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="228.5" y="55.2285">VaccineAdministrationUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="200.5" x2="381.5" y1="65.5" y2="65.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="200.5" x2="381.5" y1="73.5" y2="73.5"/></g><!--MD5=[1128c2817e8932270c5bed2adaae6e0e]
+class VaccineAdministrationController--><g id="elem_VaccineAdministrationController"><rect codeLine="10" fill="#F1F1F1" height="100.8281" id="VaccineAdministrationController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="568" x="418" y="7"/><ellipse cx="597.25" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M599.25,19.5 Q599.4531,19 599.6875,18.75 Q599.9219,18.5 600.1875,18.5 Q600.6563,18.5 600.9531,18.7813 Q601.25,19.0625 601.25,19.7188 L601.25,21.2813 Q601.25,21.9375 600.9688,22.2188 Q600.6875,22.5 600.25,22.5 Q599.8594,22.5 599.6094,22.3281 Q599.3594,22.1563 599.25,21.7031 Q599.2031,21.3906 599.0313,21.2188 Q598.7188,20.8906 598.1563,20.7031 Q597.5938,20.5 597.0313,20.5 Q596.3281,20.5 595.7344,20.7813 Q595.1563,21.0625 594.7031,21.6875 Q594.25,22.3125 594.25,23.1719 L594.25,24.0938 Q594.25,25.125 595.0938,25.8125 Q595.9375,26.5 597.4375,26.5 Q598.3281,26.5 598.9531,26.2969 Q599.3125,26.1875 599.7188,25.8281 Q599.9844,25.625 600.125,25.5625 Q600.2656,25.5 600.4375,25.5 Q600.7656,25.5 601,25.7656 Q601.25,26.0156 601.25,26.375 Q601.25,26.7188 600.9063,27.125 Q600.4063,27.7188 599.6094,28.0469 Q598.5625,28.5 597.2813,28.5 Q595.7813,28.5 594.5781,27.9063 Q593.6094,27.4375 592.9219,26.4219 Q592.25,25.4063 592.25,24.2031 L592.25,23.1094 Q592.25,21.8594 592.8438,20.7656 Q593.4531,19.6719 594.5,19.0938 Q595.5625,18.5 596.75,18.5 Q597.4688,18.5 598.0938,18.75 Q598.7188,19 599.25,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="201" x="617.75" y="28.7285">VaccineAdministrationController</text><line style="stroke:#181818;stroke-width:0.5;" x1="419" x2="985" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="419" x2="985" y1="47" y2="47"/><ellipse cx="429" cy="58" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="542" x="438" y="65.5332">createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)</text><ellipse cx="429" cy="75.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="438" y="83.1426">saveVaccineAdministration()</text><ellipse cx="429" cy="93.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="177" x="438" y="100.752">printVaccineAdministration()</text></g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="18" fill="#F1F1F1" height="153.6563" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="568" x="7" y="177.5"/><ellipse cx="256.75" cy="193.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M258.75,190 Q258.9531,189.5 259.1875,189.25 Q259.4219,189 259.6875,189 Q260.1563,189 260.4531,189.2813 Q260.75,189.5625 260.75,190.2188 L260.75,191.7813 Q260.75,192.4375 260.4688,192.7188 Q260.1875,193 259.75,193 Q259.3594,193 259.1094,192.8281 Q258.8594,192.6563 258.75,192.2031 Q258.7031,191.8906 258.5313,191.7188 Q258.2188,191.3906 257.6563,191.2031 Q257.0938,191 256.5313,191 Q255.8281,191 255.2344,191.2813 Q254.6563,191.5625 254.2031,192.1875 Q253.75,192.8125 253.75,193.6719 L253.75,194.5938 Q253.75,195.625 254.5938,196.3125 Q255.4375,197 256.9375,197 Q257.8281,197 258.4531,196.7969 Q258.8125,196.6875 259.2188,196.3281 Q259.4844,196.125 259.625,196.0625 Q259.7656,196 259.9375,196 Q260.2656,196 260.5,196.2656 Q260.75,196.5156 260.75,196.875 Q260.75,197.2188 260.4063,197.625 Q259.9063,198.2188 259.1094,198.5469 Q258.0625,199 256.7813,199 Q255.2813,199 254.0781,198.4063 Q253.1094,197.9375 252.4219,196.9219 Q251.75,195.9063 251.75,194.7031 L251.75,193.6094 Q251.75,192.3594 252.3438,191.2656 Q252.9531,190.1719 254,189.5938 Q255.0625,189 256.25,189 Q256.9688,189 257.5938,189.25 Q258.2188,189.5 258.75,190 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="277.25" y="199.2285">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="574" y1="209.5" y2="209.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="217.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="27" y="228.0332">VaccineAdministrationList</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="574" y1="235.1094" y2="235.1094"/><ellipse cx="18" cy="246.1094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="542" x="27" y="253.6426">createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)</text><ellipse cx="18" cy="263.7188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="247" x="27" y="271.252">validateVaccineAdministration(vaxAdm)</text><ellipse cx="18" cy="281.3281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="228" x="27" y="288.8613">saveVaccineAdministration(vaxAdm)</text><ellipse cx="18" cy="298.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="226" x="27" y="306.4707">printVaccineAdministration(vaxAdm)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="313.5469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="222" x="27" y="324.0801">addVaccineAdministration(vaxAdm)</text></g><!--MD5=[107cfa23aa516ff83d0cf17a6f9fe7ba]
+class VaccineAdministration--><g id="elem_VaccineAdministration"><rect codeLine="30" fill="#F1F1F1" height="171.2656" id="VaccineAdministration" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="528" x="692" y="169"/><ellipse cx="882.25" cy="185" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M884.25,181.5 Q884.4531,181 884.6875,180.75 Q884.9219,180.5 885.1875,180.5 Q885.6563,180.5 885.9531,180.7813 Q886.25,181.0625 886.25,181.7188 L886.25,183.2813 Q886.25,183.9375 885.9688,184.2188 Q885.6875,184.5 885.25,184.5 Q884.8594,184.5 884.6094,184.3281 Q884.3594,184.1563 884.25,183.7031 Q884.2031,183.3906 884.0313,183.2188 Q883.7188,182.8906 883.1563,182.7031 Q882.5938,182.5 882.0313,182.5 Q881.3281,182.5 880.7344,182.7813 Q880.1563,183.0625 879.7031,183.6875 Q879.25,184.3125 879.25,185.1719 L879.25,186.0938 Q879.25,187.125 880.0938,187.8125 Q880.9375,188.5 882.4375,188.5 Q883.3281,188.5 883.9531,188.2969 Q884.3125,188.1875 884.7188,187.8281 Q884.9844,187.625 885.125,187.5625 Q885.2656,187.5 885.4375,187.5 Q885.7656,187.5 886,187.7656 Q886.25,188.0156 886.25,188.375 Q886.25,188.7188 885.9063,189.125 Q885.4063,189.7188 884.6094,190.0469 Q883.5625,190.5 882.2813,190.5 Q880.7813,190.5 879.5781,189.9063 Q878.6094,189.4375 877.9219,188.4219 Q877.25,187.4063 877.25,186.2031 L877.25,185.1094 Q877.25,183.8594 877.8438,182.7656 Q878.4531,181.6719 879.5,181.0938 Q880.5625,180.5 881.75,180.5 Q882.4688,180.5 883.0938,180.75 Q883.7188,181 884.25,181.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="902.75" y="190.7285">VaccineAdministration</text><line style="stroke:#181818;stroke-width:0.5;" x1="693" x2="1219" y1="201" y2="201"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="209"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="712" y="219.5332">brand</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="226.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="712" y="237.1426">minAge</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="244.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="712" y="254.752">maxAge</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="261.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="712" y="272.3613">dosage</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="279.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="712" y="289.9707">doses</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="700" y="297.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="712" y="307.5801">vaccineInterval</text><line style="stroke:#181818;stroke-width:0.5;" x1="693" x2="1219" y1="314.6563" y2="314.6563"/><ellipse cx="703" cy="325.6563" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="502" x="712" y="333.1895">VaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)</text></g><!--MD5=[4fb7023e3ec88a8c13d55ede096a9465]
+link VaccineAdministrationUI to VaccineAdministrationController--><g id="link_VaccineAdministrationUI_VaccineAdministrationController"><path codeLine="8" d="M382.51,57.5 C392.52,57.5 402.53,57.5 412.53,57.5 " fill="none" id="VaccineAdministrationUI-to-VaccineAdministrationController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="417.77,57.5,408.77,53.5,412.77,57.5,408.77,61.5,417.77,57.5" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8e21eacc8261db4fae5956d938f00eb8]
+link VaccineAdministrationController to Company--><g id="link_VaccineAdministrationController_Company"><path codeLine="16" d="M597.49,108.09 C554.52,128.47 503.71,152.58 455.95,175.24 " fill="none" id="VaccineAdministrationController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="451.34,177.43,461.1854,177.1708,455.854,175.2798,457.7451,169.9484,451.34,177.43" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ddd910a488776a510fa57bf44fb01dce]
+link Company to VaccineAdministration--><g id="link_Company_VaccineAdministration"><path codeLine="27" d="M575.43,254.5 C612.25,254.5 649.87,254.5 686.44,254.5 " fill="none" id="Company-to-VaccineAdministration" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="691.82,254.5,682.82,250.5,686.82,254.5,682.82,258.5,691.82,254.5" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="602.5,242.6758,593.4549,239.7369,593.4549,245.6147,602.5,242.6758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="606.5" y="247.9951">administers</text></g><!--MD5=[81d16d09cac01fbd6c318733e113aab2]
+link VaccineAdministrationController to VaccineAdministration--><g id="link_VaccineAdministrationController_VaccineAdministration"><path codeLine="28" d="M766.75,108.21 C789.49,125.67 815.77,145.84 841.37,165.5 " fill="none" id="VaccineAdministrationController-to-VaccineAdministration" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="845.48,168.65,840.8033,159.9823,841.5233,165.5932,835.9124,166.3131,845.48,168.65" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d267403c5eda160b802f983b022c1dc7]
+@startuml
+'https://plantuml.com/class-diagram
+
+class VaccineAdministrationUI
+class VaccineAdministrationController
+class Company
+class VaccineAdministration
+
+VaccineAdministrationUI .> VaccineAdministrationController
+
+class VaccineAdministrationController {
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +saveVaccineAdministration()
+    +printVaccineAdministration()
+}
+
+VaccineAdministrationController ..> Company
+
+class Company {
+    -VaccineAdministrationList
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +validateVaccineAdministration(vaxAdm)
+    +saveVaccineAdministration(vaxAdm)
+    +printVaccineAdministration(vaxAdm)
+    -addVaccineAdministration(vaxAdm)
+}
+
+Company  ->  VaccineAdministration : > administers
+VaccineAdministrationController .> VaccineAdministration
+
+class VaccineAdministration {
+    -brand
+    -minAge
+    -maxAge
+    -dosage
+    -doses
+    -vaccineInterval
+    +VaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+}
+
+@enduml
+
+@startuml
+
+class VaccineAdministrationUI
+class VaccineAdministrationController
+class Company
+class VaccineAdministration
+
+VaccineAdministrationUI .> VaccineAdministrationController
+
+class VaccineAdministrationController {
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +saveVaccineAdministration()
+    +printVaccineAdministration()
+}
+
+VaccineAdministrationController ..> Company
+
+class Company {
+    -VaccineAdministrationList
+    +createVaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+    +validateVaccineAdministration(vaxAdm)
+    +saveVaccineAdministration(vaxAdm)
+    +printVaccineAdministration(vaxAdm)
+    -addVaccineAdministration(vaxAdm)
+}
+
+Company  ->  VaccineAdministration : > administers
+VaccineAdministrationController .> VaccineAdministration
+
+class VaccineAdministration {
+    -brand
+    -minAge
+    -maxAge
+    -dosage
+    -doses
+    -vaccineInterval
+    +VaccineAdministration(brand, minAge, maxAge, doses, dosage, vaccineInterval)
+}
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: BR
+--></g></svg>
