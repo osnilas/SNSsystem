@@ -2,7 +2,6 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.Employee;
-import mappers.EmployeeMapper;
 
 /**
  * @author João Veiga
@@ -12,7 +11,6 @@ public class RegisterEmployeeController {
 
     private Company company;
     private Employee em;
-    private EmployeeMapper map;
     private App app;
 
     public RegisterEmployeeController() {

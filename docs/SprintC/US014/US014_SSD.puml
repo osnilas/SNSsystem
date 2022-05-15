@@ -1,0 +1,21 @@
+ @startuml
+    'https://plantuml.com/sequence-diagram
+
+    autonumber
+    actor Administrator
+    activate Administrator
+    Administrator -> System: Request register new Users from CSV file
+    activate System
+    System --> Administrator: request data(file name or address of file)
+    deactivate System
+    System <- Administrator: Types requested data
+    activate System
+    group loop
+    Administrator <-- System: shows the user data and requests confirmation
+    deactivate System
+    Administrator -> System: confirms the data
+    activate System
+    Administrator <-- System: informs operation success
+    deactivate System
+    end
+    @enduml

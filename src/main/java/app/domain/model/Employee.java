@@ -3,13 +3,9 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee {
-    private int id;
-    private String name;
-    private String address;
-    private String email;
-    private int phoneNumber;
-    private int ccNumber;
+public class Employee extends Person {
+    private int employeeID;
+
     private String roleId;
 
     private static int count = 0;
@@ -25,45 +21,19 @@ public class Employee {
      * @param roleId        The Employee role
      */
     public Employee(String name, String address, int phone, int cc, String email, String roleId) {
+
+        super(email,name,address,email,phone,cc);
+
         count++;
-        this.id = count;
 
-        this.name = name;
-
-        this.address = address;
+        this.employeeID = count;
 
         this.roleId = roleId;
-
-        this.email = email;
-
-        this.phoneNumber = phone;
-
-        this.ccNumber = cc;
     }
 
     //getters
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public int getPhone() {
-        return phoneNumber;
-    }
-
-    public int getCc() {
-        return ccNumber;
+    public int getEmployeeID() {
+        return employeeID;
     }
 
     public String getRoleId() {
@@ -101,10 +71,10 @@ public class Employee {
     public String toString() {
         return "Employee: \n" +
                 "id: " + id + '\t' +
-                "name: " + name + '\t' +
-                "adress: " + address +'\t'+
-                "email: " + email + '\t' +
-                "phone: " + phoneNumber +'\t'+
+                "name: " + getName() + '\t' +
+                "adress: " + getAddress() +'\t'+
+                "email: " + getEmail() + '\t' +
+                "phone: " + getPhoneNumber() +'\t'+
                 "roleId: " + roleId;
     }
 }

@@ -2,11 +2,52 @@ package app.domain.shared;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static app.domain.shared.Constants.df;
+
 
 public class Validate {
+
+
+    public static boolean validateName(String name){
+        if(name.isBlank() || name.isEmpty()){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean validateSex(String sex){
+        boolean flag= false;
+        for(int i=0;i<Constants.SexList.length;i++){
+            if(sex.equalsIgnoreCase(Constants.SexList[i])){
+                flag= true;
+            }
+        }
+        return flag;
+    }
+
+    public static boolean validateAddress(String address){
+        return validateName(address);
+    }
+
+    public static boolean validateBirth(String birth){
+        try {
+            df.setLenient(false);
+            df.parse(birth);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
     /**
      * @author João Veiga
      * validates email.
@@ -43,6 +84,13 @@ public class Validate {
             return true;
         }
 
+    }
+
+    public static boolean validateSNS(int sns){
+        if(getDigits(sns) != Constants.SNS_LENGHT ){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -114,7 +162,7 @@ public class Validate {
      * @param typeOfVaccine
      * @return boolean true if the vaccine type exists
      */
-
+/**
     public static boolean validateTypeOfVaccine(String typeOfVaccine) {
         if (VaccineTypeList.contains(typeOfVaccine)){
             return true;
@@ -122,6 +170,7 @@ public class Validate {
             return false;
         }
     }
+*/
 
     /**
      * @author Afonso Cunha
@@ -159,11 +208,10 @@ public class Validate {
      * @param websiteAdress
      * @return boolean if website adress checks out format
      */
-
+/**
     public static boolean validateWebsiteAdress(String websiteAdress) {
         return !StringUtils.isBlank(websiteAdress) && checkUrlFormat(websiteAdress);
     }
-
-
+*/
 
 }

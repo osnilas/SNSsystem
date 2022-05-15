@@ -1,9 +1,13 @@
 package app.domain.model;
 
 
+import jdk.jshell.Snippet;
+import mappers.dto.dtoSNSuser;
+import org.apache.commons.lang3.Validate;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static app.domain.model.Employee.FillRoleList;
@@ -26,6 +30,9 @@ public class Company {
 
     private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<VaccinationCenter>();
 
+    private static List<SNSuser> SNSuserList=new ArrayList<>();
+
+    private static List<dtoSNSuser> dtoSNSList=new ArrayList<>();
 
     public Company(String designation)
     {
@@ -156,5 +163,54 @@ public class Company {
         System.out.println(vaccinationCenter.toString());
     }
 
+    public  SNSuser createSNSuser( dtoSNSuser dto){
+        return new SNSuser(dto.getName(), dto.getSex(), dto.getBirth(), dto.getAddress(), dto.getEmail(), dto.getPhoneNumber(), dto.getSNSnumber(), dto.getCcNumber());
+    }
+    public boolean validateSNSuser(SNSuser us){
+        if(us==null){
+            return false;
+        }
+        return  ! this.SNSuserList.contains(us);
+    }
 
+    public boolean saveSNSuser(dtoSNSuser dto){
+        boolean flag=false;
+        if(SNSuserList.isEmpty()){
+            SNSuserList.add(createSNSuser(dto));
+        }
+        else {
+            for(int i=0;i<SNSuserList.size();i++){
+                if(!validateSNSuserDTO(dto,i)){
+                    flag=true;
+                }else{
+                    flag=false;
+                    break;
+                }
+
+            }
+        }
+        if(flag){
+            SNSuserList.add(createSNSuser(dto));
+        }
+        else {
+            System.out.println("SNS ALREADY EXISTS");
+        }
+        return flag;
+    }
+
+    public void printSNSuser(SNSuser us){
+        System.out.println(us.toString());
+    }
+
+    public List<SNSuser> getSNSuserList(){return SNSuserList;}
+
+
+    private boolean validateSNSuserDTO(dtoSNSuser dto,int i){
+        boolean email=Objects.equals(SNSuserList.get(i).getEmail(),dto.getEmail());
+        boolean cc=Objects.equals(SNSuserList.get(i).getCcNumber(),dto.getCcNumber());
+        boolean phone=Objects.equals(SNSuserList.get(i).getPhoneNumber(),dto.getPhoneNumber());
+        boolean snsNumber=Objects.equals(SNSuserList.get(i).getSNSnumber(),dto.getSNSnumber());
+
+        return email && cc && phone && snsNumber;
+    }
 }

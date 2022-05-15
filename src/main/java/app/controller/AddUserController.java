@@ -2,7 +2,6 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.User;
-import mappers.EmployeeMapper;
 
 
 /**
@@ -13,7 +12,6 @@ public class AddUserController {
     private Company company;
     private User us;
     private App app;
-    private EmployeeMapper map;
 
     public AddUserController() {
         this.company = App.getInstance().getCompany();

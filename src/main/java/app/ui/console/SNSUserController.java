@@ -3,7 +3,6 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.model.User;
-import mappers.EmployeeMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,6 @@ public class SNSUserController  {
 
     private Company company;
     private App app;
-    private EmployeeMapper map;
     private String roleId;
 
 
