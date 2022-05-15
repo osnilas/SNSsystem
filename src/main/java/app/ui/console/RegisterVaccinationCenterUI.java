@@ -107,6 +107,24 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         } while (!Validate.validateMaximumNumberOfVaccinesPerSlot(maximumNumberOfVaccinesPerSlot));
 
+        sucess = ctlr.createVaccinationCenter(name, adress, phoneNumber, emailAdress, faxNumber, websiteAdress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+
+        if (sucess){
+            ctlr.printVaccinationCenter();
+        }
+
+        if (Utils.confirm("Is this correct? (y/n")){
+            sucess = ctlr.saveVaccinationCenter();
+        } else {
+            sucess = false;
+        }
+
+        if (sucess){
+            System.out.println("registration successful");
+        } else {
+            System.out.println("registration not successful");
+        }
+        return sucess;
     }
 }
 
