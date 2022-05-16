@@ -10,6 +10,8 @@ import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
+import static app.controller.RoleMenuController.EmployeesRoleList;
+
 public class RoleMenuUI implements Runnable{
     public RoleMenuUI()
     {
@@ -19,7 +21,7 @@ public class RoleMenuUI implements Runnable{
      * Iniciates controller
      */
     private RoleMenuController ctrl = new RoleMenuController();
-    private ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
+
 
     @Override
     public void run (){
@@ -65,9 +67,9 @@ public class RoleMenuUI implements Runnable{
 
             }
         if (sucess) {
-            System.out.println("-----------List of Employees from chosen role done successfully-----------");
+            System.out.println("-----------List of Employees done successfully-----------");
         } else {
-            System.out.println("-----------List of Employees from chosen role done failed---------------");
+            System.out.println("-----------List of Employees failed---------------");
         }
             return sucess;
         }
