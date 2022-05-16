@@ -2,8 +2,10 @@ package app.domain.shared;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -182,6 +184,45 @@ public class Validate {
         return !StringUtils.isBlank(websiteAdress) && checkUrlFormat(websiteAdress);
     }
 
+    public static boolean validateName(String name){
+        if(name.isEmpty() && name.isBlank()){
+            return false;
+        }
+        return true;
+    }
 
+    public static boolean validateAddress(String address) {
+        if (address.isEmpty() && address.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateSNS (int sns){
+        if(getDigits(sns)==Constants.SNS_LENGHT){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validateDate(String date){
+        try{
+            Date test=Constants.df.parse(date);
+        }
+        catch (ParseException e){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateSex(String sex){
+        for (int i=0;i<Constants.SexList.length;i++){
+            if(sex.equalsIgnoreCase(Constants.SexList[i])){
+                return true;
+            }
+
+        }
+        return false;
+    }
 
 }

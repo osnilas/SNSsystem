@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class Company{
+-designation
+    +createSNSuser(dtoSNSuser dto)
+    +validateSNSuser(SNSuser user)
+    -validateSNSuserDTO(dtoSNSuser dto)
+    +saveSNSuser(dtoSNSuser dto)
+    +printSNSuser(SNSuser user)
+
+}
+Class SNS_user{
+-sex
+-birth
+-SNSnumber
++getAge()
+}
+Class Login{
+-id
+-password
++generatePwd(int lenght)
+}
+Class Person{
+-name
+-address
+-email
+-phoneNumber
+-ccNumber
+}
+Class OrganizationRole{
+-description
+}
+Class ResgisterEmployeeUI{
++register()
++run()
+}
+Class ResgisterEmployeeController{
++createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
++saveEmployee()
+printEmployee()
+}
+
+Class AddUserController{
++createUser(String id)
++saveUser()
++printUser()
+}
+
+
+
+@enduml

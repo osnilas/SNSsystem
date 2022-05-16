@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,12 +68,20 @@ public class AddUserFromCSVUI implements Runnable {
         while (in.hasNextLine()) {
             String[] Line = uncutLine.split(split);
             if (validateContents(Line)) {
-                if(Line[2]==null) {
-                     temp = new dtoSNSuser(Line[0], Constants.df.parse(Line[4]), Line[1], Line[4], Integer.parseInt(Line[3]), Integer.parseInt(Line[6]), Integer.parseInt(Line[7]));
+                String name= Line[0];
+                String sex= Line[1];
+                Date birth=Constants.df.parse(Line[2]);
+                String address=Line[3];
+                int phoneNumber=Integer.parseInt(Line[4]);
+                String email=Line[5];
+                int SNSnumber=Integer.parseInt(Line[6]);
+                int ccNumber=Integer.parseInt(Line[7]);
+                if(Line[1]==null) {
+                     temp = new dtoSNSuser(name,birth,address,email,phoneNumber,SNSnumber,ccNumber);
                 }
                 else{
                     if(Validate.validateSex(Line[2])) {
-                         temp = new dtoSNSuser(Line[0], Line[2], Constants.df.parse(Line[4]), Line[1], Line[4], Integer.parseInt(Line[3]), Integer.parseInt(Line[6]), Integer.parseInt(Line[7]));
+                         temp = new dtoSNSuser(name,sex,birth,address,email,phoneNumber,SNSnumber,ccNumber);
                     }
                     else {
                         flag=false;
@@ -84,12 +93,12 @@ public class AddUserFromCSVUI implements Runnable {
                 else {
                     System.out.println("Input:");
                     System.out.println(uncutLine);
-                    System.out.println("-------Last Input not valid----");
+                    System.out.println("-------Input not valid----");
                 }
             } else {
                 System.out.println("Input:");
                 System.out.println(uncutLine);
-                System.out.println("-------Last Input not valid----");
+                System.out.println("-------Input not valid----");
             }
             uncutLine=in.nextLine();
         }
@@ -118,6 +127,14 @@ public class AddUserFromCSVUI implements Runnable {
     }
 
     private boolean validateContents(String[] Line) {
-        return (Validate.validateName(Line[0]) && Validate.validateAddress(Line[1]) && Validate.validatePhone(Integer.parseInt(Line[3])) && Validate.validateEmail(Line[4]) && Validate.validateBirth(Line[5]) && Validate.validateSNS(Integer.parseInt(Line[6])) && Validate.validateCC(Integer.parseInt(Line[7])));
+        boolean name= Validate.validateName(Line[0]);
+        boolean birth=Validate.validateDate(Line[2]);
+        boolean address=Validate.validateAddress(Line[3]);
+        boolean phoneNumber=Validate.validatePhone(Integer.parseInt(Line[4]));
+        boolean email=Validate.validateEmail(Line[5]);
+        boolean SNSnumber=Validate.validateSNS(Integer.parseInt(Line[6]));
+        boolean ccNumber=Validate.validateCC(Integer.parseInt(Line[7]));
+
+        return name && birth && address && phoneNumber && email && SNSnumber && ccNumber;
     }
 }

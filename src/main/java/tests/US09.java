@@ -62,6 +62,7 @@ public class US09 {
         assertFalse(result);
     }
 
+
     @Test
     void validateWebsiteAdressBlank() {
         String blank = "  ";
@@ -79,7 +80,7 @@ public class US09 {
     @Test
     void validateWebsiteAdressFormat() {
         String url = "www.isep.pt";
-        boolean result= Validate.validateEmail(url);
+        boolean result= Validate.validateWebsiteAdress(url);
         assertTrue(result);
     }
 
