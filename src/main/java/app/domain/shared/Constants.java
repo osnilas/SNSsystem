@@ -1,5 +1,7 @@
 package app.domain.shared;
 
+import app.domain.model.Employee;
+
 import javax.management.relation.RoleList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,4 +36,6 @@ public class Constants {
     public static final String DATE_FORMAT = "dd/MM/yyyy";
 
     public static final DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
+
+    public static final ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
 }

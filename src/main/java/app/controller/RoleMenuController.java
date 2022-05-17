@@ -7,6 +7,9 @@ import app.domain.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static app.domain.shared.Constants.EmployeesRoleList;
+
 /**
  * @author Filipe Magalhães
  * Controller of the Role Menu to list Employees in US011
@@ -15,7 +18,6 @@ import java.util.List;
 public class RoleMenuController {
 
     private Company company;
-    public static final ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
     private App app;
    // private EmployeeMapper map;
     private String roleId;

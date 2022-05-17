@@ -10,7 +10,8 @@ import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-import static app.controller.RoleMenuController.EmployeesRoleList;
+import static app.domain.shared.Constants.EmployeesRoleList;
+
 
 public class RoleMenuUI implements Runnable{
     public RoleMenuUI()
