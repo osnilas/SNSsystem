@@ -53,9 +53,7 @@ public class VaccineAdministration {
         return doses;
     }
 
-    public List<Integer> getVaccineInterval() {
-        return vaccineInterval;
-    }
+    public List<Integer> getVaccineInterval() { return vaccineInterval; }
 
 
     @Override
@@ -68,11 +66,10 @@ public class VaccineAdministration {
             System.out.printf("Dosage: %.2f ml%n", dosage.get(i));
             System.out.printf("Doses: %d%n", doses.get(i));
             if (doses.get(i) > 1) {
-                for (int j = 0; j < doses.get(i) - 1; j++) {
-                    x += j;
-                    System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j+1, j+2, vaccineInterval.get(x));
+                for (int j = 1; j < doses.get(i); j++) {
+                    System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j, j+1, vaccineInterval.get(x));
+                    x += 1;
                 }
-                x+=1;
             }
             System.out.println();
         }
