@@ -2,10 +2,8 @@ package app.domain.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
-public class VaccinationScheduler {
+public class VaccinationSchedule {
 
     private int SNSnumber;
 
@@ -15,7 +13,7 @@ public class VaccinationScheduler {
 
     private String TypeVaccine;
 
-    public VaccinationScheduler (int SNSnumber,LocalDateTime appointmentTime,LocalDate date ,String TypeVaccine){
+    public VaccinationSchedule(int SNSnumber, LocalDateTime appointmentTime, LocalDate date , String TypeVaccine){
 
         this.SNSnumber=SNSnumber;
         this.appointmentTime=appointmentTime;

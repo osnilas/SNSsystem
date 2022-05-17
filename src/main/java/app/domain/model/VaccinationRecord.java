@@ -4,7 +4,7 @@ import java.util.List;
 
 public class VaccinationRecord {
 
-    private SNSuser user;
+    private int SNSnumberUser;
 
-    private static List<VaccinationScheduler> record;
+    private static List<VaccinationSchedule> record;
 }

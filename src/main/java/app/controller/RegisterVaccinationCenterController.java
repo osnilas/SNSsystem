@@ -3,6 +3,8 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.VaccinationCenter;
 
+import java.time.LocalDateTime;
+
 public class RegisterVaccinationCenterController {
 
     private Company company;
@@ -21,8 +23,8 @@ public class RegisterVaccinationCenterController {
         this.vc = vc;
     }
 
-    public boolean createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
-        this.vc = this.company.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+    public boolean createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours,LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
+        this.vc = this.company.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
         return this.company.validateVaccinationCenter(vc);
     }
 

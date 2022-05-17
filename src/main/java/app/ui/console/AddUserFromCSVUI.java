@@ -23,8 +23,6 @@ public class AddUserFromCSVUI implements Runnable {
 
     private AddSNSfromCSVController ctlr;
 
-    private List<dtoSNSuser> SNSlist = new ArrayList<>();
-
     /**
      * @author João Veiga
      * Iniciates controller
@@ -73,7 +71,7 @@ public class AddUserFromCSVUI implements Runnable {
             if (validateContents(Line)) {
                 String name= Line[0];
                 String sex= Line[1];
-                LocalDate birth=LocalDate.parse(Line[2],Constants.formatter);
+                LocalDate birth=LocalDate.parse(Line[2],Constants.FORMATTER);
                 String address=Line[3];
                 int phoneNumber=Integer.parseInt(Line[4]);
                 String email=Line[5];
@@ -83,7 +81,7 @@ public class AddUserFromCSVUI implements Runnable {
                      temp = new dtoSNSuser(name,birth,address,email,phoneNumber,SNSnumber,ccNumber);
                 }
                 else{
-                    if(Validate.validateSex(Line[2])) {
+                    if(Validate.validateSex(Line[1])) {
                          temp = new dtoSNSuser(name,sex,birth,address,email,phoneNumber,SNSnumber,ccNumber);
                     }
                     else {
@@ -91,7 +89,32 @@ public class AddUserFromCSVUI implements Runnable {
                     }
                 }
                 if (flag) {
-                    SNSlist.add(temp);
+                    success = ctlr.createSNSuser(temp);
+                    if (!success) {
+                        System.out.println("User already exists or its unvalid");
+                    }
+                    //maybe toString dto?
+                    System.out.println("Name: "+name+
+                            "sex: "+sex+
+                            " birth: "+birth+
+                            " address: "+address+
+                            " phone number: "+phoneNumber+
+                            " email: "+email+
+                            " SNS number: "+SNSnumber+
+                            " CC number: "+ccNumber);
+                    if (Utils.confirm("Is it correct?(s/n)")) {
+                        success = ctlr.saveSNSuser(temp);
+                    }
+                    else{
+                        System.out.println("-----Not saved, registration aborted-----");
+                    }
+                    if (success) {
+                        System.out.println("-----------Registration done successfully-----------");
+                        count++;
+                    }
+                    else{
+                        System.out.println("-----------Registration failed-----------");
+                    }
                 }
                 else {
                     System.out.println("Input:");
@@ -105,28 +128,7 @@ public class AddUserFromCSVUI implements Runnable {
             }
             uncutLine=in.nextLine();
         }
-        for (int i = 0; i < SNSlist.size(); i++) {
-            success = ctlr.createSNSuser(SNSlist.get(i));
-            if (!success) {
-                System.out.println("User already exists or its unvalid");
-            }
-        }
-        if (success) {
-            for (int i = 0; i < SNSlist.size(); i++) {
-                System.out.println(SNSlist.get(i).toString());
-                if (Utils.confirm("Is it correct?(s/n)")) {
-                    success = ctlr.saveSNSuser(SNSlist.get(i));
-                }
-                if (success) {
-                    System.out.println("-----------Registration done successfully-----------");
-                    count++;
-                }
-            }
-        }
-        if(count!=0){
-            success=true;
-        }
-        return success;
+        return count != 0;
     }
 
     private boolean validateContents(String[] Line) {

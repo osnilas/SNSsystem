@@ -1,23 +1,8 @@
 package app.domain.model;
 
-public class VaccinationCenter {
-    private String name;
+import java.time.LocalDateTime;
 
-    private String address;
-
-    private int phoneNumber;
-
-    private String emailAddress;
-
-    private int faxNumber;
-
-    private String websiteAddress;
-
-    private String openingAndClosingHours;
-
-    private int slotDuration;
-
-    private int maximumNumberOfVaccinesPerSlot;
+public class VaccinationCenter extends VaccinationFacility {
 
     private String typeOfVaccine;
 
@@ -30,72 +15,19 @@ public class VaccinationCenter {
      * @param emailAddress                      The Vaccination Center email
      * @param faxNumber                         The Vaccination Center fax number
      * @param websiteAddress                    The Vaccination Center website
-     * @param openingAndClosingHours            The Vaccination Center opening and closing hours
+     * @param openingHours                      The Vaccination Center opening  hours
+     * @param closingHours                       The Vaccination closing hours
      * @param slotDuration                      The Vaccination Center slot duration
      * @param maximumNumberOfVaccinesPerSlot     The Vaccination Center maximum number of vaccines per slot
      * @param typeOfVaccine                     The Vaccination Center name
      */
-    public VaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
-
-        this.name = name;
-
-        this.address = address;
-
-        this.phoneNumber = phoneNumber;
-
-        this.emailAddress = emailAddress;
-
-        this.faxNumber = faxNumber;
-
-        this.websiteAddress = websiteAddress;
-
-        this.openingAndClosingHours = openingAndClosingHours;
-
-        this.slotDuration = slotDuration;
-
-        this.maximumNumberOfVaccinesPerSlot = maximumNumberOfVaccinesPerSlot;
+    public VaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
+        super(name,address,phoneNumber,emailAddress,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maximumNumberOfVaccinesPerSlot);
 
         this.typeOfVaccine = typeOfVaccine;
 
 
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAdress() {
-        return address;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public int getFaxNumber() {
-        return faxNumber;
-    }
-
-    public String getWebsiteAdress() {
-        return websiteAddress;
-    }
-
-    public String getOpeningAndClosingHours() {
-        return openingAndClosingHours;
-    }
-
-    public int getSlotDuration() {
-        return slotDuration;
-    }
-
-    public int getMaximumNumberOfVaccinesPerSlot() {
-        return maximumNumberOfVaccinesPerSlot;
-    }
-
     public String getTypeOfVaccine() {
         return typeOfVaccine;
     }
@@ -104,15 +36,16 @@ public class VaccinationCenter {
     @Override
     public String toString() {
         return "Vaccination Center{" +
-                ", name=" + name +
-                ", adress='" + address + '\'' +
-                ", phone number=" + phoneNumber +
-                ", email='" + emailAddress + '\'' +
-                ", fax number=" + faxNumber +
-                ", website adress='" + websiteAddress + '\'' +
-                ", opening and closing hours=" + openingAndClosingHours +
-                ", slot duration='" + slotDuration + '\'' +
-                ", maximum number of vaccines per slot=" + maximumNumberOfVaccinesPerSlot +
+                ", name=" + getName() +
+                ", adress='" + getAddress() + '\'' +
+                ", phone number=" + getPhoneNumber() +
+                ", email='" + getAddress() + '\'' +
+                ", fax number=" + getFaxNumber() +
+                ", website adress='" + getWebsiteAddress() + '\'' +
+                ", opening and closing hours=" + getOpeningHours() +
+                ", opening and closing hours=" + getClosingHours() +
+                ", slot duration='" + getSlotDuration() + '\'' +
+                ", maximum number of vaccines per slot=" + getMaximumNumberOfVaccinesPerSlot() +
                 ", type of vaccine='" + typeOfVaccine + '\'' +
                 '}';
     }

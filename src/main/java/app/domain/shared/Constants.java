@@ -1,10 +1,12 @@
 package app.domain.shared;
 
 import app.domain.model.Employee;
+import app.domain.model.TypeVaccine;
+import app.domain.model.VaccinationCenter;
 
-import javax.management.relation.RoleList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,23 @@ public class Constants {
 
     public static final DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
 
-    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-    public static final ArrayList<Employee> EmployeesRoleList = new ArrayList<>();
+    public static final String TIME_FORMAT = "HH:mm";
+
+    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
+
+    public static final ArrayList<Employee> EMPLOYEE_ARRAY_LIST = new ArrayList<>();
+
+    public static final LocalDateTime OPENING_TIME_FOR_VACCINATION_FACILITY =LocalDateTime.parse("9:00",TIME_FORMATTER);
+
+    public static final LocalDateTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalDateTime.parse("16:00",TIME_FORMATTER);
+
+    public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
+
+    public static final VaccinationCenter VACCINATION_CENTER_TESTER=new VaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",Constants.OPENING_TIME_FOR_VACCINATION_FACILITY, Constants.CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,"Covid");
+
+    public static final TypeVaccine TYPE_VACCINE_TESTER= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.");
+
+    public static final TypeVaccine TYPE_VACCINE_RECOMMENDED= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.");
 }

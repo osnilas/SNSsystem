@@ -1,6 +1,7 @@
 package app.domain.model;
 
 
+import app.domain.shared.Constants;
 import jdk.jshell.Snippet;
 import mappers.dto.dtoSNSuser;
 import org.apache.commons.lang3.Validate;
@@ -8,6 +9,7 @@ import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static app.domain.model.Employee.FillRoleList;
@@ -26,6 +28,7 @@ public class Company {
     private static List<Employee> EmployeesListRole=new ArrayList<Employee>();
     private static List<User> UserList=new ArrayList<>();
 
+    private static List<TypeVaccine> typeVaccineList=new ArrayList<>();
     private static List<VaccineAdministration> VaccineAdministrationList = new ArrayList<>();
 
     private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<VaccinationCenter>();
@@ -40,7 +43,8 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        EmployeesList.add(new Employee("null", "null", 111111111,11111111, "nullemail@nul.com", "null"));
+        VaccinationCentersList.add(Constants.VACCINATION_CENTER_TESTER);
+        EmployeesList.add(Constants.EMPLOYEE_TESTER);
     }
 
     public String getDesignation() {
@@ -141,8 +145,8 @@ public class Company {
         PrintListEmployees(EmployeesRoleList);
     }
 
-    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, String openingAndClosingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine){
-        return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine){
+        return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
     }
 
     public boolean validateVaccinationCenter(VaccinationCenter vaccinationCenter){

@@ -3,8 +3,11 @@ package app.ui.console;
 import app.controller.App;
 import app.controller.RegisterVaccinationCenterController;
 import app.domain.model.VaccinationCenter;
+import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.domain.shared.Validate;
+
+import java.time.LocalDateTime;
 
 public class RegisterVaccinationCenterUI implements Runnable {
 
@@ -33,8 +36,9 @@ public class RegisterVaccinationCenterUI implements Runnable {
         boolean sucess = false;
         boolean flag = false;
         System.out.println("\nRegistration UI:");
-        String name, adress, emailAdress, websiteAdress, openingAndClosingHours, typeOfVaccine;
+        String name, adress, emailAdress, websiteAdress, openingHoursString,closingHoursString, typeOfVaccine;
         int phoneNumber, faxNumber, slotDuration, maximumNumberOfVaccinesPerSlot;
+        LocalDateTime openingHours,closingHours;
 
         do {
             name = Utils.readLineFromConsole("Enter name: ");
@@ -87,11 +91,20 @@ public class RegisterVaccinationCenterUI implements Runnable {
         } while (!Validate.validateWebsiteAdress(websiteAdress));
 
         do {
-            openingAndClosingHours = Utils.readLineFromConsole("Enter opening and closing hours: ");
-            if (openingAndClosingHours.isBlank()) {
-                System.out.println("Input opening and closing hours, it can not be empty");
+            openingHoursString = Utils.readLineFromConsole("Enter opening and closing hours: ");
+            if (openingHoursString.isBlank() && !Validate.validateTime(openingHoursString)) {
+                System.out.println("Input opening hours, it can not be empty");
             }
-        } while (openingAndClosingHours.isBlank());
+        } while (openingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
+        openingHours=LocalDateTime.parse(openingHoursString, Constants.TIME_FORMATTER);
+
+        do {
+            closingHoursString = Utils.readLineFromConsole("Enter opening and closing hours: ");
+            if (closingHoursString.isBlank() && !Validate.validateTime(openingHoursString)) {
+                System.out.println("Input closing hours, it can not be empty");
+            }
+        } while (closingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
+        closingHours=LocalDateTime.parse(closingHoursString, Constants.TIME_FORMATTER);
 
         do {
             slotDuration = Utils.readIntegerFromConsole("Enter the slot duration: ");
@@ -107,7 +120,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         } while (!Validate.validateMaximumNumberOfVaccinesPerSlot(maximumNumberOfVaccinesPerSlot));
 
-        sucess = ctlr.createVaccinationCenter(name, adress, phoneNumber, emailAdress, faxNumber, websiteAdress, openingAndClosingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+        sucess = ctlr.createVaccinationCenter(name, adress, phoneNumber, emailAdress, faxNumber, websiteAdress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
 
         if (sucess){
             ctlr.printVaccinationCenter();

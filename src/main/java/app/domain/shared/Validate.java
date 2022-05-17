@@ -3,6 +3,8 @@ package app.domain.shared;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -210,6 +212,16 @@ public class Validate {
             Date test=Constants.df.parse(date);
         }
         catch (ParseException e){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateTime(String time){
+        try {
+            LocalDateTime test=LocalDateTime.parse(time,Constants.TIME_FORMATTER);
+        }
+        catch (DateTimeException e){
             return false;
         }
         return true;
