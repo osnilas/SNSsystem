@@ -3,6 +3,7 @@ package app.domain.model;
 import mappers.dto.dtoSNSuser;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -12,12 +13,12 @@ public class SNSuser extends Person{
 
 
     private String sex;
-    private Date birth;
+    private LocalDate birth;
     private int SNSnumber;
 
     private final static String DEFAULT_SEX = "Not specified";
 
-    public SNSuser(String name, String sex, Date birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
+    public SNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
         super(email,name,address,email,phoneNumber,ccNumber);
 
         this.sex = sex;
@@ -25,7 +26,7 @@ public class SNSuser extends Person{
         this.SNSnumber = SNSnumber;
     }
 
-    public SNSuser(String name, Date birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
+    public SNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
         super(email,name,address,email,phoneNumber,ccNumber);
 
         sex = DEFAULT_SEX;
@@ -36,7 +37,7 @@ public class SNSuser extends Person{
 
 
     public int getAge() {
-        Date now = new Date();
+        LocalDate now = LocalDate.now();
         int years = now.getYear() - birth.getYear();
         return years;
     }

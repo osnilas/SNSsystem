@@ -11,10 +11,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+import static java.time.LocalDate.parse;
 
 public class AddUserFromCSVUI implements Runnable {
 
@@ -70,7 +73,7 @@ public class AddUserFromCSVUI implements Runnable {
             if (validateContents(Line)) {
                 String name= Line[0];
                 String sex= Line[1];
-                Date birth=Constants.df.parse(Line[2]);
+                LocalDate birth=LocalDate.parse(Line[2],Constants.formatter);
                 String address=Line[3];
                 int phoneNumber=Integer.parseInt(Line[4]);
                 String email=Line[5];

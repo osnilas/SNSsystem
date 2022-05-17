@@ -2,17 +2,18 @@ package mappers.dto;
 
 import app.domain.model.Person;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class dtoSNSuser extends Person {
 
     private String sex;
-    private Date birth;
+    private LocalDate birth;
     private int SNSnumber;
 
     private final static String DEFAULT_SEX = "Not specified";
 
-    public dtoSNSuser(String name, String sex, Date birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
+    public dtoSNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
         super(email,name,address,email,phoneNumber,ccNumber);
 
         this.sex = sex;
@@ -20,7 +21,7 @@ public class dtoSNSuser extends Person {
         this.SNSnumber = SNSnumber;
     }
 
-    public dtoSNSuser(String name, Date birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
+    public dtoSNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
         super(email,name,address,email,phoneNumber,ccNumber);
 
         sex = DEFAULT_SEX;
@@ -34,7 +35,7 @@ public class dtoSNSuser extends Person {
         return super.getName();
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
 
