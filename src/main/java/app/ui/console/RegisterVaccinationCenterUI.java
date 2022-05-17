@@ -113,7 +113,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
             ctlr.printVaccinationCenter();
         }
 
-        if (Utils.confirm("Is this correct? (y/n")){
+        if (Utils.confirm("Is this correct? (s/n)")){
             sucess = ctlr.saveVaccinationCenter();
         } else {
             sucess = false;
