@@ -88,7 +88,7 @@ public class App {
 
         this.authFacade.addUserRole(Constants.ROLE_RES,Constants.ROLE_RES);
 
-        this.authFacade.addUserWithRole(" Test Rescepionist", "res@lei.sem2.pt", "22",Constants.ROLE_RES);
+        this.authFacade.addUserWithRole(" Test Receptionist", "res@lei.sem2.pt", "22",Constants.ROLE_RES);
 
         this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
 

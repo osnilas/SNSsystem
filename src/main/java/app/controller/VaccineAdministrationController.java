@@ -3,6 +3,7 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.VaccineAdministration;
 
+
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class VaccineAdministrationController {
     private Company company = App.getInstance().getCompany();
 
-    private VaccineAdministration vaxAdm;
+    private VaccineAdministration vaccineAdministration;
 
     /**
      * @param brand           The vaccine's brand
@@ -26,17 +27,17 @@ public class VaccineAdministrationController {
      * asks company to create a vaccine admnistration
      */
     public boolean createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
-        this.vaxAdm = company.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
-        return company.validateVaccineAdministration(vaxAdm);
+        this.vaccineAdministration = company.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
+        return company.validateVaccineAdministration(vaccineAdministration);
     }
 
     /**
      * @author Pedro Nogueira
      * Saves a vaccine administration in company
-     * @return boolean of if the save was sucessful or not
+     * @return boolean of if the save was successful or not
      */
     public boolean saveVaccineAdministration () {
-       return company.saveVaccineAdministration(vaxAdm);
+       return company.saveVaccineAdministration(vaccineAdministration);
     }
 
 
@@ -45,7 +46,7 @@ public class VaccineAdministrationController {
      * Prints vaccine administration
      */
     public void printVaccineAdministration () {
-        company.printVaccineAdministration(vaxAdm);
+        company.printVaccineAdministration(vaccineAdministration);
     }
 
 }

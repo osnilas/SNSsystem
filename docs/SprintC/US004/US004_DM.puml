@@ -1,0 +1,18 @@
+@startuml
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object Recepionist
+
+VaccineSchedule"*" -- "1"SNSuser: > created for
+VaccineSchedule"*" -- "1"Recepionist: > created for
+
+@enduml

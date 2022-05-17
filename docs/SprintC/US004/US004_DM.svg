@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="239px" preserveAspectRatio="none" style="width:275px;height:239px;background:#FFFFFF;" version="1.1" viewBox="0 0 275 239" width="275px" zoomAndPan="magnify"><defs/><g><g id="elem_SNSuser"><rect fill="#F1F1F1" height="100.0469" style="stroke:#181818;stroke-width:0.5;" width="137" x="7" y="132"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="48" y="148.5332">SNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="143" y1="153.6094" y2="153.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="161.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="27" y="172.1426">SNS user number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="179.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="189.752">phone number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="196.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="27" y="207.3613">e-mail address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="214.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="27" y="224.9707">health conditions</text></g><g id="elem_VaccineSchedule"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="123" x="88" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="95" y="23.5332">VaccineSchedule</text><line style="stroke:#181818;stroke-width:0.5;" x1="89" x2="210" y1="28.6094" y2="28.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="96" y="36.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="108" y="47.1426">Date and Time</text></g><g id="elem_Recepionist"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="88" x="179.5" y="163"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="186.5" y="179.5332">Recepionist</text><line style="stroke:#181818;stroke-width:0.5;" x1="180.5" x2="266.5" y1="184.6094" y2="184.6094"/></g><!--MD5=[9b883d3759ead800c8493fb91e0f381c]
+link VaccineSchedule to SNSuser--><g id="link_VaccineSchedule_SNSuser"><path codeLine="14" d="M126.37,54.23 C118.54,62.94 110.31,73.36 104.5,84 C96.5,98.66 90.45,115.79 85.99,131.55 " fill="none" id="VaccineSchedule-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="107.1854,97.6078,113.9776,90.9507,108.7675,88.2297,107.1854,97.6078" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="118.5" y="98.4951">created for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="114.8023" y="75.8729">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="79.9293" y="121.2114">1</text></g><!--MD5=[eaeb6100a3b5fca1a164e8fafc10e2ad]
+link VaccineSchedule to Recepionist--><g id="link_VaccineSchedule_Recepionist"><path codeLine="15" d="M166.07,54.13 C172.28,63.16 179.14,73.83 184.5,84 C198.47,110.49 210.63,143.13 217.51,162.99 " fill="none" id="VaccineSchedule-Recepionist" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="199.6362,97.6965,198.429,88.2628,193.1146,90.7741,199.6362,97.6965" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="206.5" y="98.4951">created for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="164.6754" y="75.7473">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="207.4851" y="151.994">1</text></g><!--MD5=[507af21e35bc97536bef9d735edaa3c7]
+@startuml
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object Recepionist
+
+VaccineSchedule"*" - - "1"SNSuser: > created for
+VaccineSchedule"*" - - "1"Recepionist: > created for
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: BR
+--></g></svg>
