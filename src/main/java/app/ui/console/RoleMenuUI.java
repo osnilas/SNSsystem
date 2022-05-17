@@ -1,16 +1,11 @@
 package app.ui.console;
 
-import app.domain.model.Employee;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.controller.RoleMenuController;
 
 
-import javax.management.relation.Role;
-import java.util.ArrayList;
-import java.util.List;
-
-import static app.domain.shared.Constants.EmployeesRoleList;
+import static app.domain.shared.Constants.EMPLOYEE_ARRAY_LIST;
 
 
 public class RoleMenuUI implements Runnable{
@@ -61,7 +56,7 @@ public class RoleMenuUI implements Runnable{
                 sucess = ctrl.FillRoleArray(role);
             }
             if (sucess){
-                ctrl.PrintListEmployeesFromRole(EmployeesRoleList);
+                ctrl.PrintListEmployeesFromRole(EMPLOYEE_ARRAY_LIST);
             }
             else {
                 sucess = false;
