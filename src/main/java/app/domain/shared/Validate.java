@@ -95,39 +95,34 @@ public class Validate {
         return count;
     }
 
+    public static boolean validateCode (String code) {
+        if (code.length() != 5) {
+            return false;
+        } else {
+            String regex = "[a-zA-Z0-9]{5}";
+            Pattern pattern = Pattern.compile(regex);
+            return pattern.matcher(code).matches();
+        }
+    }
+
     public static boolean validateMinimumAge (List<Integer> age, int temp) {
-            if (age.get(temp) < 1 || age.get(temp) > 105) {
-                return false;
-            }
-        return true;
+        return age.get(temp) >= 1 && age.get(temp) <= 105;
     }
 
     public static boolean validateMaximumAge (List<Integer> minAge, List<Integer> maxAge, int temp) {
-        if (maxAge.get(temp) < minAge.get(temp) || maxAge.get(temp) > 105) {
-            return false;
-        }
-        return true;
+        return maxAge.get(temp) >= minAge.get(temp) && maxAge.get(temp) <= 105;
     }
 
     public static boolean validateDosage (List<Double> dosage, int temp) {
-        if (dosage.get(temp) <= 0) {
-            return false;
-        }
-        return true;
+        return dosage.get(temp) > 0;
     }
 
     public static boolean validateDoses (List<Integer> doses, int temp) {
-        if (doses.get(temp) < 1) {
-            return false;
-        }
-        return true;
+        return doses.get(temp) >= 1;
     }
 
     public static boolean validateVaccineInterval (List<Integer> vaccineInterval, int temp) {
-        if (vaccineInterval.get(temp) < 1) {
-            return false;
-        }
-        return true;
+        return vaccineInterval.get(temp) >= 1;
     }
 
     /**

@@ -2,10 +2,12 @@ package app.ui.console;
 
 
 import app.controller.VaccineAdministrationController;
+import app.domain.model.Company;
 import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class VaccineAdministrationUI implements Runnable {
@@ -13,6 +15,7 @@ public class VaccineAdministrationUI implements Runnable {
 
     private VaccineAdministrationController ctrl = new VaccineAdministrationController();
 
+    private Company company;
     /**
      * @author Pedro Nogueira
      * Register's a vaccine administration
@@ -129,11 +132,26 @@ public class VaccineAdministrationUI implements Runnable {
         } while (op == 1);
 
         if (ctrl.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval)) {
-            ctrl.printVaccineAdministration();
+            int x = 0;
+            System.out.printf("Brand: %s%n", brand);
+            System.out.println();
+            for (int i = 0 ; i < minAge.size() ; i++) {
+                System.out.printf("Age Range: %d - %d%n", minAge.get(i), maxAge.get(i));
+                System.out.printf("Dosage: %.2f ml%n", dosage.get(i));
+                System.out.printf("Doses: %d%n", doses.get(i));
+                if (doses.get(i) > 1) {
+                    for (int j = 1; j < doses.get(i); j++) {
+                        System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j, j+1, vaccineInterval.get(x));
+                        x += 1;
+                    }
+                }
+                System.out.println();
+            }
         }
 
         if (Utils.confirm("Are you sure you want to save? (s/n)")) {
             ctrl.saveVaccineAdministration();
+            System.out.println("Successfully Saved!");
         }
     }
 }

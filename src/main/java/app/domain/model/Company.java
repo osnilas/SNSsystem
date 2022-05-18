@@ -2,12 +2,12 @@ package app.domain.model;
 
 
 import app.domain.shared.Constants;
+import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
 import jdk.jshell.Snippet;
 import mappers.dto.dtoSNSuser;
 import mappers.dto.dtoScheduleVaccine;
 import mappers.dto.dtoVaccinationFacility;
-import org.apache.commons.lang3.Validate;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
@@ -321,6 +321,24 @@ public class Company {
         return !flag;
     }
 
+
+    public TypeVaccine createTypeVaccine(String name, String description, String code, String vaccineTechnology) {
+        return new TypeVaccine(name, description, code, vaccineTechnology);
+    }
+
+    public boolean validateTypeVaccine(TypeVaccine typeVaccine) {
+        if (typeVaccine == null) {
+            return false;
+        }
+        return !typeVaccineList.contains(typeVaccine);
+    }
+
+    public boolean saveTypeVaccine(TypeVaccine typeVaccine) {
+        if(!validateTypeVaccine(typeVaccine)){
+            return false;
+        }
+        return typeVaccineList.add(typeVaccine);
+    }
 
 
 }

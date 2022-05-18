@@ -1,9 +1,9 @@
 package app.ui.console;
 
 import app.controller.RegisterTypeVaccineController;
-import app.controller.VaccineAdministrationController;
+import app.domain.shared.Constants;
+import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
-import jdk.jshell.execution.Util;
 
 import java.util.Scanner;
 
@@ -15,20 +15,45 @@ public class RegisterTypeVaccineUI implements Runnable{
 
     @Override
     public void run() {
+        boolean success;
         String name;
         String description;
         String code;
         String vaccineTechnology;
+
         System.out.printf("-------------------------Register a new Vaccine-------------------------%n%n");
 
-        name = Utils.readLineFromConsole("Vaccine name: ");
+        do {
+            name = Utils.readLineFromConsole("Vaccine name: ");
 
-        description = Utils.readLineFromConsole("Enter vaccine description: ");
+            description = Utils.readLineFromConsole("Enter vaccine description: ");
 
-        code = Utils.readLineFromConsole("Vaccine code: ");
+            do {
+                success = true;
+                code = Utils.readLineFromConsole("Vaccine code: ");
+                if (!Validate.validateCode(code)) {
+                    System.out.println("Invalid code!");
+                    success = false;
+                }
+            } while (!success);
+            System.out.println();
 
-        vaccineTechnology = Utils.readLineFromConsole("Vaccine Technology: ");
+            vaccineTechnology = (String) Utils.showAndSelectOne(Constants.VACCINE_TECHNOLOGY, "Vaccine Technology");
+            System.out.println();
+
+            if (ctrl.createTypeVaccine(name, description, code, vaccineTechnology)) {
+                System.out.printf("Name: %s%n", name);
+                System.out.printf("Description: %s%n", description);
+                System.out.printf("Code: %s%n", code);
+                System.out.printf("Vaccine Technology: %s%n", vaccineTechnology);
+            }
+
+            if (Utils.confirm("Are you sure you want to save? (s/n)")) {
+                ctrl.saveTypeVaccine();
+                System.out.printf("-------------------------Successfully Saved!-------------------------%n%n");
+            }
 
 
+        } while (Utils.showAndSelectIndex(Constants.YES_OR_NO, "Do you wish to add another vaccine?") + 1 == 1);
     }
 }

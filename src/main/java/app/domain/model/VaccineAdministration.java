@@ -55,24 +55,4 @@ public class VaccineAdministration {
 
     public List<Integer> getVaccineInterval() { return vaccineInterval; }
 
-
-    @Override
-    public String toString() {
-        int x = 0;
-        System.out.printf("Brand: %s%n", brand);
-        System.out.println();
-        for (int i = 0 ; i < minAge.size() ; i++) {
-            System.out.printf("Age Range: %d - %d%n", minAge.get(i), maxAge.get(i));
-            System.out.printf("Dosage: %.2f ml%n", dosage.get(i));
-            System.out.printf("Doses: %d%n", doses.get(i));
-            if (doses.get(i) > 1) {
-                for (int j = 1; j < doses.get(i); j++) {
-                    System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j, j+1, vaccineInterval.get(x));
-                    x += 1;
-                }
-            }
-            System.out.println();
-        }
-        return null;
-    }
 }

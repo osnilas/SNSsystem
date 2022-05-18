@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.VaccineAdministration;
+import app.ui.console.VaccineAdministrationUI;
 
 
 import java.util.List;
@@ -15,6 +16,8 @@ public class VaccineAdministrationController {
     private Company company = App.getInstance().getCompany();
 
     private VaccineAdministration vaccineAdministration;
+
+    private VaccineAdministrationUI vaccineAdministrationUI;
 
     /**
      * @param brand           The vaccine's brand
@@ -38,15 +41,6 @@ public class VaccineAdministrationController {
      */
     public boolean saveVaccineAdministration () {
        return company.saveVaccineAdministration(vaccineAdministration);
-    }
-
-
-    /**
-     * @author Pedro Nogueira
-     * Prints vaccine administration
-     */
-    public void printVaccineAdministration () {
-        company.printVaccineAdministration(vaccineAdministration);
     }
 
 }
