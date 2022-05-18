@@ -1,10 +1,11 @@
 package app.domain.model;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class VaccinationCenter extends VaccinationFacility {
 
-    private String typeOfVaccine;
+    private TypeVaccine typeOfVaccine;
 
     /**@author JoÃ£o Veiga
      * Constructor
@@ -21,14 +22,14 @@ public class VaccinationCenter extends VaccinationFacility {
      * @param maximumNumberOfVaccinesPerSlot     The Vaccination Center maximum number of vaccines per slot
      * @param typeOfVaccine                     The Vaccination Center name
      */
-    public VaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine) {
+    public VaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine) {
         super(name,address,phoneNumber,emailAddress,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maximumNumberOfVaccinesPerSlot);
 
         this.typeOfVaccine = typeOfVaccine;
 
 
     }
-    public String getTypeOfVaccine() {
+    public TypeVaccine getTypeOfVaccine() {
         return typeOfVaccine;
     }
 
@@ -46,7 +47,7 @@ public class VaccinationCenter extends VaccinationFacility {
                 ", opening and closing hours=" + getClosingHours() +
                 ", slot duration='" + getSlotDuration() + '\'' +
                 ", maximum number of vaccines per slot=" + getMaximumNumberOfVaccinesPerSlot() +
-                ", type of vaccine='" + typeOfVaccine + '\'' +
+                ", type of vaccine='" + typeOfVaccine.toString() + '\'' +
                 '}';
     }
 

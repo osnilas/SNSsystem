@@ -101,12 +101,13 @@ public class RegisterEmployeeUI implements Runnable {
         }
         if (sucess && sucess2) {
             ctlr.printEmployee();
-        }
-        if (Utils.confirm("Is it correct?(s/n)")) {
-            sucess2 = ctlr2.saveUser();
-            sucess = ctlr.saveEmployee();
-        } else {
-            sucess = false;
+
+            if (Utils.confirm("Is it correct?(s/n)")) {
+                sucess2 = ctlr2.saveUser();
+                sucess = ctlr.saveEmployee();
+            } else {
+                sucess = false;
+            }
         }
         if (sucess && sucess2) {
             System.out.println("-----------Registration done successfully-----------");

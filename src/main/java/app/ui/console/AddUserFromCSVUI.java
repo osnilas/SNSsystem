@@ -94,14 +94,7 @@ public class AddUserFromCSVUI implements Runnable {
                         System.out.println("User already exists or its unvalid");
                     }
                     //maybe toString dto?
-                    System.out.println("Name: "+name+
-                            "sex: "+sex+
-                            " birth: "+birth+
-                            " address: "+address+
-                            " phone number: "+phoneNumber+
-                            " email: "+email+
-                            " SNS number: "+SNSnumber+
-                            " CC number: "+ccNumber);
+                    Utils.printText(temp.toString());
                     if (Utils.confirm("Is it correct?(s/n)")) {
                         success = ctlr.saveSNSuser(temp);
                     }

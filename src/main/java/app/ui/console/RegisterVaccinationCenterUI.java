@@ -7,7 +7,9 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.domain.shared.Validate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class RegisterVaccinationCenterUI implements Runnable {
 
@@ -38,7 +40,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
         System.out.println("\nRegistration UI:");
         String name, adress, emailAdress, websiteAdress, openingHoursString,closingHoursString, typeOfVaccine;
         int phoneNumber, faxNumber, slotDuration, maximumNumberOfVaccinesPerSlot;
-        LocalDateTime openingHours,closingHours;
+        LocalTime openingHours,closingHours;
 
         do {
             name = Utils.readLineFromConsole("Enter name: ");
@@ -91,20 +93,20 @@ public class RegisterVaccinationCenterUI implements Runnable {
         } while (!Validate.validateWebsiteAdress(websiteAdress));
 
         do {
-            openingHoursString = Utils.readLineFromConsole("Enter opening and closing hours: ");
+            openingHoursString = Utils.readLineFromConsole("Enter opening hours: ");
             if (openingHoursString.isBlank() && !Validate.validateTime(openingHoursString)) {
                 System.out.println("Input opening hours, it can not be empty");
             }
         } while (openingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
-        openingHours=LocalDateTime.parse(openingHoursString, Constants.TIME_FORMATTER);
+        openingHours=Utils.createTime(LocalDate.now(),openingHoursString);
 
         do {
-            closingHoursString = Utils.readLineFromConsole("Enter opening and closing hours: ");
+            closingHoursString = Utils.readLineFromConsole("Enter closing hours: ");
             if (closingHoursString.isBlank() && !Validate.validateTime(openingHoursString)) {
                 System.out.println("Input closing hours, it can not be empty");
             }
         } while (closingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
-        closingHours=LocalDateTime.parse(closingHoursString, Constants.TIME_FORMATTER);
+        closingHours=Utils.createTime(LocalDate.now(),closingHoursString);
 
         do {
             slotDuration = Utils.readIntegerFromConsole("Enter the slot duration: ");

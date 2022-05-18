@@ -1,12 +1,15 @@
 package app.domain.model;
 
+import app.ui.console.utils.Utils;
+
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HealthCareCenter extends VaccinationFacility{
 
-    private List<String> TypeVaccineList=new ArrayList<>();
+    private List<TypeVaccine> TypeVaccineList=new ArrayList<>();
 
     /**
      * @param name                           The Vaccination Center name
@@ -23,11 +26,23 @@ public class HealthCareCenter extends VaccinationFacility{
      * Constructor
      * Creates an Employee with the following arttributes
      */
-    public HealthCareCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot) {
+    public HealthCareCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, List<TypeVaccine> list) {
         super(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot);
+        this.TypeVaccineList= Utils.copyList(TypeVaccineList,list);
     }
 
-    public void addTypeVaccine(String TypeVaccine){
-        TypeVaccineList.add(TypeVaccine);
+    public void addTypeVaccine(TypeVaccine typeVaccine){
+        TypeVaccineList.add(typeVaccine);
+    }
+
+    public List<TypeVaccine> getTypeVaccineList() {
+        return TypeVaccineList;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+
+                "TypeVaccineList=" + TypeVaccineList +
+                '}';
     }
 }

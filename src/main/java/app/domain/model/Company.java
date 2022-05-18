@@ -2,14 +2,18 @@ package app.domain.model;
 
 
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
 import jdk.jshell.Snippet;
 import mappers.dto.dtoSNSuser;
+import mappers.dto.dtoScheduleVaccine;
+import mappers.dto.dtoVaccinationFacility;
 import org.apache.commons.lang3.Validate;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 import static app.domain.model.Employee.fillRoleList;
@@ -20,9 +24,9 @@ import static app.domain.model.Employee.fillRoleList;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Company {
-
     private String designation;
     private AuthFacade authFacade;
+
     private static List<Employee> EmployeesList= new ArrayList<>();
 
     private static List<Employee> EmployeesListRole=new ArrayList<Employee>();
@@ -31,11 +35,11 @@ public class Company {
     private static List<TypeVaccine> typeVaccineList=new ArrayList<>();
     private static List<VaccineAdministration> VaccineAdministrationList = new ArrayList<>();
 
-    private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<VaccinationCenter>();
+    private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<>();
+
+    private static List<HealthCareCenter> HealthCareCenterList= new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
-
-    private static List<dtoSNSuser> dtoSNSList=new ArrayList<>();
 
     public Company(String designation)
     {
@@ -55,6 +59,29 @@ public class Company {
         return authFacade;
     }
 
+    public static List<Employee> getEmployeesList() {
+        return EmployeesList;
+    }
+
+    public static List<VaccinationCenter> getVaccinationCenterList() {
+        return VaccinationCentersList;
+    }
+
+    public static List<HealthCareCenter> getHealthCareCenterList() {
+        return HealthCareCenterList;
+    }
+
+
+
+    public boolean SNSuserExists(int SNSnumber){
+        boolean flag=false;
+        for(int i=0;i<SNSuserList.size();i++){
+            if(SNSuserList.get(i).getSNSnumber()==SNSnumber){
+                flag = true;
+            }
+        }
+        return flag;
+    }
 
     public  void addCredencials(String name, String email, String roleId){
 
@@ -141,7 +168,7 @@ public class Company {
         return VaccineAdministrationList.add(vaxAdm);
     }
 
-    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine){
+    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine){
         return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
     }
 
@@ -213,4 +240,87 @@ public class Company {
 
         return email && cc && phone && snsNumber;
     }
+
+
+    public VaccinationSchedule createVaccinationSchedule(dtoScheduleVaccine dtoScheduleVaccine){
+        return new VaccinationSchedule(dtoScheduleVaccine.getSNSnumber(),dtoScheduleVaccine.getAppointmentDate(),dtoScheduleVaccine.getTypeVaccine());
+    }
+
+    public boolean ValidateCreationVaccinationSchedule(VaccinationSchedule vaccintion,dtoVaccinationFacility dto){
+        if(vaccintion==null){
+            return false;
+        }
+        return !dto.getVaccinationScheduleList().contains(vaccintion);
+    }
+
+    public int findListVaccinationFacilities(Object facility){
+        if(facility instanceof VaccinationCenter){
+            return findVaccinationCenter(facility);
+        }
+        if(facility instanceof HealthCareCenter){
+            return findHealthCareCenter(facility);
+        }
+        return -1;
+    }
+
+    public boolean saveSchedule(Object facility,dtoScheduleVaccine dto){
+        boolean flag=false;
+        int index=findListVaccinationFacilities(facility);
+        if(index==-1){
+            Utils.printText("ERROR vaccination facility not found");
+            flag=false;
+        }
+        else{
+            addSchedule(index,facility,createVaccinationSchedule(dto));
+            flag=true;
+        }
+        return flag;
+    }
+
+    public void addSchedule(int index,Object facility,VaccinationSchedule schedule){
+        if(facility instanceof VaccinationCenter){
+            VaccinationCentersList.get(index).addScheduleList(schedule);
+        }
+        if(facility instanceof HealthCareCenter){
+            HealthCareCenterList.get(index).addScheduleList(schedule);
+        }
+    }
+
+    public int findVaccinationCenter(Object vaccinationCenter){
+        for(int i=0;i<VaccinationCentersList.size();i++){
+            if(Objects.equals(vaccinationCenter,VaccinationCentersList.get(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int findHealthCareCenter (Object healthCareCenter){
+        for(int i=0;i<HealthCareCenterList.size();i++){
+            if(Objects.equals(HealthCareCenterList,VaccinationCentersList.get(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean ValidateAppoimentTime(LocalDateTime date,dtoVaccinationFacility dto){
+        boolean flag=false;
+        int count=0;
+        List<VaccinationSchedule> scheduleList=dto.getVaccinationScheduleList();
+        for (int i=0;i<scheduleList.size();i++){
+            if(scheduleList.get(i).getAppointmentTime().isEqual(date)){
+                count++;
+                if(count==dto.getMaximumNumberOfVaccinesPerSlot()) {
+                    flag = false;
+                    break;
+                }
+            }
+            flag=true;
+        }
+        return !flag;
+    }
+
+
+
 }

@@ -1,6 +1,10 @@
 package app.domain.model;
 
+import app.ui.console.utils.Utils;
+
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 public class VaccinationFacility {
 
@@ -16,13 +20,15 @@ public class VaccinationFacility {
 
     private String websiteAddress;
 
-    private LocalDateTime openingHours;
+    private LocalTime openingHours;
 
-    private LocalDateTime closingHours;
+    private LocalTime closingHours;
 
     private int slotDuration;
 
     private int maximumNumberOfVaccinesPerSlot;
+
+    private List<VaccinationSchedule> vaccinationScheduleList;
 
     /**@author JoÃ£o Veiga
      * Constructor
@@ -33,11 +39,12 @@ public class VaccinationFacility {
      * @param emailAddress                      The Vaccination Center email
      * @param faxNumber                         The Vaccination Center fax number
      * @param websiteAddress                    The Vaccination Center website
-     * @param openingAndClosingHours            The Vaccination Center opening and closing hours
+     * @param openingHours            The Vaccination Center opening and closing hours
+     * @param closingHours
      * @param slotDuration                      The Vaccination Center slot duration
      * @param maximumNumberOfVaccinesPerSlot     The Vaccination Center maximum number of vaccines per slot
      */
-    public VaccinationFacility(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot) {
+    public VaccinationFacility(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot,List<VaccinationSchedule>vaccinationScheduleList)  {
 
         this.name = name;
 
@@ -58,6 +65,8 @@ public class VaccinationFacility {
         this.slotDuration = slotDuration;
 
         this.maximumNumberOfVaccinesPerSlot = maximumNumberOfVaccinesPerSlot;
+
+        this.vaccinationScheduleList= Utils.copyList(this.vaccinationScheduleList,vaccinationScheduleList);
     }
 
     public String getName() {
@@ -84,11 +93,11 @@ public class VaccinationFacility {
         return websiteAddress;
     }
 
-    public LocalDateTime getOpeningHours() {
+    public LocalTime getOpeningHours() {
         return openingHours;
     }
 
-    public LocalDateTime getClosingHours() {
+    public LocalTime getClosingHours() {
         return closingHours;
     }
 
@@ -100,4 +109,11 @@ public class VaccinationFacility {
         return maximumNumberOfVaccinesPerSlot;
     }
 
+    public List<VaccinationSchedule> getVaccinationScheduleList() {
+        return vaccinationScheduleList;
+    }
+
+    public void addScheduleList(VaccinationSchedule schedule){
+        vaccinationScheduleList.add(schedule);
+    }
 }

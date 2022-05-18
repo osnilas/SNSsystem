@@ -9,16 +9,16 @@ public class VaccinationSchedule {
 
     private LocalDateTime appointmentTime;
 
-    private LocalDate date;
+    private TypeVaccine TypeVaccine;
 
-    private String TypeVaccine;
-
-    public VaccinationSchedule(int SNSnumber, LocalDateTime appointmentTime, LocalDate date , String TypeVaccine){
+    public VaccinationSchedule(int SNSnumber, LocalDateTime appointmentTime, TypeVaccine TypeVaccine){
 
         this.SNSnumber=SNSnumber;
         this.appointmentTime=appointmentTime;
-        this.date=date;
         this.TypeVaccine=TypeVaccine;
     }
 
+    public LocalDateTime getAppointmentTime() {
+        return appointmentTime;
+    }
 }

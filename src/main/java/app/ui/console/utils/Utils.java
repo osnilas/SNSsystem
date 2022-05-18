@@ -1,12 +1,18 @@
 package app.ui.console.utils;
 
+import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
+import app.ui.console.ShowTextUI;
+import mappers.dto.dtoVaccinationFacility;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -108,6 +114,19 @@ public class Utils {
         System.out.println("0 - Cancel");
     }
 
+    static public void showVaccinationFacility(List<dtoVaccinationFacility> list, String header) {
+        System.out.println(header);
+
+        int index = 0;
+        for (Object o : list) {
+            index++;
+
+            System.out.println(index + ". " + list.get(index).getName());
+        }
+        System.out.println("");
+        System.out.println("0 - Cancel");
+    }
+
     static public Object selectsObject(List list) {
         String input;
         Integer value;
@@ -133,4 +152,29 @@ public class Utils {
 
         return value - 1;
     }
+
+    static public LocalDate createDate(String date){
+        String[] cut=date.split("-");
+        LocalDate result=LocalDate.of(Integer.parseInt(cut[2]),Integer.parseInt(cut[1]),Integer.parseInt(cut[0]));
+        return result;
+    }
+
+    static public LocalTime createTime(LocalDate date, String time){
+        String[] cut=time.split(":");
+        LocalTime result=LocalTime.of(Integer.parseInt(cut[0]),Integer.parseInt(cut[1]));
+        return result;
+    }
+
+    static public List copyList(List store, List toBeCopied){
+        for(int i=0;i<toBeCopied.size();i++){
+            store.add(toBeCopied);
+        }
+        return store;
+    }
+
+    static public void printText(String text){
+        ShowTextUI ui=new ShowTextUI(text);
+        ui.run();
+    }
+
 }

@@ -16,6 +16,8 @@ public class SNSuser extends Person{
     private LocalDate birth;
     private int SNSnumber;
 
+    private VaccinationRecord vaccinationRecord;
+
     private final static String DEFAULT_SEX = "Not specified";
 
     public SNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
@@ -57,19 +59,6 @@ public class SNSuser extends Person{
                 ", phoneNumber=" + getPhoneNumber() +
                 ", SNSnumber=" + SNSnumber +
                 ", ccNumber=" + getCcNumber() +
-                '}';
-    }
-
-    public String toStringtDTO(dtoSNSuser dto) {
-        return "SNSuser{" +
-                "name='" + dto.getName() + '\'' +
-                ", sex='" + dto.getSex() + '\'' +
-                ", birth=" + dto.getBirth() +
-                ", address='" + dto.getAddress() + '\'' +
-                ", email='" + dto.getEmail() + '\'' +
-                ", phoneNumber=" + dto.getPhoneNumber() +
-                ", SNSnumber=" + dto.getSNSnumber() +
-                ", ccNumber=" + dto.getCcNumber() +
                 '}';
     }
 }
