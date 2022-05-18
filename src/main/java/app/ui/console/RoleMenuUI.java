@@ -1,9 +1,12 @@
 package app.ui.console;
 
+import app.domain.model.Employee;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import app.controller.RoleMenuController;
 
+
+import java.util.List;
 
 import static app.domain.shared.Constants.EMPLOYEE_ARRAY_LIST;
 
@@ -21,14 +24,14 @@ public class RoleMenuUI implements Runnable{
 
     @Override
     public void run (){
-        boolean sucess = RoleMenu();
+        boolean sucess = roleMenu();
     }
     /**
      * @author Filipe Magalhães
      * Menu for choosing the role to list the employees from
      * @return boolean if registration was sucessful
      */
-    private boolean RoleMenu (){
+    private boolean roleMenu (){
         boolean sucess = false;
 
             for (int i = 0; i < Constants.RoleList.length - 2; i++) {
@@ -53,10 +56,10 @@ public class RoleMenuUI implements Runnable{
                 throw new IllegalArgumentException("Role not chosen");
             }
             else{
-                sucess = ctrl.FillRoleArray(role);
+                sucess = ctrl.fillRoleArray(role);
             }
             if (sucess){
-                ctrl.PrintListEmployeesFromRole(EMPLOYEE_ARRAY_LIST);
+                printListEmployees(EMPLOYEE_ARRAY_LIST);
             }
             else {
                 sucess = false;
@@ -69,6 +72,17 @@ public class RoleMenuUI implements Runnable{
         }
             return sucess;
         }
+    /**
+     * @author Filipe Magalhães
+     * Prints the list of employees from the chosen role
+     */
+    public static void printListEmployees(List<Employee> listOfEmployeesFromRole) {
+
+        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
+            Employee em = listOfEmployeesFromRole.get(i);
+            System.out.println(em.toString());
+        }
+    }
 
     }
 

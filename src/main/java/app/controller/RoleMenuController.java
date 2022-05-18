@@ -29,21 +29,14 @@ public class RoleMenuController {
         this.company = company;
     }
     /**
-     * @author João Veiga
-     * Asks company to fill an array with all the employees registered with the previously chosen role
+     * @author Filipe Magalhães
+     * Copies the array with the Employees of the chosen role to another array
      * @param role      Chosen role
      * @return boolean of the result of validation of this Role Array
      */
-    public boolean FillRoleArray(String role) {
+    public boolean fillRoleArray(String role) {
         EMPLOYEE_ARRAY_LIST.addAll(this.company.FillRoleArray(role));
         return this.company.validateRoleArray(EMPLOYEE_ARRAY_LIST);
-    }
-    /**
-     * @author Filipe Magalhães
-     * Prints the list of employees from the chosen role
-     */
-    public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
-        this.company.PrintListEmployeesFromRole(EmployeesRoleList);
     }
 
 }

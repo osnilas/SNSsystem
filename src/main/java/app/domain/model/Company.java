@@ -12,8 +12,8 @@ import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static app.domain.model.Employee.FillRoleList;
-import static app.domain.model.Employee.PrintListEmployees;
+import static app.domain.model.Employee.fillRoleList;
+
 
 /**
  *
@@ -105,7 +105,7 @@ public class Company {
     }
 
     public ArrayList<Employee> FillRoleArray(String role) {
-        return FillRoleList(role, EmployeesList);
+        return fillRoleList(role, EmployeesList);
     }
 
     public boolean validateRoleArray(ArrayList<Employee> EmployeesRoleList){
@@ -139,10 +139,6 @@ public class Company {
 
     private boolean addVaccineAdministration (VaccineAdministration vaxAdm) {
         return VaccineAdministrationList.add(vaxAdm);
-    }
-
-    public void PrintListEmployeesFromRole(List<Employee> EmployeesRoleList) {
-        PrintListEmployees(EmployeesRoleList);
     }
 
     public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalDateTime openingHours, LocalDateTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, String typeOfVaccine){

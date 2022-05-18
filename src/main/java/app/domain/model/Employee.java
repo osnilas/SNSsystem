@@ -41,30 +41,23 @@ public class Employee extends Person {
     }
 
 
-    public boolean IsEmployee (String role){
+    public boolean isEmployee (String role){
         if (role.equals(this.roleId)){
             return true;
         }
         return false;
     }
-    public static ArrayList<Employee> FillRoleList(String role, List<Employee> EmployeesList) {
+    public static ArrayList<Employee> fillRoleList(String role, List<Employee> EmployeesList) {
         ArrayList<Employee> listOfEmployeesFromRole = new ArrayList<Employee>();
 
 
         for (int i = 0; i < EmployeesList.size(); i++) {
             Employee em = EmployeesList.get(i);
-            if (em.IsEmployee(role)) {
+            if (em.isEmployee(role)) {
                 listOfEmployeesFromRole.add(em);
             }
         }
         return listOfEmployeesFromRole;
-    }
-    public static void PrintListEmployees(List<Employee> listOfEmployeesFromRole) {
-
-        for (int i = 0; i < listOfEmployeesFromRole.size(); i++) {
-            Employee em = listOfEmployeesFromRole.get(i);
-            System.out.println(em.toString());
-        }
     }
 
     @Override

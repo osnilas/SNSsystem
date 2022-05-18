@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+object Nurse
+object Vaccine{
+-dosage
+-brand
+-age range
+-vaccine interval
+}
+object VaccineAdministration
+object Employees
+
+Vaccine"1" -- "1"Nurse: > administered by
+Vaccine"1" -- "*"VaccineAdministration: < of
+Employees"1"--"1" Nurse: > plays as
+
+@enduml
