@@ -1,9 +1,8 @@
 package mappers.dto;
 
 import app.domain.model.TypeVaccine;
-import app.domain.model.VaccinationSchedule;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

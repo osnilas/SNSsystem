@@ -48,6 +48,10 @@ public class SNSuser extends Person{
         return SNSnumber;
     }
 
+    public VaccinationRecord getVaccinationRecord() {
+        return vaccinationRecord;
+    }
+
     @Override
     public String toString() {
         return "SNSuser{" +
@@ -61,4 +65,5 @@ public class SNSuser extends Person{
                 ", ccNumber=" + getCcNumber() +
                 '}';
     }
+
 }

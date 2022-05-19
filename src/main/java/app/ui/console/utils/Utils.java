@@ -1,21 +1,16 @@
 package app.ui.console.utils;
 
 import app.domain.model.VaccinationFacility;
-import app.domain.shared.Constants;
 import app.ui.console.ShowTextUI;
-import mappers.dto.dtoVaccinationFacility;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -114,7 +109,7 @@ public class Utils {
         System.out.println("0 - Cancel");
     }
 
-    static public void showVaccinationFacility(List<dtoVaccinationFacility> list, String header) {
+    static public void showVaccinationFacility(List<VaccinationFacility> list, String header) {
         System.out.println(header);
 
         int index = 0;
@@ -166,10 +161,14 @@ public class Utils {
     }
 
     static public List copyList(List store, List toBeCopied){
-        for(int i=0;i<toBeCopied.size();i++){
-            store.add(toBeCopied);
+        if(!store.isEmpty()&&!toBeCopied.isEmpty()) {
+            for (int i = 0; i < toBeCopied.size(); i++) {
+                store.add(toBeCopied);
+            }
+            return store;
+        }else{
+            return null;
         }
-        return store;
     }
 
     static public void printText(String text){

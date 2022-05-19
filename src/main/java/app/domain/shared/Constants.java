@@ -7,6 +7,7 @@ import app.domain.model.VaccinationCenter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +51,9 @@ public class Constants {
     public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
     public static final ArrayList<Employee> EMPLOYEE_ARRAY_LIST = new ArrayList<>();
-    public static final LocalDateTime OPENING_TIME_FOR_VACCINATION_FACILITY =LocalDateTime.parse("9:00:00",TIME_FORMATTER);
+    public static final LocalTime OPENING_TIME_FOR_VACCINATION_FACILITY = LocalTime.of(9,00);
 
-    public static final LocalDateTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalDateTime.parse("16:00",TIME_FORMATTER);
+    public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(16,00);
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 

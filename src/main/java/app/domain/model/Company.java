@@ -2,17 +2,11 @@ package app.domain.model;
 
 
 import app.domain.shared.Constants;
-import app.domain.shared.Validate;
-import app.ui.console.utils.Utils;
-import jdk.jshell.Snippet;
 import mappers.dto.dtoSNSuser;
 import mappers.dto.dtoScheduleVaccine;
-import mappers.dto.dtoVaccinationFacility;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -35,9 +29,7 @@ public class Company {
     private static List<TypeVaccine> typeVaccineList=new ArrayList<>();
     private static List<VaccineAdministration> VaccineAdministrationList = new ArrayList<>();
 
-    private static List<VaccinationCenter> VaccinationCentersList= new ArrayList<>();
-
-    private static List<HealthCareCenter> HealthCareCenterList= new ArrayList<>();
+    private static List<VaccinationFacility> VaccinationFacilityList=new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
 
@@ -47,7 +39,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        VaccinationCentersList.add(Constants.VACCINATION_CENTER_TESTER);
+        VaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         EmployeesList.add(Constants.EMPLOYEE_TESTER);
     }
 
@@ -63,24 +55,20 @@ public class Company {
         return EmployeesList;
     }
 
-    public static List<VaccinationCenter> getVaccinationCenterList() {
-        return VaccinationCentersList;
-    }
-
-    public static List<HealthCareCenter> getHealthCareCenterList() {
-        return HealthCareCenterList;
+    public static List<VaccinationFacility> getVaccinationFacilityList() {
+        return VaccinationFacilityList;
     }
 
 
 
-    public boolean SNSuserExists(int SNSnumber){
+    public SNSuser SNSuserExists(int SNSnumber){
         boolean flag=false;
         for(int i=0;i<SNSuserList.size();i++){
             if(SNSuserList.get(i).getSNSnumber()==SNSnumber){
-                flag = true;
+                return  SNSuserList.get(i);
             }
         }
-        return flag;
+        return null;
     }
 
     public  void addCredencials(String name, String email, String roleId){
@@ -176,14 +164,14 @@ public class Company {
         if(vaccinationCenter==null){
             return false;
         }
-        return  ! this.VaccinationCentersList.contains(vaccinationCenter);
+        return  ! this.VaccinationFacilityList.contains(vaccinationCenter);
     }
 
     public boolean saveVaccinationCenter(VaccinationCenter vaccinationCenter){
         if(!validateVaccinationCenter(vaccinationCenter)){
             return false;
         }
-        return this.VaccinationCentersList.add(vaccinationCenter);
+        return this.VaccinationFacilityList.add(vaccinationCenter);
     }
 
     public void printVaccinationCenter(VaccinationCenter vaccinationCenter){
@@ -242,85 +230,6 @@ public class Company {
     }
 
 
-    public VaccinationSchedule createVaccinationSchedule(dtoScheduleVaccine dtoScheduleVaccine){
-        return new VaccinationSchedule(dtoScheduleVaccine.getSNSnumber(),dtoScheduleVaccine.getAppointmentDate(),dtoScheduleVaccine.getTypeVaccine());
-    }
-
-    public boolean ValidateCreationVaccinationSchedule(VaccinationSchedule vaccintion,dtoVaccinationFacility dto){
-        if(vaccintion==null){
-            return false;
-        }
-        return !dto.getVaccinationScheduleList().contains(vaccintion);
-    }
-
-    public int findListVaccinationFacilities(Object facility){
-        if(facility instanceof VaccinationCenter){
-            return findVaccinationCenter(facility);
-        }
-        if(facility instanceof HealthCareCenter){
-            return findHealthCareCenter(facility);
-        }
-        return -1;
-    }
-
-    public boolean saveSchedule(Object facility,dtoScheduleVaccine dto){
-        boolean flag=false;
-        int index=findListVaccinationFacilities(facility);
-        if(index==-1){
-            Utils.printText("ERROR vaccination facility not found");
-            flag=false;
-        }
-        else{
-            addSchedule(index,facility,createVaccinationSchedule(dto));
-            flag=true;
-        }
-        return flag;
-    }
-
-    public void addSchedule(int index,Object facility,VaccinationSchedule schedule){
-        if(facility instanceof VaccinationCenter){
-            VaccinationCentersList.get(index).addScheduleList(schedule);
-        }
-        if(facility instanceof HealthCareCenter){
-            HealthCareCenterList.get(index).addScheduleList(schedule);
-        }
-    }
-
-    public int findVaccinationCenter(Object vaccinationCenter){
-        for(int i=0;i<VaccinationCentersList.size();i++){
-            if(Objects.equals(vaccinationCenter,VaccinationCentersList.get(i))){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public int findHealthCareCenter (Object healthCareCenter){
-        for(int i=0;i<HealthCareCenterList.size();i++){
-            if(Objects.equals(HealthCareCenterList,VaccinationCentersList.get(i))){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public boolean ValidateAppoimentTime(LocalDateTime date,dtoVaccinationFacility dto){
-        boolean flag=false;
-        int count=0;
-        List<VaccinationSchedule> scheduleList=dto.getVaccinationScheduleList();
-        for (int i=0;i<scheduleList.size();i++){
-            if(scheduleList.get(i).getAppointmentTime().isEqual(date)){
-                count++;
-                if(count==dto.getMaximumNumberOfVaccinesPerSlot()) {
-                    flag = false;
-                    break;
-                }
-            }
-            flag=true;
-        }
-        return !flag;
-    }
-
 
     public TypeVaccine createTypeVaccine(String name, String description, String code, String vaccineTechnology) {
         return new TypeVaccine(name, description, code, vaccineTechnology);
@@ -340,5 +249,25 @@ public class Company {
         return typeVaccineList.add(typeVaccine);
     }
 
+    public VaccinationSchedule createSchedule(dtoScheduleVaccine dto){
+        return new VaccinationSchedule(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
+    }
+
+    public boolean saveSchedule(VaccinationSchedule schedule,VaccinationFacility facility,SNSuser snSuser){
+        boolean flagVaccination=false ,flagSNSuser=false;
+        for(int i=0;i<VaccinationFacilityList.size();i++){
+            if(Objects.equals(VaccinationFacilityList.get(i),facility)){
+                VaccinationFacilityList.get(i).addSchedule(schedule);
+                flagVaccination= true;
+            }
+        }
+        for(int i=0;i<SNSuserList.size();i++){
+            if(Objects.equals(SNSuserList.get(i),snSuser)){
+                SNSuserList.get(i).getVaccinationRecord().addVaccinationSchedule(schedule);
+                flagSNSuser= true;
+            }
+        }
+        return flagSNSuser&&flagVaccination;
+    }
 
 }

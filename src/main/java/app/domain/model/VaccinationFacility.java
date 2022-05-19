@@ -44,7 +44,7 @@ public class VaccinationFacility {
      * @param slotDuration                      The Vaccination Center slot duration
      * @param maximumNumberOfVaccinesPerSlot     The Vaccination Center maximum number of vaccines per slot
      */
-    public VaccinationFacility(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot,List<VaccinationSchedule>vaccinationScheduleList)  {
+    public VaccinationFacility(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot)  {
 
         this.name = name;
 
@@ -65,8 +65,6 @@ public class VaccinationFacility {
         this.slotDuration = slotDuration;
 
         this.maximumNumberOfVaccinesPerSlot = maximumNumberOfVaccinesPerSlot;
-
-        this.vaccinationScheduleList= Utils.copyList(this.vaccinationScheduleList,vaccinationScheduleList);
     }
 
     public String getName() {
@@ -113,7 +111,7 @@ public class VaccinationFacility {
         return vaccinationScheduleList;
     }
 
-    public void addScheduleList(VaccinationSchedule schedule){
+    public void addSchedule(VaccinationSchedule schedule){
         vaccinationScheduleList.add(schedule);
     }
 }
