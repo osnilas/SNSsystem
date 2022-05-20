@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.controller.App;
 import app.controller.VaccinationScheduleController;
 import app.domain.model.*;
 import app.domain.shared.Constants;
@@ -9,20 +10,23 @@ import mappers.dto.dtoScheduleVaccine;
 
 import java.time.LocalDateTime;
 
-public class ScheduleVaccinationUI {
+public class ScheduleVaccinationUI implements Runnable{
 
      private VaccinationScheduleController ctlr;
+     private App app;
 
      public ScheduleVaccinationUI(){
         ctlr= new VaccinationScheduleController();
      }
-    public void run(boolean flag) {
-         try{
-        boolean sucess = Schedule( flag);
-         }
-         catch (Exception e){
-             e.printStackTrace();
-         }
+
+    @Override
+    public void run() {
+        try{
+            boolean sucess = Schedule(checkIfSNSuser() );
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private boolean Schedule(boolean flag) throws Exception {
@@ -42,10 +46,10 @@ public class ScheduleVaccinationUI {
 
             dtoScheduleVaccine dto = new dtoScheduleVaccine(snsNumber, appoimmentDate, typeVaccine);
             ctlr.createSchedule(dto);
-            printScheduleData(vaccinationFacility.getName(),dto.getAppointmentDate());
+            ctlr.printSchedule();
             if(Utils.confirm("Is this correct?")){
-                if(ctlr.validateScheduleVaccine(dto.getTypeVaccine())){
-                    sucess=ctlr.saveSchedule(dto);
+                if(ctlr.validateScheduleVaccine(dto.getTypeVaccine())) {
+                    sucess = ctlr.saveSchedule(dto);
                 }
             }
 
@@ -61,15 +65,8 @@ public class ScheduleVaccinationUI {
         return sucess;
     }
 
-
-    public void printScheduleData(String VaccinationCenter, LocalDateTime dateSheducle) {
-        Utils.printText("Schedule info:");
-        Utils.printText("Location: " + VaccinationCenter);
-        Utils.printText("Date: " + dateSheducle.format(Constants.FORMATTER));
-    }
-
-    public int getSNSnumber() throws Exception {
-         int snsNubmer;
+    private int getSNSnumber() throws Exception {
+        int snsNubmer;
         do {
             snsNubmer = Utils.readIntegerFromConsole("Enter SNS number");
             if (!Validate.validateCC(snsNubmer)) {
@@ -77,9 +74,13 @@ public class ScheduleVaccinationUI {
             }
         } while (!Validate.validateCC(snsNubmer));
 
-        if(!ctlr.checkIfSNSuserExists(snsNubmer)){
+        if (!ctlr.checkIfSNSuserExists(snsNubmer)) {
             throw new Exception("SNS user not registered on system");
         }
         return snsNubmer;
+    }
+
+    private boolean checkIfSNSuser(){
+        return ctlr.checkIfSNSuser();
     }
 }

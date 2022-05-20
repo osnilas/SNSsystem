@@ -20,6 +20,7 @@ public class RoleMenuController {
     private String roleId;
 
 
+
     public RoleMenuController() {
         this.company = App.getInstance().getCompany();
         this.app = App.getInstance();

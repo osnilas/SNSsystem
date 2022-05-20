@@ -1,22 +1,24 @@
 package app.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VaccinationRecord {
 
-    private int dosesTaken;
     private Vaccine vaccine;
     private static List<VaccinationSchedule> record;
 
-    private static int DOSES_TAKEN_DEFAULT=0;
 
-    public VaccinationRecord(Vaccine vaccine){
-        this.vaccine=vaccine;
-        this.dosesTaken=DOSES_TAKEN_DEFAULT;
+    public VaccinationRecord(){
+        this.record=new ArrayList<>();
     }
 
     public void addVaccinationSchedule(VaccinationSchedule schedule){
-        record.add(schedule);
+        this.record.add(schedule);
+    }
+
+    public void addVaccine(Vaccine vaccine){
+        this.vaccine=vaccine;
     }
 
     public int getAgeGroup(int age){
@@ -31,9 +33,5 @@ public class VaccinationRecord {
 
     public Vaccine getVaccine() {
         return vaccine;
-    }
-
-    public void addVaccination(){
-        dosesTaken++;
     }
 }

@@ -1,15 +1,14 @@
 package app.ui.console;
 
-import app.controller.AddUserController;
 import app.controller.RegisterEmployeeController;
 import app.domain.shared.Constants;
 import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
+import mappers.dto.dtoEmployee;
 
 public class RegisterEmployeeUI implements Runnable {
 
     private RegisterEmployeeController ctlr;
-    private AddUserController ctlr2;
 
     /**
      * @author João Veiga
@@ -17,7 +16,6 @@ public class RegisterEmployeeUI implements Runnable {
      */
     public RegisterEmployeeUI() {
         ctlr = new RegisterEmployeeController();
-        ctlr2 = new AddUserController();
     }
 
     public void run() {
@@ -30,6 +28,7 @@ public class RegisterEmployeeUI implements Runnable {
      * @return boolean if registration was sucessful
      */
     private boolean register() {
+        dtoEmployee dto = null;
         boolean sucess = false;
         boolean sucess2 = false;
         boolean flag = false;
@@ -95,21 +94,20 @@ public class RegisterEmployeeUI implements Runnable {
         if (role == null) {
             throw new IllegalArgumentException("Role not chosen");
         } else {
-            sucess2 = ctlr2.createUser(id);
-            sucess = ctlr.createEmployee(name, email, number, cc, address, role);
+             dto= new dtoEmployee(name,address,email,number,cc,role);
+            sucess = ctlr.createEmployee(dto);
 
         }
-        if (sucess && sucess2) {
+        if (sucess) {
             ctlr.printEmployee();
 
             if (Utils.confirm("Is it correct?(s/n)")) {
-                sucess2 = ctlr2.saveUser();
-                sucess = ctlr.saveEmployee();
+                sucess = ctlr.saveEmployee(dto);
             } else {
                 sucess = false;
             }
         }
-        if (sucess && sucess2) {
+        if (sucess ) {
             System.out.println("-----------Registration done successfully-----------");
         } else {
             System.out.println("-----------Registration failed---------------");

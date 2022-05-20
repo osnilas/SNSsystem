@@ -1,15 +1,8 @@
 package app.domain.model;
 
-import mappers.dto.dtoSNSuser;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
 
-public class SNSuser extends Person{
+public class SNSuser extends User {
 
 
     private String sex;
@@ -26,6 +19,7 @@ public class SNSuser extends Person{
         this.sex = sex;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
+        this.vaccinationRecord=new VaccinationRecord();
     }
 
     public SNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
@@ -50,6 +44,14 @@ public class SNSuser extends Person{
 
     public VaccinationRecord getVaccinationRecord() {
         return vaccinationRecord;
+    }
+
+    public boolean checkIfHasVaccinationRecord(){
+        if(vaccinationRecord.getVaccine()==null){
+            return false;
+        }
+        return true;
+
     }
 
     @Override

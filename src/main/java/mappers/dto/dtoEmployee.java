@@ -1,28 +1,21 @@
 package mappers.dto;
 
 public class dtoEmployee {
-
-    private int id;
     private String name;
     private String adress;
     private String email;
     private int phone;
     private int cc;
     private String roleId;
-    private String pwd;
 
-    public dtoEmployee(int id,String name,String adress,String email,int phone,int cc,String roleId,String pwd){
-        this.id=id;
+    public dtoEmployee(String name,String adress,String email,int phone,int cc,String roleId){
         this.name=name;
         this.adress=adress;
         this.email=email;
         this.phone=phone;
         this.cc=cc;
         this.roleId=roleId;
-        this.pwd=pwd;
     }
-
-    public int getId() {return id;}
 
     public String getName() {return name;}
 
@@ -35,6 +28,4 @@ public class dtoEmployee {
     public int getCc() {return cc;}
 
     public String getRoleId() {return roleId;}
-
-    public String getPwd() {return pwd;}
 }

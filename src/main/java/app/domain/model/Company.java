@@ -2,6 +2,8 @@ package app.domain.model;
 
 
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
+import mappers.dto.dtoEmployee;
 import mappers.dto.dtoSNSuser;
 import mappers.dto.dtoScheduleVaccine;
 import pt.isep.lei.esoft.auth.AuthFacade;
@@ -21,15 +23,14 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
 
-    private static List<Employee> EmployeesList= new ArrayList<>();
+    private static List<Employee> employeeList = new ArrayList<>();
 
-    private static List<Employee> EmployeesListRole=new ArrayList<Employee>();
-    private static List<User> UserList=new ArrayList<>();
+    private static List<Employee> employeesListRole =new ArrayList<Employee>();
 
     private static List<TypeVaccine> typeVaccineList=new ArrayList<>();
-    private static List<VaccineAdministration> VaccineAdministrationList = new ArrayList<>();
+    private static List<VaccineAdministration> vaccineAdministrationList = new ArrayList<>();
 
-    private static List<VaccinationFacility> VaccinationFacilityList=new ArrayList<>();
+    private static List<VaccinationFacility> vaccinationFacilityList =new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
 
@@ -39,8 +40,13 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        VaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
-        EmployeesList.add(Constants.EMPLOYEE_TESTER);
+        vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        employeeList.add(Constants.EMPLOYEE_TESTER);
+        SNSuserList.add(Constants.SN_SUSER_TESTER);
     }
 
     public String getDesignation() {
@@ -50,16 +56,13 @@ public class Company {
     public AuthFacade getAuthFacade() {
         return authFacade;
     }
-
-    public static List<Employee> getEmployeesList() {
-        return EmployeesList;
+    public static List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
     public static List<VaccinationFacility> getVaccinationFacilityList() {
-        return VaccinationFacilityList;
+        return vaccinationFacilityList;
     }
-
-
 
     public SNSuser SNSuserExists(int SNSnumber){
         boolean flag=false;
@@ -71,56 +74,60 @@ public class Company {
         return null;
     }
 
-    public  void addCredencials(String name, String email, String roleId){
-
+    public  Employee createEmployee(dtoEmployee dto){
+        return new Employee(dto.getName(),dto.getAdress(),dto.getPhone(),dto.getCc(),dto.getEmail(),dto.getRoleId());
     }
 
-    public User createUser(String id){
-        return new User(id);
-    }
-
-    public boolean validateUser(User user){
-        if(user==null){
+    public boolean validateEmployee(Employee employee) {
+        if (employee == null) {
             return false;
         }
-        return ! this.UserList.contains(user);
+        return !this.employeeList.contains(employee);
     }
 
-    public boolean saveUser(User user){
-        if(!validateUser(user)){
-            return false;
+    public boolean saveEmployees(dtoEmployee dto){
+        boolean flag=false;
+        if(employeeList.isEmpty()){
+            authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),dto.getRoleId());
+            employeeList.add(createEmployee(dto));
         }
-        return this.UserList.add(user);
-    }
+        else {
+            for(int i = 0; i< employeeList.size(); i++){
+                if(!validateEmployeeUnique(dto,i)){
+                    flag=true;
+                }else{
+                    flag=false;
+                    break;
+                }
 
-    public  Employee createEmployee(String name, String email, int phone, int cc,String adress, String roleId){
-        return new Employee(name,adress,phone,cc,email,roleId);
-    }
-
-    public boolean validateEmployee(Employee employee){
-        if(employee==null){
-            return false;
+            }
         }
-        return  ! this.EmployeesList.contains(employee);
-    }
-
-
-    public boolean saveEmployees(Employee employee){
-        if(!validateEmployee(employee)){
-            return false;
+        if(flag){
+            authFacade.addUser(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT));
+            employeeList.add(createEmployee(dto));
         }
-        return this.EmployeesList.add(employee);
+        else {
+            System.out.println("EMPLOYEE ALREADY EXISTS");
+        }
+        return flag;
+
     }
 
-    public void printUser(User user){
-        System.out.println(user.toString());
+    private boolean validateEmployeeUnique(dtoEmployee dto,int i){
+        boolean email= employeeList.get(i).getEmail().equalsIgnoreCase(dto.getEmail());
+        boolean cc= employeeList.get(i).getCcNumber()==dto.getCc();
+        boolean phone= employeeList.get(i).getPhoneNumber()==dto.getPhone();
+
+        return email || cc || phone;
     }
+
+
     public void printEmployee(Employee employee){
         System.out.println(employee.toString());
     }
 
     public ArrayList<Employee> FillRoleArray(String role) {
-        return fillRoleList(role, EmployeesList);
+        return fillRoleList(role, employeeList);
     }
 
     public boolean validateRoleArray(ArrayList<Employee> EmployeesRoleList){
@@ -128,9 +135,7 @@ public class Company {
             return false;
         }
         return true;
-
     }
-
 
     public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         return new VaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
@@ -140,7 +145,7 @@ public class Company {
         if(vaxAdm == null)  {
             return false;
         }
-        return !VaccineAdministrationList.contains(vaxAdm);
+        return !vaccineAdministrationList.contains(vaxAdm);
     }
 
     public boolean saveVaccineAdministration (VaccineAdministration vaxAdm) {
@@ -153,7 +158,7 @@ public class Company {
     public void printVaccineAdministration (VaccineAdministration vaxAdm) { vaxAdm.toString(); }
 
     private boolean addVaccineAdministration (VaccineAdministration vaxAdm) {
-        return VaccineAdministrationList.add(vaxAdm);
+        return vaccineAdministrationList.add(vaxAdm);
     }
 
     public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine){
@@ -164,14 +169,14 @@ public class Company {
         if(vaccinationCenter==null){
             return false;
         }
-        return  ! this.VaccinationFacilityList.contains(vaccinationCenter);
+        return  ! this.vaccinationFacilityList.contains(vaccinationCenter);
     }
 
     public boolean saveVaccinationCenter(VaccinationCenter vaccinationCenter){
         if(!validateVaccinationCenter(vaccinationCenter)){
             return false;
         }
-        return this.VaccinationFacilityList.add(vaccinationCenter);
+        return this.vaccinationFacilityList.add(vaccinationCenter);
     }
 
     public void printVaccinationCenter(VaccinationCenter vaccinationCenter){
@@ -181,16 +186,17 @@ public class Company {
     public  SNSuser createSNSuser( dtoSNSuser dto){
         return new SNSuser(dto.getName(), dto.getSex(), dto.getBirth(), dto.getAddress(), dto.getEmail(), dto.getPhoneNumber(), dto.getSNSnumber(), dto.getCcNumber());
     }
-    public boolean validateSNSuser(SNSuser us){
-        if(us==null){
+    public boolean validateSNSuser(SNSuser snSuser){
+        if(snSuser==null){
             return false;
         }
-        return  ! this.SNSuserList.contains(us);
+        return  ! this.SNSuserList.contains(snSuser);
     }
 
     public boolean saveSNSuser(dtoSNSuser dto){
         boolean flag=false;
         if(SNSuserList.isEmpty()){
+            authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),Constants.ROLE_SNS);
             SNSuserList.add(createSNSuser(dto));
         }
         else {
@@ -201,10 +207,10 @@ public class Company {
                     flag=false;
                     break;
                 }
-
             }
         }
         if(flag){
+            authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),Constants.ROLE_SNS);
             SNSuserList.add(createSNSuser(dto));
         }
         else {
@@ -221,12 +227,12 @@ public class Company {
 
 
     private boolean validateSNSuserDTO(dtoSNSuser dto,int i){
-        boolean email=Objects.equals(SNSuserList.get(i).getEmail(),dto.getEmail());
-        boolean cc=Objects.equals(SNSuserList.get(i).getCcNumber(),dto.getCcNumber());
-        boolean phone=Objects.equals(SNSuserList.get(i).getPhoneNumber(),dto.getPhoneNumber());
-        boolean snsNumber=Objects.equals(SNSuserList.get(i).getSNSnumber(),dto.getSNSnumber());
+        boolean email=SNSuserList.get(i).getEmail().equalsIgnoreCase(dto.getEmail());
+        boolean cc=SNSuserList.get(i).getCcNumber()==dto.getCcNumber();
+        boolean phone=SNSuserList.get(i).getPhoneNumber()==dto.getPhoneNumber();
+        boolean snsNumber=SNSuserList.get(i).getSNSnumber()==dto.getSNSnumber();
 
-        return email && cc && phone && snsNumber;
+        return email || cc || phone || snsNumber;
     }
 
 
@@ -253,21 +259,48 @@ public class Company {
         return new VaccinationSchedule(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
     }
 
-    public boolean saveSchedule(VaccinationSchedule schedule,VaccinationFacility facility,SNSuser snSuser){
-        boolean flagVaccination=false ,flagSNSuser=false;
-        for(int i=0;i<VaccinationFacilityList.size();i++){
-            if(Objects.equals(VaccinationFacilityList.get(i),facility)){
-                VaccinationFacilityList.get(i).addSchedule(schedule);
+    public boolean saveSchedule(VaccinationSchedule schedule,VaccinationFacility facility,SNSuser snSuser) throws Exception {
+        boolean flagVaccination=false ,flagSNSuser=false,flagAddRecord=false;
+        int temp=-1;
+        for(int i = 0; i< vaccinationFacilityList.size(); i++){
+            if(Objects.equals(vaccinationFacilityList.get(i),facility)){
+                temp=i;
                 flagVaccination= true;
             }
         }
-        for(int i=0;i<SNSuserList.size();i++){
-            if(Objects.equals(SNSuserList.get(i),snSuser)){
-                SNSuserList.get(i).getVaccinationRecord().addVaccinationSchedule(schedule);
-                flagSNSuser= true;
+        if(authFacade.getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS)){
+            if(checkIfVaccineUnique(schedule.getTypeVaccine(),schedule.getSNSnumber())){
+                flagSNSuser=true;
+            }
+            else{
+                throw new Exception("User already has a schedule for same vaccine");
             }
         }
-        return flagSNSuser&&flagVaccination;
+        if(flagVaccination && flagSNSuser && temp!=-1){
+
+            for(int i=0;i<SNSuserList.size();i++){
+                if(SNSuserList.get(i).getSNSnumber()==snSuser.getSNSnumber()){
+                    SNSuserList.get(temp).getVaccinationRecord().addVaccinationSchedule(schedule);
+                    vaccinationFacilityList.get(temp).addSchedule(schedule);
+                    flagAddRecord=true;
+                }
+            }
+        }
+        return flagVaccination && flagSNSuser && flagAddRecord;
+    }
+
+    public boolean checkIfVaccineUnique(TypeVaccine vaccine,int SNSnumber){
+        boolean flag=true;
+        for(int i = 0; i< vaccinationFacilityList.size(); i++){
+            for(int j = 0; j< vaccinationFacilityList.get(i).getVaccinationScheduleList().size(); j++){
+                if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getSNSnumber()==SNSnumber){
+                    if(Objects.equals(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getTypeVaccine(),vaccine)){
+                        flag=false;
+                    }
+                }
+            }
+        }
+        return flag;
     }
 
 }

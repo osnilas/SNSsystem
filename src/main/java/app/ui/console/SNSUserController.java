@@ -2,7 +2,6 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.Employee;
-import app.domain.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

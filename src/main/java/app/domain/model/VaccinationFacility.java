@@ -4,6 +4,7 @@ import app.ui.console.utils.Utils;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VaccinationFacility {
@@ -28,7 +29,7 @@ public class VaccinationFacility {
 
     private int maximumNumberOfVaccinesPerSlot;
 
-    private List<VaccinationSchedule> vaccinationScheduleList;
+    private List<VaccinationSchedule> vaccinationScheduleList=new ArrayList<>();
 
     /**@author JoÃ£o Veiga
      * Constructor

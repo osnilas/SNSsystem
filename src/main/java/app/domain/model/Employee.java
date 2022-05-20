@@ -3,7 +3,7 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee extends Person {
+public class Employee extends User {
     private int employeeID;
 
     private String roleId;
@@ -63,7 +63,6 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee: \n" +
-                "id: " + id + '\t' +
                 "name: " + getName() + '\t' +
                 "adress: " + getAddress() +'\t'+
                 "email: " + getEmail() + '\t' +

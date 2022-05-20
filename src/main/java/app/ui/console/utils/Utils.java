@@ -1,16 +1,20 @@
 package app.ui.console.utils;
 
+import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
+import app.domain.shared.Constants;
 import app.ui.console.ShowTextUI;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -109,18 +113,48 @@ public class Utils {
         System.out.println("0 - Cancel");
     }
 
+    static public void showDate(List<LocalDate> dateList,String header){
+        System.out.println(header);
+
+        int index=0;
+        for(int i=0;i<dateList.size();i++){
+            index++;
+
+            System.out.println(index+". "+dateList.get(i).format(Constants.FORMATTER));
+        }
+        System.out.println("");
+        System.out.println("0-Cancel");
+    }
+
+
     static public void showVaccinationFacility(List<VaccinationFacility> list, String header) {
         System.out.println(header);
 
         int index = 0;
-        for (Object o : list) {
+        for (int i=0; i<list.size() ;i++){
+
             index++;
 
-            System.out.println(index + ". " + list.get(index).getName());
+            System.out.println(index + ". " + list.get(i).getName());
         }
         System.out.println("");
         System.out.println("0 - Cancel");
     }
+
+    static public void showTypeVaccinne(List<TypeVaccine> list, String header) {
+        System.out.println(header);
+
+        int index = 0;
+        for (int i=0; i<list.size() ;i++){
+
+            index++;
+
+            System.out.println(index + ". " + list.get(i).getName());
+        }
+        System.out.println("");
+        System.out.println("0 - Cancel");
+    }
+
 
     static public Object selectsObject(List list) {
         String input;
@@ -172,8 +206,47 @@ public class Utils {
     }
 
     static public void printText(String text){
-        ShowTextUI ui=new ShowTextUI(text);
-        ui.run();
+        System.out.println(text);
     }
 
+
+    /**@author Jose Martinez from stackoverFlow
+     * @link https://stackoverflow.com/a/51823845
+     * This method generates a password with 7 alphanumeric characters,
+     * including three capital letters and two digits.
+     * The code was modifed to accomedate clients requirements
+     * @param lenght of password
+     * @return password with 7 alphanumeric characters, including three capital letters and two digits
+     */
+    static public String generatePwd(int lenght) {
+
+        char[] LOWERCASE = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        char[] UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        char[] NUMBERS = "0123456789".toCharArray();
+        char[] ALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
+        Random rand = new SecureRandom();
+
+        char[] password = new char[lenght];
+
+        //get the requirements out of the way
+        password[0] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
+        password[1] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
+        password[2] = NUMBERS[rand.nextInt(NUMBERS.length)];
+        password[3] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
+        password[4] = NUMBERS[rand.nextInt(NUMBERS.length)];
+
+        //populate rest of the password with random chars
+        for (int i = 5; i < lenght; i++) {
+            password[i] = ALL_CHARS[rand.nextInt(ALL_CHARS.length)];
+        }
+
+        //shuffle it up
+        for (int i = 0; i < password.length; i++) {
+            int randomPosition = rand.nextInt(password.length);
+            char temp = password[i];
+            password[i] = password[randomPosition];
+            password[randomPosition] = temp;
+        }
+        return new String(password);
+    }
 }

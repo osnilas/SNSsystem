@@ -1,11 +1,10 @@
 package mappers.dto;
 
-import app.domain.model.Person;
+import app.domain.model.User;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-public class dtoSNSuser extends Person {
+public class dtoSNSuser extends User {
 
     private String sex;
     private LocalDate birth;

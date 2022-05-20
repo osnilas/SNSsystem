@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.Employee;
+import mappers.dto.dtoEmployee;
 
 /**
  * @author João Veiga
@@ -10,7 +11,8 @@ import app.domain.model.Employee;
 public class RegisterEmployeeController {
 
     private Company company;
-    private Employee em;
+    private dtoEmployee dto;
+    private Employee employee;
     private App app;
 
     public RegisterEmployeeController() {
@@ -20,23 +22,18 @@ public class RegisterEmployeeController {
 
     public RegisterEmployeeController(Company company) {
         this.company = company;
-        this.em = em;
+        this.employee =employee;
     }
 
     /**
      * @author João Veiga
      * Asks company to create a employee and stores the employee in the controller
-     * @param name      The employee's name
-     * @param email     The employee's email address
-     * @param phone     The employee's phone number
-     * @param cc        The employee's cc number
-     * @param adress    The employee's address
-     * @param roleId    The employee's role
+     * @param dto dto of the class employee
      * @return boolean of the result of validation of this Employee
      */
-    public boolean createEmployee(String name, String email, int phone, int cc, String adress, String roleId) {
-        this.em = this.company.createEmployee(name, email, phone, cc, adress, roleId);
-        return this.company.validateEmployee(em);
+    public boolean createEmployee(dtoEmployee dto) {
+        this.employee = this.company.createEmployee(dto);
+        return this.company.validateEmployee(employee);
     }
 
     /**
@@ -44,8 +41,8 @@ public class RegisterEmployeeController {
      * Saves employee in company
      * @return boolean of if the save was sucessful or not
      */
-    public boolean saveEmployee() {
-        return this.company.saveEmployees(em);
+    public boolean saveEmployee(dtoEmployee dto) {
+        return this.company.saveEmployees(dto);
     }
 
     /**
@@ -53,7 +50,6 @@ public class RegisterEmployeeController {
      * Prints employee
      */
     public void printEmployee() {
-        this.company.printEmployee(em);
+        this.company.printEmployee(employee);
     }
-
 }
