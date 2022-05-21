@@ -1,8 +1,5 @@
 package app.domain.model;
 
-import app.ui.console.utils.Utils;
-
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,7 @@ public class VaccinationFacility {
 
     private int maximumNumberOfVaccinesPerSlot;
 
-    private List<VaccinationSchedule> vaccinationScheduleList=new ArrayList<>();
+    private List<VaccinationAppointment> vaccinationScheduleList=new ArrayList<>();
 
     /**@author JoÃ£o Veiga
      * Constructor
@@ -108,11 +105,11 @@ public class VaccinationFacility {
         return maximumNumberOfVaccinesPerSlot;
     }
 
-    public List<VaccinationSchedule> getVaccinationScheduleList() {
+    public List<VaccinationAppointment> getVaccinationScheduleList() {
         return vaccinationScheduleList;
     }
 
-    public void addSchedule(VaccinationSchedule schedule){
+    public void addSchedule(VaccinationAppointment schedule){
         vaccinationScheduleList.add(schedule);
     }
 }

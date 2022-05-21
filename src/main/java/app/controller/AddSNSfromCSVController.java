@@ -2,6 +2,8 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.SNSuser;
+import app.domain.model.User;
+import app.ui.console.utils.Utils;
 import mappers.dto.dtoSNSuser;
 
 import java.util.ArrayList;
@@ -37,8 +39,15 @@ public class AddSNSfromCSVController {
         return this.company.saveSNSuser(dto);
     }
 
-    public void printSNSuser() {
-            this.company.printSNSuser(us);
+    public String printSNSuser() {
+          return  this.company.printSNSuser(us);
+    }
+
+    public void printSNSuserList(){
+        List<SNSuser> list=this.company.getSNSuserList();
+        for(int i=0;i<list.size();i++){
+            Utils.printText(list.get(i).toString());
+        }
     }
 
 

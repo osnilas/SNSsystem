@@ -161,30 +161,30 @@ public class Company {
         return vaccineAdministrationList.add(vaxAdm);
     }
 
-    public  VaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine){
-        return new VaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+    public MassVaccinationCenter createVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine){
+        return new MassVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
     }
 
-    public boolean validateVaccinationCenter(VaccinationCenter vaccinationCenter){
+    public boolean validateVaccinationCenter(MassVaccinationCenter vaccinationCenter){
         if(vaccinationCenter==null){
             return false;
         }
         return  ! this.vaccinationFacilityList.contains(vaccinationCenter);
     }
 
-    public boolean saveVaccinationCenter(VaccinationCenter vaccinationCenter){
+    public boolean saveVaccinationCenter(MassVaccinationCenter vaccinationCenter){
         if(!validateVaccinationCenter(vaccinationCenter)){
             return false;
         }
         return this.vaccinationFacilityList.add(vaccinationCenter);
     }
 
-    public void printVaccinationCenter(VaccinationCenter vaccinationCenter){
+    public void printVaccinationCenter(MassVaccinationCenter vaccinationCenter){
         System.out.println(vaccinationCenter.toString());
     }
 
     public  SNSuser createSNSuser( dtoSNSuser dto){
-        return new SNSuser(dto.getName(), dto.getSex(), dto.getBirth(), dto.getAddress(), dto.getEmail(), dto.getPhoneNumber(), dto.getSNSnumber(), dto.getCcNumber());
+        return new SNSuser(dto.getName(), dto.getSex(), dto.getBirth(), dto.getResidenceAddress(), dto.getEmail(), dto.getPhoneNumber(), dto.getSNSnumber(), dto.getCcNumber());
     }
     public boolean validateSNSuser(SNSuser snSuser){
         if(snSuser==null){
@@ -219,8 +219,8 @@ public class Company {
         return flag;
     }
 
-    public void printSNSuser(SNSuser us){
-        System.out.println(us.toString());
+    public String printSNSuser(SNSuser us){
+        return us.toString();
     }
 
     public List<SNSuser> getSNSuserList(){return SNSuserList;}
@@ -255,11 +255,11 @@ public class Company {
         return typeVaccineList.add(typeVaccine);
     }
 
-    public VaccinationSchedule createSchedule(dtoScheduleVaccine dto){
-        return new VaccinationSchedule(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
+    public VaccinationAppointment createSchedule(dtoScheduleVaccine dto){
+        return new VaccinationAppointment(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
     }
 
-    public boolean saveSchedule(VaccinationSchedule schedule,VaccinationFacility facility,SNSuser snSuser) throws Exception {
+    public boolean saveSchedule(VaccinationAppointment schedule, VaccinationFacility facility, SNSuser snSuser) throws Exception {
         boolean flagVaccination=false ,flagSNSuser=false,flagAddRecord=false;
         int temp=-1;
         for(int i = 0; i< vaccinationFacilityList.size(); i++){

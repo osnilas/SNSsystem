@@ -22,14 +22,14 @@ public class ScheduleVaccinationUI implements Runnable{
     @Override
     public void run() {
         try{
-            boolean sucess = Schedule(checkIfSNSuser() );
+            boolean sucess = Schedule();
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private boolean Schedule(boolean flag) throws Exception {
+    private boolean Schedule() throws Exception {
          boolean sucess=false;
         int snsNumber = 0;
         TypeVaccine typeVaccine = null;

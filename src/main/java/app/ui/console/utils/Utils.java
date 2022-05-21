@@ -4,6 +4,7 @@ import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
 import app.ui.console.ShowTextUI;
+import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -248,5 +250,19 @@ public class Utils {
             password[randomPosition] = temp;
         }
         return new String(password);
+    }
+
+    static public void ShowUserRoleDTO (List<UserRoleDTO> list,String header){
+        System.out.println(header);
+
+        int index = 0;
+        for (int i=0; i<list.size() ;i++){
+
+            index++;
+
+            System.out.println(index + ". " + list.get(i).getDescription());
+        }
+        System.out.println("");
+        System.out.println("0 - Cancel");
     }
 }

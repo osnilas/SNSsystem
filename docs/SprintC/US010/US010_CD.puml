@@ -21,14 +21,6 @@ Class Employee{
 -email
 -ccNumber
 }
-Class User{
--id
--password
-+generatePwd(int lenght)
-}
-Class OrganizationRole{
--description
-}
 Class ResgisterEmployeeUI{
 +register()
 +run()
@@ -39,21 +31,10 @@ Class ResgisterEmployeeController{
 printEmployee()
 }
 
-Class AddUserController{
-+createUser(String id)
-+saveUser()
-+printUser()
-}
-
 Company"1"-->"*"Employee:employ >
-Employee"0.1"-->"1"User:relates to >
-Company"1"-->"*"OrganizationRole: comprehends >
-Employee"*"-->"1"OrganizationRole:has/plays >
 ResgisterEmployeeController..>Company
 ResgisterEmployeeUI..> ResgisterEmployeeController
-ResgisterEmployeeUI..>AddUserController
-AddUserController..>Company
-AddUserController..>User
+
 ResgisterEmployeeController..>Employee
 
 @enduml

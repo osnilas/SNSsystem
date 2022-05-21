@@ -2,19 +2,17 @@ package app.ui.console;
 
 import app.controller.App;
 import app.controller.RegisterVaccinationCenterController;
-import app.domain.model.VaccinationCenter;
-import app.domain.shared.Constants;
+import app.domain.model.MassVaccinationCenter;
 import app.ui.console.utils.Utils;
 import app.domain.shared.Validate;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class RegisterVaccinationCenterUI implements Runnable {
 
     private RegisterVaccinationCenterController ctlr;
-    private VaccinationCenter vc;
+    private MassVaccinationCenter vc;
     private App app;
 
     /**

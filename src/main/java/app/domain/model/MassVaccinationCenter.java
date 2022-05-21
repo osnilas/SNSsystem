@@ -1,9 +1,8 @@
 package app.domain.model;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class VaccinationCenter extends VaccinationFacility {
+public class MassVaccinationCenter extends VaccinationFacility {
 
     private TypeVaccine typeOfVaccine;
 
@@ -22,7 +21,7 @@ public class VaccinationCenter extends VaccinationFacility {
      * @param maximumNumberOfVaccinesPerSlot     The Vaccination Center maximum number of vaccines per slot
      * @param typeOfVaccine                     The Vaccination Center name
      */
-    public VaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine) {
+    public MassVaccinationCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, TypeVaccine typeOfVaccine) {
         super(name,address,phoneNumber,emailAddress,faxNumber,websiteAddress,openingHours,closingHours,slotDuration,maximumNumberOfVaccinesPerSlot);
 
         this.typeOfVaccine = typeOfVaccine;

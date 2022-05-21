@@ -1,6 +1,7 @@
 package mappers.dto;
 
 import app.domain.model.User;
+import app.domain.shared.Constants;
 
 import java.time.LocalDate;
 
@@ -53,8 +54,8 @@ public class dtoSNSuser extends User {
     }
 
     @Override
-    public String getAddress() {
-        return super.getAddress();
+    public String getResidenceAddress() {
+        return super.getResidenceAddress();
     }
 
     @Override
@@ -68,15 +69,14 @@ public class dtoSNSuser extends User {
 
     @Override
     public String toString() {
-        return "SNSuser{" +
-                "name='" + getName() + '\'' +
-                ", sex='" + getSex() + '\'' +
-                ", birth=" + getBirth() +
-                ", address='" + getAddress() + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", phoneNumber=" + getPhoneNumber() +
-                ", SNSnumber=" + getSNSnumber() +
-                ", ccNumber=" + getCcNumber() +
-                '}';
+        return "SNSuser:" +
+                "name:'" + getName() +
+                "  , sex:" + sex  +
+                "  , birth:" + birth +
+                "  , residence  address:'" + getResidenceAddress() +
+                "  , email:" + getEmail()  +
+                "  , phone number:" + getPhoneNumber() +
+                "  , SNS number:" + SNSnumber +
+                "  , citizen card number:" + getCcNumber();
     }
 }

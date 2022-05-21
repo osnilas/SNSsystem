@@ -56,15 +56,15 @@ public class SNSuser extends User {
 
     @Override
     public String toString() {
-        return "SNSuser{" +
-                "name='" + getName() + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birth=" + birth +
-                ", address='" + getAddress() + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", phoneNumber=" + getPhoneNumber() +
-                ", SNSnumber=" + SNSnumber +
-                ", ccNumber=" + getCcNumber() +
+        return "SNSuser:" +
+                "name:'" + getName() + '\'' +
+                ", sex:'" + sex + '\'' +
+                ", birth:" + birth +
+                ", residence  address:'" + getResidenceAddress() + '\'' +
+                ", email:'" + getEmail() + '\'' +
+                ", phone number:" + getPhoneNumber() +
+                ", SNS number:" + SNSnumber +
+                ", citizen card number:" + getCcNumber() +
                 '}';
     }
 

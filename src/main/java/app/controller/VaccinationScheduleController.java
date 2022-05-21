@@ -15,7 +15,7 @@ public class VaccinationScheduleController {
 
     private Company company;
 
-    private VaccinationSchedule schedule;
+    private VaccinationAppointment schedule;
     private App app;
 
     private SNSuser snSuser;
@@ -51,14 +51,14 @@ public class VaccinationScheduleController {
     }
 
     public TypeVaccine getTypeVaccineFromVaccinationFacility() throws Exception {
-        if (facility instanceof VaccinationCenter) {
-            return getTypeVaccineFromVaccinationCenter((VaccinationCenter) facility);
+        if (facility instanceof MassVaccinationCenter) {
+            return getTypeVaccineFromVaccinationCenter((MassVaccinationCenter) facility);
         } else {
             return getTypeVaccineFromHealthCareCenter((HealthCareCenter) facility);
         }
     }
 
-    private TypeVaccine getTypeVaccineFromVaccinationCenter(VaccinationCenter center) throws Exception {
+    private TypeVaccine getTypeVaccineFromVaccinationCenter(MassVaccinationCenter center) throws Exception {
         String typeVaccine=center.getTypeOfVaccine().getName();
         Utils.printText("Vaccine of this vaccination center:");
         Utils.printText("The DGS recommends:" +Constants.TYPE_VACCINE_RECOMMENDED.getName());
@@ -109,9 +109,9 @@ public class VaccinationScheduleController {
     private boolean ValidateAppoimentTime(LocalDateTime date, VaccinationFacility center) {
         boolean flag=false;
         int count=0;
-        List<VaccinationSchedule> scheduleList=center.getVaccinationScheduleList();
+        List<VaccinationAppointment> scheduleList=center.getVaccinationScheduleList();
             for (int i = 0; i < scheduleList.size(); i++) {
-                if (scheduleList.get(i).getAppointmentTime().isEqual(date)) {
+                if (scheduleList.get(i).isAppointmentSameTime(date)) {
                     count++;
                     if (count == center.getMaximumNumberOfVaccinesPerSlot()) {
                         flag = false;

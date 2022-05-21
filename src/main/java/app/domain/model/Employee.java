@@ -64,7 +64,7 @@ public class Employee extends User {
     public String toString() {
         return "Employee: \n" +
                 "name: " + getName() + '\t' +
-                "adress: " + getAddress() +'\t'+
+                "residence adress: " + getResidenceAddress() +'\t'+
                 "email: " + getEmail() + '\t' +
                 "phone: " + getPhoneNumber() +'\t'+
                 "roleId: " + roleId;

@@ -6,14 +6,14 @@ import java.util.List;
 public class VaccinationRecord {
 
     private Vaccine vaccine;
-    private static List<VaccinationSchedule> record;
+    private static List<VaccinationAppointment> record;
 
 
     public VaccinationRecord(){
         this.record=new ArrayList<>();
     }
 
-    public void addVaccinationSchedule(VaccinationSchedule schedule){
+    public void addVaccinationSchedule(VaccinationAppointment schedule){
         this.record.add(schedule);
     }
 

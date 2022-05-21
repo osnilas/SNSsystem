@@ -2,16 +2,15 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.TypeVaccine;
-import app.domain.model.VaccinationCenter;
+import app.domain.model.MassVaccinationCenter;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class RegisterVaccinationCenterController {
 
     private Company company;
 
-    private VaccinationCenter vc;
+    private MassVaccinationCenter vc;
 
     private App app;
 
