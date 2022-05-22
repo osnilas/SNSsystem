@@ -203,31 +203,37 @@ public class Validate {
     }
 
     public static boolean validateDate(String date){
-        try{
-            Date test=Constants.df.parse(date);
+        if(date!=null) {
+            try {
+                Date test = Constants.df.parse(date);
+            } catch (ParseException e) {
+                return false;
+            }
+            return true;
         }
-        catch (ParseException e){
-            return false;
-        }
-        return true;
+        return false;
     }
 
     public static boolean validateTime(String time){
-        try {
-            LocalDateTime test=LocalDateTime.parse(time,Constants.TIME_FORMATTER);
-        }
-        catch (DateTimeException e){
-            return false;
-        }
-        return true;
+        if(time!=null) {
+            try {
+                LocalDateTime test = LocalDateTime.parse(time, Constants.TIME_FORMATTER);
+            } catch (DateTimeException e) {
+                return false;
+            }
+            return true;
+        }return false;
     }
 
     public static boolean validateSex(String sex){
-        for (int i=0;i<Constants.SexList.length;i++){
-            if(sex.equalsIgnoreCase(Constants.SexList[i])){
-                return true;
-            }
+        if(sex!=null) {
+            for (int i = 0; i < Constants.SexList.length; i++) {
+                if (sex.equalsIgnoreCase(Constants.SexList[i])) {
+                    return true;
+                }
 
+            }
+            return false;
         }
         return false;
     }

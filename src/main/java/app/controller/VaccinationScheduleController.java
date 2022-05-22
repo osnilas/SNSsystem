@@ -20,8 +20,6 @@ public class VaccinationScheduleController {
 
     private SNSuser snSuser;
 
-    private VaccinationFacility facility;
-
 
 
     public VaccinationScheduleController() {
@@ -38,46 +36,12 @@ public class VaccinationScheduleController {
         this.schedule=this.company.createSchedule(dto);
     }
 
-    public boolean saveSchedule(dtoScheduleVaccine dto) throws Exception {
+    public boolean saveSchedule(dtoScheduleVaccine dto,VaccinationFacility facility) throws Exception {
        return this.company.saveSchedule(schedule,facility,snSuser);
     }
 
-
-
-    public void selectVaccinationFacility(){
-        List<VaccinationFacility> list=this.company.getVaccinationFacilityList();
-        Utils.showVaccinationFacility(list,"Select vaccination facility");
-        this.facility=list.get(Utils.selectsIndex(list));
-    }
-
-    public TypeVaccine getTypeVaccineFromVaccinationFacility() throws Exception {
-        if (facility instanceof MassVaccinationCenter) {
-            return getTypeVaccineFromVaccinationCenter((MassVaccinationCenter) facility);
-        } else {
-            return getTypeVaccineFromHealthCareCenter((HealthCareCenter) facility);
-        }
-    }
-
-    private TypeVaccine getTypeVaccineFromVaccinationCenter(MassVaccinationCenter center) throws Exception {
-        String typeVaccine=center.getTypeOfVaccine().getName();
-        Utils.printText("Vaccine of this vaccination center:");
-        Utils.printText("The DGS recommends:" +Constants.TYPE_VACCINE_RECOMMENDED.getName());
-        Utils.printText(typeVaccine);
-        if(Utils.confirm("Confirms type of Vaccine?")){
-            return center.getTypeOfVaccine();
-        }
-        throw new Exception("Vaccine type not chosen");
-    }
-
-    private TypeVaccine getTypeVaccineFromHealthCareCenter(HealthCareCenter center){
-        List<TypeVaccine> typeVaccineNameList=new ArrayList<>();
-        for(int i=0;i<center.getTypeVaccineList().size();i++){
-            typeVaccineNameList.addAll(center.getTypeVaccineList());
-        }
-        Utils.printText("Recomend type Vaccine is"+ Constants.TYPE_VACCINE_RECOMMENDED.getName());
-        Utils.showTypeVaccinne(typeVaccineNameList,"Select vaccine");
-        int index=Utils.selectsIndex(typeVaccineNameList);
-        return center.getTypeVaccineList().get(index);
+    public List<VaccinationFacility> getVaccinationFacilityList(){
+        return this.company.getVaccinationFacilityList();
     }
 
     public boolean validateScheduleVaccine(TypeVaccine typeVaccine) throws Exception {
@@ -106,74 +70,19 @@ public class VaccinationScheduleController {
             return false;
     }
 
-    private boolean ValidateAppoimentTime(LocalDateTime date, VaccinationFacility center) {
-        boolean flag=false;
-        int count=0;
-        List<VaccinationAppointment> scheduleList=center.getVaccinationScheduleList();
-            for (int i = 0; i < scheduleList.size(); i++) {
-                if (scheduleList.get(i).isAppointmentSameTime(date)) {
-                    count++;
-                    if (count == center.getMaximumNumberOfVaccinesPerSlot()) {
-                        flag = false;
-                        break;
-                    }
-                }
-                flag = true;
-            }
-        return flag;
-    }
 
-    public LocalDateTime getDateAppoiment(){
-        LocalDate date=getDate(facility);
-
-        LocalDateTime opening= LocalDateTime.of(date,facility.getOpeningHours());
-        LocalDateTime closing=LocalDateTime.of(date,facility.getClosingHours());
-
-        List <LocalDateTime> slotsPerDay=new ArrayList<>();
-        LocalDateTime temp=opening;
-
-        int index =0;
-        boolean flag=true;
-        do{
-            slotsPerDay.add(temp);
-             temp=temp.plusMinutes(facility.getSlotDuration());
-        }while (closing.isAfter(temp));
-        do {
-            index = Utils.showAndSelectIndex(slotsPerDay, "Select a time");
-            if(!ValidateAppoimentTime(slotsPerDay.get(index),facility)){
-                Utils.printText("Slot"+ slotsPerDay.get(index) +"already taken");
-                flag=!ValidateAppoimentTime(slotsPerDay.get(index),facility);
-            }
-            flag=ValidateAppoimentTime(slotsPerDay.get(index),facility);
-        }while (!flag);
-        return slotsPerDay.get(index);
-    }
-
-    private LocalDate getDate(VaccinationFacility center){
-        int count=0;
-        List<LocalDate> dateList=new ArrayList<>();
-        LocalDate intial= LocalDate.now();
-        LocalDate temp=intial;
-        for(int i=intial.getDayOfMonth();i<31;i++){
-            dateList.add(temp);
-            temp=temp.plusDays(1);
-        }
-        Utils.showDate(dateList,"Select a date");
-        return dateList.get(Utils.selectsIndex(dateList));
-    }
 
     public boolean checkIfSNSuser(){
        return this.company.getAuthFacade().getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS);
     }
 
-    public void printSchedule(){
-        printScheduleInfo(facility.getName(),schedule.getAppointmentTime());
+    public String printSchedule(VaccinationFacility facility){
+       return printScheduleInfo(facility.getName(),schedule.getAppointmentTime());
     }
 
-    public void printScheduleInfo(String VaccinationCenter, LocalDateTime dateSheducle) {
-        Utils.printText("Schedule info:");
-        Utils.printText("Location: " + VaccinationCenter);
-        Utils.printText("Date: " + dateSheducle.format(Constants.FORMATTER));
-        Utils.printText("Time: "+ dateSheducle.format(Constants.TIME_FORMATTER));
+    public String printScheduleInfo(String VaccinationCenter, LocalDateTime dateSheducle) {
+        return "Schedule info:"+ "\nLocation: " + VaccinationCenter+
+        "\nDate: " + dateSheducle.format(Constants.FORMATTER)+
+        "\nTime: "+ dateSheducle.format(Constants.TIME_FORMATTER);
     }
 }

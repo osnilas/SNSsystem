@@ -36,7 +36,7 @@ public class AddUserFromCSVUI implements Runnable {
         boolean success = false;
         int flag = 0;
         String file;
-        System.out.println("\nAdd SNS users from CSV file UI:");
+        Utils.printText("\nAdd SNS users from CSV file UI:");
         file = Utils.readLineFromConsole("Insert CSV file name");
         if (file != null && file.endsWith(".csv")) {
             try {
@@ -95,23 +95,21 @@ public class AddUserFromCSVUI implements Runnable {
                         if (Utils.confirm("Is it correct?(s/n)")) {
                             success = ctlr.saveSNSuser(temp);
                         } else {
-                            System.out.println("-----Not saved, registration aborted-----");
+                            Utils.printText("-----Not saved, registration aborted-----");
                         }
                         if (success) {
-                            System.out.println("-----------Registration done successfully-----------");
+                            Utils.printText("-----------Registration done successfully-----------");
                             count++;
                         } else {
-                            System.out.println("-----------Registration failed-----------");
+                            Utils.printText("-----------Registration failed-----------");
                         }
                     } else {
-                        System.out.println("Input:");
-                        System.out.println(uncutLine);
-                        System.out.println("-------Input not valid----");
+                        Utils.printText("-------Sex not valid----");
                     }
                 } else {
-                    System.out.println("Input:");
-                    System.out.println(uncutLine);
-                    System.out.println("-------Input not valid----");
+                    Utils.printText("Input:");
+                    Utils.printText(uncutLine);
+                    Utils.printText("-------Input not valid----");
                 }
             }
         }

@@ -51,7 +51,10 @@ public class SNSuser extends User {
             return false;
         }
         return true;
+    }
 
+    public boolean SNSnumberSame(int snsNumber){
+        return this.SNSnumber==snsNumber;
     }
 
     @Override

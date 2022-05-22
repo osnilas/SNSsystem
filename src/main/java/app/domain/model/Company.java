@@ -67,7 +67,7 @@ public class Company {
     public SNSuser SNSuserExists(int SNSnumber){
         boolean flag=false;
         for(int i=0;i<SNSuserList.size();i++){
-            if(SNSuserList.get(i).getSNSnumber()==SNSnumber){
+            if(SNSuserList.get(i).SNSnumberSame(SNSnumber)){
                 return  SNSuserList.get(i);
             }
         }
