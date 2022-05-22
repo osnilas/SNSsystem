@@ -6,7 +6,7 @@ public class Vaccine {
     private TypeVaccine typeVaccine;
     private String name;
 
-    public Vaccine(VaccineAdministration vaccineAdministration,TypeVaccine typeVaccine,String name){
+    public Vaccine(VaccineAdministration vaccineAdministration,TypeVaccine typeVaccine){
         this.name=typeVaccine.getName();
         this.typeVaccine=typeVaccine;
         this.vaccineAdministration=vaccineAdministration;

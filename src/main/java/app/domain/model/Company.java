@@ -26,10 +26,10 @@ public class Company {
     private static List<Employee> employeeList = new ArrayList<>();
 
     private static List<Employee> employeesListRole =new ArrayList<Employee>();
-
     private static List<TypeVaccine> typeVaccineList=new ArrayList<>();
     private static List<VaccineAdministration> vaccineAdministrationList = new ArrayList<>();
 
+    private static List<Vaccine> vaccineList = new ArrayList<>();
     private static List<VaccinationFacility> vaccinationFacilityList =new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
@@ -137,7 +137,7 @@ public class Company {
         return true;
     }
 
-    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         return new VaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
     }
 
@@ -154,8 +154,6 @@ public class Company {
         }
         return addVaccineAdministration(vaxAdm);
     }
-
-    public void printVaccineAdministration (VaccineAdministration vaxAdm) { vaxAdm.toString(); }
 
     private boolean addVaccineAdministration (VaccineAdministration vaxAdm) {
         return vaccineAdministrationList.add(vaxAdm);
@@ -186,6 +184,7 @@ public class Company {
     public  SNSuser createSNSuser( dtoSNSuser dto){
         return new SNSuser(dto.getName(), dto.getSex(), dto.getBirth(), dto.getResidenceAddress(), dto.getEmail(), dto.getPhoneNumber(), dto.getSNSnumber(), dto.getCcNumber());
     }
+
     public boolean validateSNSuser(SNSuser snSuser){
         if(snSuser==null){
             return false;
@@ -255,6 +254,25 @@ public class Company {
         return typeVaccineList.add(typeVaccine);
     }
 
+    public Vaccine createVaccine(VaccineAdministration vaccineAdministration, TypeVaccine typeVaccine) {
+        return new Vaccine(vaccineAdministration, typeVaccine);
+    }
+
+    public boolean validateVaccine(Vaccine vaccine) {
+        return vaccine != null;
+    }
+
+    public void saveVaccine(Vaccine vaccine) {
+        if (!validateVaccine(vaccine)) {
+        } else {
+            addVaccine(vaccine);
+        }
+    }
+
+    private void addVaccine (Vaccine vaccine) {
+        vaccineList.add(vaccine);
+    }
+
     public VaccinationAppointment createSchedule(dtoScheduleVaccine dto){
         return new VaccinationAppointment(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
     }
@@ -303,4 +321,7 @@ public class Company {
         return flag;
     }
 
+    public List getTypeVaccineList() {
+        return typeVaccineList;
+    }
 }

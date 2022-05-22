@@ -11,8 +11,6 @@ public class TypeVaccine {
 
     private String technology;
 
-    private List<VaccineAdministration> administration;
-
 
 
     public TypeVaccine (String name, String description, String code, String technology){
@@ -20,7 +18,6 @@ public class TypeVaccine {
         this.description=description;
         this.code = code;
         this.technology = technology;
-        this.administration = null;
     }
 
     public String getName() {
@@ -31,7 +28,11 @@ public class TypeVaccine {
         return description;
     }
 
-    public void setAdministration(VaccineAdministration vaccineAdministration) {
-        this.administration.add(vaccineAdministration);
+    public String getCode() {
+        return code;
+    }
+
+    public String getTechnology() {
+        return technology;
     }
 }

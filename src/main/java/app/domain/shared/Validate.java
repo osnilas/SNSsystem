@@ -113,7 +113,7 @@ public class Validate {
         return maxAge.get(temp) >= minAge.get(temp) && maxAge.get(temp) <= 105;
     }
 
-    public static boolean validateDosage (List<Double> dosage, int temp) {
+    public static boolean validateDosage (List<Integer> dosage, int temp) {
         return dosage.get(temp) > 0;
     }
 

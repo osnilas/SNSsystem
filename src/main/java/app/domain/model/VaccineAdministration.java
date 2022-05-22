@@ -9,7 +9,7 @@ public class VaccineAdministration {
 
     private List<Integer> maxAge;
 
-    private List<Double> dosage;
+    private List<Integer> dosage;
 
     private List<Integer> doses;
 
@@ -27,7 +27,7 @@ public class VaccineAdministration {
      * Creates a vaccine admnistration
      */
 
-    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         this.brand = brand;
         this.minAge = minAge;
         this.maxAge = maxAge;
@@ -45,7 +45,7 @@ public class VaccineAdministration {
 
     public List<Integer> getMaxAge() { return maxAge; }
 
-    public List<Double> getDosage() {
+    public List<Integer> getDosage() {
         return dosage;
     }
 

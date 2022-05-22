@@ -1,10 +1,9 @@
 package app.controller;
 
 import app.domain.model.Company;
+import app.domain.model.TypeVaccine;
+import app.domain.model.Vaccine;
 import app.domain.model.VaccineAdministration;
-import app.ui.console.VaccineAdministrationUI;
-
-
 import java.util.List;
 
 
@@ -17,7 +16,8 @@ public class VaccineAdministrationController {
 
     private VaccineAdministration vaccineAdministration;
 
-    private VaccineAdministrationUI vaccineAdministrationUI;
+    private Vaccine vaccine;
+
 
     /**
      * @param brand           The vaccine's brand
@@ -29,9 +29,13 @@ public class VaccineAdministrationController {
      * @author Pedro Nogueira
      * asks company to create a vaccine admnistration
      */
-    public boolean createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Double> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public boolean createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, List<Integer> vaccineInterval, TypeVaccine typeVaccine) {
         this.vaccineAdministration = company.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
-        return company.validateVaccineAdministration(vaccineAdministration);
+        vaccine = company.createVaccine(vaccineAdministration, typeVaccine);
+        if (company.validateVaccineAdministration(vaccineAdministration)) {
+            return company.validateVaccine(vaccine);
+        }
+        return false;
     }
 
     /**
@@ -40,6 +44,7 @@ public class VaccineAdministrationController {
      * @return boolean of if the save was successful or not
      */
     public boolean saveVaccineAdministration () {
+        company.saveVaccine(vaccine);
        return company.saveVaccineAdministration(vaccineAdministration);
     }
 

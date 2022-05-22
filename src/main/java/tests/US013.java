@@ -41,8 +41,8 @@ class US013 {
     @Test
     void validateDosage() {
         //Arrange
-        List<Double> dosage = new ArrayList<>();
-        dosage.add(-30.0);
+        List<Integer> dosage = new ArrayList<>();
+        dosage.add(-30);
 
         //Act
         boolean result = Validate.validateDosage(dosage, 0);
