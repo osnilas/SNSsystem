@@ -13,54 +13,52 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleVaccinationUI implements Runnable{
+public class ScheduleVaccinationUI implements Runnable {
 
-     private VaccinationScheduleController ctlr;
-     private App app;
+    private VaccinationScheduleController ctlr;
+    private App app;
 
-     public ScheduleVaccinationUI(){
-        ctlr= new VaccinationScheduleController();
-     }
+    public ScheduleVaccinationUI() {
+        ctlr = new VaccinationScheduleController();
+    }
 
     @Override
     public void run() {
-        try{
+        try {
             boolean sucess = Schedule();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private boolean Schedule() throws Exception {
-         boolean sucess=false;
+        boolean sucess = false;
         int snsNumber = 0;
         TypeVaccine typeVaccine = null;
         LocalDateTime appoimmentDate = null;
         VaccinationFacility vaccinationFacility = null;
 
-        if(ctlr.checkIfVaccinationFaciltyListIsEmpty()){
-            snsNumber=getSNSnumber();
-            vaccinationFacility=selectVaccinationFacility();
-            typeVaccine=getTypeVaccineFromVaccinationFacility(vaccinationFacility);
-             appoimmentDate=getDateAppoiment(vaccinationFacility);
+        if (ctlr.checkIfVaccinationFaciltyListIsEmpty()) {
+            snsNumber = getSNSnumber();
+            vaccinationFacility = selectVaccinationFacility();
+            typeVaccine = getTypeVaccineFromVaccinationFacility(vaccinationFacility);
+            appoimmentDate = getDateAppoiment(vaccinationFacility);
         }
-        if(snsNumber!=0&&typeVaccine!=null&&appoimmentDate!=null) {
+        if (snsNumber != 0 && typeVaccine != null && appoimmentDate != null) {
 
             dtoScheduleVaccine dto = new dtoScheduleVaccine(snsNumber, appoimmentDate, typeVaccine);
             ctlr.createSchedule(dto);
             Utils.printText(ctlr.printSchedule(vaccinationFacility));
-            if(Utils.confirm("Is this correct?")){
-                if(ctlr.validateScheduleVaccine(dto.getTypeVaccine())) {
-                    sucess = ctlr.saveSchedule(dto,vaccinationFacility);
+            if (Utils.confirm("Is this correct?")) {
+                if (ctlr.validateScheduleVaccine(dto.getTypeVaccine())) {
+                    sucess = ctlr.saveSchedule(vaccinationFacility);
                 }
             }
 
         }
-        if(sucess){
+        if (sucess) {
             Utils.printText("-----Appoiment added sucessfully-----");
-        }
-        else {
+        } else {
             Utils.printText("----Appoiment creation failed----");
         }
 
@@ -84,9 +82,9 @@ public class ScheduleVaccinationUI implements Runnable{
     }
 
     private boolean ValidateAppoimentTime(LocalDateTime date, VaccinationFacility center) {
-        boolean flag=false;
-        int count=0;
-        List<VaccinationAppointment> scheduleList=center.getVaccinationScheduleList();
+        boolean flag = false;
+        int count = 0;
+        List<VaccinationAppointment> scheduleList = center.getVaccinationScheduleList();
         for (int i = 0; i < scheduleList.size(); i++) {
             if (scheduleList.get(i).isAppointmentSameTime(date)) {
                 count++;
@@ -100,49 +98,82 @@ public class ScheduleVaccinationUI implements Runnable{
         return flag;
     }
 
-    public LocalDateTime getDateAppoiment(VaccinationFacility facility){
-        LocalDate date=getDate(facility);
-
-        LocalDateTime opening= LocalDateTime.of(date,facility.getOpeningHours());
-        LocalDateTime closing=LocalDateTime.of(date,facility.getClosingHours());
-
-        List <LocalDateTime> slotsPerDay=new ArrayList<>();
-        LocalDateTime temp=opening;
-
-        int index =0;
-        boolean flag=true;
-        do{
-            slotsPerDay.add(temp);
-            temp=temp.plusMinutes(facility.getSlotDuration());
-        }while (closing.isAfter(temp));
+    public LocalDateTime getDateAppoiment(VaccinationFacility facility) {
+        LocalDate date = null;
+        LocalDateTime dateTime = null;
+        boolean flag = true;
         do {
-            index = Utils.showAndSelectIndex(slotsPerDay, "Select a time");
-            if(!ValidateAppoimentTime(slotsPerDay.get(index),facility)){
-                Utils.printText("Slot"+ slotsPerDay.get(index) +"already taken");
-                flag=!ValidateAppoimentTime(slotsPerDay.get(index),facility);
+            try {
+                date = getDate();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            flag=ValidateAppoimentTime(slotsPerDay.get(index),facility);
-        }while (!flag);
-        return slotsPerDay.get(index);
+        } while (date == null);
+        do {
+            try {
+                dateTime = getTime(facility, date);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } while (dateTime == null);
+        return dateTime;
     }
 
-    private LocalDate getDate(VaccinationFacility center){
-        int count=0;
-        List<LocalDate> dateList=new ArrayList<>();
-        LocalDate intial= LocalDate.now();
-        LocalDate temp=intial;
-        for(int i=intial.getDayOfMonth();i<31;i++){
+    private LocalDateTime getTime(VaccinationFacility facility, LocalDate date) throws Exception {
+        Boolean flag;
+        LocalDateTime opening = LocalDateTime.of(date, facility.getOpeningHours());
+        LocalDateTime closing = LocalDateTime.of(date, facility.getClosingHours());
+
+        List<LocalDateTime> timeSlots = new ArrayList<>();
+        LocalDateTime temp = opening;
+
+        int index = 0;
+        flag = true;
+        do {
+            timeSlots.add(temp);
+            temp = temp.plusMinutes(facility.getSlotDuration());
+        } while (closing.isAfter(temp));
+
+        do {
+            index = Utils.showAndSelectIndex(timeSlots, "Select a time");
+            if (index == -1) {
+                throw new Exception("Time not chosen");
+            }
+            if (!ValidateAppoimentTime(timeSlots.get(index), facility)) {
+                Utils.printText("Slot:\n" + timeSlots.get(index).format(Constants.DATE_TIME_FORMATTER) + " already full");
+                flag = !ValidateAppoimentTime(timeSlots.get(index), facility);
+            }
+            flag = ValidateAppoimentTime(timeSlots.get(index), facility);
+        } while (!flag);
+        return timeSlots.get(index);
+    }
+
+    private LocalDate getDate() throws Exception {
+        int count = 0;
+        List<LocalDate> dateList = new ArrayList<>();
+        LocalDate inicial = LocalDate.now();
+        LocalDate temp = inicial;
+        LocalDate end = inicial.plusMonths(1);
+        do {
             dateList.add(temp);
-            temp=temp.plusDays(1);
+            temp = temp.plusDays(1);
+        } while (temp.isBefore(end));
+        Utils.showDate(dateList, "Select a date");
+        int index = Utils.selectsIndex(dateList);
+        if (index == -1) {
+            throw new Exception("No date chosen");
         }
-        Utils.showDate(dateList,"Select a date");
-        return dateList.get(Utils.selectsIndex(dateList));
+        return dateList.get(index);
     }
 
-    public VaccinationFacility selectVaccinationFacility(){
-        List<VaccinationFacility> list=ctlr.getVaccinationFacilityList();
-        Utils.showVaccinationFacility(list,"Select vaccination facility");
-        return list.get(Utils.selectsIndex(list));
+    public VaccinationFacility selectVaccinationFacility() throws Exception {
+        List<VaccinationFacility> list = ctlr.getVaccinationFacilityList();
+        Utils.showVaccinationFacility(list, "Select vaccination facility");
+        int index = Utils.selectsIndex(list);
+        if (index == -1) {
+            throw new Exception("No vaccination facility chosen");
+        }
+        return list.get(index);
     }
 
     public TypeVaccine getTypeVaccineFromVaccinationFacility(VaccinationFacility facility) throws Exception {
@@ -154,28 +185,28 @@ public class ScheduleVaccinationUI implements Runnable{
     }
 
     private TypeVaccine getTypeVaccineFromVaccinationCenter(MassVaccinationCenter center) throws Exception {
-        String typeVaccine=center.getTypeOfVaccine().getName();
+        String typeVaccine = center.getTypeOfVaccine().getName();
         Utils.printText("Vaccine of this vaccination center:");
-        Utils.printText("The DGS recommends:" +Constants.TYPE_VACCINE_RECOMMENDED.getName());
         Utils.printText(typeVaccine);
-        if(Utils.confirm("Confirms type of Vaccine?")){
+        Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
+        if (Utils.confirm("Confirms type of Vaccine?")) {
             return center.getTypeOfVaccine();
         }
         throw new Exception("Vaccine type not chosen");
     }
 
-    private TypeVaccine getTypeVaccineFromHealthCareCenter(HealthCareCenter center){
-        List<TypeVaccine> typeVaccineNameList=new ArrayList<>();
-        for(int i=0;i<center.getTypeVaccineList().size();i++){
+    private TypeVaccine getTypeVaccineFromHealthCareCenter(HealthCareCenter center) {
+        List<TypeVaccine> typeVaccineNameList = new ArrayList<>();
+        for (int i = 0; i < center.getTypeVaccineList().size(); i++) {
             typeVaccineNameList.addAll(center.getTypeVaccineList());
         }
-        Utils.printText("Recomend type Vaccine is"+ Constants.TYPE_VACCINE_RECOMMENDED.getName());
-        Utils.showTypeVaccinne(typeVaccineNameList,"Select vaccine");
-        int index=Utils.selectsIndex(typeVaccineNameList);
+        Utils.showTypeVaccinne(typeVaccineNameList, "Select vaccine");
+        Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
+        int index = Utils.selectsIndex(typeVaccineNameList);
         return center.getTypeVaccineList().get(index);
     }
 
-    private boolean checkIfSNSuser(){
+    private boolean checkIfSNSuser() {
         return ctlr.checkIfSNSuser();
     }
 }

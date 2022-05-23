@@ -36,8 +36,24 @@ public class VaccinationScheduleController {
         this.schedule=this.company.createSchedule(dto);
     }
 
-    public boolean saveSchedule(dtoScheduleVaccine dto,VaccinationFacility facility) throws Exception {
-       return this.company.saveSchedule(schedule,facility,snSuser);
+    public boolean saveSchedule(VaccinationFacility facility) throws Exception {
+        boolean flagVaccination=false ,flagSNSuser=false;
+        if(this.company.getAuthFacade().getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS)){
+            if(this.company.checkIfVaccineUnique(schedule.getTypeVaccine(),schedule.getSNSnumber())){
+                flagSNSuser=true;
+            }
+            else{
+                throw new Exception("User already has a schedule for same vaccine");
+            }
+        }
+        if(flagSNSuser){
+            snSuser.getVaccinationRecord().addVaccinationSchedule(schedule);
+            facility.addSchedule(schedule);
+        }
+        else{
+            throw new Exception("SYSTEM ERROR VACCINATION FACILITY NOT FOUND");
+        }
+        return flagSNSuser;
     }
 
     public List<VaccinationFacility> getVaccinationFacilityList(){

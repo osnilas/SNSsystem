@@ -40,7 +40,12 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
+        demo();
+    }
+
+    public void demo(){
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
@@ -275,36 +280,6 @@ public class Company {
 
     public VaccinationAppointment createSchedule(dtoScheduleVaccine dto){
         return new VaccinationAppointment(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
-    }
-
-    public boolean saveSchedule(VaccinationAppointment schedule, VaccinationFacility facility, SNSuser snSuser) throws Exception {
-        boolean flagVaccination=false ,flagSNSuser=false,flagAddRecord=false;
-        int temp=-1;
-        for(int i = 0; i< vaccinationFacilityList.size(); i++){
-            if(Objects.equals(vaccinationFacilityList.get(i),facility)){
-                temp=i;
-                flagVaccination= true;
-            }
-        }
-        if(authFacade.getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS)){
-            if(checkIfVaccineUnique(schedule.getTypeVaccine(),schedule.getSNSnumber())){
-                flagSNSuser=true;
-            }
-            else{
-                throw new Exception("User already has a schedule for same vaccine");
-            }
-        }
-        if(flagVaccination && flagSNSuser && temp!=-1){
-
-            for(int i=0;i<SNSuserList.size();i++){
-                if(SNSuserList.get(i).getSNSnumber()==snSuser.getSNSnumber()){
-                    SNSuserList.get(temp).getVaccinationRecord().addVaccinationSchedule(schedule);
-                    vaccinationFacilityList.get(temp).addSchedule(schedule);
-                    flagAddRecord=true;
-                }
-            }
-        }
-        return flagVaccination && flagSNSuser && flagAddRecord;
     }
 
     public boolean checkIfVaccineUnique(TypeVaccine vaccine,int SNSnumber){
