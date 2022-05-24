@@ -25,9 +25,9 @@ class US011 {
 
         listOfEmployees.add(nurse);
         listOfEmployees.add(receptionist);
-        company.FillRoleArray(role);
+        company.fillRoleArray(role);
 
-        assertTrue(company.FillRoleArray(role).isEmpty());
+        assertTrue(company.fillRoleArray(role).isEmpty());
 
     }
 

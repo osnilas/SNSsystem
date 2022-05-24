@@ -60,15 +60,16 @@ public class RoleMenuUI implements Runnable{
             }
             if (sucess){
                 printListEmployees(EMPLOYEE_ARRAY_LIST);
+                EMPLOYEE_ARRAY_LIST.clear();
             }
             else {
                 sucess = false;
 
             }
         if (sucess) {
-            System.out.println("-----------List of Employees done successfully-----------");
+            System.out.println("-----------List of Employees done successfully!-----------");
         } else {
-            System.out.println("-----------List of Employees failed---------------");
+            System.out.println("-----------Error! There is no employee registered with this role yet!---------------");
         }
             return sucess;
         }

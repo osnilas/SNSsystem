@@ -142,7 +142,7 @@ public class Company {
         return true;
     }
 
-    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, ArrayList<ArrayList<Integer>> vaccineInterval) {
+    public VaccineAdministration createVaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
         return new VaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval);
     }
 
@@ -299,14 +299,4 @@ public class Company {
     public List getTypeVaccineList() {
         return typeVaccineList;
     }
-
-    public boolean checkAppointment (int index, SNSuser snSuser) {
-        for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
-            if (vaccinationFacilityList.get(index).getVaccinationScheduleList().get(i).getSNSnumber() == snSuser.getSNSnumber()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
