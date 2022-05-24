@@ -3,51 +3,55 @@
 skinparam classAttributeIconSize 0
 
 Class Company{
+-List<SNSuser> SNSuserList
 -designation
     +createSNSuser(dtoSNSuser dto)
     +validateSNSuser(SNSuser user)
     -validateSNSuserDTO(dtoSNSuser dto)
     +saveSNSuser(dtoSNSuser dto)
     +printSNSuser(SNSuser user)
+}
+Class AuthFacade{
++addUserWithRole(String name, String email, String pwd, String roleId)
+}
 
+Class App{
++getIntance()
++getIntance.getCompany()
 }
-Class SNS_user{
--sex
--birth
--SNSnumber
-+getAge()
+
+Class SNSuser{
+-String sex
+-LocalDate birth
+-Int SNSnumber
 }
-Class Login{
--id
--password
-+generatePwd(int lenght)
+
+Class User{
+-String name
+-String residenceAddress
+-String email
+-int phoneNumber
+-int ccNumber
 }
-Class Person{
--name
--address
--email
--phoneNumber
--ccNumber
-}
-Class OrganizationRole{
--description
-}
-Class ResgisterEmployeeUI{
-+register()
+
+Class AddSNSfromCSVUI{
 +run()
+-file()
+-copyDataFromFile
+-validateContents(String[] Line)
 }
-Class ResgisterEmployeeController{
-+createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
-+saveEmployee()
-printEmployee()
-}
-
-Class AddUserController{
-+createUser(String id)
-+saveUser()
-+printUser()
+Class AddSNSfromCSVController{
++createSNSuser(dtoSNSuser dto)
++saveSNSuser(dtoSNSuser dto)
++printSNSuser()
 }
 
+AddSNSfromCSVUI..>AddSNSfromCSVController
+AddSNSfromCSVController..>Company
+AddSNSfromCSVController..>App
+Company"1"-->"*"User:owns
+Company..>AuthFacade
+User"*"-->"1"SNSuser:is a
 
 
 @enduml

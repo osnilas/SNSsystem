@@ -10,7 +10,7 @@
     deactivate System
     System <- Administrator: Types requested data
     activate System
-    group loop
+    group loop: [while CSV file has a line with information]
     Administrator <-- System: shows the user data and requests confirmation
     deactivate System
     Administrator -> System: confirms the data

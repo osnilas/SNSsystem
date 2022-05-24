@@ -10,7 +10,7 @@ public class SelectVaccinationFacilityUI implements Runnable {
 
     private SelectVaccinationFacilityController ctlr;
 
-    private int index;
+    private int index=-1;
 
     public SelectVaccinationFacilityUI(){
         ctlr =new SelectVaccinationFacilityController();
@@ -18,8 +18,11 @@ public class SelectVaccinationFacilityUI implements Runnable {
 
     @Override
     public void run() {
-            Utils.showList(ctlr.getVaccinationFacilities(),"Select a vaccination facility");
-            index=Utils.selectsIndex(ctlr.getVaccinationFacilities());
+        do {
+            List<String> list = ctlr.getVaccinationFacilities();
+            Utils.showList(list, "Select a vaccination facility");
+            index = Utils.selectsIndex(ctlr.getVaccinationFacilities());
+        }while (index==-1);
     }
 
     public int getIndex() {

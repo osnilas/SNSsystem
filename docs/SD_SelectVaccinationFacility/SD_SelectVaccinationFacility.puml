@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Receptionist" as ACT
+participant ":AuthUI" as AUTH
+participant ":SelectVaccinationFacilityUI" as UI
+    participant ":SelectVaccinationFacilityController" as  CTRL
+    participant "app:App" as APP
+    participant "Company" as COMP
+    participant "VaccinationFacility: \nList<VaccinationFacility>"
+
+    activate AUTH
+    create UI
+    AUTH->UI:SelectVaccinationFacilityUI()
+    note over  AUTH
+        after a successed login
+        end note
+    CTRL->APP:app=getInstance()
+    activate CTRL
+    activate APP
+    APP->COMP:company=getCompany
+    activate COMP
+    deactivate COMP
+    deactivate APP
+    deactivate CTRL
+    AUTH->UI:run()
+    activate UI
+    UI->CTRL:list=getVaccinationFacilities()
+    activate CTRL
+    deactivate APP
+    CTRL->COMP:vaccinationFacilityList=getVaccinationFacilityList()
+    activate COMP
+    deactivate COMP
+    deactivate CTRL
+    group loop: [while an  vaccination facility is not chosen]
+    UI-->ACT:shows vaccination facility and asks to select one
+    deactivate UI
+    activate ACT
+    ACT->UI :selects a vaccination facility
+    activate UI
+    UI-->AUTH
+    end
+    deactivate UI
+    AUTH->UI:index=getIndex()
+    activate UI
+    deactivate UI
+    deactivate AUTH
+    deactivate ACT
+
+
+@enduml

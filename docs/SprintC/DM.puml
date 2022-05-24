@@ -2,6 +2,8 @@
 'https://plantuml.com/object-diagram
 
 object SNSuser{
+-**name**
+-**address**
 -SNS user number
 -phone number
 -e-mail address
@@ -66,7 +68,6 @@ object Employees{
 }
 object StatisticsCharts
 object BruteforceAlgorithm
-object ApplicationUser
 object Address{
 -Street name
 -Door
@@ -75,9 +76,9 @@ object Address{
 -Postal code
 }
 
-ApplicationUser"*" -- "*"Employees: > is
-ApplicationUser"*" -- "*"SNSuser: > is
-Administrator"*" -- "*" ApplicationUser: > manages/registers
+
+Administrator"*" -- "*" Employees: > manages/registers
+Administrator"*" -- "*" SNSuser: > manages/registers
 SNSuser"*"--"1" DGS : < owns
 DGS"1" -- "*"Employees : > owns
 DGS "1"--"1" Vaccine : > applies

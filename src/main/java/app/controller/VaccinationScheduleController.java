@@ -39,8 +39,8 @@ public class VaccinationScheduleController {
         this.schedule = schedule;
     }
 
-    public void setVaccinationFacility(int index){
-        this.facility=this.company.getVaccinationFacilityFromList(index);
+    public void setVaccinationFacility(int index) {
+        this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
     public boolean SNSuserExistsEmail(){
@@ -64,8 +64,6 @@ public class VaccinationScheduleController {
         else{
                 throw new Exception("User already has a schedule for same vaccine");
         }
-
-
         if(flagSNSuser){
             facility.addSchedule(schedule);
         }
@@ -126,7 +124,7 @@ public class VaccinationScheduleController {
     }
 
     public boolean validateAgeAndTimeDose(Vaccine vaccine){
-        return validateAgeGroup(vaccine);
+        return validateAgeGroup(vaccine) && validateDoseTime(vaccine);
     }
 
     public boolean validateAgeGroup(Vaccine vaccine){
@@ -143,7 +141,7 @@ public class VaccinationScheduleController {
         VaccinationRecord vaccinationRecordLatest=snSuser.getLatestVaccinationRecord(vaccine);
         Duration dayBetweenDosageTemp= Duration.between(vaccinationRecordLatest.getDate(),schedule.getAppointmentTime());
         int daysBetweendDosage=(int) Math.abs(dayBetweenDosageTemp.toDays());
-        return daysBetweendDosage<vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken()-1);
+        return daysBetweendDosage>vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken()-1);
 
     }
 
@@ -181,7 +179,7 @@ public class VaccinationScheduleController {
         } while (date == null);
         do {
             try {
-                dateTime = getTime(facility, date);
+                dateTime = getTime(date);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -189,7 +187,7 @@ public class VaccinationScheduleController {
         this.date=dateTime;
     }
 
-    private LocalDateTime getTime(VaccinationFacility facility, LocalDate date) throws Exception {
+    private LocalDateTime getTime(LocalDate date) throws Exception {
         Boolean flag;
         LocalDateTime opening = LocalDateTime.of(date, facility.getOpeningHours());
         LocalDateTime closing = LocalDateTime.of(date, facility.getClosingHours());

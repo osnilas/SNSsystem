@@ -3,6 +3,7 @@ package app.domain.model;
 
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
+import mappers.dto.MapperSNSuser;
 import mappers.dto.dtoEmployee;
 import mappers.dto.dtoSNSuser;
 import mappers.dto.dtoScheduleVaccine;
@@ -33,6 +34,8 @@ public class Company {
     private static List<VaccinationFacility> vaccinationFacilityList =new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
+
+    private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
 
     public Company(String designation)
     {
@@ -215,7 +218,7 @@ public class Company {
         boolean flag=false;
         if(SNSuserList.isEmpty()){
             authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),Constants.ROLE_SNS);
-            SNSuserList.add(createSNSuser(dto));
+            SNSuserList.add(mapperSNSuser.toSNSuser(dto));
         }
         else {
             for(int i=0;i<SNSuserList.size();i++){
@@ -229,7 +232,7 @@ public class Company {
         }
         if(flag){
             authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),Constants.ROLE_SNS);
-            SNSuserList.add(createSNSuser(dto));
+            SNSuserList.add(mapperSNSuser.toSNSuser(dto));
         }
         else {
             System.out.println("SNS ALREADY EXISTS");
