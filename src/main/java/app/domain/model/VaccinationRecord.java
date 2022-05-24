@@ -1,24 +1,20 @@
 package app.domain.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class VaccinationRecord {
 
     private Vaccine vaccine;
-    private static List<VaccinationAppointment> record;
+    private LocalDateTime date;
+    private int numberDosesTaken;
 
 
-    public VaccinationRecord(){
-        this.record=new ArrayList<>();
-    }
+    public VaccinationRecord(Vaccine vaccine, LocalDateTime date,int numberDose){
 
-    public void addVaccinationSchedule(VaccinationAppointment schedule){
-        this.record.add(schedule);
-    }
-
-    public void addVaccine(Vaccine vaccine){
         this.vaccine=vaccine;
+        this.date=date;
+        this.numberDosesTaken =numberDose;
     }
 
     public int getAgeGroup(int age){
@@ -29,6 +25,20 @@ public class VaccinationRecord {
             }
         }
         return indexNumber;
+    }
+    public boolean checkTypeVaccine(TypeVaccine typeVaccine){
+        if (Objects.equals(vaccine.getTypeVaccine(),typeVaccine)){
+            return true;
+        }
+        return false;
+    }
+
+    public int getNumberDosesTaken() {
+        return numberDosesTaken;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
     }
 
     public Vaccine getVaccine() {

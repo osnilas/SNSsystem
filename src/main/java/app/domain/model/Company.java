@@ -69,10 +69,24 @@ public class Company {
         return vaccinationFacilityList;
     }
 
-    public SNSuser SNSuserExists(int SNSnumber){
+    public VaccinationFacility getVaccinationFacilityFromList(int index){
+        return vaccinationFacilityList.get(index);
+    }
+
+    public SNSuser SNSuserExistsNumber(int SNSnumber){
         boolean flag=false;
         for(int i=0;i<SNSuserList.size();i++){
             if(SNSuserList.get(i).SNSnumberSame(SNSnumber)){
+                return  SNSuserList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public SNSuser SNSuserExistsEmail(String email){
+        boolean flag=false;
+        for(int i=0;i<SNSuserList.size();i++){
+            if(SNSuserList.get(i).emailSame(email)){
                 return  SNSuserList.get(i);
             }
         }
@@ -278,11 +292,7 @@ public class Company {
         vaccineList.add(vaccine);
     }
 
-    public VaccinationAppointment createSchedule(dtoScheduleVaccine dto){
-        return new VaccinationAppointment(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
-    }
-
-    public boolean checkIfVaccineUnique(TypeVaccine vaccine,int SNSnumber){
+    public boolean checkOtherCentersForVaccination(TypeVaccine vaccine,int SNSnumber){
         boolean flag=true;
         for(int i = 0; i< vaccinationFacilityList.size(); i++){
             for(int j = 0; j< vaccinationFacilityList.get(i).getVaccinationScheduleList().size(); j++){

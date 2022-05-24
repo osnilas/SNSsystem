@@ -24,7 +24,7 @@ public class CheckVaccineAppointmentUI implements Runnable{
         System.out.printf("SNS User number: ");
         int number = ler.nextInt();
 
-        if (company.SNSuserExists(number) == null) {
+        if (company.SNSuserExistsNumber(number) == null) {
             System.out.println("SNS user does not exist!");
         } else {
             snSuser = ctrl.SNSuserExists(number);

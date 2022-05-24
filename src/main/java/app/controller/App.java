@@ -86,6 +86,8 @@ public class App {
 
         this.authFacade.addUserWithRole("Test SNS user", "sns@lei.sem2.pt", "11",Constants.ROLE_SNS);
 
+        this.authFacade.addUserWithRole(Constants.SN_SUSER_TESTER.getName(),Constants.SN_SUSER_TESTER.getEmail(),"911",Constants.ROLE_SNS);
+
         this.authFacade.addUserRole(Constants.ROLE_RES,Constants.ROLE_RES);
 
         this.authFacade.addUserWithRole(" Test Receptionist", "res@lei.sem2.pt", "22",Constants.ROLE_RES);

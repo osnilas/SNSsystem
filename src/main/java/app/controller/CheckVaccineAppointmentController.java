@@ -8,7 +8,7 @@ public class CheckVaccineAppointmentController {
     private Company company;
 
     public SNSuser SNSuserExists (int number) {
-        return company.SNSuserExists(number);
+        return company.SNSuserExistsNumber(number);
     }
 
     public boolean checkAppointment (int index, SNSuser snSuser) {

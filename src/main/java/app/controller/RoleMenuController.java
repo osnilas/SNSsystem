@@ -36,7 +36,7 @@ public class RoleMenuController {
      * @return boolean of the result of validation of this Role Array
      */
     public boolean fillRoleArray(String role) {
-        EMPLOYEE_ARRAY_LIST.addAll(this.company.fillRoleArray(role));
+        EMPLOYEE_ARRAY_LIST.addAll(this.company.FillRoleArray(role));
         return this.company.validateRoleArray(EMPLOYEE_ARRAY_LIST);
     }
 
