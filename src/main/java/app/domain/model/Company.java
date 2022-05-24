@@ -136,7 +136,7 @@ public class Company {
     }
 
     public boolean validateRoleArray(ArrayList<Employee> EmployeesRoleList){
-        if(EmployeesRoleList== null){
+        if(EmployeesRoleList.isEmpty()){
             return false;
         }
         return true;
