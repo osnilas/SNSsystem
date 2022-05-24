@@ -18,6 +18,7 @@ public class VaccineAdministrationUI implements Runnable {
     private VaccineAdministrationController ctrl = new VaccineAdministrationController();
 
     private Company company = App.getInstance().getCompany();
+
     /**
      * @author Pedro Nogueira
      * Register's a vaccine administration
@@ -103,7 +104,6 @@ public class VaccineAdministrationUI implements Runnable {
             } while (op == 1);
 
             if (ctrl.createVaccineAdministration(brand, minAge, maxAge, dosage, doses, vaccineInterval, typeVaccine)) {
-                int x = 0;
                 System.out.printf("Vaccine Type: %s%n%n", typeVaccine.getName());
                 System.out.printf("Brand: %s%n%n", brand);
                 for (int i = 0; i < minAge.size(); i++) {
@@ -112,7 +112,7 @@ public class VaccineAdministrationUI implements Runnable {
                     System.out.printf("Doses: %d%n", doses.get(i));
                     if (doses.get(i) > 1) {
                         for (int j = 0; j < doses.get(i) - 1; j++) {
-                            System.out.printf("Vaccine interval between doses %d and %d: %d%n", j, j + 1, vaccineInterval.get(i).get(j));
+                            System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j, j + 1, vaccineInterval.get(i).get(j));
                         }
                     }
                     System.out.println();
@@ -126,7 +126,7 @@ public class VaccineAdministrationUI implements Runnable {
         }
     }
 
-    public void validation (List<Integer> list, String header, String errorMessage, int temp) {
+    public void validation(List<Integer> list, String header, String errorMessage, int temp) {
         boolean success;
         do {
             success = true;
