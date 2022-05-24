@@ -301,8 +301,10 @@ public class Company {
     }
 
     public boolean checkAppointment(int index, SNSuser snSuser) {
-        if (vaccinationFacilityList.get(index).getVaccinationScheduleList().contains(snSuser)){
-            return true;
+        for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
+            if (vaccinationFacilityList.get(index).getVaccinationScheduleList().get(i).getSNSnumber() == snSuser.getSNSnumber()) {
+                return true;
+            }
         }
         return false;
     }
