@@ -34,9 +34,7 @@ public class Company {
     private static List<VaccinationFacility> vaccinationFacilityList =new ArrayList<>();
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
-
     private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
-
     public Company(String designation)
     {
         if (StringUtils.isBlank(designation))
@@ -320,5 +318,19 @@ public class Company {
             }
         }
         return false;
+    }
+
+    public int getSnsUserAppointmentIndex (int index, SNSuser snSuser) {
+        int appointmentIndex = 0;
+        for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
+            if (vaccinationFacilityList.get(index).getVaccinationScheduleList().get(i).getSNSnumber() == snSuser.getSNSnumber()) {
+                appointmentIndex = i;
+            }
+        }
+        return appointmentIndex;
+    }
+
+    public boolean checkAppointmentTime(int index, int snsUserIndex) {
+        return vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).isAppointmentSameTime(vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).getAppointmentTime());
     }
 }
