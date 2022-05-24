@@ -1,7 +1,6 @@
 package app.ui.console;
 
 import app.controller.AddSNSfromCSVController;
-import app.domain.model.SNSuser;
 import app.domain.shared.Constants;
 import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
@@ -9,10 +8,10 @@ import mappers.dto.dtoSNSuser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.PatternSyntaxException;
 
 import static java.time.LocalDate.parse;
 
@@ -29,104 +28,108 @@ public class AddUserFromCSVUI implements Runnable {
     }
 
     public void run() {
-            boolean success = file();
+        file();
     }
 
-    private boolean file(){
-        boolean success = false;
-        int flag = 0;
+    private void file() {
         String file;
         Utils.printText("\nAdd SNS users from CSV file UI:");
         file = Utils.readLineFromConsole("Insert CSV file name");
         if (file != null && file.endsWith(".csv")) {
             try {
-                success = copy(file);
-            } catch (FileNotFoundException| NoSuchElementException | ParseException e) {
+                copyDataFromFile(file);
+            } catch (FileNotFoundException | NoSuchElementException | ParseException e) {
                 e.printStackTrace();
             }
         }
-        return success;
     }
 
-    private boolean copy(String file) throws FileNotFoundException, ParseException , NoSuchElementException {
+    private void copyDataFromFile(String file) throws FileNotFoundException, ParseException, NoSuchElementException {
         boolean success = false;
-        boolean flag=true;
-        int count=0;
-        String split=null,uncutLine=null;
+        boolean flag = true;
+        int count = 0;
+        String split = null, uncutLine = null;
         Scanner in = new Scanner(new File(file));
         dtoSNSuser temp = null;
-        if(in.hasNextLine()) {
+        if (in.hasNextLine()) {
             uncutLine = in.nextLine();
             if (uncutLine.contains(",")) {
                 split = ",";
-                in=new Scanner(new File(file));
-            } else {
+                in = new Scanner(new File(file));
+            } else if (uncutLine.contains(";")) {
                 split = ";";
             }
-
-            while (in.hasNextLine()) {
-                uncutLine = in.nextLine();
-                String[] Line = uncutLine.split(split);
-                if (validateContents(Line)) {
-                    String name = Line[0];
-                    String sex = Line[1];
-                    LocalDate birth = LocalDate.parse(Line[2], Constants.FORMATTER);
-                    String address = Line[3];
-                    int phoneNumber = Integer.parseInt(Line[4]);
-                    String email = Line[5];
-                    int SNSnumber = Integer.parseInt(Line[6]);
-                    int ccNumber = Integer.parseInt(Line[7]);
-                    if (Line[1].isBlank()) {
-                        temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber);
+            if (split != null) {
+                while (in.hasNextLine()) {
+                    uncutLine = in.nextLine();
+                    try{
+                    String[] Line = uncutLine.split(split);
+                    if (validateContents(Line)) {
+                        String name = Line[0];
+                        String sex = Line[1];
+                        LocalDate birth = LocalDate.parse(Line[2], Constants.FORMATTER);
+                        String address = Line[3];
+                        int phoneNumber = Integer.parseInt(Line[4]);
+                        String email = Line[5];
+                        int SNSnumber = Integer.parseInt(Line[6]);
+                        int ccNumber = Integer.parseInt(Line[7]);
+                        if (Line[1].isBlank()) {
+                            temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber);
+                        } else {
+                            if (Validate.validateSex(Line[1])) {
+                                temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber);
+                            } else {
+                                flag = false;
+                            }
+                        }
+                        if (flag) {
+                            success = ctlr.createSNSuser(temp);
+                            if (!success) {
+                                Utils.printText("User already exists or its unvalid");
+                            }
+                            Utils.printText(ctlr.printSNSuser());
+                            if (Utils.confirm("Is it correct?(s/n)")) {
+                                success = ctlr.saveSNSuser(temp);
+                            } else {
+                                Utils.printText("-----Not saved, registration aborted-----");
+                            }
+                            if (success) {
+                                Utils.printText("-----------Registration done successfully-----------");
+                                count++;
+                            } else {
+                                Utils.printText("-----------Registration failed-----------");
+                            }
+                        } else {
+                            Utils.printText("-------Sex not valid----");
+                        }
                     } else {
-                        if (Validate.validateSex(Line[1])) {
-                            temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber);
-                        } else {
-                            flag = false;
-                        }
+                        Utils.printText("Input:");
+                        Utils.printText(uncutLine);
+                        Utils.printText("-------Input not valid----");
                     }
-                    if (flag) {
-                        success = ctlr.createSNSuser(temp);
-                        if (!success) {
-                            Utils.printText("User already exists or its unvalid");
-                        }
-                        //maybe toString dto?
-                        Utils.printText(ctlr.printSNSuser());
-                        if (Utils.confirm("Is it correct?(s/n)")) {
-                            success = ctlr.saveSNSuser(temp);
-                        } else {
-                            Utils.printText("-----Not saved, registration aborted-----");
-                        }
-                        if (success) {
-                            Utils.printText("-----------Registration done successfully-----------");
-                            count++;
-                        } else {
-                            Utils.printText("-----------Registration failed-----------");
-                        }
-                    } else {
-                        Utils.printText("-------Sex not valid----");
+                }catch (PatternSyntaxException e){
+                        e.printStackTrace();
                     }
-                } else {
-                    Utils.printText("Input:");
-                    Utils.printText(uncutLine);
-                    Utils.printText("-------Input not valid----");
                 }
             }
         }
-        ctlr.printSNSuserList();
         in.close();
-        return count != 0;
     }
 
     private boolean validateContents(String[] Line) {
-        boolean name= Validate.validateName(Line[0]);
-        boolean birth=Validate.validateDate(Line[2]);
-        boolean address=Validate.validateAddress(Line[3]);
-        boolean phoneNumber=Validate.validatePhone(Integer.parseInt(Line[4]));
-        boolean email=Validate.validateEmail(Line[5]);
-        boolean SNSnumber=Validate.validateSNS(Integer.parseInt(Line[6]));
-        boolean ccNumber=Validate.validateCC(Integer.parseInt(Line[7]));
-
+        boolean name, birth, address, phoneNumber, email, SNSnumber, ccNumber;
+        try {
+            name = Validate.validateName(Line[0]);
+            birth = Validate.validateDate(Line[2]);
+            address = Validate.validateAddress(Line[3]);
+            phoneNumber = Validate.validatePhone(Integer.parseInt(Line[4]));
+            email = Validate.validateEmail(Line[5]);
+            SNSnumber = Validate.validateSNS(Integer.parseInt(Line[6]));
+            ccNumber = Validate.validateCC(Integer.parseInt(Line[7]));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return false;
+        }
         return name && birth && address && phoneNumber && email && SNSnumber && ccNumber;
     }
 }
