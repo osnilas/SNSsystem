@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VaccinationFacility {
+public abstract class VaccinationFacility {
 
     private String name;
 
@@ -27,6 +27,8 @@ public class VaccinationFacility {
     private int maximumNumberOfVaccinesPerSlot;
 
     private List<VaccinationAppointment> vaccinationScheduleList=new ArrayList<>();
+
+    private List<VaccinationAppointment> waitingList=new ArrayList<>();
 
     /**@author JoÃ£o Veiga
      * Constructor
@@ -63,6 +65,7 @@ public class VaccinationFacility {
         this.slotDuration = slotDuration;
 
         this.maximumNumberOfVaccinesPerSlot = maximumNumberOfVaccinesPerSlot;
+
     }
 
     public String getName() {

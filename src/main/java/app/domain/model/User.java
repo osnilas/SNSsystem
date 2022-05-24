@@ -1,6 +1,6 @@
 package app.domain.model;
 
-public class User {
+public abstract class User {
 
     private String name;
     private String residenceAddress;
@@ -35,5 +35,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public boolean emailSame(String email){
+        return this.email.equalsIgnoreCase(email);
     }
 }
