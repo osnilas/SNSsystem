@@ -5,8 +5,14 @@ autonumber
 actor "SNS User" as user
 
 activate user
-user-> "System:" : asks to register a vaccine
 activate "System:"
-"System:" --> user : shows list and informs sucess of the operation
+user-> "System:" : asks to schedule a vaccine
+"System:" -> user : requests data (SNS number, type of vaccine, vaccination center, day and time of vaccination)
+user-> "System:" : types requested data
+user<- "System:" : shows the data and requests confirmation
+user-> "System:" : confirms the data
+user<- "System:" : confirms operation sucess if the day and time is available
+
 deactivate "System:"
+
 @enduml
