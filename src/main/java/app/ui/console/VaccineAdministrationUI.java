@@ -35,7 +35,8 @@ public class VaccineAdministrationUI implements Runnable {
         ArrayList<Integer> maxAge = new ArrayList<>();
         ArrayList<Integer> dosage = new ArrayList<>();
         ArrayList<Integer> doses = new ArrayList<>();
-        ArrayList<Integer> vaccineInterval = new ArrayList<>();
+        ArrayList<Integer> temporary = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> vaccineInterval = new ArrayList<>();
 
 
         if (company.getTypeVaccineList().isEmpty()) {
@@ -71,8 +72,8 @@ public class VaccineAdministrationUI implements Runnable {
                             success = true;
                             try {
                                 System.out.printf("Interval between Doses %d and %d(days): ", i, i + 1);
-                                vaccineInterval.add(ler.nextInt());
-                                if (!Validate.validateVaccineInterval(vaccineInterval, i - 1)) {
+                                temporary.add(ler.nextInt());
+                                if (!Validate.validateVaccineInterval(temporary, i - 1)) {
                                     System.out.println("Invalid number!");
                                     vaccineInterval.remove(i - 1);
                                     success = false;
@@ -84,6 +85,8 @@ public class VaccineAdministrationUI implements Runnable {
                             }
                         } while (!success);
                     }
+                    vaccineInterval.add(temporary);
+                    temporary = new ArrayList<>();
                 }
 
                 System.out.println();
@@ -108,9 +111,8 @@ public class VaccineAdministrationUI implements Runnable {
                     System.out.printf("Dosage: %d ml%n", dosage.get(i));
                     System.out.printf("Doses: %d%n", doses.get(i));
                     if (doses.get(i) > 1) {
-                        for (int j = 1; j < doses.get(i); j++) {
-                            System.out.printf("Vaccine interval between doses %d and %d: %d days%n", j, j + 1, vaccineInterval.get(x));
-                            x += 1;
+                        for (int j = 0; j < doses.get(i) - 1; j++) {
+                            System.out.printf("Vaccine interval between doses %d and %d: %d%n", j, j + 1, vaccineInterval.get(i).get(j));
                         }
                     }
                     System.out.println();

@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VaccineAdministration {
@@ -13,7 +14,7 @@ public class VaccineAdministration {
 
     private List<Integer> doses;
 
-    private List<Integer> vaccineInterval;
+    private ArrayList<ArrayList<Integer>> vaccineInterval;
 
     /**
      * @param brand           The vaccine's brand
@@ -27,7 +28,7 @@ public class VaccineAdministration {
      * Creates a vaccine admnistration
      */
 
-    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, List<Integer> vaccineInterval) {
+    public VaccineAdministration(String brand, List<Integer> minAge, List<Integer> maxAge, List<Integer> dosage, List<Integer> doses, ArrayList<ArrayList<Integer>> vaccineInterval) {
         this.brand = brand;
         this.minAge = minAge;
         this.maxAge = maxAge;
@@ -53,6 +54,6 @@ public class VaccineAdministration {
         return doses;
     }
 
-    public List<Integer> getVaccineInterval() { return vaccineInterval; }
+    public ArrayList<ArrayList<Integer>> getVaccineInterval() { return vaccineInterval; }
 
 }
