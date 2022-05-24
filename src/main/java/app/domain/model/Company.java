@@ -131,7 +131,7 @@ public class Company {
         System.out.println(employee.toString());
     }
 
-    public ArrayList<Employee> FillRoleArray(String role) {
+    public ArrayList<Employee> fillRoleArray(String role) {
         return fillRoleList(role, employeeList);
     }
 
@@ -299,4 +299,6 @@ public class Company {
     public List getTypeVaccineList() {
         return typeVaccineList;
     }
+
+    //public ArrayList getwaitingRoom () {return waitingRoom}
 }

@@ -60,6 +60,7 @@ public class RoleMenuUI implements Runnable{
             }
             if (sucess){
                 printListEmployees(EMPLOYEE_ARRAY_LIST);
+                EMPLOYEE_ARRAY_LIST.clear();
             }
             else {
                 sucess = false;
