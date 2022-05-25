@@ -3,36 +3,51 @@ package mappers.dto;
 import app.domain.model.User;
 import app.domain.shared.Constants;
 
+import java.lang.ref.PhantomReference;
 import java.time.LocalDate;
 
-public class dtoSNSuser extends User {
+public class dtoSNSuser {
+
+    private String name;
+    private String residenceAddress;
+    private String email;
+    private int phoneNumber;
+    private int ccNumber;
 
     private String sex;
     private LocalDate birth;
     private int SNSnumber;
+    private String password;
 
     private final static String DEFAULT_SEX = "Not specified";
 
-    public dtoSNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
-        super(email,name,address,email,phoneNumber,ccNumber);
+    public dtoSNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber,String password) {
+        this.name= name;
+        this.residenceAddress =address;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.ccNumber=ccNumber;
 
         this.sex = sex;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
+        this.password=password;
     }
 
-    public dtoSNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
-        super(email,name,address,email,phoneNumber,ccNumber);
-
+    public dtoSNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber,String password) {
+        this.name= name;
+        this.residenceAddress =address;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.ccNumber=ccNumber;
         sex = DEFAULT_SEX;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
-
+        this.password=password;
     }
 
-    @Override
     public String getName() {
-        return super.getName();
+        return name;
     }
 
     public LocalDate getBirth() {
@@ -43,28 +58,30 @@ public class dtoSNSuser extends User {
         return SNSnumber;
     }
 
-    @Override
     public int getCcNumber() {
-        return super.getCcNumber();
+        return ccNumber;
     }
 
-    @Override
     public int getPhoneNumber() {
-        return super.getPhoneNumber();
+        return phoneNumber;
     }
 
-    @Override
+
     public String getResidenceAddress() {
-        return super.getResidenceAddress();
+        return residenceAddress;
     }
 
-    @Override
+
     public String getEmail() {
-        return super.getEmail();
+        return email;
     }
 
     public String getSex() {
         return sex;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override

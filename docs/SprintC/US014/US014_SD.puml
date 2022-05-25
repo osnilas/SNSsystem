@@ -9,12 +9,12 @@ autonumber
     participant "Company" as COMP
     participant "dtoSNSuser" as DTO
     participant "app:App" as APP
-    participant "em:SNSuser" as SNS
-
     participant "auth:AuthFacade" as AUTH
+    participant "em:SNSuser" as SNS
     participant "validate:Validate" as VALID
-    participant "dtoSNSuser" as DTO
+    participant "SNSuserList \n:List<SNSuser>"
 
+        activate ADM
        activate CTRL
        CTRL->APP: app=getInstance()
        activate APP
@@ -23,7 +23,6 @@ autonumber
        deactivate COMP
        deactivate APP
        deactivate CTRL
-       activate ADM
        ADM -> UI: Request register new Users from CSV file
        activate UI
        UI --> ADM: request data(file name or address of file)
@@ -56,6 +55,9 @@ autonumber
        activate CTRL
        CTRL->COMP:saveSNSuser(dto)
        activate COMP
+       COMP->AUTH:addUserWithRole(name, email, pwd, roleId)
+       activate AUTH
+       deactivate AUTH
        COMP->COMP:validateSNSuserDTO(dtoSNSuser dto,int i)
        deactivate CTRL
 

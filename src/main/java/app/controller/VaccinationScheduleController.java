@@ -9,6 +9,7 @@ import mappers.dto.dtoScheduleVaccine;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public class VaccinationScheduleController {
     private SNSuser snSuser;
 
     private LocalDateTime date;
+
 
     private TypeVaccine typeVaccine;
 
@@ -73,8 +75,13 @@ public class VaccinationScheduleController {
         return flagSNSuser;
     }
 
-    public List<VaccinationFacility> getVaccinationFacilityList(){
-        return this.company.getVaccinationFacilityList();
+    public List<String> getVaccinationFacilities(){
+        List<VaccinationFacility> vaccinationFacilityList=this.company.getVaccinationFacilityList();
+        List<String>vaccinationFacilityNameList=new ArrayList<>();
+        for(int i=0;i<vaccinationFacilityList.size();i++){
+            vaccinationFacilityNameList.add(vaccinationFacilityList.get(i).getName());
+        }
+        return vaccinationFacilityNameList;
     }
 
     public boolean validateScheduleVaccine() throws Exception {
@@ -150,14 +157,15 @@ public class VaccinationScheduleController {
     }
 
 
-    private boolean ValidateAppoimentTime(LocalDateTime date, VaccinationFacility center) {
+    public boolean ValidateAppoimentTime(LocalDate day,int index ) {
         boolean flag = false;
         int count = 0;
-        List<VaccinationAppointment> scheduleList = center.getVaccinationScheduleList();
+        LocalDateTime date=getTimeSlots(day).get(index);
+        List<VaccinationAppointment> scheduleList = facility.getVaccinationScheduleList();
         for (int i = 0; i < scheduleList.size(); i++) {
             if (scheduleList.get(i).isAppointmentSameTime(date)) {
                 count++;
-                if (count == center.getMaximumNumberOfVaccinesPerSlot()) {
+                if (count == facility.getMaximumNumberOfVaccinesPerSlot()) {
                     flag = false;
                     break;
                 }
@@ -166,31 +174,41 @@ public class VaccinationScheduleController {
         }
         return flag;
     }
-    public void getDateAppoiment() {
-        LocalDate date = null;
-        LocalDateTime dateTime = null;
-        boolean flag = true;
+
+    public List<LocalDate> getDateList(){
+        int count = 0;
+        List<LocalDate> dateList = new ArrayList<>();
+        LocalDate inicial = LocalDate.now();
+        LocalDate temp = inicial;
+        LocalDate end = inicial.plusMonths(1);
         do {
-            try {
-                date = getDate();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } while (date == null);
-        do {
-            try {
-                dateTime = getTime(date);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } while (dateTime == null);
-        this.date=dateTime;
+            dateList.add(temp);
+            temp = temp.plusDays(1);
+        } while (temp.isBefore(end));
+        return dateList;
     }
 
-    private LocalDateTime getTime(LocalDate date) throws Exception {
-        Boolean flag;
+    public List<String> getTimeSlotsDTO(LocalDate date){
+        boolean flag;
         LocalDateTime opening = LocalDateTime.of(date, facility.getOpeningHours());
         LocalDateTime closing = LocalDateTime.of(date, facility.getClosingHours());
+
+        List<String> timeSlots = new ArrayList<>();
+        LocalDateTime temp = opening;
+
+        int index = 0;
+        flag = true;
+        do {
+            timeSlots.add(temp.format(Constants.DATE_TIME_FORMATTER));
+            temp = temp.plusMinutes(facility.getSlotDuration());
+        } while (closing.isAfter(temp));
+        return timeSlots;
+    }
+
+    public List<LocalDateTime> getTimeSlots(LocalDate day){
+        boolean flag;
+        LocalDateTime opening = LocalDateTime.of(day, facility.getOpeningHours());
+        LocalDateTime closing = LocalDateTime.of(day, facility.getClosingHours());
 
         List<LocalDateTime> timeSlots = new ArrayList<>();
         LocalDateTime temp = opening;
@@ -201,67 +219,51 @@ public class VaccinationScheduleController {
             timeSlots.add(temp);
             temp = temp.plusMinutes(facility.getSlotDuration());
         } while (closing.isAfter(temp));
-
-        do {
-            index = Utils.showAndSelectIndex(timeSlots, "Select a time");
-            if (index == -1) {
-                throw new Exception("Time not chosen");
-            }
-            if (!ValidateAppoimentTime(timeSlots.get(index), facility)) {
-                Utils.printText("Slot:\n" + timeSlots.get(index).format(Constants.DATE_TIME_FORMATTER) + " already full");
-                flag = !ValidateAppoimentTime(timeSlots.get(index), facility);
-            }
-            flag = ValidateAppoimentTime(timeSlots.get(index), facility);
-        } while (!flag);
-        return timeSlots.get(index);
+        return timeSlots;
     }
 
-    private LocalDate getDate() throws Exception {
-        int count = 0;
-        List<LocalDate> dateList = new ArrayList<>();
-        LocalDate inicial = LocalDate.now();
-        LocalDate temp = inicial;
-        LocalDate end = inicial.plusMonths(1);
-        do {
-            dateList.add(temp);
-            temp = temp.plusDays(1);
-        } while (temp.isBefore(end));
-        Utils.showDate(dateList, "Select a date");
-        int index = Utils.selectsIndex(dateList);
-        if (index == -1) {
-            throw new Exception("No date chosen");
-        }
-        return dateList.get(index);
+    public void setDate(LocalDate day,int index){
+        LocalDateTime time=getTimeSlots(day).get(index);
+        this.date=time;
     }
-    public void getTypeVaccineFromVaccinationFacility() throws Exception {
+    public int getTypeVaccineFromVaccinationFacility() {
         if (facility instanceof MassVaccinationCenter) {
-            this.typeVaccine= getTypeVaccineFromVaccinationCenter((MassVaccinationCenter) facility);
+            return 0;
         } else {
-            this.typeVaccine= getTypeVaccineFromHealthCareCenter((HealthCareCenter) facility);
+            return 1;
         }
     }
 
-    private TypeVaccine getTypeVaccineFromVaccinationCenter(MassVaccinationCenter center) throws Exception {
-        String typeVaccine = center.getTypeOfVaccine().getName();
-        Utils.printText("Vaccine of this vaccination center:");
-        Utils.printText(typeVaccine);
-        Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
-        if (Utils.confirm("Confirms type of Vaccine?")) {
-            return center.getTypeOfVaccine();
-        }
-        throw new Exception("Vaccine type not chosen");
+    public String getTypeVaccineFromVaccinationCenter(){
+        MassVaccinationCenter center= (MassVaccinationCenter) facility;
+        return center.getTypeOfVaccine().getName();
     }
 
-    private TypeVaccine getTypeVaccineFromHealthCareCenter(HealthCareCenter center) {
-        List<TypeVaccine> typeVaccineNameList = new ArrayList<>();
+    public void setTypeVaccineMassVaccinationCenter(){
+        MassVaccinationCenter center= (MassVaccinationCenter) facility;
+        TypeVaccine type=center.getTypeOfVaccine();
+        this.typeVaccine=type;
+    }
+
+
+
+    public List<String> getTypeVaccineFromHealthCareCenter() {
+        HealthCareCenter center=(HealthCareCenter) facility;
+        List<String> typeVaccineNameList = new ArrayList<>();
         for (int i = 0; i < center.getTypeVaccineList().size(); i++) {
-            typeVaccineNameList.addAll(center.getTypeVaccineList());
+            typeVaccineNameList.add(center.getTypeVaccineList().get(i).getName());
         }
-        Utils.showTypeVaccinne(typeVaccineNameList, "Select vaccine");
-        Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
-        int index = Utils.selectsIndex(typeVaccineNameList);
-        return center.getTypeVaccineList().get(index);
+        return typeVaccineNameList;
     }
+
+    public void setTypeVaccineHealthCareCenter(int index){
+        HealthCareCenter center=(HealthCareCenter) facility;
+        List<TypeVaccine> typeVaccineList = new ArrayList<>();
+        typeVaccineList.addAll(center.getTypeVaccineList());
+        this.typeVaccine=typeVaccineList.get(index);
+    }
+
+
 
 
     public String printSchedule(){

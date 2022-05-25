@@ -38,13 +38,13 @@ public class AddUserFromCSVUI implements Runnable {
         if (file != null && file.endsWith(".csv")) {
             try {
                 copyDataFromFile(file);
-            } catch (FileNotFoundException | NoSuchElementException | ParseException e) {
+            } catch (Exception  e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void copyDataFromFile(String file) throws FileNotFoundException, ParseException, NoSuchElementException {
+    private void copyDataFromFile(String file) throws Exception ,FileNotFoundException, ParseException, NoSuchElementException {
         boolean success = false;
         boolean flag = true;
         int count = 0;
@@ -73,11 +73,12 @@ public class AddUserFromCSVUI implements Runnable {
                         String email = Line[5];
                         int SNSnumber = Integer.parseInt(Line[6]);
                         int ccNumber = Integer.parseInt(Line[7]);
+                        String password=Utils.generatePwd(Constants.PWD_LENGHT);
                         if (Line[1].isBlank()) {
-                            temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber);
+                            temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
                         } else {
                             if (Validate.validateSex(Line[1])) {
-                                temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber);
+                                temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
                             } else {
                                 flag = false;
                             }
@@ -103,9 +104,7 @@ public class AddUserFromCSVUI implements Runnable {
                             Utils.printText("-------Sex not valid----");
                         }
                     } else {
-                        Utils.printText("Input:");
-                        Utils.printText(uncutLine);
-                        Utils.printText("-------Input not valid----");
+                        throw new Exception("CSV file not valid");
                     }
                 }catch (PatternSyntaxException e){
                         e.printStackTrace();

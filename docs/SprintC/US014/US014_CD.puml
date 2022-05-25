@@ -21,17 +21,15 @@ Class App{
 }
 
 Class SNSuser{
--String sex
--LocalDate birth
--Int SNSnumber
-}
-
-Class User{
--String name
--String residenceAddress
--String email
--int phoneNumber
--int ccNumber
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
 }
 
 Class AddSNSfromCSVUI{
@@ -46,12 +44,30 @@ Class AddSNSfromCSVController{
 +printSNSuser()
 }
 
+Class DTOSNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class MapperSNSuser{
+}
+
 AddSNSfromCSVUI..>AddSNSfromCSVController
+AddSNSfromCSVUI..>MapperSNSuser:Uses
+MapperSNSuser..>DTOSNSuser:Creates
 AddSNSfromCSVController..>Company
 AddSNSfromCSVController..>App
-Company"1"-->"*"User:owns
+AddSNSfromCSVController..>DTOSNSuser:Uses
+Company..>SNSuser:Owns
 Company..>AuthFacade
-User"*"-->"1"SNSuser:is a
+Company..>DTOSNSuser:Uses
 
 
 @enduml

@@ -4,9 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SNSuser extends User {
+public class SNSuser {
 
 
+    private String name;
+    private String residenceAddress;
+    private String email;
+    private int phoneNumber;
+    private int ccNumber;
     private String sex;
     private LocalDate birth;
     private int SNSnumber;
@@ -15,24 +20,65 @@ public class SNSuser extends User {
 
     private final static String DEFAULT_SEX = "Not specified";
 
-    public SNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
-        super(email,name,address,email,phoneNumber,ccNumber);
+    private String password;
 
+    public SNSuser(String name, String sex, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber,String password) {
+        this.name= name;
+        this.residenceAddress =address;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.ccNumber=ccNumber;
         this.sex = sex;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
         this.vaccinationRecord=new ArrayList<>();
+        this.password=password;
     }
 
-    public SNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber) {
-        super(email,name,address,email,phoneNumber,ccNumber);
-
+    public SNSuser(String name, LocalDate birth, String address, String email, int phoneNumber, int SNSnumber, int ccNumber,String password) {
+        this.name= name;
+        this.residenceAddress =address;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.ccNumber=ccNumber;
         sex = DEFAULT_SEX;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
+        this.password=password;
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public int getCcNumber() {
+        return ccNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDate getBirth() {
+        return birth;
+    }
+
+    public String getResidenceAddress() {
+        return residenceAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public int getAge() {
         LocalDate now = LocalDate.now();
@@ -66,6 +112,10 @@ public class SNSuser extends User {
         return vaccinationRecord.get(index);
     }
 
+    public boolean emailSame(String email){
+        return this.email.equalsIgnoreCase(email);
+    }
+
     public boolean SNSnumberSame(int snsNumber){
         return this.SNSnumber==snsNumber;
     }
@@ -73,15 +123,16 @@ public class SNSuser extends User {
     @Override
     public String toString() {
         return "SNSuser:" +
-                "name:'" + getName() + '\'' +
+                "name:'" + name + '\'' +
                 ", sex:'" + sex + '\'' +
                 ", birth:" + birth +
-                ", residence  address:'" + getResidenceAddress() + '\'' +
-                ", email:'" + getEmail() + '\'' +
-                ", phone number:" + getPhoneNumber() +
+                ", residence  address:'" + name + '\'' +
+                ", email:'" + email + '\'' +
+                ", phone number:" + phoneNumber +
                 ", SNS number:" + SNSnumber +
-                ", citizen card number:" + getCcNumber() +
-                '}';
+                ", citizen card number:" + ccNumber +
+                ", password:" +password
+                ;
     }
 
 }

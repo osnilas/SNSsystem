@@ -1,10 +1,10 @@
 package tests;
 
 import app.controller.AddSNSfromCSVController;
-import app.controller.App;
+import app.domain.model.SNSuser;
 import app.domain.shared.Constants;
 import app.domain.shared.Validate;
-import app.ui.console.AddUserFromCSVUI;
+import mappers.dto.MapperSNSuser;
 import mappers.dto.dtoSNSuser;
 import org.junit.jupiter.api.Test;
 
@@ -15,15 +15,7 @@ class US014 {
 
     @Test
     void validateUserInvalidEmail(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","joao@gmail.com",912422195,111111,111111111);
-        AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
-        boolean test= ctlr.saveSNSuser(dto);
-        assertFalse(test);
-    }
-
-    @Test
-    void validateUserValidEmail(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","jo@gmail.com",912422195,111111,111111111);
+        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","joao@gmail.com",912422195,111111,111111111,"11");
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
         assertFalse(test);
@@ -31,15 +23,7 @@ class US014 {
 
     @Test
     void validateUserInvalidSNSnumber(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","joo@gmail.com",912422195,22207750,111111111);
-        AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
-        boolean test= ctlr.saveSNSuser(dto);
-        assertFalse(test);
-    }
-
-    @Test
-    void validateUserValidSNSnumber(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","jo@gmail.com",912422195,111111,111111111);
+        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","joo@gmail.com",912422195,22207750,111111111,"11");
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
         assertFalse(test);
@@ -47,18 +31,29 @@ class US014 {
 
     @Test
     void validateUserInvalidCCnumber(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","jo@gmail.com",912422195,111111,15467765);
+        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","jo@gmail.com",912422195,111111,15467765,"22");
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
         assertFalse(test);
     }
 
     @Test
-    void validateUserValidCCnumber(){
-        dtoSNSuser dto=new dtoSNSuser("J","Male",Constants.BIRTH_TESTER,"Rua","jo@gmail.com",912422195,111111,12345678);
+    void SNSuserCopy(){
+        MapperSNSuser mapper=new MapperSNSuser();
+        dtoSNSuser dto=mapper.toDTO(Constants.SN_SUSER_TESTER);
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
         assertFalse(test);
+    }
+
+    @Test
+    void SNSuserValid(){
+        MapperSNSuser mapper=new MapperSNSuser();
+        SNSuser user=new SNSuser("Carlos",Constants.SexList[0],Constants.BIRTH_TESTER,"Rua","carlos@gmail.com",91608799,22207756,15789996,"password");
+        dtoSNSuser dto=mapper.toDTO(user);
+        AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
+        boolean test= ctlr.saveSNSuser(dto);
+        assertTrue(test);
     }
 
     @Test

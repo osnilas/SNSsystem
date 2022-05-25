@@ -63,7 +63,7 @@ public class Constants {
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 
-    public static final SNSuser SN_SUSER_TESTER=new SNSuser("João Veiga",SexList[0],BIRTH_TESTER,"Rua General","joao@gmail.com",912422195,22207750,15467765);
+    public static final SNSuser SN_SUSER_TESTER=new SNSuser("Joao Veiga", SexList[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 22207750, 17555697,"911");
     public static final TypeVaccine TYPE_VACCINE_TESTER= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
     public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER);
     public static final TypeVaccine TYPE_VACCINE_RECOMMENDED= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");

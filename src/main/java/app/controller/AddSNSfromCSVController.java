@@ -2,12 +2,9 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.SNSuser;
-import app.domain.model.User;
 import app.ui.console.utils.Utils;
 import mappers.dto.dtoSNSuser;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AddSNSfromCSVController {

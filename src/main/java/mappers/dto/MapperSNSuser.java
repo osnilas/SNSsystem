@@ -7,10 +7,10 @@ public class MapperSNSuser {
     public MapperSNSuser(){}
 
     public SNSuser toSNSuser(dtoSNSuser dto){
-        return new SNSuser(dto.getName(), dto.getSex(),dto.getBirth(),dto.getResidenceAddress(),dto.getEmail(),dto.getPhoneNumber(),dto.getSNSnumber(),dto.getCcNumber());
+        return new SNSuser(dto.getName(), dto.getSex(),dto.getBirth(),dto.getResidenceAddress(),dto.getEmail(),dto.getPhoneNumber(),dto.getSNSnumber(),dto.getCcNumber(),dto.getPassword());
     }
 
-    public dtoSNSuser toDTO(dtoSNSuser user){
-        return new dtoSNSuser(user.getName(), user.getSex(),user.getBirth(),user.getResidenceAddress(),user.getEmail(),user.getPhoneNumber(),user.getSNSnumber(),user.getCcNumber());
+    public dtoSNSuser toDTO(SNSuser user){
+        return new dtoSNSuser(user.getName(), user.getSex(),user.getBirth(),user.getResidenceAddress(),user.getEmail(),user.getPhoneNumber(),user.getSNSnumber(),user.getCcNumber(), user.getPassword());
     }
 }
