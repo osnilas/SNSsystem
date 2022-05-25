@@ -28,7 +28,7 @@ public abstract class VaccinationFacility {
 
     private List<VaccinationAppointment> vaccinationScheduleList=new ArrayList<>();
 
-    private List<VaccinationAppointment> waitingList=new ArrayList<>();
+    private List<Arrival> waitingList=new ArrayList<>();
 
     /**@author JoÃ£o Veiga
      * Constructor
@@ -116,7 +116,7 @@ public abstract class VaccinationFacility {
         vaccinationScheduleList.add(schedule);
     }
 
-    public List<VaccinationAppointment> getWaitingList() {
+    public List<Arrival> getWaitingList() {
         return waitingList;
     }
 }

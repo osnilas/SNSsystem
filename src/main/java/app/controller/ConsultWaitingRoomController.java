@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.model.Arrival;
 import app.domain.model.Company;
 import app.domain.model.VaccinationAppointment;
 
@@ -13,7 +14,7 @@ public class ConsultWaitingRoomController {
         this.company = App.getInstance().getCompany();
     }
 
-    public List<VaccinationAppointment> waitingList (int index) {
+    public List<Arrival> waitingList (int index) {
         return this.company.getwaitingList(index);
     }
 
