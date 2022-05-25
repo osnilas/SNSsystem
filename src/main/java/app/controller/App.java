@@ -94,7 +94,7 @@ public class App {
 
         this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
 
-        this.authFacade.addUserWithRole("Test nurse", "nurse@lei.sem2.pt", "33",Constants.ROLE_ADMIN);
+        this.authFacade.addUserWithRole("Test nurse", "nurse@lei.sem2.pt", "33",Constants.ROLE_NURSE);
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

@@ -1,10 +1,9 @@
 package app.controller;
 
 import app.domain.model.Company;
-import app.domain.model.Employee;
-import app.domain.model.SNSuser;
+import app.domain.model.VaccinationAppointment;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ConsultWaitingRoomController {
 
@@ -14,8 +13,8 @@ public class ConsultWaitingRoomController {
         this.company = App.getInstance().getCompany();
     }
 
- //   public ArrayList <SNSuser> waitingRoom () {
-  //      return this.company.getwaitingRoom();
-  //  }
+    public List<VaccinationAppointment> waitingList (int index) {
+        return this.company.getwaitingList(index);
+    }
 
 }

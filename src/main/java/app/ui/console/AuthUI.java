@@ -58,7 +58,7 @@ public class AuthUI implements Runnable{
         // To complete with other user roles and related RoleUI
         rolesUI.add(new MenuItem(Constants.ROLE_SNS, new SNSuserUI()));
         rolesUI.add(new MenuItem(Constants.ROLE_RES, new ReceptionistUI()));
-        rolesUI.add(new MenuItem(Constants.ROLE_NURSE, new AdminUI()));
+        rolesUI.add(new MenuItem(Constants.ROLE_NURSE, new NurseUI()));
         //
         return rolesUI;
     }

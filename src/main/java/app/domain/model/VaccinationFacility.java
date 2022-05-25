@@ -115,4 +115,8 @@ public abstract class VaccinationFacility {
     public void addSchedule(VaccinationAppointment schedule){
         vaccinationScheduleList.add(schedule);
     }
+
+    public List<VaccinationAppointment> getWaitingList() {
+        return waitingList;
+    }
 }
