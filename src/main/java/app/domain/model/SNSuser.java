@@ -94,6 +94,10 @@ public class SNSuser {
         return vaccinationRecord;
     }
 
+    public void setVaccinationRecord(VaccinationRecord record){
+        vaccinationRecord.add(record);
+    }
+
     public boolean checkIfHasVaccinationRecord(){
         if(vaccinationRecord.size()==0){
             return false;
@@ -102,9 +106,9 @@ public class SNSuser {
     }
 
     public VaccinationRecord getLatestVaccinationRecord(Vaccine vaccine){
-        int numberDosageTemp=-1,index=-1;
+        int numberDosageTemp=-300,index=-1;
         for (int i=0;i<vaccinationRecord.size();i++){
-            if(vaccinationRecord.get(i).getNumberDosesTaken()<numberDosageTemp){
+            if(vaccinationRecord.get(i).getNumberDosesTaken()>numberDosageTemp){
                 numberDosageTemp=vaccinationRecord.get(i).getNumberDosesTaken();
                 index=i;
             }

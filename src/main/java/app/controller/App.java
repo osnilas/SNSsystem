@@ -28,10 +28,6 @@ public class App {
         bootstrap();
     }
 
-    public void addUser(String name,String email,String roleId){
-        this.authFacade.addUserWithRole(name,email,"123",roleId);
-    }
-
     public Company getCompany()
     {
         return this.company;

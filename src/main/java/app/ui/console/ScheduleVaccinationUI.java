@@ -45,21 +45,19 @@ public class ScheduleVaccinationUI implements Runnable {
             ctlr.createSchedule();
             Utils.printText(ctlr.printSchedule());
             if (Utils.confirm("Is this correct?")) {
-                if (ctlr.validateScheduleVaccine()){
-                    sucess = ctlr.saveSchedule();
+                sucess=ctlr.validateScheduleVaccine();
+                if (sucess) {
+                    ctlr.saveSchedule();
+                    Utils.printText("-----Appoiment added sucessfully-----");
+                } else {
+                    Utils.printText("----Appoiment creation failed----");
                 }
+
             }
-
         }
-        if (sucess) {
-            Utils.printText("-----Appoiment added sucessfully-----");
-        } else {
-            Utils.printText("----Appoiment creation failed----");
-        }
-
-
         return sucess;
     }
+
 
     private void setSNSuser() throws Exception {
 
@@ -75,20 +73,20 @@ public class ScheduleVaccinationUI implements Runnable {
             if (!ctlr.checkIfSNSuserExists(snsNubmer)) {
                 throw new Exception("SNS user not registered on system");
             }
-        }else {
-            if(!ctlr.SNSuserExistsEmail()){
+        } else {
+            if (!ctlr.SNSuserExistsEmail()) {
                 throw new Exception("SNS user not registered on system");
             }
         }
     }
 
-    private void setVaccinationFacility(){
+    private void setVaccinationFacility() {
         int index;
         do {
             List<String> list = ctlr.getVaccinationFacilities();
             Utils.showList(list, "Select a vaccination facility");
             index = Utils.selectsIndex(ctlr.getVaccinationFacilities());
-        }while (index==-1);
+        } while (index == -1);
         ctlr.setVaccinationFacility(index);
     }
 
@@ -105,7 +103,7 @@ public class ScheduleVaccinationUI implements Runnable {
         } while (date == null);
         do {
             try {
-                 flag=getTime(date);
+                flag = getTime(date);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -115,24 +113,24 @@ public class ScheduleVaccinationUI implements Runnable {
     private boolean getTime(LocalDate date) throws Exception {
         int index;
         boolean flag;
-        List<String>  timeSlots=ctlr.getTimeSlotsDTO(date);
+        List<String> timeSlots = ctlr.getTimeSlotsDTO(date);
         do {
             index = Utils.showAndSelectIndex(timeSlots, "Select a time");
             if (index == -1) {
                 throw new Exception("Time not chosen");
             }
-            if (!ctlr.ValidateAppoimentTime(date,index)){
+            if (!ctlr.ValidateAppoimentTime(date, index)) {
                 Utils.printText("Slot:\n" + timeSlots.get(index) + " already full");
-                flag = !ctlr.ValidateAppoimentTime(date,index);
+                flag = !ctlr.ValidateAppoimentTime(date, index);
             }
-            flag = ctlr.ValidateAppoimentTime(date,index);
+            flag = ctlr.ValidateAppoimentTime(date, index);
         } while (!flag);
-        ctlr.setDate(date,index);
+        ctlr.setDate(date, index);
         return true;
     }
 
     private LocalDate getDate() throws Exception {
-        List<LocalDate> dateList=ctlr.getDateList();
+        List<LocalDate> dateList = ctlr.getDateList();
         Utils.showDate(dateList, "Select a date");
         int index = Utils.selectsIndex(dateList);
         if (index == -1) {
@@ -141,10 +139,10 @@ public class ScheduleVaccinationUI implements Runnable {
         return dateList.get(index);
     }
 
-    public void selectVaccineType(){
-        boolean flag=false;
-        int typeCenter=ctlr.getTypeVaccineFromVaccinationFacility();
-        switch (typeCenter){
+    public void selectVaccineType() {
+        boolean flag = false;
+        int typeCenter = ctlr.getTypeVaccineFromVaccinationFacility();
+        switch (typeCenter) {
             case 0:
                 do {
                     try {
@@ -154,10 +152,11 @@ public class ScheduleVaccinationUI implements Runnable {
                         flag = true;
 
                     }
-                }while (flag);
-            break;
-            case 1:getTypeVaccineFromHealthCareCenter();
-            break;
+                } while (flag);
+                break;
+            case 1:
+                getTypeVaccineFromHealthCareCenter();
+                break;
         }
 
 
@@ -169,14 +168,13 @@ public class ScheduleVaccinationUI implements Runnable {
         Utils.printText(typeVaccine);
         if (Utils.confirm("Confirms type of Vaccine?")) {
             ctlr.setTypeVaccineMassVaccinationCenter();
-        }
-        else {
+        } else {
             throw new Exception("Vaccine type not chosen");
         }
     }
 
-    private void getTypeVaccineFromHealthCareCenter(){
-        List<String> list=ctlr.getTypeVaccineFromHealthCareCenter();
+    private void getTypeVaccineFromHealthCareCenter() {
+        List<String> list = ctlr.getTypeVaccineFromHealthCareCenter();
         Utils.showList(list, "Select vaccine");
         Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
         int index = Utils.selectsIndex(list);

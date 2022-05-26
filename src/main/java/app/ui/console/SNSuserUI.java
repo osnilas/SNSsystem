@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SNSuserUI implements Runnable{
+
     public SNSuserUI()
     {
-
     }
 
     public void run()
@@ -19,7 +19,7 @@ public class SNSuserUI implements Runnable{
         int option;
         do
         {
-            option = Utils.showAndSelectIndex(options, "\n\nAdmin Menu:");
+            option = Utils.showAndSelectIndex(options, "\n\nSNS user Menu:");
 
             if ( (option >= 0) && (option < options.size()))
             {

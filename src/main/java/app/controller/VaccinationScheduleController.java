@@ -58,21 +58,8 @@ public class VaccinationScheduleController {
         this.schedule =new VaccinationAppointment(snSuser.getSNSnumber(),date,typeVaccine);
     }
 
-    public boolean saveSchedule() throws Exception {
-        boolean flagVaccination=false ,flagSNSuser=false;
-        if(this.company.checkOtherCentersForVaccination(schedule.getTypeVaccine(),schedule.getSNSnumber())){
-            flagSNSuser=true;
-        }
-        else{
-                throw new Exception("User already has a schedule for same vaccine");
-        }
-        if(flagSNSuser){
-            facility.addSchedule(schedule);
-        }
-        else{
-            throw new Exception("SYSTEM ERROR VACCINATION FACILITY NOT FOUND");
-        }
-        return flagSNSuser;
+    public void saveSchedule()  {
+        facility.addSchedule(schedule);
     }
 
     public List<String> getVaccinationFacilities(){
@@ -85,7 +72,18 @@ public class VaccinationScheduleController {
     }
 
     public boolean validateScheduleVaccine() throws Exception {
-        return vaccinationRecord();
+        return   validateScheduleVaccineType() && vaccinationRecord();
+    }
+
+    public boolean validateScheduleVaccineType() throws Exception{
+        boolean flagSNSuser=false;
+        if(this.company.checkOtherCentersForVaccination(schedule.getTypeVaccine(),schedule.getSNSnumber())){
+            flagSNSuser=true;
+        }
+        else{
+            throw new Exception("User already has a schedule for same vaccine");
+        }
+        return flagSNSuser;
     }
 
     public boolean validateCreationSchedule(){
@@ -119,18 +117,22 @@ public class VaccinationScheduleController {
         }
         else{
             for(int i=0;i<snSuser.getVaccinationRecord().size();i++){
-                if(Objects.equals(snSuser.getVaccinationRecord().get(i).getVaccine().getTypeVaccine(),schedule.getTypeVaccine())){
-                    throw new Exception("SNS user can't schedule this vaccine again");
-                }
-                else if(!validateAgeAndTimeDose(snSuser.getVaccinationRecord().get(i).getVaccine())){
-                    throw new Exception("SNS user can´t take this vaccine");
+                if(snSuser.getVaccinationRecord().get(i).checkTypeVaccine(typeVaccine)) {
+                    validateAgeAndTimeDose(snSuser.getVaccinationRecord().get(i).getVaccine());
                 }
             }
         }
         return true;
     }
 
-    public boolean validateAgeAndTimeDose(Vaccine vaccine){
+    public boolean validateAgeAndTimeDose(Vaccine vaccine)throws Exception{
+        if(!validateDoseTime(vaccine)){
+            throw new Exception("Too soon to take next dose");
+        }
+        if(!validateAgeGroup(vaccine)){
+            throw new Exception("Vaccine is't for user age ");
+        }
+
         return validateAgeGroup(vaccine) && validateDoseTime(vaccine);
     }
 
@@ -158,7 +160,7 @@ public class VaccinationScheduleController {
 
 
     public boolean ValidateAppoimentTime(LocalDate day,int index ) {
-        boolean flag = false;
+        boolean flag = true;
         int count = 0;
         LocalDateTime date=getTimeSlots(day).get(index);
         List<VaccinationAppointment> scheduleList = facility.getVaccinationScheduleList();
@@ -170,7 +172,6 @@ public class VaccinationScheduleController {
                     break;
                 }
             }
-            flag = true;
         }
         return flag;
     }

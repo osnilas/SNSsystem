@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HealthCareCenter extends VaccinationFacility{
 
-    private List<TypeVaccine> TypeVaccineList=new ArrayList<>();
+    private List<TypeVaccine> TypeVaccineList;
 
     /**
      * @param name                           The Vaccination Center name
@@ -28,7 +28,8 @@ public class HealthCareCenter extends VaccinationFacility{
      */
     public HealthCareCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, List<TypeVaccine> list) {
         super(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot);
-        this.TypeVaccineList= Utils.copyList(TypeVaccineList,list);
+        TypeVaccineList=new ArrayList<>();
+        TypeVaccineList.addAll(list);
     }
 
     public void addTypeVaccine(TypeVaccine typeVaccine){

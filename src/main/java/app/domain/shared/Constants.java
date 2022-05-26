@@ -2,6 +2,7 @@ package app.domain.shared;
 
 import app.domain.model.*;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -64,11 +66,35 @@ public class Constants {
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 
     public static final SNSuser SN_SUSER_TESTER=new SNSuser("Joao Veiga", SexList[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 22207750, 17555697,"911");
-    public static final TypeVaccine TYPE_VACCINE_TESTER= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
-    public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER);
+    public static final TypeVaccine TYPE_VACCINE_TESTER1= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
+    public static final TypeVaccine TYPE_VACCINE_TESTER2= new TypeVaccine("Smallpox", "Smallpox was an infectious disease caused by one of two virus variants, Variola major and Variola minor", "smallP818", "Inactivated");
+    private static final List<TypeVaccine> TYPE_VACCINE_LIST_TESTER=List.of(TYPE_VACCINE_TESTER1,TYPE_VACCINE_TESTER2);
+    public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER1);
+    public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER=new HealthCareCenter("USF Pedrouços","Rua da Giesta", 229774710, "sns@email.com",229774710,"www.USF.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,60,3,TYPE_VACCINE_LIST_TESTER);
     public static final TypeVaccine TYPE_VACCINE_RECOMMENDED= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
+
     public static final List<String> VACCINE_TECHNOLOGY = List.of("Live-attenuated", "Inactivated", "Subunit", "Toxoid", "Viral vector", "Messenger RNA");
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(12207750,LocalDateTime.of(2022,5,25,12,00),TYPE_VACCINE_TESTER);
+    private static final List<Integer> MIN_AGE_TESTER= List.of(11,21);
+
+    private static final List<Integer> Max_AGE_TESTER= List.of(20,50);
+
+    private static final List<Integer> DOSAGE_TESTER=List.of(1,3);
+
+    private static final List<Integer> DOSE_TESTER=List.of(2,3);
+
+    private static final ArrayList<Integer> TIME_VACCINE_TESTER1= new ArrayList<>(Arrays.asList(20));
+
+    private static final ArrayList<Integer> TIME_VACCINE_TESTER2=  new ArrayList<>(Arrays.asList(20,30));
+
+
+    private static final ArrayList<ArrayList<Integer>> TIME_VACCINE_TESTER= new ArrayList<>(Arrays.asList(TIME_VACCINE_TESTER1,TIME_VACCINE_TESTER2));
+
+    private static final VaccineAdministration VACCINE_ADMINISTRATION_TESTER= new VaccineAdministration("Pfizer",MIN_AGE_TESTER,Max_AGE_TESTER,DOSAGE_TESTER,DOSE_TESTER,TIME_VACCINE_TESTER);
+
+    private static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
+
+    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,18,12,30,00),1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(12207750,LocalDateTime.of(2022,6,5,12,00),TYPE_VACCINE_TESTER1);
 }
 
