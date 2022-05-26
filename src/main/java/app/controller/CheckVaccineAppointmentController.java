@@ -43,4 +43,5 @@ public class CheckVaccineAppointmentController {
     public boolean requestToSaveSnsUserArrival(int index) {
         return company.saveSNSuserArrival(index, arrival);
     }
+
 }

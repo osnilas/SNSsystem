@@ -6,11 +6,9 @@ import app.ui.console.utils.Utils;
 import mappers.dto.MapperSNSuser;
 import mappers.dto.dtoEmployee;
 import mappers.dto.dtoSNSuser;
-import mappers.dto.dtoScheduleVaccine;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -32,20 +30,20 @@ public class Company {
     private static List<VaccineAdministration> vaccineAdministrationList = new ArrayList<>();
 
     private static List<Vaccine> vaccineList = new ArrayList<>();
-    private static List<VaccinationFacility> vaccinationFacilityList = new ArrayList<>();
+    private static List<VaccinationFacility> vaccinationFacilityList =new ArrayList<>();
 
-    private static List<SNSuser> SNSuserList = new ArrayList<>();
-    private static MapperSNSuser mapperSNSuser = new MapperSNSuser();
-
-    public Company(String designation) {
-        if (StringUtils.isBlank(designation)) throw new IllegalArgumentException("Designation cannot be blank.");
+    private static List<SNSuser> SNSuserList=new ArrayList<>();
+    private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
+    public Company(String designation)
+    {
+        if (StringUtils.isBlank(designation))
+            throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
         demo();
     }
 
     public void demo(){
-        vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
@@ -54,7 +52,6 @@ public class Company {
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         employeeList.add(Constants.EMPLOYEE_TESTER);
         SNSuserList.add(Constants.SN_SUSER_TESTER);
-        SNSuserList.get(0).setVaccinationRecord(Constants.VACCINATION_RECORD_TESTER);
     }
 
     public String getDesignation() {
@@ -312,15 +309,6 @@ public class Company {
     public List getTypeVaccineList() {
         return typeVaccineList;
     }
-    public int getSnsUserAppointmentIndex (int index, SNSuser snSuser) {
-        int appointmentIndex = 0;
-        for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
-            if (vaccinationFacilityList.get(index).getVaccinationScheduleList().get(i).getSNSnumber() == snSuser.getSNSnumber()) {
-                appointmentIndex = i;
-            }
-        }
-        return appointmentIndex;
-    }
 
     public boolean checkAppointment(int index, SNSuser snSuser) {
         for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
@@ -331,51 +319,53 @@ public class Company {
         return false;
     }
 
+    public int getSnsUserAppointmentIndex (int index, SNSuser snSuser) {
+        int appointmentIndex = 0;
+        for (int i = 0; i < vaccinationFacilityList.get(index).getVaccinationScheduleList().size(); i++) {
+            if (vaccinationFacilityList.get(index).getVaccinationScheduleList().get(i).getSNSnumber() == snSuser.getSNSnumber()) {
+                appointmentIndex = i;
+            }
+        }
+        return appointmentIndex;
+    }
+
     public boolean checkAppointmentTime(int index, int snsUserIndex) {
         return vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).isAppointmentSameTime(vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).getAppointmentTime());
     }
 
-    public boolean checkAppointmentDay(int index, int snsUserIndex) {
-        if (snsUserAppointmentTime(index, snsUserIndex).getDayOfMonth() != LocalDateTime.now().getDayOfMonth() || snsUserAppointmentTime(index, snsUserIndex).getMonthValue() != LocalDateTime.now().getMonthValue() || snsUserAppointmentTime(index, snsUserIndex).getYear() != LocalDateTime.now().getYear()) {
-            return false;
-        }
-        return true;
-    }
-
-    public LocalDateTime snsUserAppointmentTime(int index, int snsUserIndex) {
-        return vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).getAppointmentTime();
-    }
-
-    public List<Arrival> getwaitingList(int index) {
+    public List<Arrival> getWaitingList(int index) {
         return vaccinationFacilityList.get(index).getWaitingList();
     }
+    public ArrayList<String> snsUsersInWaitingRoom (int index){
+        ArrayList<String> snsUsers = new ArrayList<String>();
 
-    public boolean validateWaitingList(List<VaccinationAppointment> waitingList, int index) {
-        if (getwaitingList(index).isEmpty()) {
+        for (int i = 0; i < SNSuserList.size(); i++) {
+            for (int j = 0; j < getWaitingList(index).size(); j++) {
+
+                if (SNSuserList.get(i).equals(getWaitingList(index).get(j))){
+
+                    snsUsers.add(j,"Name: "+snsUserName(j,index).getName()+" Sex: "+snsUserName(j,index).getSex()+" Birth Date: "+snsUserName(j,index).getBirth()+" SNS User Number: "+snsUserName(j,index).getSNSnumber()+" Phone Number: "+snsUserName(j,index).getPhoneNumber());
+
+                  //  Name, Sex, Birth Date, SNS User Number and Phone Number.
+
+                }
+
+            }
+
+        }
+
+        return snsUsers;
+    }
+    public boolean validateWaitingList(int index) {
+        if (snsUsersInWaitingRoom(index).isEmpty()) {
             return false;
         }
         return true;
     }
 
-    public Arrival createArrival(SNSuser snSuser) {
-        return new Arrival(snSuser);
+    public SNSuser snsUserName (int index, int j){
+        return getWaitingList(index).get(j).getSnSuser();
     }
 
-    public boolean validateArrival(Arrival arrival) {
-        if (arrival == null) {
-            return false;
-        }
-        return true;
-    }
 
-    public boolean saveSNSuserArrival(int index, Arrival arrival) {
-        if (!validateArrival(arrival)) {
-            return false;
-        }
-        return addSnsUserToWaitingList(index, arrival);
-    }
-
-    private boolean addSnsUserToWaitingList(int index, Arrival arrival) {
-        return vaccinationFacilityList.get(index).getWaitingList().add(arrival);
-    }
 }

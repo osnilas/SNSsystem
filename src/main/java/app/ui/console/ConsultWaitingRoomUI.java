@@ -22,7 +22,10 @@ public class ConsultWaitingRoomUI implements Runnable{
         boolean sucess = false;
 
 
+        sucess = ctrl.snsUsersInWaitingRoom(1);
+
         if (sucess){
+            System.out.println("-----------SNS Users in the waiting list---------------");
 
         }
         else {
@@ -30,6 +33,11 @@ public class ConsultWaitingRoomUI implements Runnable{
 
         }
     }
+
+    /**
+     * @author Filipe Magalhães
+     * Prints the list of SNS users in the waiting room
+     */
 
     public void printWaitingList (List<VaccinationAppointment> waitingList){
         for (int i = 0; i < waitingList.size(); i++) {
