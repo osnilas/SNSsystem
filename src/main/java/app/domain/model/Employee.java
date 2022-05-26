@@ -11,7 +11,7 @@ public class Employee extends User {
     private static int count = 0;
 
     /**@author João Veiga
-     * Constructor
+     * @Description Constructor,
      * Creates an Employee with the following arttributes
      * @param name          The Employee name
      * @param address       The Employee name

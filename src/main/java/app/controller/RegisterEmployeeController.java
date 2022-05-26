@@ -6,7 +6,7 @@ import mappers.dto.dtoEmployee;
 
 /**
  * @author João Veiga
- * Controller of registration/creation of employee in US10
+ * @Description Controller of registration/creation of employee in US10
  */
 public class RegisterEmployeeController {
 
@@ -27,7 +27,7 @@ public class RegisterEmployeeController {
 
     /**
      * @author João Veiga
-     * Asks company to create a employee and stores the employee in the controller
+     * @Description Asks company to create a employee and stores the employee in the controller
      * @param dto dto of the class employee
      * @return boolean of the result of validation of this Employee
      */
@@ -38,7 +38,7 @@ public class RegisterEmployeeController {
 
     /**
      * @author João Veiga
-     * Saves employee in company
+     * @Description Saves employee in company
      * @return boolean of if the save was sucessful or not
      */
     public boolean saveEmployee(dtoEmployee dto) {
@@ -47,7 +47,7 @@ public class RegisterEmployeeController {
 
     /**
      * @author João Veiga
-     * Prints employee
+     * @Description Prints employee
      */
     public void printEmployee() {
         this.company.printEmployee(employee);

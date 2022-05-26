@@ -12,19 +12,19 @@ public class HealthCareCenter extends VaccinationFacility{
     private List<TypeVaccine> TypeVaccineList;
 
     /**
-     * @param name                           The Vaccination Center name
-     * @param address                        The Vaccination Center adress
-     * @param phoneNumber                    The Vaccination Center phone number
-     * @param emailAddress                   The Vaccination Center email
-     * @param faxNumber                      The Vaccination Center fax number
-     * @param websiteAddress                 The Vaccination Center website
-     * @param openingHours         The Vaccination Center opening and closing hours
-     * @param closingHours         The Vaccination Center opening and closing hours
-     * @param slotDuration                   The Vaccination Center slot duration
-     * @param maximumNumberOfVaccinesPerSlot The Vaccination Center maximum number of vaccines per slot
+     * @param name                           The health care center name
+     * @param address                        The health care center adress
+     * @param phoneNumber                    The health care center phone number
+     * @param emailAddress                   The health care center email
+     * @param faxNumber                      The health care center fax number
+     * @param websiteAddress                 The health care center website
+     * @param openingHours         The health care center opening and closing hours
+     * @param closingHours         The health care center opening and closing hours
+     * @param slotDuration                   The health care center slot duration
+     * @param maximumNumberOfVaccinesPerSlot The health care center maximum number of vaccines per slot
      * @author JoÃ£o Veiga
-     * Constructor
-     * Creates an Employee with the following arttributes
+     * @Description Constructor
+     * Creates a health care center with the following arttributes
      */
     public HealthCareCenter(String name, String address, int phoneNumber, String emailAddress, int faxNumber, String websiteAddress, LocalTime openingHours, LocalTime closingHours, int slotDuration, int maximumNumberOfVaccinesPerSlot, List<TypeVaccine> list) {
         super(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot);

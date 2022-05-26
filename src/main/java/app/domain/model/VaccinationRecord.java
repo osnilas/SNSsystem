@@ -17,6 +17,12 @@ public class VaccinationRecord {
         this.numberDosesTaken =numberDose;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method gets the vaccine adminstration index for the input age.
+     * @param age
+     * @return Vaccine adminstration index for the input age.
+     */
     public int getAgeGroup(int age){
         int indexNumber=-1;
         for(int i=0;i<vaccine.getVaccineAdministration().getMaxAge().size();i++) {
@@ -26,6 +32,13 @@ public class VaccinationRecord {
         }
         return indexNumber;
     }
+
+    /**
+     * @author João Veiga
+     * @Description This method checks if the vaccination record vaccine's type is the same as the input.
+     * @param typeVaccine
+     * @return Boolean if the vaccination record vaccine's type is the same as the input.
+     */
     public boolean checkTypeVaccine(TypeVaccine typeVaccine){
         if (Objects.equals(vaccine.getTypeVaccine(),typeVaccine)){
             return true;

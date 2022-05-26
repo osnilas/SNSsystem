@@ -2,15 +2,12 @@ package app.ui.console;
 
 import app.controller.App;
 import app.controller.VaccinationScheduleController;
-import app.domain.model.*;
 import app.domain.shared.Constants;
 import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
-import mappers.dto.dtoScheduleVaccine;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleVaccinationUI implements Runnable {
@@ -163,7 +160,7 @@ public class ScheduleVaccinationUI implements Runnable {
     }
 
     private void getTypeVaccineFromVaccinationCenter() throws Exception {
-        String typeVaccine = ctlr.getTypeVaccineFromVaccinationCenter();
+        String typeVaccine = ctlr.getTypeVaccineFromMassVaccinationCenter();
         Utils.printText("Vaccine of this vaccination center:");
         Utils.printText(typeVaccine);
         if (Utils.confirm("Confirms type of Vaccine?")) {

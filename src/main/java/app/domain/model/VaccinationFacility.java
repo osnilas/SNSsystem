@@ -30,8 +30,8 @@ public abstract class VaccinationFacility {
 
     private List<Arrival> waitingList=new ArrayList<>();
 
-    /**@author JoÃ£o Veiga
-     * Constructor
+    /**@author João Veiga
+     * @Description Constructor
      * Creates an Employee with the following arttributes
      * @param name                              The Vaccination Center name
      * @param address                           The Vaccination Center adress

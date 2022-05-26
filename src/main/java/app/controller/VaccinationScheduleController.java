@@ -2,17 +2,12 @@ package app.controller;
 
 import app.domain.model.*;
 import app.domain.shared.Constants;
-import app.domain.shared.Validate;
-import app.ui.console.utils.Utils;
-import mappers.dto.dtoScheduleVaccine;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VaccinationScheduleController {
 
@@ -45,6 +40,12 @@ public class VaccinationScheduleController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
+    /**
+     * @author João Veiga
+     * @US 01 **ONLY**
+     * @Description This method gets current session user email and get an SNS user with the same email.
+     * @return Boolean if it found one or not.
+     */
     public boolean SNSuserExistsEmail(){
         String email=this.company.getAuthFacade().getCurrentUserSession().getUserId().getEmail();
         if(this.company.SNSuserExistsEmail(email) !=null){
@@ -54,14 +55,27 @@ public class VaccinationScheduleController {
         return false;
     }
 
+    /**
+     * @author João Veiga
+     * @Description Creates a new Vaccination Appoiment and saves it on the controller.
+     */
     public void createSchedule(){
         this.schedule =new VaccinationAppointment(snSuser.getSNSnumber(),date,typeVaccine);
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method saves the vaccine appoiment on the vaccination facility list of appoiments.
+     */
     public void saveSchedule()  {
         facility.addSchedule(schedule);
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method gets vaccination facility list from company and fills a string list with the facility's name.
+     * @return List<String> with vaccination facility name's.
+     */
     public List<String> getVaccinationFacilities(){
         List<VaccinationFacility> vaccinationFacilityList=this.company.getVaccinationFacilityList();
         List<String>vaccinationFacilityNameList=new ArrayList<>();
@@ -71,11 +85,18 @@ public class VaccinationScheduleController {
         return vaccinationFacilityNameList;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method validates vaccine schedule, calls two sub methods(validateScheduleVaccineType and validateVaccinationRecord).
+     * This method checks if SNS user has a vaccine already schedule and if it's on age range for vaccine and time since last dose.
+     * @return Boolean if schedule is valid or not.
+     * @throws Exception if schedule isn't valid with error message with more information.
+     */
     public boolean validateScheduleVaccine() throws Exception {
-        return   validateScheduleVaccineType() && vaccinationRecord();
+        return   validateScheduleVaccineType() && validateVaccinationRecord();
     }
 
-    public boolean validateScheduleVaccineType() throws Exception{
+    private boolean validateScheduleVaccineType() throws Exception{
         boolean flagSNSuser=false;
         if(this.company.checkOtherCentersForVaccination(schedule.getTypeVaccine(),schedule.getSNSnumber())){
             flagSNSuser=true;
@@ -86,6 +107,11 @@ public class VaccinationScheduleController {
         return flagSNSuser;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method checks if it's possible create a new vaccine schedule intance.
+     * @return Boolean if it's possible, or in other words, the date, vaccine type and vaccination facility isn't null.
+     */
     public boolean validateCreationSchedule(){
         if(date==null || typeVaccine==null || facility==null){
             return false;
@@ -93,7 +119,11 @@ public class VaccinationScheduleController {
         return true;
     }
 
-
+    /**
+     * @author João Veiga
+     * @Description This method checks if vaccination facility list in company is empty.
+     * @return Boolean if vaccination facility list in company is empty or not.
+     */
     public boolean checkIfVaccinationFaciltyListIsEmpty(){
         List<VaccinationFacility> list=this.company.getVaccinationFacilityList();
         if(list.isEmpty()){
@@ -102,6 +132,13 @@ public class VaccinationScheduleController {
         return true;
     }
 
+    /**
+     * @author João Veiga
+     * @US 02 **ONLY**
+     * @Description This method finds the SNS user through the SNS number.
+     * @param SNSnumber
+     * @return Boolean if it found one or not.
+     */
     public boolean checkIfSNSuserExists(int SNSnumber){
             if(this.company.SNSuserExistsNumber(SNSnumber) !=null){
                 this.snSuser=this.company.SNSuserExistsNumber(SNSnumber);
@@ -110,7 +147,14 @@ public class VaccinationScheduleController {
             return false;
     }
 
-    public boolean vaccinationRecord() throws Exception {
+    /**
+     * @author João Veiga
+     * @Description This method validates the vaccine schedule by the vaccination record of the SNS user
+     * This method first finds the SNS user lastest vaccination record with the same vaccine type as the schedule, then checks if SNS user is in the age and time to take the vaccine.
+     * @return Boolean if it's valid or not.
+     * @throws Exception if it's not valid, error message with more information.
+     */
+    private boolean validateVaccinationRecord() throws Exception {
         int dose=0;
         if(snSuser.getVaccinationRecord().size()==0){
             return true;
@@ -124,8 +168,13 @@ public class VaccinationScheduleController {
         }
         return true;
     }
-
-    public boolean validateAgeAndTimeDose(Vaccine vaccine)throws Exception{
+    /**
+     * @author João Veiga
+     * @Description This method throws Exception if vaccine isn't valid.
+     * @return Boolean if it's valid or not.
+     * @throws Exception if it's not valid, error message with more information.
+     */
+    private boolean validateAgeAndTimeDose(Vaccine vaccine)throws Exception{
         if(!validateDoseTime(vaccine)){
             throw new Exception("Too soon to take next dose");
         }
@@ -135,7 +184,12 @@ public class VaccinationScheduleController {
 
         return validateAgeGroup(vaccine) && validateDoseTime(vaccine);
     }
-
+    /**
+     * @author João Veiga
+     * @Description This method validates the vaccine schedule by the vaccination record of the SNS user
+     * This method first finds the SNS user lastest vaccination record with the same vaccine type as the schedule, then checks if SNS user is in the age to take the vaccine.
+     * @return Boolean if it's valid or not.
+     */
     public boolean validateAgeGroup(Vaccine vaccine){
         if(vaccine.getAgeGroup(snSuser.getAge()) !=-1){
             return true;
@@ -144,7 +198,12 @@ public class VaccinationScheduleController {
             return false;
         }
     }
-
+    /**
+     * @author João Veiga
+     * @Description This method validates the vaccine schedule by the vaccination record of the SNS user
+     * This method first finds the SNS user lastest vaccination record with the same vaccine type as the schedule, then checks if SNS user is in time and age to take the vaccine.
+     * @return Boolean if it's valid or not.
+     */
     public boolean validateDoseTime(Vaccine vaccine){
         int ageGroupIndex= vaccine.getAgeGroup(snSuser.getAge());
         VaccinationRecord vaccinationRecordLatest=snSuser.getLatestVaccinationRecord(vaccine);
@@ -154,11 +213,22 @@ public class VaccinationScheduleController {
 
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method check if the current session user is an SNS user.
+     * @return Boolean if the current session user is an SNS user.
+     */
     public boolean checkIfSNSuser(){
        return this.company.getAuthFacade().getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS);
     }
 
-
+    /**
+     * @author João Veiga
+     * @Description This method checks the vaccination facility schedule list and checks if the time slot has still an available slot.
+     * @param day The day of the schedule
+     * @param index Index of the time slot seleted
+     * @return Boolean if the time slot has still an available slot.
+     */
     public boolean ValidateAppoimentTime(LocalDate day,int index ) {
         boolean flag = true;
         int count = 0;
@@ -176,10 +246,15 @@ public class VaccinationScheduleController {
         return flag;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method generates and returns a date list of month duration starting the current day.
+     * @return a date list of month duration starting the current day.
+     */
     public List<LocalDate> getDateList(){
         int count = 0;
         List<LocalDate> dateList = new ArrayList<>();
-        LocalDate inicial = LocalDate.now();
+        LocalDate inicial = LocalDate.now().plusDays(1);
         LocalDate temp = inicial;
         LocalDate end = inicial.plusMonths(1);
         do {
@@ -189,6 +264,12 @@ public class VaccinationScheduleController {
         return dateList;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method generates a time list of a certain date with a time difference betwen two times being the slot durantion.
+     * @param date Day that will be generated the time list
+     * @return a time list.
+     */
     public List<String> getTimeSlotsDTO(LocalDate date){
         boolean flag;
         LocalDateTime opening = LocalDateTime.of(date, facility.getOpeningHours());
@@ -205,7 +286,13 @@ public class VaccinationScheduleController {
         } while (closing.isAfter(temp));
         return timeSlots;
     }
-
+    /**
+     * @author João Veiga
+     * @ALERT DO NOT USER OUTSIDE CONTROLLER (MVC PATTERN)
+     * @Description This method generates a time list of a certain date with a time difference betwen two times being the slot durantion.
+     * @param date Day that will be generated the time list
+     * @return a time list.
+     */
     public List<LocalDateTime> getTimeSlots(LocalDate day){
         boolean flag;
         LocalDateTime opening = LocalDateTime.of(day, facility.getOpeningHours());
@@ -223,10 +310,23 @@ public class VaccinationScheduleController {
         return timeSlots;
     }
 
+    /**
+     * @author João Veiga
+     * @Description Sets the vaccination schedule date and time on the controller class.
+     * @param day Day selected
+     * @param index Index of the time seleted from the time list
+     */
     public void setDate(LocalDate day,int index){
         LocalDateTime time=getTimeSlots(day).get(index);
         this.date=time;
     }
+
+    /**
+     * @author João Veiga
+     * @Description This method checks what type of facility it is.
+     * @return 0 if the selected vaccination facility is a mass vaccination center, 1 if it's a health care center
+     *
+     */
     public int getTypeVaccineFromVaccinationFacility() {
         if (facility instanceof MassVaccinationCenter) {
             return 0;
@@ -235,19 +335,30 @@ public class VaccinationScheduleController {
         }
     }
 
-    public String getTypeVaccineFromVaccinationCenter(){
+    /**
+     * @author João Veiga
+     * @Description This method gets the mass vaccination center vaccine type name.
+     * @return mass vaccination center vaccine type name.
+     */
+    public String getTypeVaccineFromMassVaccinationCenter(){
         MassVaccinationCenter center= (MassVaccinationCenter) facility;
         return center.getTypeOfVaccine().getName();
     }
-
+    /**
+     * @author João Veiga
+     * @Description This method sets the mass vaccination center vaccine type as the schedule vaccine type.
+     */
     public void setTypeVaccineMassVaccinationCenter(){
         MassVaccinationCenter center= (MassVaccinationCenter) facility;
         TypeVaccine type=center.getTypeOfVaccine();
         this.typeVaccine=type;
     }
 
-
-
+    /**
+     * @author João Veiga
+     * @Description This method gets list with the name of the health care center vaccine type name
+     * @return list with the name of the health care center vaccine type name
+     */
     public List<String> getTypeVaccineFromHealthCareCenter() {
         HealthCareCenter center=(HealthCareCenter) facility;
         List<String> typeVaccineNameList = new ArrayList<>();
@@ -256,7 +367,11 @@ public class VaccinationScheduleController {
         }
         return typeVaccineNameList;
     }
-
+    /**
+     * @author João Veiga
+     * @Description This method sets the health care center vaccine type as the schedule vaccine type.
+     * @param index Index of the selected vaccine type of the list
+     */
     public void setTypeVaccineHealthCareCenter(int index){
         HealthCareCenter center=(HealthCareCenter) facility;
         List<TypeVaccine> typeVaccineList = new ArrayList<>();
@@ -265,8 +380,11 @@ public class VaccinationScheduleController {
     }
 
 
-
-
+    /**
+     * @author João Veiga
+     * @Description This method creates a String with vaccination schedule information.
+     * @return String with vaccination schedule information.
+     */
     public String printSchedule(){
        return printScheduleInfo(facility.getName(),schedule.getAppointmentTime());
     }

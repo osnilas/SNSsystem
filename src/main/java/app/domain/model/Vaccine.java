@@ -6,6 +6,13 @@ public class Vaccine {
     private TypeVaccine typeVaccine;
     private String name;
 
+    /**
+     * @author João Veiga
+     * @Description Constructor.
+     * Creates a vaccine with the following attributes.
+     * @param vaccineAdministration
+     * @param typeVaccine
+     */
     public Vaccine(VaccineAdministration vaccineAdministration,TypeVaccine typeVaccine){
         this.name=typeVaccine.getName();
         this.typeVaccine=typeVaccine;
@@ -20,6 +27,12 @@ public class Vaccine {
         return name;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method Gets the vaccine administration index for the age group.
+     * @param age
+     * @return Vaccine administration index for the age group.
+     */
     public int getAgeGroup(int age){
         int ageGroup=-1;
         for(int i=0;i<vaccineAdministration.getMinAge().size();i++){
