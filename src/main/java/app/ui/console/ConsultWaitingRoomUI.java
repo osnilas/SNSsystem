@@ -26,7 +26,7 @@ public class ConsultWaitingRoomUI implements Runnable{
 
 
             List<String> list = ctrl.getVaccinationFacilities();
-            Utils.showList(list, "Select a vaccination facility");
+            Utils.showList(list, "\nSelect a vaccination facility");
             index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
 
             sucess = ctrl.snsUsersInWaitingRoom(index);

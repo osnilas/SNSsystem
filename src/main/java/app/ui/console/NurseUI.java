@@ -19,9 +19,6 @@ public class NurseUI implements Runnable{
     @Override
     public void run() {
 
-        SelectVaccinationFacilityUI ui = new SelectVaccinationFacilityUI();
-        ui.run();
-        ctrl.setIndex(ui.getIndex());
 
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Consult waiting room", new ConsultWaitingRoomUI()));

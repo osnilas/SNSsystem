@@ -329,10 +329,6 @@ public class Company {
         return appointmentIndex;
     }
 
-    public boolean checkAppointmentTime(int index, int snsUserIndex) {
-        return vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).isAppointmentSameTime(vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex).getAppointmentTime());
-    }
-
     public List<Arrival> getWaitingList(int index) {
         return vaccinationFacilityList.get(index).getWaitingList();
     }
@@ -386,6 +382,5 @@ public class Company {
     public SNSuser snsUserName (int index, int j){
         return getWaitingList(index).get(j).getSnSuser();
     }
-
 
 }
