@@ -44,7 +44,7 @@ public class AddUserFromCSVUI implements Runnable {
         }
     }
 
-    private void copyDataFromFile(String file) throws Exception ,FileNotFoundException, ParseException, NoSuchElementException {
+    private void copyDataFromFile(String file) throws Exception{
         boolean success = false;
         boolean flag = true;
         int count = 0;
@@ -115,6 +115,12 @@ public class AddUserFromCSVUI implements Runnable {
         in.close();
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method validates all the mandatory attributes of an SNS user
+     * @param Line Line from a CSV file, already splited
+     * @return Boolean, true if all attributes are valid, false if at least one is invalid
+     */
     private boolean validateContents(String[] Line) {
         boolean name, birth, address, phoneNumber, email, SNSnumber, ccNumber;
         try {

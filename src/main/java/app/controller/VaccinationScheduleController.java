@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.*;
 import app.domain.shared.Constants;
+import mappers.dto.dtoScheduleVaccine;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -61,6 +62,18 @@ public class VaccinationScheduleController {
      */
     public void createSchedule(){
         this.schedule =new VaccinationAppointment(snSuser.getSNSnumber(),date,typeVaccine);
+    }
+
+    /**
+     * @author João Veiga
+     * @Description Creates a new Vaccination Appoiment from a DTO and saves it on the controller.
+     * @param dto
+     */
+    public void createScheduleFromDTO(dtoScheduleVaccine dto){
+        this.typeVaccine=dto.getTypeVaccine();
+        this.snSuser=company.SNSuserExistsNumber(dto.getSNSnumber());
+        this.date=dto.getAppointmentDate();
+        this.schedule=new VaccinationAppointment(dto.getSNSnumber(),dto.getAppointmentDate(),dto.getTypeVaccine());
     }
 
     /**
@@ -162,40 +175,26 @@ public class VaccinationScheduleController {
         else{
             for(int i=0;i<snSuser.getVaccinationRecord().size();i++){
                 if(snSuser.getVaccinationRecord().get(i).checkTypeVaccine(typeVaccine)) {
-                    validateAgeAndTimeDose(snSuser.getVaccinationRecord().get(i).getVaccine());
+                    validateDoseTime(snSuser.getVaccinationRecord().get(i).getVaccine());
+                    validateAgeGroup(snSuser.getVaccinationRecord().get(i).getVaccine());
                 }
             }
         }
         return true;
     }
-    /**
-     * @author João Veiga
-     * @Description This method throws Exception if vaccine isn't valid.
-     * @return Boolean if it's valid or not.
-     * @throws Exception if it's not valid, error message with more information.
-     */
-    private boolean validateAgeAndTimeDose(Vaccine vaccine)throws Exception{
-        if(!validateDoseTime(vaccine)){
-            throw new Exception("Too soon to take next dose");
-        }
-        if(!validateAgeGroup(vaccine)){
-            throw new Exception("Vaccine is't for user age ");
-        }
 
-        return validateAgeGroup(vaccine) && validateDoseTime(vaccine);
-    }
     /**
      * @author João Veiga
      * @Description This method validates the vaccine schedule by the vaccination record of the SNS user
      * This method first finds the SNS user lastest vaccination record with the same vaccine type as the schedule, then checks if SNS user is in the age to take the vaccine.
      * @return Boolean if it's valid or not.
      */
-    public boolean validateAgeGroup(Vaccine vaccine){
+    public boolean validateAgeGroup(Vaccine vaccine) throws Exception {
         if(vaccine.getAgeGroup(snSuser.getAge()) !=-1){
             return true;
         }
         else {
-            return false;
+            throw new Exception("Vaccine is't for user age ");
         }
     }
     /**
@@ -204,12 +203,15 @@ public class VaccinationScheduleController {
      * This method first finds the SNS user lastest vaccination record with the same vaccine type as the schedule, then checks if SNS user is in time and age to take the vaccine.
      * @return Boolean if it's valid or not.
      */
-    public boolean validateDoseTime(Vaccine vaccine){
+    public boolean validateDoseTime(Vaccine vaccine) throws Exception {
         int ageGroupIndex= vaccine.getAgeGroup(snSuser.getAge());
         VaccinationRecord vaccinationRecordLatest=snSuser.getLatestVaccinationRecord(vaccine);
         Duration dayBetweenDosageTemp= Duration.between(vaccinationRecordLatest.getDate(),schedule.getAppointmentTime());
         int daysBetweendDosage=(int) Math.abs(dayBetweenDosageTemp.toDays());
-        return daysBetweendDosage>vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken()-1);
+        if(daysBetweendDosage>vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken()-1)){
+            return true;
+        }
+        throw new Exception("Too soon to take next dose");
 
     }
 
@@ -327,7 +329,7 @@ public class VaccinationScheduleController {
      * @return 0 if the selected vaccination facility is a mass vaccination center, 1 if it's a health care center
      *
      */
-    public int getTypeVaccineFromVaccinationFacility() {
+    public int getTypeVaccinationFacility() {
         if (facility instanceof MassVaccinationCenter) {
             return 0;
         } else {

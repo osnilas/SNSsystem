@@ -25,7 +25,7 @@ public class AddSNSfromCSVController {
         this.company = company;
     }
     /**
-     * Asks company to create an SNS user and stores the SNS user in the controller
+     * @Description Asks company to create an SNS user and stores the SNS user in the controller
      * @param dto DTO of the SNS user class
      * @return boolean of the validation the SNS user
      */
@@ -35,7 +35,7 @@ public class AddSNSfromCSVController {
     }
     /**
      * @author João Veiga
-     * Saves SNS user in company, on List<SNSuser>
+     * @Description Saves SNS user in company, on List<SNSuser>
      * @return boolean of if the save was sucessful or not(it's not sucessful if the SNS user already exists or
      * another SNS has the same E-mail and/or Phone Number and/or Citizen Card Number and/or SNS User Number
      */
@@ -44,7 +44,7 @@ public class AddSNSfromCSVController {
     }
     /**
      * @author João Veiga
-     * Prints SNS user
+     * @Description Prints SNS user
      */
     public String printSNSuser() {
           return  this.company.printSNSuser(us);

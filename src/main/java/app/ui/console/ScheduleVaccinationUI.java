@@ -55,7 +55,11 @@ public class ScheduleVaccinationUI implements Runnable {
         return sucess;
     }
 
-
+    /**
+     * @author João Veiga
+     * @Description This method sets the SNS user instance on the controller, depending on who is using the app, maybe be asked to insert an SNS number of an SNS user registered in the system
+     * @throws Exception If no SNS user is found with the same login email or SNS number
+     */
     private void setSNSuser() throws Exception {
 
         if (!ctlr.checkIfSNSuser()) {
@@ -77,6 +81,10 @@ public class ScheduleVaccinationUI implements Runnable {
         }
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method presents a list of vaccination facilities and asks user to select one and set that one as the vaccination facility instance in the controller
+     */
     private void setVaccinationFacility() {
         int index;
         do {
@@ -87,7 +95,11 @@ public class ScheduleVaccinationUI implements Runnable {
         ctlr.setVaccinationFacility(index);
     }
 
-    public void getDateTimeAppoiment() {
+    /**
+     * @author João Veiga
+     * @Description This method calls on other methods to set date and time of the vaccination schedule.
+     */
+    private void getDateTimeAppoiment() {
         LocalDate date = null;
         LocalDateTime dateTime = null;
         boolean flag = false;
@@ -107,6 +119,13 @@ public class ScheduleVaccinationUI implements Runnable {
         } while (!flag);
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method gets a list of times from the controller and presents it to the user that then selects one.
+     * @param date
+     * @return Boolean if a time was chosen.
+     * @throws Exception If a time wasn't chosen.
+     */
     private boolean getTime(LocalDate date) throws Exception {
         int index;
         boolean flag;
@@ -125,7 +144,12 @@ public class ScheduleVaccinationUI implements Runnable {
         ctlr.setDate(date, index);
         return true;
     }
-
+    /**
+     * @author João Veiga
+     * @Description This method gets a list of days from the controller and presents it to the user that then selects one.
+     * @return The chosen date
+     * @throws Exception If a date wasn't chosen.
+     */
     private LocalDate getDate() throws Exception {
         List<LocalDate> dateList = ctlr.getDateList();
         Utils.showDate(dateList, "Select a date");
@@ -136,29 +160,29 @@ public class ScheduleVaccinationUI implements Runnable {
         return dateList.get(index);
     }
 
-    public void selectVaccineType() {
+    /**
+     * @author João Veiga
+     * @Description This method asks the controller was type of vaccination facility the chosen one is(vaccination center or health care center), then calls the appropriate method to get the vaccine type
+     * @throws Exception If no vaccine type is chosen
+     */
+    public void selectVaccineType() throws Exception {
         boolean flag = false;
-        int typeCenter = ctlr.getTypeVaccineFromVaccinationFacility();
+        int typeCenter = ctlr.getTypeVaccinationFacility();
         switch (typeCenter) {
             case 0:
-                do {
-                    try {
-                        getTypeVaccineFromVaccinationCenter();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        flag = true;
-
-                    }
-                } while (flag);
+                getTypeVaccineFromVaccinationCenter();
                 break;
             case 1:
                 getTypeVaccineFromHealthCareCenter();
                 break;
         }
-
-
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method presents the vaccine type of the chosen vaccination center and asks the user to confirm it.
+     * @throws Exception If not vaccine type is not chosen.
+     */
     private void getTypeVaccineFromVaccinationCenter() throws Exception {
         String typeVaccine = ctlr.getTypeVaccineFromMassVaccinationCenter();
         Utils.printText("Vaccine of this vaccination center:");
@@ -169,12 +193,19 @@ public class ScheduleVaccinationUI implements Runnable {
             throw new Exception("Vaccine type not chosen");
         }
     }
-
-    private void getTypeVaccineFromHealthCareCenter() {
+    /**
+     * @author João Veiga
+     * @Description This method presents a list of vaccine types of the chosen heath care center and asks the user to choose one.
+     * @throws Exception If not vaccine type is not chosen.
+     */
+    private void getTypeVaccineFromHealthCareCenter() throws Exception {
         List<String> list = ctlr.getTypeVaccineFromHealthCareCenter();
         Utils.showList(list, "Select vaccine");
         Utils.printText("The DGS recommends:" + Constants.TYPE_VACCINE_RECOMMENDED.getName());
         int index = Utils.selectsIndex(list);
+        if(index==-1){
+            throw new Exception("No Vaccine type selected");
+        }
         ctlr.setTypeVaccineHealthCareCenter(index);
     }
 
