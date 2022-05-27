@@ -12,6 +12,8 @@ public class SelectVaccinationFacilityController {
 
     private App app;
 
+    private VaccinationFacility facility;
+
     public SelectVaccinationFacilityController() {
         this.company = App.getInstance().getCompany();
         this.app = App.getInstance();
@@ -28,5 +30,9 @@ public class SelectVaccinationFacilityController {
             vaccinationFacilityNameList.add(vaccinationFacilityList.get(i).getName());
         }
         return vaccinationFacilityNameList;
+    }
+
+    public void setVaccinationFacilty(int index){
+        this.facility=company.getVaccinationFacilityFromList(index);
     }
 }
