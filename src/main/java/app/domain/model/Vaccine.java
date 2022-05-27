@@ -36,7 +36,7 @@ public class Vaccine {
     public int getAgeGroup(int age){
         int ageGroup=-1;
         for(int i=0;i<vaccineAdministration.getMinAge().size();i++){
-            if(vaccineAdministration.getMinAge().get(i)>age && age<vaccineAdministration.getMaxAge().get(i)){
+            if(age>= vaccineAdministration.getMinAge().get(i) && age<=vaccineAdministration.getMaxAge().get(i)){
                 return i;
             }
         }

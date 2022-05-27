@@ -205,14 +205,19 @@ public class VaccinationScheduleController {
      */
     public boolean validateDoseTime(Vaccine vaccine) throws Exception {
         int ageGroupIndex= vaccine.getAgeGroup(snSuser.getAge());
-        VaccinationRecord vaccinationRecordLatest=snSuser.getLatestVaccinationRecord(vaccine);
-        Duration dayBetweenDosageTemp= Duration.between(vaccinationRecordLatest.getDate(),schedule.getAppointmentTime());
-        int daysBetweendDosage=(int) Math.abs(dayBetweenDosageTemp.toDays());
-        if(daysBetweendDosage>vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken()-1)){
-            return true;
+        if(ageGroupIndex !=-1) {
+            VaccinationRecord vaccinationRecordLatest = snSuser.getLatestVaccinationRecord(vaccine);
+            if(vaccinationRecordLatest.getVaccine().getVaccineAdministration().getDoses().get(ageGroupIndex)==vaccinationRecordLatest.getNumberDosesTaken()){
+                throw new Exception("SNS user has taken all doses of this vaccine");
+            }
+            Duration dayBetweenDosageTemp = Duration.between(vaccinationRecordLatest.getDate(), schedule.getAppointmentTime());
+            int daysBetweendDosage = (int) Math.abs(dayBetweenDosageTemp.toDays());
+            if (daysBetweendDosage > vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken() - 1)) {
+                return true;
+            }
+            throw new Exception("Too soon to take next dose");
         }
-        throw new Exception("Too soon to take next dose");
-
+        throw new Exception("SNS user is outside age range for a new dose");
     }
 
     /**
@@ -223,7 +228,6 @@ public class VaccinationScheduleController {
     public boolean checkIfSNSuser(){
        return this.company.getAuthFacade().getCurrentUserSession().isLoggedInWithRole(Constants.ROLE_SNS);
     }
-
     /**
      * @author João Veiga
      * @Description This method checks the vaccination facility schedule list and checks if the time slot has still an available slot.
@@ -292,7 +296,7 @@ public class VaccinationScheduleController {
      * @author João Veiga
      * @ALERT DO NOT USER OUTSIDE CONTROLLER (MVC PATTERN)
      * @Description This method generates a time list of a certain date with a time difference betwen two times being the slot durantion.
-     * @param date Day that will be generated the time list
+     * @param day Day that will be generated the time list
      * @return a time list.
      */
     public List<LocalDateTime> getTimeSlots(LocalDate day){
