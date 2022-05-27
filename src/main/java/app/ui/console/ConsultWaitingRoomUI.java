@@ -4,10 +4,13 @@ import app.controller.ConsultWaitingRoomController;
 import app.controller.RoleMenuController;
 import app.domain.model.VaccinationAppointment;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
 
 import java.util.List;
 
 public class ConsultWaitingRoomUI implements Runnable{
+
+    private int index = -1;
 
     /**
      * @author Filipe Magalhães
@@ -22,9 +25,15 @@ public class ConsultWaitingRoomUI implements Runnable{
         boolean sucess = false;
 
 
-        sucess = ctrl.snsUsersInWaitingRoom(1);
+            List<String> list = ctrl.getVaccinationFacilities();
+            Utils.showList(list, "Select a vaccination facility");
+            index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
+
+            sucess = ctrl.snsUsersInWaitingRoom(index);
 
         if (sucess){
+            System.out.println("-----------SNS Users in the waiting list---------------");
+            printWaitingList(ctrl.snsUsers(index));
             System.out.println("-----------SNS Users in the waiting list---------------");
 
         }
@@ -39,8 +48,8 @@ public class ConsultWaitingRoomUI implements Runnable{
      * Prints the list of SNS users in the waiting room
      */
 
-    public void printWaitingList (List<VaccinationAppointment> waitingList){
-        for (int i = 0; i < waitingList.size(); i++) {
+    public void printWaitingList (List<String> snsUsers){
+        for (int i = 0; i < snsUsers.size(); i++) {
             System.out.println();
 
         }

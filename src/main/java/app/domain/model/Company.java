@@ -342,11 +342,9 @@ public class Company {
         for (int i = 0; i < SNSuserList.size(); i++) {
             for (int j = 0; j < getWaitingList(index).size(); j++) {
 
-                if (SNSuserList.get(i).equals(getWaitingList(index).get(j))){
+                if (SNSuserList.get(i).getSNSnumber() == (getWaitingList(index).get(j).getSnSuser().getSNSnumber())){
 
                     snsUsers.add(j,"Name: "+snsUserName(j,index).getName()+" Sex: "+snsUserName(j,index).getSex()+" Birth Date: "+snsUserName(j,index).getBirth()+" SNS User Number: "+snsUserName(j,index).getSNSnumber()+" Phone Number: "+snsUserName(j,index).getPhoneNumber());
-
-                  //  Name, Sex, Birth Date, SNS User Number and Phone Number.
 
                 }
 
