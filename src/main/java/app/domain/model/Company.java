@@ -363,6 +363,28 @@ public class Company {
         return true;
     }
 
+    public Arrival createArrival(SNSuser snSuser) {
+        return new Arrival(snSuser);
+    }
+
+    public boolean validateArrival(Arrival arrival) {
+        if (arrival == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean saveSNSuserArrival(int index, Arrival arrival) {
+        if (!validateArrival(arrival)) {
+            return false;
+        }
+        return addSnsUserToWaitingList(index, arrival);
+    }
+
+    public  boolean addSnsUserToWaitingList(int index, Arrival arrival){
+        return getWaitingList(index).add(arrival);
+    }
+
     public SNSuser snsUserName (int index, int j){
         return getWaitingList(index).get(j).getSnSuser();
     }
