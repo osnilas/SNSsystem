@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+left to right direction
 
 object SNSuser{
 -name
@@ -12,7 +12,7 @@ object SNSuser{
 }
 object Administrator
 
-Administrator"*" -- "*" SNSuser: > manages/registers
+Administrator"1" -- "*" SNSuser: > manages/registers
 
 
 @enduml

@@ -62,10 +62,11 @@ Class MapperSNSuser{
 AddSNSfromCSVUI..>AddSNSfromCSVController
 AddSNSfromCSVUI..>MapperSNSuser:Uses
 MapperSNSuser..>DTOSNSuser:Creates
+MapperSNSuser..>SNSuser:Creates
 AddSNSfromCSVController..>Company
 AddSNSfromCSVController..>App
 AddSNSfromCSVController..>DTOSNSuser:Uses
-Company..>SNSuser:Owns
+Company"1"->"*"SNSuser:Owns
 Company..>AuthFacade
 Company..>DTOSNSuser:Uses
 
