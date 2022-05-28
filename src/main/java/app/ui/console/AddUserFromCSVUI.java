@@ -67,6 +67,11 @@ public class AddUserFromCSVUI implements Runnable {
                     if (validateContents(Line)) {
                         String name = Line[0];
                         String sex = Line[1];
+                        for(int i=0;i<Constants.SexListShort.length;i++){
+                            if(sex.equalsIgnoreCase(Constants.SexListShort[i])){
+                            sex=Constants.SexListFull[i];
+                            }
+                        }
                         LocalDate birth = LocalDate.parse(Line[2], Constants.FORMATTER);
                         String address = Line[3];
                         int phoneNumber = Integer.parseInt(Line[4]);

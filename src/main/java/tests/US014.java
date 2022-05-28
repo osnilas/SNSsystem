@@ -49,7 +49,7 @@ class US014 {
     @Test
     void SNSuserValid(){
         MapperSNSuser mapper=new MapperSNSuser();
-        SNSuser user=new SNSuser("Carlos",Constants.SexList[0],Constants.BIRTH_TESTER,"Rua","carlos@gmail.com",91608799,22207756,15789996,"password");
+        SNSuser user=new SNSuser("Carlos",Constants.SexListFull[0],Constants.BIRTH_TESTER,"Rua","carlos@gmail.com",91608799,22207756,15789996,"password");
         dtoSNSuser dto=mapper.toDTO(user);
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
@@ -89,7 +89,7 @@ class US014 {
     @Test
     void validateSexValid() {
         // Arrange
-        String sex=Constants.SexList[1];
+        String sex=Constants.SexListFull[1];
         // Act
         boolean test=Validate.validateSex(sex);
         //Assert

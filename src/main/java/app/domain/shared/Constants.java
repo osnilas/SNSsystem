@@ -26,8 +26,8 @@ public class Constants {
     public static final String ROLE_COR="CENTER COORDINATOR";
     public static final String[] RoleList={ROLE_NURSE,ROLE_COR,ROLE_RES,ROLE_SNS,ROLE_ADMIN};
 
-    public static final String[] SexList={"Male","Female","Other"};
-
+    public static final String[] SexListFull={"Male","Female","Other"};
+    public static final String[] SexListShort={"M","F","O"};
     //Config
     public static final String PARAMS_FILENAME = "config.properties";
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
@@ -65,7 +65,7 @@ public class Constants {
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 
-    public static final SNSuser SN_SUSER_TESTER=new SNSuser("Carlos Silva", SexList[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 22207750, 17555697,"911");
+    public static final SNSuser SN_SUSER_TESTER=new SNSuser("Carlos Silva", SexListFull[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 22207750, 17555697,"911");
     public static final TypeVaccine TYPE_VACCINE_TESTER1= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
     public static final TypeVaccine TYPE_VACCINE_TESTER2= new TypeVaccine("Smallpox", "Smallpox was an infectious disease caused by one of two virus variants, Variola major and Variola minor", "smallP818", "Inactivated");
     private static final List<TypeVaccine> TYPE_VACCINE_LIST_TESTER=List.of(TYPE_VACCINE_TESTER1,TYPE_VACCINE_TESTER2);

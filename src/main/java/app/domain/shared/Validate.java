@@ -227,11 +227,10 @@ public class Validate {
 
     public static boolean validateSex(String sex){
         if(sex!=null) {
-            for (int i = 0; i < Constants.SexList.length; i++) {
-                if (sex.equalsIgnoreCase(Constants.SexList[i])) {
+            for (int i = 0; i<Constants.SexListFull.length; i++) {
+                if(sex.equalsIgnoreCase(Constants.SexListFull[i])) {
                     return true;
                 }
-
             }
             return false;
         }
