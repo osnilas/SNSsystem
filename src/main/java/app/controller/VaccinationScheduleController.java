@@ -106,7 +106,14 @@ public class VaccinationScheduleController {
      * @throws Exception if schedule isn't valid with error message with more information.
      */
     public boolean validateScheduleVaccine() throws Exception {
-        return   validateScheduleVaccineType() && validateVaccinationRecord();
+        boolean flag;
+        try{
+            flag=validateScheduleVaccineType() && validateVaccinationRecord();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return flag;
     }
 
     private boolean validateScheduleVaccineType() throws Exception{
