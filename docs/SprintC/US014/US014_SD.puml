@@ -9,7 +9,6 @@ autonumber
     participant "Company" as COMP
     participant ":MapperSNSuser" as MAPPER
     participant "dtoSNSuser" as DTO
-    participant "app:App" as APP
     participant "auth:AuthFacade" as AUTH
     participant "em:SNSuser" as SNS
     participant "validate:Validate" as VALID

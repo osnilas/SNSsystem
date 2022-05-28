@@ -3,7 +3,6 @@
 
 object SNSuser{
 -**name**
--**address**
 -SNS user number
 -phone number
 -e-mail address
