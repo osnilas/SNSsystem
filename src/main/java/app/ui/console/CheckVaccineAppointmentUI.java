@@ -4,6 +4,7 @@ import app.controller.CheckVaccineAppointmentController;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 
+import java.lang.module.FindException;
 import java.util.Scanner;
 
 public class CheckVaccineAppointmentUI implements Runnable {
@@ -14,9 +15,12 @@ public class CheckVaccineAppointmentUI implements Runnable {
 
     @Override
     public void run() {
-
-        Utils.showList(ctrl.getVaccinationFacilities(), "Select Vaccination Facility: ");
-        ctrl.setIndex(Utils.selectsIndex(ctrl.getVaccinationFacilities()));
+        int index;
+        do {
+            Utils.showList(ctrl.getVaccinationFacilities(), "Select Vaccination Facility: ");
+            index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
+        }while (index==-1);
+        ctrl.setIndex(index);
 
 
         System.out.printf("------------------------- Check vaccine appointment -------------------------%n%n");
