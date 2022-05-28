@@ -82,7 +82,11 @@ public class App {
 
         this.authFacade.addUserWithRole("Test SNS user", "sns@lei.sem2.pt", "11",Constants.ROLE_SNS);
 
-        this.authFacade.addUserWithRole(Constants.SN_SUSER_TESTER.getName(),Constants.SN_SUSER_TESTER.getEmail(),"911",Constants.ROLE_SNS);
+        this.authFacade.addUserWithRole(Constants.SN_SUSER_TESTER_FULL.getName(),Constants.SN_SUSER_TESTER_FULL.getEmail(),Constants.SN_SUSER_TESTER_FULL.getPassword(),Constants.ROLE_SNS);
+
+        this.authFacade.addUserWithRole(Constants.SNS_USER_TESTER_ONE.getName(),Constants.SNS_USER_TESTER_ONE.getEmail(),Constants.SNS_USER_TESTER_ONE.getPassword(),Constants.ROLE_SNS);
+
+        this.authFacade.addUserWithRole(Constants.SNS_USER_TESTER_EMPTY.getName(),Constants.SNS_USER_TESTER_EMPTY.getEmail(),Constants.SNS_USER_TESTER_EMPTY.getPassword(),Constants.ROLE_SNS);
 
         this.authFacade.addUserRole(Constants.ROLE_RES,Constants.ROLE_RES);
 

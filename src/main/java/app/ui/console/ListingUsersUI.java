@@ -13,7 +13,13 @@ public class ListingUsersUI implements Runnable {
 
     @Override
     public void run() {
-        Utils.showList(ctlr.getSNSuserList(),"List of SNS users");
-        Utils.showList(ctlr.getEmployeeList(),"List of Employees");
+        Utils.printText("List of SNS users:");
+        for(int i=0;i<ctlr.getSNSuserList().size();i++){
+            Utils.printText(ctlr.getSNSuserList().get(i));
+        }
+        Utils.printText("List of Employees:");
+        for(int i=0;i<ctlr.getEmployeeList().size();i++){
+            Utils.printText(ctlr.getEmployeeList().get(i));
+        }
     }
 }

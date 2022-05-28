@@ -107,9 +107,10 @@ public class AddUserFromCSVUI implements Runnable {
                             }
                         } else {
                             Utils.printText("-------Sex not valid----");
+                            throw new Exception("CSV file information format not valid");
                         }
                     } else {
-                        throw new Exception("CSV file not valid");
+                        throw new Exception("CSV file information format not valid");
                     }
                 }catch (PatternSyntaxException e){
                         e.printStackTrace();

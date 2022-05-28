@@ -103,9 +103,8 @@ public class VaccinationScheduleController {
      * @Description This method validates vaccine schedule, calls two sub methods(validateScheduleVaccineType and validateVaccinationRecord).
      * This method checks if SNS user has a vaccine already schedule and if it's on age range for vaccine and time since last dose.
      * @return Boolean if schedule is valid or not.
-     * @throws Exception if schedule isn't valid with error message with more information.
      */
-    public boolean validateScheduleVaccine() throws Exception {
+    public boolean validateScheduleVaccine() {
         boolean flag;
         try{
             flag=validateScheduleVaccineType() && validateVaccinationRecord();
@@ -133,7 +132,7 @@ public class VaccinationScheduleController {
      * @return Boolean if it's possible, or in other words, the date, vaccine type and vaccination facility isn't null.
      */
     public boolean validateCreationSchedule(){
-        if(date==null || typeVaccine==null || facility==null){
+        if(date==null || typeVaccine==null || facility==null || snSuser==null){
             return false;
         }
         return true;

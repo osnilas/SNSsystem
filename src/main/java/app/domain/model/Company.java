@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.zip.CheckedOutputStream;
 
 import static app.domain.model.Employee.fillRoleList;
 
@@ -47,15 +48,22 @@ public class Company {
     public void demo(){
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
+
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+
         employeeList.add(Constants.EMPLOYEE_TESTER);
-        SNSuserList.add(Constants.SN_SUSER_TESTER);
+
+        SNSuserList.add(Constants.SN_SUSER_TESTER_FULL);
+        SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
+        SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
+
         SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
         SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER2);
+        SNSuserList.get(1).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
 
     }
 

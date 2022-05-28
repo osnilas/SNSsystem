@@ -40,7 +40,7 @@ class US014 {
     @Test
     void SNSuserCopy(){
         MapperSNSuser mapper=new MapperSNSuser();
-        dtoSNSuser dto=mapper.toDTO(Constants.SN_SUSER_TESTER);
+        dtoSNSuser dto=mapper.toDTO(Constants.SNS_USER_TESTER_EMPTY);
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);
         assertFalse(test);
