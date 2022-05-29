@@ -58,7 +58,7 @@ public class US09 {
     @Test
     void validateWebsiteAdressNull() {
         String NULL = null;
-        boolean result= Validate.validateWebsiteAdress(NULL);
+        boolean result= Validate.validateWebsiteAddress(NULL);
         assertFalse(result);
     }
 
@@ -66,21 +66,21 @@ public class US09 {
     @Test
     void validateWebsiteAdressBlank() {
         String blank = "  ";
-        boolean result= Validate.validateWebsiteAdress(blank);
+        boolean result= Validate.validateWebsiteAddress(blank);
         assertFalse(result);
     }
 
     @Test
     void validateWebsiteAdressFormatInvalid() {
         String url = "url";
-        boolean result= Validate.validateWebsiteAdress(url);
+        boolean result= Validate.validateWebsiteAddress(url);
         assertFalse(result);
     }
 
     @Test
     void validateWebsiteAdressFormat() {
         String url = "www.isep.pt";
-        boolean result= Validate.validateWebsiteAdress(url);
+        boolean result= Validate.validateWebsiteAddress(url);
         assertTrue(result);
     }
 

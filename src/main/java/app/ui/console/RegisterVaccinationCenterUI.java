@@ -24,16 +24,16 @@ public class RegisterVaccinationCenterUI implements Runnable {
     }
 
     public void run() {
-        boolean sucess = register();
+        boolean success = register();
     }
 
     /**
      * @author Afonso Cunha
      * Registation of a new vaccination center
-     * @return boolean if registration was sucessful
+     * @return boolean if registration was successful
      */
     private boolean register() {
-        boolean sucess = false;
+        boolean success = false;
         boolean flag = false;
         System.out.println("\nRegistration UI:");
         String name, adress, emailAdress, websiteAdress, openingHoursString,closingHoursString, typeOfVaccine;
@@ -49,7 +49,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
         while (name.isBlank());
 
         do {
-            adress = Utils.readLineFromConsole("Enter adress: ");
+            adress = Utils.readLineFromConsole("Enter address: ");
             if (adress.isBlank()) {
                 System.out.println("Input a valid address, it can not be empty");
             }
@@ -63,9 +63,9 @@ public class RegisterVaccinationCenterUI implements Runnable {
         } while (!Validate.validatePhone(phoneNumber));
 
         do {
-            emailAdress = Utils.readLineFromConsole("Enter email adress: ");
+            emailAdress = Utils.readLineFromConsole("Enter email address: ");
             if (!Validate.validateEmail(emailAdress)) {
-                System.out.println("Input a valid email, for exemple: isep@gmail.com");
+                System.out.println("Input a valid email, for example: isep@gmail.com");
             }
         } while (!Validate.validateEmail(emailAdress));
 
@@ -84,11 +84,11 @@ public class RegisterVaccinationCenterUI implements Runnable {
         } while (!Validate.validatePhone(faxNumber));
 
         do {
-            websiteAdress = Utils.readLineFromConsole("Enter website adress: ");
-            if (!Validate.validateWebsiteAdress(websiteAdress)) {
-                System.out.println("Input a valid website adress");
+            websiteAdress = Utils.readLineFromConsole("Enter website address: ");
+            if (!Validate.validateWebsiteAddress(websiteAdress)) {
+                System.out.println("Input a valid website address");
             }
-        } while (!Validate.validateWebsiteAdress(websiteAdress));
+        } while (!Validate.validateWebsiteAddress(websiteAdress));
 
         do {
             openingHoursString = Utils.readLineFromConsole("Enter opening hours: ");
@@ -120,24 +120,24 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         } while (!Validate.validateMaximumNumberOfVaccinesPerSlot(maximumNumberOfVaccinesPerSlot));
 
-        //sucess = ctlr.createVaccinationCenter(name, adress, phoneNumber, emailAdress, faxNumber, websiteAdress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+        //success = ctlr.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
 
-        if (sucess){
+        if (success){
             ctlr.printVaccinationCenter();
         }
 
         if (Utils.confirm("Is this correct? (s/n)")){
-            sucess = ctlr.saveVaccinationCenter();
+            success = ctlr.saveVaccinationCenter();
         } else {
-            sucess = false;
+            success = false;
         }
 
-        if (sucess){
+        if (success){
             System.out.println("registration successful");
         } else {
             System.out.println("registration not successful");
         }
-        return sucess;
+        return success;
     }
 }
 

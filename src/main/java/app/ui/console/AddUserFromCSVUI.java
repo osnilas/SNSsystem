@@ -7,8 +7,6 @@ import app.ui.console.utils.Utils;
 import mappers.dto.dtoSNSuser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.PatternSyntaxException;
@@ -75,7 +73,7 @@ public class AddUserFromCSVUI implements Runnable {
                         String email = Line[5];
                         int SNSnumber = Integer.parseInt(Line[6]);
                         int ccNumber = Integer.parseInt(Line[7]);
-                        String password=Utils.generatePwd(Constants.PWD_LENGHT);
+                        String password=Utils.generatePwd(Constants.PWD_LENGTH);
                         if (Line[1].isBlank()) {
                             temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
                         } else {
@@ -88,7 +86,7 @@ public class AddUserFromCSVUI implements Runnable {
                         if (flag) {
                             success = ctlr.createSNSuser(temp);
                             if (!success) {
-                                Utils.printText("User already exists or its unvalid");
+                                Utils.printText("User already exists or its invalid");
                             }
                             Utils.printText(ctlr.printSNSuser());
                             if (Utils.confirm("Is it correct?(s/n)")) {
@@ -121,7 +119,7 @@ public class AddUserFromCSVUI implements Runnable {
     /**
      * @author João Veiga
      * @Description This method validates all the mandatory attributes of an SNS user
-     * @param Line Line from a CSV file, already splited
+     * @param Line Line from a CSV file, already split
      * @return Boolean, true if all attributes are valid, false if at least one is invalid
      */
     private boolean validateContents(String[] Line) {

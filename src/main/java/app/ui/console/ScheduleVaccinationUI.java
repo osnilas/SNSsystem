@@ -29,30 +29,30 @@ public class ScheduleVaccinationUI implements Runnable {
     }
 
     private boolean Schedule() throws Exception {
-        boolean sucess = false;
+        boolean success = false;
 
         if (ctlr.checkIfVaccinationFaciltyListIsEmpty()) {
             setSNSuser();
             setVaccinationFacility();
             selectVaccineType();
-            getDateTimeAppoiment();
+            getDateTimeAppointment();
 
         }
         if (ctlr.validateCreationSchedule()) {
             ctlr.createSchedule();
             Utils.printText(ctlr.printSchedule());
             if (Utils.confirm("Is this correct?")) {
-                sucess=ctlr.validateScheduleVaccine();
-                if (sucess) {
+                success =ctlr.validateScheduleVaccine();
+                if (success) {
                     ctlr.saveSchedule();
-                    Utils.printText("-----Appoiment added sucessfully-----");
+                    Utils.printText("-----Appointment added successfully-----");
                 } else {
-                    Utils.printText("----Appoiment creation failed----");
+                    Utils.printText("----Appoint creation failed----");
                 }
 
             }
         }
-        return sucess;
+        return success;
     }
 
     /**
@@ -63,15 +63,15 @@ public class ScheduleVaccinationUI implements Runnable {
     private void setSNSuser() throws Exception {
 
         if (!ctlr.checkIfSNSuser()) {
-            int snsNubmer;
+            int snsNumber;
             do {
-                snsNubmer = Utils.readIntegerFromConsole("Enter SNS number");
-                if (!Validate.validateCC(snsNubmer)) {
+                snsNumber = Utils.readIntegerFromConsole("Enter SNS number");
+                if (!Validate.validateCC(snsNumber)) {
                     Utils.printText("Input a valid SNS number, it has 8 digits");
                 }
-            } while (!Validate.validateCC(snsNubmer));
+            } while (!Validate.validateCC(snsNumber));
 
-            if (!ctlr.checkIfSNSuserExists(snsNubmer)) {
+            if (!ctlr.checkIfSNSuserExists(snsNumber)) {
                 throw new Exception("SNS user not registered on system");
             }
         } else {
@@ -99,7 +99,7 @@ public class ScheduleVaccinationUI implements Runnable {
      * @author João Veiga
      * @Description This method calls on other methods to set date and time of the vaccination schedule.
      */
-    private void getDateTimeAppoiment() {
+    private void getDateTimeAppointment() {
         LocalDate date = null;
         LocalDateTime dateTime = null;
         boolean flag = false;

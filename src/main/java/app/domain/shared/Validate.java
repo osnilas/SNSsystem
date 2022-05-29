@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.ParseException;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +20,7 @@ public class Validate {
      * validates email.
      * Checks if its blank and its format is valid
      * @param email
-     * @return boolean if its valid or not
+     * @return boolean if It's valid or not
      */
     public static boolean validateEmail(String email) {
         return !StringUtils.isBlank(email) && checkFormat(email);
@@ -42,14 +41,14 @@ public class Validate {
     /**
      * @author Afonso Cunha
      * Checks url format, format: www.*something*.something
-     * @param websiteAdress
-     * @return boolean if website adress checks out format
+     * @param websiteAddress
+     * @return boolean if website address checks out format
      */
 
-    private static boolean checkUrlFormat(String websiteAdress) {
+    private static boolean checkUrlFormat(String websiteAddress) {
         String urlRegex = "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)";
         Pattern pat = Pattern.compile(urlRegex);
-        return pat.matcher(websiteAdress).matches();
+        return pat.matcher(websiteAddress).matches();
     }
 
     /**
@@ -59,7 +58,7 @@ public class Validate {
      * @return boolean if phone number check out requirements
      */
     public static boolean validatePhone(int phone) {
-        if (getDigits(phone) != Constants.PHONE_NUMBER_LENGHT) {
+        if (getDigits(phone) != Constants.PHONE_NUMBER_LENGTH) {
             return false;
         } else {
             return true;
@@ -74,7 +73,7 @@ public class Validate {
      * @return boolean if cc number checks out requirements
      */
     public static boolean validateCC(int cc) {
-        if (getDigits(cc) != Constants.CC_LENGHT) {
+        if (getDigits(cc) != Constants.CC_LENGTH) {
             return false;
         }
         return true;
@@ -173,12 +172,12 @@ public class Validate {
     /**
      * @author Afonso Cunha
      * Checks url format, format: www.*something*.something
-     * @param websiteAdress
-     * @return boolean if website adress checks out format
+     * @param websiteAddress
+     * @return boolean if website address checks out format
      */
 
-    public static boolean validateWebsiteAdress(String websiteAdress) {
-        return !StringUtils.isBlank(websiteAdress) && checkUrlFormat(websiteAdress);
+    public static boolean validateWebsiteAddress(String websiteAddress) {
+        return !StringUtils.isBlank(websiteAddress) && checkUrlFormat(websiteAddress);
     }
 
     public static boolean validateName(String name){
@@ -196,7 +195,7 @@ public class Validate {
     }
 
     public static boolean validateSNS (int sns){
-        if(getDigits(sns)==Constants.SNS_LENGHT){
+        if(getDigits(sns)==Constants.SNS_LENGTH){
             return true;
         }
         return false;

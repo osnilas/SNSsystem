@@ -29,10 +29,10 @@ public class RoleMenuUI implements Runnable{
     /**
      * @author Filipe Magalhães
      * Menu for choosing the role to list the employees from
-     * @return boolean if registration was sucessful
+     * @return boolean if registration was successful
      */
     private boolean roleMenu (){
-        boolean sucess = false;
+        boolean success = false;
 
             for (int i = 0; i < Constants.RoleList.length - 2; i++) {
                 System.out.println(i + 1 + "-" + Constants.RoleList[i]);
@@ -56,22 +56,22 @@ public class RoleMenuUI implements Runnable{
                 throw new IllegalArgumentException("Role not chosen");
             }
             else{
-                sucess = ctrl.fillRoleArray(role);
+                success = ctrl.fillRoleArray(role);
             }
-            if (sucess){
+            if (success){
                 printListEmployees(EMPLOYEE_ARRAY_LIST);
                 EMPLOYEE_ARRAY_LIST.clear();
             }
             else {
-                sucess = false;
+                success = false;
 
             }
-        if (sucess) {
+        if (success) {
             System.out.println("-----------List of Employees done successfully!-----------");
         } else {
             System.out.println("-----------Error! There is no employee registered with this role yet!---------------");
         }
-            return sucess;
+            return success;
         }
     /**
      * @author Filipe Magalhães

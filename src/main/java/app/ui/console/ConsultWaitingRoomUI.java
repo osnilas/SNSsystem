@@ -1,9 +1,6 @@
 package app.ui.console;
 
 import app.controller.ConsultWaitingRoomController;
-import app.controller.RoleMenuController;
-import app.domain.model.VaccinationAppointment;
-import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 
 import java.util.List;
@@ -22,7 +19,7 @@ public class ConsultWaitingRoomUI implements Runnable{
 
     @Override
     public void run() {
-        boolean sucess = false;
+        boolean success = false;
 
 
                 List<String> list = ctrl.getVaccinationFacilities();
@@ -30,10 +27,10 @@ public class ConsultWaitingRoomUI implements Runnable{
                 index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
                 ctrl.snsUsers(index).clear();
 
-            sucess = ctrl.snsUsersInWaitingRoom(index);
+            success = ctrl.snsUsersInWaitingRoom(index);
             ctrl.snsUsers(index).clear();
 
-        if (sucess){
+        if (success){
             System.out.println("\n-----------SNS Users in the waiting room---------------");
             printWaitingList(ctrl.snsUsers(index));
             System.out.println("-----------*****************************---------------");

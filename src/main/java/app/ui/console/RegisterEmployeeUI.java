@@ -19,17 +19,17 @@ public class RegisterEmployeeUI implements Runnable {
     }
 
     public void run() {
-        boolean sucess = register();
+        boolean success = register();
     }
 
     /**
      * @author João Veiga
      * Register's a Employee and user
-     * @return boolean if registration was sucessful
+     * @return boolean if registration was successful
      */
     private boolean register() {
         dtoEmployee dto = null;
-        boolean sucess = false;
+        boolean success = false;
         boolean sucess2 = false;
         boolean flag = false;
         System.out.println("\nRegistration UI:");
@@ -44,16 +44,16 @@ public class RegisterEmployeeUI implements Runnable {
         } while (name.isBlank());
 
         do {
-            address = Utils.readLineFromConsole("Enter adress: ");
+            address = Utils.readLineFromConsole("Enter address: ");
             if (address.isBlank()) {
                 System.out.println("Input a valid address, it can not be empty");
             }
         } while (address.isBlank());
 
         do {
-            email = Utils.readLineFromConsole("Enter email adress: ");
+            email = Utils.readLineFromConsole("Enter email address: ");
             if (!Validate.validateEmail(email)) {
-                System.out.println("Input a valid email, for exemple: isep@gmail.com");
+                System.out.println("Input a valid email, for example: isep@gmail.com");
             }
         } while (!Validate.validateEmail(email));
 
@@ -68,7 +68,7 @@ public class RegisterEmployeeUI implements Runnable {
         do {
             number = Utils.readIntegerFromConsole("Enter phone number: ");
             if (!Validate.validatePhone(number)) {
-                System.out.println("Input a valid phone number, this system suports portuguese format with 9 digits");
+                System.out.println("Input a valid phone number, this system supports portuguese format with 9 digits");
             }
         } while (!Validate.validatePhone(number));
 
@@ -95,23 +95,23 @@ public class RegisterEmployeeUI implements Runnable {
             throw new IllegalArgumentException("Role not chosen");
         } else {
              dto= new dtoEmployee(name,address,email,number,cc,role);
-            sucess = ctlr.createEmployee(dto);
+            success = ctlr.createEmployee(dto);
 
         }
-        if (sucess) {
+        if (success) {
             ctlr.printEmployee();
 
             if (Utils.confirm("Is it correct?(s/n)")) {
-                sucess = ctlr.saveEmployee(dto);
+                success = ctlr.saveEmployee(dto);
             } else {
-                sucess = false;
+                success = false;
             }
         }
-        if (sucess ) {
+        if (success) {
             System.out.println("-----------Registration done successfully-----------");
         } else {
             System.out.println("-----------Registration failed---------------");
         }
-        return sucess;
+        return success;
     }
 }
