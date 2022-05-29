@@ -355,6 +355,8 @@ public class Company {
         return vaccinationFacilityList.get(index).getVaccinationScheduleList().get(snsUserIndex);
     }
 
+
+
     public List<Arrival> getWaitingList(int index) {
         return vaccinationFacilityList.get(index).getWaitingList();
     }
@@ -379,6 +381,7 @@ public class Company {
 
         return snsUsers;
     }
+
 
     public boolean validateWaitingList(int index) {
         if (snsUsersInWaitingRoom(index).isEmpty()) {

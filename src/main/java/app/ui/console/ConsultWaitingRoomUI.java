@@ -43,10 +43,12 @@ public class ConsultWaitingRoomUI implements Runnable{
         }
     }
 
+
     /**
      * @author Filipe Magalhães
      * Prints the list of SNS users in the waiting room
      */
+
 
     public void printWaitingList (List<String> snsUsers){
         for (int i = 0; i < snsUsers.size(); i++) {

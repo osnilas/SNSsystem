@@ -22,15 +22,39 @@ public class ConsultWaitingRoomController {
         return this.company.getWaitingList(index);
     }
 
+
+    /**
+     * @author Filipe Magalhães
+     * @Description Asks company to fill a string array with the SNS users in the waiting room
+     * @param index -index of the vaccination facility chosen
+     * @return boolean of the validation the SNS user
+     */
+
     public List<String> snsUsers (int index){
         return this.company.snsUsersInWaitingRoom(index);
     }
+
+
+
+    /**
+     * @author Filipe Magalhães
+     * @Description Checks if the waitig room list is empty
+     * @param index -index of the vaccination facility list
+     * @return boolean of the validation of the waiting room list
+     */
 
 
     public boolean snsUsersInWaitingRoom(int index) {
         this.company.snsUsersInWaitingRoom(index);
         return this.company.validateWaitingList(index);
     }
+
+    /**
+     * @author Filipe Magalhães
+     * @Description gets the name of the vaccination facilities and adds them to a String List
+     * @return list with the names of all registered vaccination facilities
+     */
+
 
     public List<String> getVaccinationFacilities(){
         List<VaccinationFacility> vaccinationFacilityList=this.company.getVaccinationFacilityList();
