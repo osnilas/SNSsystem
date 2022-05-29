@@ -411,7 +411,14 @@ public class Company {
         if (!validateArrival(arrival)) {
             return false;
         }
+        clearWaitingList(index);
         return addSnsUserToWaitingList(index, arrival);
+    }
+
+    private void clearWaitingList(int index) {
+        if (LocalDateTime.now().getDayOfMonth() != getWaitingList(index).get(0).getTimeOfArrival().getDayOfMonth()) {
+            getWaitingList(index).clear();
+        }
     }
 
     public boolean addSnsUserToWaitingList(int index, Arrival arrival) {

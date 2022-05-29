@@ -8,6 +8,12 @@ public class Arrival {
 
     private LocalDateTime timeOfArrival;
 
+    /**
+     * @author Pedro Nogueira <1211613@isep.ipp.pt>
+     * @param snSuser
+     * Constructor
+     * Registers/creates the arrival of an SNS User.
+     */
     public Arrival (SNSuser snSuser) {
         this.snSuser = snSuser;
         this.timeOfArrival = LocalDateTime.now();

@@ -13,7 +13,10 @@ public class CheckVaccineAppointmentUI implements Runnable {
     public static Scanner ler = new Scanner(System.in);
     private CheckVaccineAppointmentController ctrl = new CheckVaccineAppointmentController();
 
-
+    /**
+     * @author Pedro Nogueira
+     * Verifies an SNS User's appointment and adds them to the Vaccination Facility's waiting room
+     */
     @Override
     public void run() {
         int index;
@@ -69,7 +72,7 @@ public class CheckVaccineAppointmentUI implements Runnable {
         } else if (!ctrl.checkAppointment()) {
             System.out.println("There are no appointments for this SNS User!");
             return false;
-        } else if (ctrl.checkAppointmentDay()) {
+        } else if (!ctrl.checkAppointmentDay()) {
             System.out.println("Appointment is scheduled for a different day!");
             return false;
         }
