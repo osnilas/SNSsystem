@@ -32,9 +32,9 @@ public class ConsultWaitingRoomUI implements Runnable{
             sucess = ctrl.snsUsersInWaitingRoom(index);
 
         if (sucess){
-            System.out.println("-----------SNS Users in the waiting room---------------");
+            System.out.println("\n-----------SNS Users in the waiting room---------------");
             printWaitingList(ctrl.snsUsers(index));
-            System.out.println("-----------************************---------------");
+            System.out.println("-----------*****************************---------------");
 
         }
         else {
@@ -52,7 +52,7 @@ public class ConsultWaitingRoomUI implements Runnable{
 
     public void printWaitingList (List<String> snsUsers){
         for (int i = 0; i < snsUsers.size(); i++) {
-            System.out.println();
+            System.out.println(snsUsers);
 
         }
     }
