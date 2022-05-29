@@ -1,0 +1,74 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class :ScheduleVaccinationUI {
++run()
+-Schedule()
+-setSNSuser()
+-setVaccinationFacility()
+-getDateTimeAppoiment()
+-getTime(LocalDate date)
+-getDate()
+-selectVaccineType()
+-getTypeVaccineFromVaccinationCenter()
+-getTypeVaccineFromHealthCareCenter()
+}
+
+Class :VaccinationScheduleController {
++setVaccinationFacility(int index)
++SNSuserExistsEmail()
++createSchedule()
++createScheduleFromDTO(dtoScheduleVaccine dto)
++saveSchedule()
++getVaccinationFacilities()
++validateScheduleVaccine()
+-validateScheduleVaccineType()
++validateCreationSchedule()
++checkIfVaccinationFaciltyListIsEmpty()
++checkIfSNSuserExists(int SNSnumber)
+-validateVaccinationRecord()
++validateAgeGroup(Vaccine vaccine)
++validateDoseTime(Vaccine vaccine)
++checkIfSNSuser()
++ValidateAppoimentTime(LocalDate day,int index )
++getDateList()
++getTimeSlotsDTO(LocalDate date)
++getTimeSlots(LocalDate day)
++setDate(LocalDate day,int index)
++getTypeVaccinationFacility()
++getTypeVaccineFromMassVaccinationCenter()
++setTypeVaccineMassVaccinationCenter()
++getTypeVaccineFromHealthCareCenter()
++setTypeVaccineHealthCareCenter(int index)
++printSchedule()
++printScheduleInfo(String VaccinationCenter, LocalDateTime dateSheducle)
+}
+
+Class :dtoScheduleVaccine {
+-int SNSnumber
+-LocalDateTime appointmentDate
+-TypeVaccine TypeVaccine
+
+}
+
+Class Company{
+-List<TypeVaccine> typeVaccineList
+-List<VaccineAdministration> vaccineAdministrationList
+-List<Vaccine> vaccineList
+-List<VaccinationFacility> vaccinationFacilityList
+-designation
+    +getVaccinationFacilityList()
+    +getVaccinationFacilityFromList(int index)
+    +SNSuserExistsNumber(int SNSnumber)
+    +SNSuserExistsEmail(String email)
+    +checkOtherCentersForVaccination(TypeVaccine vaccine,int SNSnumber)
+}
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+
+@enduml

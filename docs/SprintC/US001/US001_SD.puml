@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+    actor "SNS User" as SNS
+
+    participant ":ScheduleVaccinationUI" as UI
+    participant ":VaccinationScheduleController" as  CTRL
+    participant "Company" as COMP
+    participant "dtoScheduleVaccine" as DTO
+
+        activate SNS
+       SNS -> UI: asks to schedule a vaccine
+       activate UI
+       UI --> SNS: requests data (SNS number, type of vaccine, vaccination center, day and time of vaccination)
+       deactivate UI
+       UI <- SNS: Types requested data
+
+       activate UI
+       UI->CTRL: createSchedule(dto)
+       activate CTRL
+       CTRL->COMP: schedule=createSchedule(dto)
+       activate COMP
+       CTRL->COMP: validateSchedule(schedule)
+        deactivate COMP
+       CTRL-->UI: printSchedule()
+       deactivate CTRL
+       SNS <-- UI: shows the user data and requests confirmation
+       deactivate UI
+       SNS -> UI: confirms the data
+       activate UI
+       UI->CTRL:saveSchedule(dto)
+       activate CTRL
+       CTRL->COMP:saveSchedule(dto)
+       activate COMP
+       COMP->DTO:SNSnumber=getSNSnumber()
+       activate DTO
+       COMP->DTO:appointmentDate=getAppointmentDate()
+       COMP->DTO: TypeVaccine=getTypeVaccine()
+       deactivate DTO
+
+       deactivate CTRL
+
+
+       SNS <-- UI: informs operation success
+       deactivate UI
+       @enduml
+
+@enduml
