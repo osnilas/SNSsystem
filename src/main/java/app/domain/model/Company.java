@@ -245,7 +245,7 @@ public class Company {
             SNSuserList.add(mapperSNSuser.toSNSuser(dto));
         }
         else {
-            System.out.println("SNS ALREADY EXISTS");
+            Utils.printText("SNS ALREADY EXISTS");
         }
         return flag;
     }

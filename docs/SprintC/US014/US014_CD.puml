@@ -34,8 +34,7 @@ Class SNSuser{
 
 Class AddSNSfromCSVUI{
 +run()
--file()
--copyDataFromFile
+-copyDataFromFile()
 -validateContents(String[] Line)
 }
 Class AddSNSfromCSVController{

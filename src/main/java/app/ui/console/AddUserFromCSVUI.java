@@ -28,10 +28,6 @@ public class AddUserFromCSVUI implements Runnable {
     }
 
     public void run() {
-        file();
-    }
-
-    private void file() {
         String file;
         Utils.printText("\nAdd SNS users from CSV file UI:");
         file = Utils.readLineFromConsole("Insert CSV file name");

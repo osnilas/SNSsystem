@@ -28,11 +28,8 @@ class US002 {
         ctlr.createScheduleFromDTO(dto);
         ctlr.setVaccinationFacility(0);
         // Act
-        try {
-            ctlr.validateScheduleVaccine();
-        } catch (Exception e) {
-            flag = false;
-        }
+        flag=ctlr.validateScheduleVaccine();
+        //Assert
         assertTrue(flag);
     }
 
@@ -46,6 +43,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateScheduleVaccine();
+        //Assert
         assertFalse(flag);
     }
 
@@ -59,6 +57,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateScheduleVaccine();
+        //Assert
         assertFalse(flag);
     }
 
@@ -72,6 +71,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateScheduleVaccine();
+        //Assert
         assertFalse(flag);
     }
 
@@ -85,6 +85,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateCreationSchedule();
+        //Assert
         assertFalse(flag);
     }
 
@@ -98,6 +99,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateCreationSchedule();
+        //Assert
         assertFalse(flag);
     }
 
@@ -111,6 +113,7 @@ class US002 {
         ctlr.setVaccinationFacility(0);
         // Act
         flag = ctlr.validateCreationSchedule();
+        //Assert
         assertFalse(flag);
     }
 
@@ -123,6 +126,7 @@ class US002 {
         ctlr.createScheduleFromDTO(dto);
         // Act
         flag = ctlr.validateCreationSchedule();
+        //Assert
         assertFalse(flag);
     }
 
