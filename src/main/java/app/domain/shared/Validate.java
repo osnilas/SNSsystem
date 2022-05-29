@@ -228,7 +228,7 @@ public class Validate {
     public static boolean validateSex(String sex){
         if(sex!=null) {
             for (int i = 0; i<Constants.SexListFull.length; i++) {
-                if(sex.equalsIgnoreCase(Constants.SexListFull[i])) {
+                if(sex.equalsIgnoreCase(Constants.SexListFull[i])|| sex.equalsIgnoreCase(Constants.SexListShort[i])) {
                     return true;
                 }
             }

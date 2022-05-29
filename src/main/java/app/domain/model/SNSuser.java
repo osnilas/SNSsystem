@@ -1,8 +1,5 @@
 package app.domain.model;
 
-import app.domain.shared.Constants;
-
-import java.lang.invoke.ConstantBootstraps;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -178,7 +175,7 @@ public class SNSuser {
         return "SNSuser:" +
                 "name:'" + name + '\'' +
                 ", sex:'" + sex + '\'' +
-                ", birth:" + birth.format(Constants.FORMATTER) +
+                ", birth:" + birth +
                 ", residence  address:'" + residenceAddress + '\'' +
                 ", email:'" + email + '\'' +
                 ", phone number:" + phoneNumber +

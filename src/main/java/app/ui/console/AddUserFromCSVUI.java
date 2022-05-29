@@ -27,6 +27,7 @@ public class AddUserFromCSVUI implements Runnable {
         ctlr = new AddSNSfromCSVController();
     }
 
+
     public void run() {
         String file;
         Utils.printText("\nAdd SNS users from CSV file UI:");
