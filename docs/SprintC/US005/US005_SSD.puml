@@ -7,10 +7,11 @@ autonumber
 actor "Nurse" as nurse
 
 activate nurse
-nurse-> "System:" : selects vaccination center where she is working
-activate "System:"
 "System:" --> nurse : shows menu with this role's possible operations
-nurse-> "System:" : asks to consult the users in the waiting room
+activate "System:"
+nurse-> "System:" :selects the "consult the users in the waiting room" option
+"System:" --> nurse :shows menu with all the registered vaccination centers
+nurse-> "System:" :selects vaccination center to consult the waiting room from
 "System:" --> nurse : shows users in the waiting room per order of arrival and informs sucess of the operation
 deactivate "System:"
 @enduml

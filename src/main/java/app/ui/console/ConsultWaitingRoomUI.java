@@ -24,21 +24,21 @@ public class ConsultWaitingRoomUI implements Runnable{
     public void run() {
         boolean sucess = false;
 
-            do {
+
                 List<String> list = ctrl.getVaccinationFacilities();
                 Utils.showList(list, "\nSelect a vaccination facility");
                 index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
-            }while (index==-1);
+
             sucess = ctrl.snsUsersInWaitingRoom(index);
 
         if (sucess){
-            System.out.println("-----------SNS Users in the waiting list---------------");
+            System.out.println("-----------SNS Users in the waiting room---------------");
             printWaitingList(ctrl.snsUsers(index));
-            System.out.println("-----------SNS Users in the waiting list---------------");
+            System.out.println("-----------************************---------------");
 
         }
         else {
-            System.out.println("-----------Error! The waiting room is empty!---------------");
+            System.out.println("-----------The waiting room is empty!---------------");
 
         }
     }
