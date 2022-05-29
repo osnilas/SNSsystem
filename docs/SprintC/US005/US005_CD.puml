@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<String> snsUsers
+-List<SNSuser> SNSuserList
+-List<VaccinationFacility> vaccinationFacilityList
+    +getWaitingList(int index)
+    +snsUsersInWaitingRoom(int index)
+    +getSNSusers()
+    +validateWaitingList(int index)
+    +snsUser(int j, int index)
+}
+
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+- int phoneNumber;
+- String sex;
+- LocalDate birth;
+- int SNSnumber;
+}
+
+Class ConsultWaitingRoomUI{
++run()
++printWaitingList()
+}
+Class ConsultWaitingRoomController{
++snsUsers (int index)
++snsUsersInWaitingRoom(int index)
++getVaccinationFacilities()
+}
+
+
+ConsultWaitingRoomUI..>ConsultWaitingRoomController
+ConsultWaitingRoomController..>Company
+ConsultWaitingRoomController..>App
+Company"1"->"*"SNSuser:Owns
+
+@enduml
