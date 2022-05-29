@@ -73,7 +73,7 @@ public class AddUserFromCSVUI implements Runnable {
                         String email = Line[5];
                         int SNSnumber = Integer.parseInt(Line[6]);
                         int ccNumber = Integer.parseInt(Line[7]);
-                        String password=Utils.generatePwd(Constants.PWD_LENGTH);
+                        String password=Utils.generatePwd(Constants.PWD_LENGHT);
                         if (Line[1].isBlank()) {
                             temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
                         } else {
