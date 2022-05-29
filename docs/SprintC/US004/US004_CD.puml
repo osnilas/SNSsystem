@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class CheckVaccinationAppointmentUI
+class CheckVaccinationAppointmentController
+class Company
+class Arrival
+
+CheckVaccinationAppointmentUI .> CheckVaccinationAppointmentController
+
+class CheckVaccinationAppointmentUI {
+    -checkSnsUserAppointment(number)
+}
+
+class CheckVaccinationAppointmentController {
+    +snsUserExists(number)
+    +checkAppointment()
+    +checkAppointmentDay()
+    +requestSnsUserArrivalRegistration()
+    +requestToSaveSnsUserArrival()
+    +getVaccinationFacilities()
+
+}
+
+CheckVaccinationAppointmentController ..> Company
+
+class Company {
+    -vaccinationFacilityList
+    +createArrival(snsUser)
+    +validateArrival(arrival)
+    +saveSnsUserArrival(index, arrival)
+    +addSnsUserToWaitingList(index, arrival)
+
+}
+
+Company  ->  Arrival : > administers
+CheckVaccinationAppointmentController .> Arrival
+
+class Arrival {
+    -snsUser
+    -timeOfArrival
+    +Arrival(snsUser)
+}
+
+@enduml

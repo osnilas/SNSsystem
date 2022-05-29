@@ -1,0 +1,100 @@
+@startuml
+autonumber
+actor "Receptionist" as res
+
+participant ":CheckVaccineAppointmentUI" as UI
+participant ":CheckVaccineAppointmentController" as ctrl
+participant "arrival: Arrival" as arrival
+participant ":Company" as comp
+
+activate res
+
+
+
+res -> UI : asks to check vaccine appointment
+activate UI
+UI -> ctrl : getVaccinationFacilities()
+activate ctrl
+ctrl -> comp : getVaccinationFacilityList()
+activate comp
+deactivate comp
+deactivate ctrl
+UI --> res : shows a list of vaccination facilities to choose from
+deactivate UI
+
+res -> UI : selects vaccination facility
+activate UI
+UI -> ctrl : setIndex(index)
+activate ctrl
+deactivate ctrl
+
+UI --> res : requests data (number)
+deactivate UI
+res -> UI : types requested data
+activate UI
+
+UI -> UI : checkSnsUserAppointment(number)
+activate UI
+
+UI -> ctrl : snsUserExists(number)
+activate ctrl
+ctrl -> comp : snsUser = snsUserExistsNumber(number)
+activate comp
+ctrl -> comp : snsUserIndex = getSnsUserAppointmentIndex(index, snsUser)
+deactivate comp
+deactivate ctrl
+UI -> ctrl : checkAppointment()
+
+activate ctrl
+ctrl -> comp : checkAppointment(index, snsUser)
+activate comp
+deactivate comp
+deactivate ctrl
+UI -> ctrl : checkAppointmentDay()
+activate ctrl
+ctrl -> comp : checkAppointmentDay(index, snsUserIndex)
+activate comp
+deactivate comp
+deactivate ctrl
+deactivate UI
+
+UI -> ctrl : requestSnsUserArrivalRegistration()
+activate ctrl
+ctrl -> comp : arrival = createArrival(snSuser)
+activate comp
+comp -> arrival : Arrival(snsUser)
+ctrl -> comp : validateArrival(arrival)
+deactivate comp
+
+deactivate ctrl
+
+
+deactivate ctrl
+
+
+
+UI --> res : shows all data and requests confirmation
+deactivate UI
+
+res -> UI : confirms the data
+activate UI
+UI -> ctrl : requestToSaveSnsUserArrival()
+activate ctrl
+ctrl -> comp : saveSNSuserArrival(index, arrival)
+deactivate ctrl
+
+activate comp
+comp -> comp : validateArrival(arrival)
+activate comp
+deactivate comp
+
+comp -> comp : addSnsUserToWaitingList(int index, Arrival arrival)
+activate comp
+deactivate comp
+
+UI --> res : informs operation success
+
+
+
+deactivate res
+@enduml

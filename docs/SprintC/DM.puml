@@ -12,7 +12,7 @@ object DGS
 object Administrator
 object Coordinator
 object Nurse
-object Recepionist
+object Receptionist
 object VaccinationFacility{
 -name
 -address
@@ -22,7 +22,7 @@ object VaccinationFacility{
 -website address
 -opening and closing hours
 -slot duration
--maximum number of vacines per slot
+-maximum number of vaccines per slot
 }
 object StatisticalReportVaccination
 object MassVaccinationCenter{
@@ -44,11 +44,11 @@ object VaccineSchedule{
 }
 object VaccinationCertificate
 object VaccineAdministration {
--**brand**
--**doses**
--**dosage**
--**age range**
--**vaccine interval**
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
 }
 object Confirmation{
 -Name of user
@@ -81,7 +81,7 @@ Administrator"*" -- "*" SNSuser: > manages/registers
 SNSuser"*"--"1" DGS : < owns
 DGS"1" -- "*"Employees : > owns
 DGS "1"--"1" Vaccine : > applies
-Employees"1"--"1" Recepionist: > plays as
+Employees"1"--"1" Receptionist: > plays as
 Employees"1"--"1" Nurse: > plays as
 Employees"1"--"1" Coordinator: > plays as
 Address"1"--"1" VaccinationFacility: < has
@@ -97,10 +97,10 @@ StatisticsCharts"*" -- "1"BruteforceAlgorithm: < with
 StatisticsCharts"*" -- "*"VaccinationFacility: > with data from
 VaccinationFacility "*"--"*" Vaccine: > can administer
 VaccineSchedule"*" -- "1"SNSuser: > created for
-VaccineSchedule"*" -- "1"Recepionist: > created for
+VaccineSchedule"*" -- "1"Receptionist: > created for
 VaccineAdministration"*" -- "1"Nurse: > administered by //change
 Vaccine"1" -- "*"VaccineAdministration: < of
-Recepionist"1" -- "*"SNSuser: < registered by
+Receptionist"1" -- "*"SNSuser: < registered by
 VaccineAdministration"*" -- "1"SNSuser: > administered on
 VaccineAdministration"0,1" -- "1"VaccineSchedule: < fulfilling //change
 VaccinationCertificate"*" -- "1"Nurse: > issued by
@@ -109,5 +109,6 @@ Confirmation"1" -- "1"SmsConfirmation:> sends
 Confirmation "1"--"1" EmailConfirmation: > sends
 VaccineSchedule"*" -- "*"TypeVaccine:> for taking
 Vaccine"1" --"1" TypeVaccine:> is of
+Receptionist "*" - "1" VaccinationFacility : > **works at**
 
 @enduml

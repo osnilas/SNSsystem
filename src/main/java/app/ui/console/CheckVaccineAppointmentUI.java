@@ -5,7 +5,6 @@ import app.domain.shared.Constants;
 import app.domain.shared.Validate;
 import app.ui.console.utils.Utils;
 
-import java.lang.module.FindException;
 import java.util.Scanner;
 
 public class CheckVaccineAppointmentUI implements Runnable {
@@ -66,7 +65,7 @@ public class CheckVaccineAppointmentUI implements Runnable {
     }
 
     private boolean checkSnsUserAppointment(int number) {
-        if (!ctrl.SNSuserExists(number)) {
+        if (!ctrl.snsUserExists(number)) {
             System.out.println("SNS User is not in the system");
             return false;
         } else if (!ctrl.checkAppointment()) {

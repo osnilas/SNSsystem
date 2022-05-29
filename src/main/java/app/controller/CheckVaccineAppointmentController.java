@@ -22,7 +22,7 @@ public class CheckVaccineAppointmentController {
      * @author Pedro Nogueira
      * Checks to see if the SNS User is in the system
      */
-    public boolean SNSuserExists(int number) {
+    public boolean snsUserExists(int number) {
         if (company.SNSuserExistsNumber(number) != null) {
             this.snSuser = company.SNSuserExistsNumber(number);
             this.snsUserIndex = company.getSnsUserAppointmentIndex(index, snSuser);
