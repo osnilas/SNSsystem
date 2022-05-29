@@ -28,8 +28,10 @@ public class ConsultWaitingRoomUI implements Runnable{
                 List<String> list = ctrl.getVaccinationFacilities();
                 Utils.showList(list, "\nSelect a vaccination facility");
                 index = Utils.selectsIndex(ctrl.getVaccinationFacilities());
+                ctrl.snsUsers(index).clear();
 
             sucess = ctrl.snsUsersInWaitingRoom(index);
+            ctrl.snsUsers(index).clear();
 
         if (sucess){
             System.out.println("\n-----------SNS Users in the waiting room---------------");
@@ -52,7 +54,7 @@ public class ConsultWaitingRoomUI implements Runnable{
 
     public void printWaitingList (List<String> snsUsers){
         for (int i = 0; i < snsUsers.size(); i++) {
-            System.out.println(snsUsers);
+            System.out.println(snsUsers.get(i));
 
         }
     }

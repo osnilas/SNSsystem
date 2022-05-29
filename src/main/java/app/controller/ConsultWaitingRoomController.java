@@ -45,7 +45,6 @@ public class ConsultWaitingRoomController {
 
 
     public boolean snsUsersInWaitingRoom(int index) {
-        this.company.snsUsersInWaitingRoom(index);
         return this.company.validateWaitingList(index);
     }
 

@@ -24,6 +24,8 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
 
+    private List<String> snsUsers = new ArrayList<String>();
+
     private static List<Employee> employeeList = new ArrayList<>();
 
     private static List<Employee> employeesListRole = new ArrayList<Employee>();
@@ -361,8 +363,7 @@ public class Company {
         return vaccinationFacilityList.get(index).getWaitingList();
     }
 
-    public ArrayList<String> snsUsersInWaitingRoom(int index) {
-        ArrayList<String> snsUsers = new ArrayList<String>();
+    public List<String> snsUsersInWaitingRoom(int index) {
 
         for (int i = 0; i < SNSuserList.size(); i++) {
             for (int j = 0; j < getWaitingList(index).size(); j++) {
@@ -380,6 +381,10 @@ public class Company {
 
         }
 
+        return snsUsers;
+    }
+
+    public List<String> getSNSusers(){
         return snsUsers;
     }
 
