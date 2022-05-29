@@ -27,7 +27,7 @@ autonumber
        UI->UI:validateContents(Line)
        activate UI
        deactivate UI
-       UI->CTRL: createSNSuser(dto)
+       UI->CTRL: success=createSNSuser(dto)
        activate CTRL
        CTRL->COMP: us=createSNSuser(dto)
        activate COMP
@@ -42,7 +42,7 @@ autonumber
        deactivate UI
        ADM -> UI: confirms the data
        activate UI
-       UI->CTRL:saveSNSuser(dto)
+       UI->CTRL:success=saveSNSuser(dto)
        activate CTRL
        CTRL->COMP:saveSNSuser(dto)
        activate COMP
