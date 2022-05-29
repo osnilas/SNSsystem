@@ -65,11 +65,11 @@ public class Constants {
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 
-    public static final SNSuser SN_SUSER_TESTER_FULL=new SNSuser("Joao Veiga", SexListFull[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 22207750, 17555697,"911");
+    public static final SNSuser SN_SUSER_TESTER_FULL=new SNSuser("Joao Veiga", SexListFull[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 222077500, 17555697,"911");
 
-    public static final SNSuser SNS_USER_TESTER_EMPTY=new SNSuser("Maria Santos", SexListFull[1], (LocalDate.of(1960,5,11)),"Rua da maria","maria@gmail.com",91233569,12207750,17555788,"mariaTest");
+    public static final SNSuser SNS_USER_TESTER_EMPTY=new SNSuser("Maria Santos", SexListFull[1], (LocalDate.of(1960,5,11)),"Rua da maria","maria@gmail.com",91233569,122077500,17555788,"mariaTest");
 
-    public static final SNSuser SNS_USER_TESTER_ONE=new SNSuser("Pedro Cardoso", SexListFull[0], (LocalDate.of(1994,9,1)),"Rua da maria","pedro@gmail.com",91234569,12213750,17555688,"pedroTest");
+    public static final SNSuser SNS_USER_TESTER_ONE=new SNSuser("Pedro Cardoso", SexListFull[0], (LocalDate.of(1994,9,1)),"Rua da maria","pedro@gmail.com",91234569,122137500,17555688,"pedroTest");
 
     public static final TypeVaccine TYPE_VACCINE_TESTER1= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
     public static final TypeVaccine TYPE_VACCINE_TESTER2= new TypeVaccine("Smallpox", "Smallpox was an infectious disease caused by one of two virus variants, Variola major and Variola minor", "smallP818", "Inactivated");
@@ -102,6 +102,6 @@ public class Constants {
     public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,4,20,16,30,00),1);
     public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,8,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(13307750,LocalDateTime.of(2022,6,5,12,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(222077507,LocalDateTime.of(2022,6,5,12,00),TYPE_VACCINE_TESTER1);
 }
 

@@ -181,7 +181,7 @@ public class SNSuser {
                 ", phone number:" + phoneNumber +
                 ", SNS number:" + SNSnumber +
                 ", citizen card number:" + ccNumber +
-                ", password:" +password
+                ", password:" +password +"\n"
                 ;
     }
 
