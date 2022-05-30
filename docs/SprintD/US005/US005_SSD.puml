@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+autonumber
+actor "Nurse" as nurse
+
+activate nurse
+"System:" --> nurse : shows menu with this role's possible operations
+activate "System:"
+nurse-> "System:" :selects the "consult the users in the waiting room" option
+"System:" --> nurse :shows menu with all the registered vaccination centers
+nurse-> "System:" :selects vaccination center to consult the waiting room from
+"System:" --> nurse : shows users in the waiting room per order of arrival and informs sucess of the operation
+deactivate "System:"
+@enduml

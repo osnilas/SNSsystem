@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class Company{
+-designation
+    +createUser(String id)
+    +validateUser(User user)
+    +saveUser(User user)
+    +createEmployee(String name, String email,\n int phone, int cc,String adress, String roleId)
+    +validateEmployee(Employee employee)
+    +saveEmployees(Employee employee)
+    +printUser(User user)
+    +printEmployee(Employee employee)
+}
+Class Employee{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+Class ResgisterEmployeeUI{
++register()
++run()
+}
+Class ResgisterEmployeeController{
++createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
++saveEmployee()
+printEmployee()
+}
+
+Company"1"-->"*"Employee:employ >
+ResgisterEmployeeController..>Company
+ResgisterEmployeeUI..> ResgisterEmployeeController
+
+ResgisterEmployeeController..>Employee
+
+@enduml

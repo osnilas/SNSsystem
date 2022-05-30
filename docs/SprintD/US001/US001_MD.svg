@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="577px" preserveAspectRatio="none" style="width:729px;height:577px;background:#FFFFFF;" version="1.1" viewBox="0 0 729 577" width="729px" zoomAndPan="magnify"><defs/><g><g id="elem_SNSuser"><rect fill="#F1F1F1" height="100.0469" style="stroke:#181818;stroke-width:0.5;" width="137" x="7" y="470"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="48" y="486.5332">SNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="143" y1="491.6094" y2="491.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="499.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="27" y="510.1426">SNS user number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="517.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="527.752">phone number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="534.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="27" y="545.3613">e-mail address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="552.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="27" y="562.9707">health conditions</text></g><g id="elem_Vaccine"><rect fill="#F1F1F1" height="100.0469" style="stroke:#181818;stroke-width:0.5;" width="124" x="206.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="243.5" y="23.5332">Vaccine</text><line style="stroke:#181818;stroke-width:0.5;" x1="207.5" x2="329.5" y1="28.6094" y2="28.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="214.5" y="36.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="226.5" y="47.1426">dosage</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="214.5" y="54.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="226.5" y="64.752">brand</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="214.5" y="71.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="226.5" y="82.3613">age range</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="214.5" y="89.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="226.5" y="99.9707">vaccine interval</text></g><g id="elem_VaccineSchedule"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="123" x="157" y="345"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="164" y="361.5332">VaccineSchedule</text><line style="stroke:#181818;stroke-width:0.5;" x1="158" x2="279" y1="366.6094" y2="366.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="165" y="374.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="177" y="385.1426">Date and Time</text></g><g id="elem_Confirmation"><rect fill="#F1F1F1" height="82.4375" style="stroke:#181818;stroke-width:0.5;" width="212" x="393.5" y="185"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="459.5" y="201.5332">Confirmation</text><line style="stroke:#181818;stroke-width:0.5;" x1="394.5" x2="604.5" y1="206.6094" y2="206.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="401.5" y="214.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="413.5" y="225.1426">Name of user</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="401.5" y="232.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="413.5" y="242.752">Address of vaccination facility</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="401.5" y="249.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="413.5" y="260.3613">Date and time of vaccination</text></g><g id="elem_TypeVaccine"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="96" x="205.5" y="496.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="212.5" y="513.0332">TypeVaccine</text><line style="stroke:#181818;stroke-width:0.5;" x1="206.5" x2="300.5" y1="518.1094" y2="518.1094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="213.5" y="526.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="225.5" y="536.6426">disease</text></g><g id="elem_VaccineAdministration"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="153" x="127" y="207"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="134" y="223.5332">VaccineAdministration</text><line style="stroke:#181818;stroke-width:0.5;" x1="128" x2="279" y1="228.6094" y2="228.6094"/></g><g id="elem_SmsConfirmation"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="121" x="439" y="349.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="446" y="366.0332">SmsConfirmation</text><line style="stroke:#181818;stroke-width:0.5;" x1="440" x2="559" y1="371.1094" y2="371.1094"/></g><g id="elem_EmailConfirmation"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="128" x="595.5" y="349.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="602.5" y="366.0332">EmailConfirmation</text><line style="stroke:#181818;stroke-width:0.5;" x1="596.5" x2="722.5" y1="371.1094" y2="371.1094"/></g><!--MD5=[9b883d3759ead800c8493fb91e0f381c]
+link VaccineSchedule to SNSuser--><g id="link_VaccineSchedule_SNSuser"><path codeLine="30" d="M183.62,392.16 C171.56,400.79 158.35,411.17 147.5,422 C133.1,436.37 119.28,453.78 107.66,469.86 " fill="none" id="VaccineSchedule-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="149.0047,434.7511,157.4293,430.3377,153.2262,426.2288,149.0047,434.7511" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="161.5" y="436.4951">created for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="169.0414" y="413.785">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="104.6903" y="459.2006">1</text></g><!--MD5=[9bd6858dc1902593544df99848a7a23f]
+link Vaccine to VaccineAdministration--><g id="link_Vaccine_VaccineAdministration"><path codeLine="31" d="M249.35,107.2 C236.32,140.68 219.82,183.07 210.59,206.79 " fill="none" id="Vaccine-VaccineAdministration" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="243.3135,141.5162,237.2941,148.8795,242.7717,151.0114,243.3135,141.5162" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="250.5" y="151.4951">of</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="239.3064" y="128.5362">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="206.9957" y="196.0657">*</text></g><!--MD5=[e740f77daf9cb494f8c5b1dda682ca82]
+link VaccineAdministration to SNSuser--><g id="link_VaccineAdministration_SNSuser"><path codeLine="32" d="M155.59,245.03 C114.59,263.32 58.23,295.98 32.5,345 C11.89,384.26 27.55,433.73 45.48,469.87 " fill="none" id="VaccineAdministration-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="35.3009,373.1662,41.9185,366.3355,36.6397,363.7504,35.3009,373.1662" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="46.5" y="373.9951">administered on</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="136.4122" y="266.2317">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="33.7663" y="459.212">1</text></g><!--MD5=[ec774a5692b03113585283a229c023dc]
+link Confirmation to VaccineSchedule--><g id="link_Confirmation_VaccineSchedule"><path codeLine="33" d="M449.16,267.08 C426.88,283.48 399.81,301.7 373.5,315 C343.96,329.93 309.21,342.15 280.1,351.03 " fill="none" id="Confirmation-VaccineSchedule" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="412.9783,303.952,403.5699,305.3426,406.1841,310.6071,412.9783,303.952" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="417.5" y="311.4951">emits</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="432.9063" y="289.0034">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="288.0341" y="345.4291">1</text></g><!--MD5=[22a568b13ca8ad24e9bab11641886446]
+link Confirmation to SmsConfirmation--><g id="link_Confirmation_SmsConfirmation"><path codeLine="34" d="M499.5,267.26 C499.5,294.35 499.5,328.75 499.5,349.4 " fill="none" id="Confirmation-SmsConfirmation" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="504.5,311.1758,507.4389,302.1307,501.5611,302.1307,504.5,311.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="35" x="513.5" y="311.4951">sends</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="491.9203" y="288.9067">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="491.4281" y="338.7094">1</text></g><!--MD5=[26d93bb3364bc68050d04ccdf39ce109]
+link VaccineAdministration to VaccineSchedule--><g id="link_VaccineAdministration_VaccineSchedule"><path codeLine="35" d="M205.43,245.08 C208.15,270.58 213.12,317.07 216.08,344.84 " fill="none" id="VaccineAdministration-VaccineSchedule" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="217.9692,301.204,216.0071,310.51,221.8517,309.886,217.9692,301.204" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="227.5" y="311.4951">fulfilling</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="198.0081" y="265.9526">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="207.563" y="334.2393">1</text></g><!--MD5=[aab7b35e6ac2441d1d528c6fdf23a0d2]
+link Confirmation to EmailConfirmation--><g id="link_Confirmation_EmailConfirmation"><path codeLine="36" d="M545.35,267.26 C576.19,294.35 615.37,328.75 638.89,349.4 " fill="none" id="Confirmation-EmailConfirmation" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="607.2571,309.475,602.3997,301.2984,598.5213,305.715,607.2571,309.475" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="35" x="612.5" y="311.4951">sends</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="545.3642" y="288.9067">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="624.5063" y="338.7094">1</text></g><!--MD5=[00d619381c51d312bc8be262c06fa3f8]
+link Vaccine to TypeVaccine--><g id="link_Vaccine_TypeVaccine"><path codeLine="37" d="M281.71,107.1 C287.49,130.52 293.79,159.03 297.5,185 C313.54,297.37 346.84,332.14 311.5,440 C304.51,461.34 289.3,481.68 276.22,496.37 " fill="none" id="Vaccine-TypeVaccine" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="329.4295,311.1753,332.4957,302.1725,326.6184,302.0897,329.4295,311.1753" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="338.5" y="311.4951">is of</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="276.0148" y="128.4228">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="274.1451" y="485.7769">1</text></g><!--MD5=[d3ea30674db0a421707393f66c3af609]
+link VaccineSchedule to TypeVaccine--><g id="link_VaccineSchedule_TypeVaccine"><path codeLine="38" d="M223.82,392.21 C230.39,420.31 241.53,467.88 248.13,496.08 " fill="none" id="VaccineSchedule-TypeVaccine" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="241.6394,436.0442,242.4398,426.5674,236.7166,427.9069,241.6394,436.0442" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="249.5" y="436.4951">for taking</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="219.5426" y="413.8478">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="241.2117" y="485.8108">*</text></g><!--MD5=[a2b2e30ed03cb155384cc131ff012d44]
+@startuml
+'https://plantuml.com/class-diagram
+
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+object Vaccine{
+-dosage
+-brand
+-age range
+-vaccine interval
+}
+object VaccineSchedule{
+-Date and Time
+}
+object Confirmation{
+-Name of user
+-Address of vaccination facility
+-Date and time of vaccination
+}
+object TypeVaccine{
+-disease
+}
+object VaccineAdministration
+object SmsConfirmation
+object EmailConfirmation
+
+VaccineSchedule"*" - - "1"SNSuser: > created for
+Vaccine"1" - - "*"VaccineAdministration: < of
+VaccineAdministration"*" - - "1"SNSuser: > administered on
+Confirmation"1" - - "1"VaccineSchedule: < emits
+Confirmation"1" - - "1"SmsConfirmation:> sends
+VaccineAdministration"1" - - "1"VaccineSchedule: < fulfilling
+Confirmation "1"- -"1" EmailConfirmation: > sends
+Vaccine"1" - -"1" TypeVaccine:> is of
+VaccineSchedule"*" - - "*"TypeVaccine:> for taking
+
+@enduml
+
+@startuml
+
+object SNSuser{
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+object Vaccine{
+-dosage
+-brand
+-age range
+-vaccine interval
+}
+object VaccineSchedule{
+-Date and Time
+}
+object Confirmation{
+-Name of user
+-Address of vaccination facility
+-Date and time of vaccination
+}
+object TypeVaccine{
+-disease
+}
+object VaccineAdministration
+object SmsConfirmation
+object EmailConfirmation
+
+VaccineSchedule"*" - - "1"SNSuser: > created for
+Vaccine"1" - - "*"VaccineAdministration: < of
+VaccineAdministration"*" - - "1"SNSuser: > administered on
+Confirmation"1" - - "1"VaccineSchedule: < emits
+Confirmation"1" - - "1"SmsConfirmation:> sends
+VaccineAdministration"1" - - "1"VaccineSchedule: < fulfilling
+Confirmation "1"- -"1" EmailConfirmation: > sends
+Vaccine"1" - -"1" TypeVaccine:> is of
+VaccineSchedule"*" - - "*"TypeVaccine:> for taking
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

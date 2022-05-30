@@ -1,0 +1,26 @@
+@startuml
+object VaccinationFacility
+object Administrator
+object VaccinationCenter{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vacines per slot
+}
+object Vaccine{
+              -brand
+              }
+object TypeVaccine{
+-disease
+}
+
+Administrator"*" -- "*" VaccinationCenter: > registers
+VaccinationFacility"*" -- "*" VaccinationCenter: < is
+VaccinationCenter "*"--"*" Vaccine: > can administer
+Vaccine"*" --"1" TypeVaccine:> is of
+@enduml

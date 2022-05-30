@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="471.25px" preserveAspectRatio="none" style="width:828px;height:471px;background:#FFFFFF;" version="1.1" viewBox="0 0 828 471" width="828.75px" zoomAndPan="magnify"><defs><filter height="300%" id="fozdewkiwtrda" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.5"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="5.0" dy="5.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fozdewkiwtrda)" height="228.8867" style="stroke:#A80036;stroke-width:1.25;" width="12.5" x="41.25" y="124.5117"/><rect fill="#FFFFFF" filter="url(#fozdewkiwtrda)" height="217.6367" style="stroke:#A80036;stroke-width:1.25;" width="12.5" x="767.5" y="124.5117"/><line style="stroke:#A80036;stroke-width:1.25;stroke-dasharray:5.0,5.0;" x1="47.5" x2="47.5" y1="112.0117" y2="364.6484"/><line style="stroke:#A80036;stroke-width:1.25;stroke-dasharray:5.0,5.0;" x1="773.75" x2="773.75" y1="112.0117" y2="364.6484"/><text fill="#000000" font-family="sans-serif" font-size="17.5" lengthAdjust="spacing" textLength="75" x="6.25" y="108.1665">SNS User</text><ellipse cx="47.5" cy="18.75" fill="#FEFECE" filter="url(#fozdewkiwtrda)" rx="10" ry="10" style="stroke:#A80036;stroke-width:2.5;"/><path d="M47.5,28.75 L47.5,62.5 M31.25,38.75 L63.75,38.75 M47.5,62.5 L31.25,81.25 M47.5,62.5 L63.75,81.25 " fill="none" filter="url(#fozdewkiwtrda)" style="stroke:#A80036;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="17.5" lengthAdjust="spacing" textLength="75" x="6.25" y="381.5649">SNS User</text><ellipse cx="47.5" cy="397.9102" fill="#FEFECE" filter="url(#fozdewkiwtrda)" rx="10" ry="10" style="stroke:#A80036;stroke-width:2.5;"/><path d="M47.5,407.9102 L47.5,441.6602 M31.25,417.9102 L63.75,417.9102 M47.5,441.6602 L31.25,460.4102 M47.5,441.6602 L63.75,460.4102 " fill="none" filter="url(#fozdewkiwtrda)" style="stroke:#A80036;stroke-width:2.5;"/><rect fill="#FEFECE" filter="url(#fozdewkiwtrda)" height="39.5117" style="stroke:#A80036;stroke-width:1.875;" width="80" x="731.25" y="66.25"/><text fill="#000000" font-family="sans-serif" font-size="17.5" lengthAdjust="spacing" textLength="62.5" x="740" y="93.1665">System:</text><rect fill="#FEFECE" filter="url(#fozdewkiwtrda)" height="39.5117" style="stroke:#A80036;stroke-width:1.875;" width="80" x="731.25" y="363.3984"/><text fill="#000000" font-family="sans-serif" font-size="17.5" lengthAdjust="spacing" textLength="62.5" x="740" y="390.3149">System:</text><rect fill="#FFFFFF" filter="url(#fozdewkiwtrda)" height="228.8867" style="stroke:#A80036;stroke-width:1.25;" width="12.5" x="41.25" y="124.5117"/><rect fill="#FFFFFF" filter="url(#fozdewkiwtrda)" height="217.6367" style="stroke:#A80036;stroke-width:1.25;" width="12.5" x="767.5" y="124.5117"/><polygon fill="#A80036" points="752.5,147.4512,765,152.4512,752.5,157.4512,757.5,152.4512" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="53.75" x2="760" y1="152.4512" y2="152.4512"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="62.5" y="146.3806">1</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="196.25" x="76.25" y="146.3806">asks to schedule a vaccine</text><polygon fill="#A80036" points="67.5,185.3906,55,190.3906,67.5,195.3906,62.5,190.3906" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="60" x2="766.25" y1="190.3906" y2="190.3906"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="75" y="184.3201">2</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="670" x="88.75" y="184.3201">requests data (SNS number, type of vaccine, vaccination center, day and time of vaccination)</text><polygon fill="#A80036" points="752.5,223.3301,765,228.3301,752.5,233.3301,757.5,228.3301" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="53.75" x2="760" y1="228.3301" y2="228.3301"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="62.5" y="222.2595">3</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="152.5" x="76.25" y="222.2595">types requested data</text><polygon fill="#A80036" points="67.5,261.2695,55,266.2695,67.5,271.2695,62.5,266.2695" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="60" x2="766.25" y1="266.2695" y2="266.2695"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="75" y="260.199">4</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="301.25" x="88.75" y="260.199">shows the data and requests confirmation</text><polygon fill="#A80036" points="752.5,299.209,765,304.209,752.5,309.209,757.5,304.209" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="53.75" x2="760" y1="304.209" y2="304.209"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="62.5" y="298.1384">5</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="125" x="76.25" y="298.1384">confirms the data</text><polygon fill="#A80036" points="67.5,337.1484,55,342.1484,67.5,347.1484,62.5,342.1484" style="stroke:#A80036;stroke-width:1.25;"/><line style="stroke:#A80036;stroke-width:1.25;" x1="60" x2="772.5" y1="342.1484" y2="342.1484"/><text fill="#000000" font-family="sans-serif" font-size="16.25" font-weight="bold" lengthAdjust="spacing" textLength="8.75" x="75" y="336.0779">6</text><text fill="#000000" font-family="sans-serif" font-size="16.25" lengthAdjust="spacing" textLength="412.5" x="88.75" y="336.0779">confirms operation sucess if the day and time is available</text><!--MD5=[9dc590cdfb62567b741eccd077a56ee0]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "SNS User" as user
+
+activate user
+activate "System:"
+user-> "System:" : asks to schedule a vaccine
+"System:" -> user : requests data (SNS number, type of vaccine, vaccination center, day and time of vaccination)
+user-> "System:" : types requested data
+user<- "System:" : shows the data and requests confirmation
+user-> "System:" : confirms the data
+user<- "System:" : confirms operation sucess if the day and time is available
+
+deactivate "System:"
+
+@enduml
+
+@startuml
+
+autonumber
+actor "SNS User" as user
+
+activate user
+activate "System:"
+user-> "System:" : asks to schedule a vaccine
+"System:" -> user : requests data (SNS number, type of vaccine, vaccination center, day and time of vaccination)
+user-> "System:" : types requested data
+user<- "System:" : shows the data and requests confirmation
+user-> "System:" : confirms the data
+user<- "System:" : confirms operation sucess if the day and time is available
+
+deactivate "System:"
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 13:40:07 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

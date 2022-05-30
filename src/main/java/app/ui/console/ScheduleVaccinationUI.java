@@ -66,10 +66,10 @@ public class ScheduleVaccinationUI implements Runnable {
             int snsNumber;
             do {
                 snsNumber = Utils.readIntegerFromConsole("Enter SNS number");
-                if (!Validate.validateCC(snsNumber)) {
-                    Utils.printText("Input a valid SNS number, it has 8 digits");
+                if (!Validate.validateSNS(snsNumber)) {
+                    Utils.printText("Input a valid SNS number, it has 9 digits");
                 }
-            } while (!Validate.validateCC(snsNumber));
+            } while (!Validate.validateSNS(snsNumber));
 
             if (!ctlr.checkIfSNSuserExists(snsNumber)) {
                 throw new Exception("SNS user not registered on system");

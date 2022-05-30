@@ -1,0 +1,19 @@
+    @startuml
+    'https://plantuml.com/sequence-diagram
+
+    autonumber
+    actor Administrator
+    activate Administrator
+    Administrator -> System: Request register new Employee
+    activate System
+    System --> Administrator: request data(Email, password)
+    deactivate System
+    System <- Administrator: Types requested data
+    activate System
+    Administrator <-- System: shows the data and requests confirmation
+    deactivate System
+    Administrator -> System: confirms the data
+    activate System
+    Administrator <-- System: informs operation success
+    deactivate System
+    @enduml

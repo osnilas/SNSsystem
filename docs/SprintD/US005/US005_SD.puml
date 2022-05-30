@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+autonumber
+    actor "Nurse" as NRS
+
+    participant ":ConsultWaitingRoomUI" as UI
+    participant ":ConsultWaitingRoomController" as  CTRL
+    participant "Company" as COMP
+    participant "SNSuserList \n:List<SNSuser>"
+
+        activate NRS
+       NRS -> UI: selects option to consult the waiting room list
+       activate UI
+       UI --> NRS: shows registered vaccination facilities and requests to select the intended
+       deactivate UI
+       UI <- NRS: selects the intended vaccination facility
+       activate UI
+       UI->CTRL: snsUsers(index)
+       activate CTRL
+       CTRL->COMP: snsUsersInWaitingRoom(int index)
+       activate COMP
+       CTRL->COMP: validateWaitingList()
+       deactivate COMP
+       CTRL-->UI: returns boolean of sucess or insucess of the operation
+       deactivate CTRL
+       NRS <-- UI: prints the SNS users in the waiting room and their information or if the room is empty
+       deactivate UI
+       deactivate COMP
+
+
+
+
+@enduml

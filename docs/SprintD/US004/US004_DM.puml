@@ -1,0 +1,32 @@
+@startuml
+object SNSuser{
+-**name**
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object Receptionist
+
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+
+VaccineSchedule"*" -- "1"SNSuser: > created for
+Receptionist "*" - "1" VaccinationFacility : > **works at**
+VaccineSchedule"*" -- "1"Receptionist: > created for
+Receptionist"1" -- "*"SNSuser: < registered by
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+
+object DGS
+object Employees
+object Administrator
+object Vaccine
+object TypeVaccine {
+-disease
+-code
+-description
+}
+object VaccineAdministration {
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
+}
+
+
+DGS"1" -- "*"Employees : > owns
+DGS "1"--"1" Vaccine : > applies
+Vaccine"1" --"1" TypeVaccine:> is of
+Vaccine"1" -- "*"VaccineAdministration: < of
+Employees"1"--"1" Administrator: > plays as
+
+@enduml

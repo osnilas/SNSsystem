@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<SNSuser> SNSuserList
+-designation
+    +createSNSuser(dtoSNSuser dto)
+    +validateSNSuser(SNSuser user)
+    -validateSNSuserDTO(dtoSNSuser dto)
+    +saveSNSuser(dtoSNSuser dto)
+    +printSNSuser(SNSuser user)
+}
+Class AuthFacade{
++addUserWithRole(String name, String email, String pwd, String roleId)
+}
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class AddSNSfromCSVUI{
++run()
+-copyDataFromFile()
+-validateContents(String[] Line)
+}
+Class AddSNSfromCSVController{
++createSNSuser(dtoSNSuser dto)
++saveSNSuser(dtoSNSuser dto)
++printSNSuser()
+}
+
+Class DTOSNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class MapperSNSuser{
+}
+
+AddSNSfromCSVUI..>AddSNSfromCSVController
+AddSNSfromCSVUI..>MapperSNSuser:Uses
+MapperSNSuser..>DTOSNSuser:Creates
+MapperSNSuser..>SNSuser:Creates
+AddSNSfromCSVController..>Company
+AddSNSfromCSVController..>App
+AddSNSfromCSVController..>DTOSNSuser:Uses
+Company"1"->"*"SNSuser:Owns
+Company..>AuthFacade
+Company..>DTOSNSuser:Uses
+
+
+@enduml

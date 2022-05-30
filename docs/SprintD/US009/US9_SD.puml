@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+    actor Administrator
+
+    participant ":RegisterVaccinationCenterUI" as UI
+    participant ":RegisterVaccinationCenterController" as  CTRL
+    participant "app:App" as _APP
+    participant "vc:VaccinationCenter" as VC
+
+    activate Administrator
+    Administrator -> UI: request register new Vaccination Center
+    activate UI
+    UI --> Administrator: request data(Name, Adress, Phone number, Email, Type of Vaccine,\n Fax number, Website Adress, Opening and closing hours, \n Slot duration, Maximum number of vaccines that can be given per slot)
+   deactivate UI
+    UI <- Administrator: Types requested data
+    activate UI
+    activate CTRL
+    CTRL-->_APP:company=App.getInstance().getCompany();
+    CTRL-->_APP:app=App.getInstance();
+    UI-->CTRL:createVaccinationCenter(Name, Adress, Phone number, Email, Type of Vaccine,\n Fax number, Website Adress, Opening and closing hours, \n Slot duration, Maximum number of vaccines that can be given per slot)
+    activate Company
+    CTRL-->Company:vc=createVaccinationCenter(Name, Adress, Phone number, Email, Type of Vaccine,\n Fax number, Website Adress, Opening and closing hours, \n Slot duration, Maximum number of vaccines that can be given per slot)
+    deactivate CTRL
+    activate  VC
+    Company-->VC:VaccinationCenter(Name, Adress, Phone number, Email, Type of Vaccine,\n Fax number, Website Adress, Opening and closing hours, \n Slot duration, Maximum number of vaccines that can be given per slot)
+    deactivate VC
+    deactivate Company
+    deactivate CTRL
+    Administrator <-- UI: shows the data and requests confirmation
+    deactivate UI
+    Administrator -> UI: confirms the data
+    activate UI
+    UI-->CTRL:saveVaccinationCenter()
+    activate CTRL
+    CTRL-->Company:saveVaccinationCenter(vc)
+    activate Company
+    Company-->Company:validateVaccinationCenter(vc)
+    activate Company
+    deactivate Company
+    Company-->Company:addVaccinationCenter(vc)
+    activate Company
+    deactivate Company
+    deactivate Company
+    CTRL-->UI:result
+    deactivate CTRL
+    Administrator <-- UI: informs operation success
+    deactivate UI
+
+@enduml

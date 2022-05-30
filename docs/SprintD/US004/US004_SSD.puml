@@ -1,0 +1,30 @@
+@startuml
+autonumber
+actor "Receptionist" as res
+
+activate res
+
+
+res -> ":System" : asks to check vaccine appointment
+activate ":System"
+":System" --> res : shows a list of vaccination facilities to choose from
+deactivate ":System"
+
+res -> ":System" : selects vaccination facility
+activate ":System"
+":System" --> res : requests data (number)
+deactivate ":System"
+
+res -> ":System" : types requested data
+activate ":System"
+":System" --> res : shows appointment and arrival data and asks for confirmation
+deactivate ":System"
+
+res -> ":System" : confirms data
+activate ":System"
+":System" --> res : informs operation success
+deactivate ":System"
+
+
+deactivate res
+@enduml

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="508px" preserveAspectRatio="none" style="width:741px;height:508px;background:#FFFFFF;" version="1.1" viewBox="0 0 741 508" width="741px" zoomAndPan="magnify"><defs/><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="5" fill="#F1F1F1" height="188.875" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="313" x="7" y="313"/><ellipse cx="129.25" cy="329" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M131.25,325.5 Q131.4531,325 131.6875,324.75 Q131.9219,324.5 132.1875,324.5 Q132.6563,324.5 132.9531,324.7813 Q133.25,325.0625 133.25,325.7188 L133.25,327.2813 Q133.25,327.9375 132.9688,328.2188 Q132.6875,328.5 132.25,328.5 Q131.8594,328.5 131.6094,328.3281 Q131.3594,328.1563 131.25,327.7031 Q131.2031,327.3906 131.0313,327.2188 Q130.7188,326.8906 130.1563,326.7031 Q129.5938,326.5 129.0313,326.5 Q128.3281,326.5 127.7344,326.7813 Q127.1563,327.0625 126.7031,327.6875 Q126.25,328.3125 126.25,329.1719 L126.25,330.0938 Q126.25,331.125 127.0938,331.8125 Q127.9375,332.5 129.4375,332.5 Q130.3281,332.5 130.9531,332.2969 Q131.3125,332.1875 131.7188,331.8281 Q131.9844,331.625 132.125,331.5625 Q132.2656,331.5 132.4375,331.5 Q132.7656,331.5 133,331.7656 Q133.25,332.0156 133.25,332.375 Q133.25,332.7188 132.9063,333.125 Q132.4063,333.7188 131.6094,334.0469 Q130.5625,334.5 129.2813,334.5 Q127.7813,334.5 126.5781,333.9063 Q125.6094,333.4375 124.9219,332.4219 Q124.25,331.4063 124.25,330.2031 L124.25,329.1094 Q124.25,327.8594 124.8438,326.7656 Q125.4531,325.6719 126.5,325.0938 Q127.5625,324.5 128.75,324.5 Q129.4688,324.5 130.0938,324.75 Q130.7188,325 131.25,325.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="149.75" y="334.7285">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="319" y1="345" y2="345"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="13" y="363.5332">-List&lt;String&gt; snsUsers</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="13" y="381.1426">-List&lt;SNSuser&gt; SNSuserList</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="301" x="13" y="398.752">-List&lt;VaccinationFacility&gt; vaccinationFacilityList</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="319" y1="405.8281" y2="405.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="13" y="424.3613">+getWaitingList(int index)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="223" x="13" y="441.9707">+snsUsersInWaitingRoom(int index)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="13" y="459.5801">+getSNSusers()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188" x="13" y="477.1895">+validateWaitingList(int index)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="13" y="494.7988">+snsUser(int j, int index)</text></g><!--MD5=[335f4d9be48430461c68bf6d6fdba145]
+class App--><g id="elem_App"><rect codeLine="17" fill="#F1F1F1" height="83.2188" id="App" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="180" x="554.5" y="366"/><ellipse cx="627.75" cy="382" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M629.75,378.5 Q629.9531,378 630.1875,377.75 Q630.4219,377.5 630.6875,377.5 Q631.1563,377.5 631.4531,377.7813 Q631.75,378.0625 631.75,378.7188 L631.75,380.2813 Q631.75,380.9375 631.4688,381.2188 Q631.1875,381.5 630.75,381.5 Q630.3594,381.5 630.1094,381.3281 Q629.8594,381.1563 629.75,380.7031 Q629.7031,380.3906 629.5313,380.2188 Q629.2188,379.8906 628.6563,379.7031 Q628.0938,379.5 627.5313,379.5 Q626.8281,379.5 626.2344,379.7813 Q625.6563,380.0625 625.2031,380.6875 Q624.75,381.3125 624.75,382.1719 L624.75,383.0938 Q624.75,384.125 625.5938,384.8125 Q626.4375,385.5 627.9375,385.5 Q628.8281,385.5 629.4531,385.2969 Q629.8125,385.1875 630.2188,384.8281 Q630.4844,384.625 630.625,384.5625 Q630.7656,384.5 630.9375,384.5 Q631.2656,384.5 631.5,384.7656 Q631.75,385.0156 631.75,385.375 Q631.75,385.7188 631.4063,386.125 Q630.9063,386.7188 630.1094,387.0469 Q629.0625,387.5 627.7813,387.5 Q626.2813,387.5 625.0781,386.9063 Q624.1094,386.4375 623.4219,385.4219 Q622.75,384.4063 622.75,383.2031 L622.75,382.1094 Q622.75,380.8594 623.3438,379.7656 Q623.9531,378.6719 625,378.0938 Q626.0625,377.5 627.25,377.5 Q627.9688,377.5 628.5938,377.75 Q629.2188,378 629.75,378.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="648.25" y="387.7285">App</text><line style="stroke:#181818;stroke-width:0.5;" x1="555.5" x2="733.5" y1="398" y2="398"/><line style="stroke:#181818;stroke-width:0.5;" x1="555.5" x2="733.5" y1="406" y2="406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="560.5" y="424.5332">+getIntance()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="168" x="560.5" y="442.1426">+getIntance.getCompany()</text></g><!--MD5=[fd0a4d8e5e69f6a264816a697947f9e2]
+class SNSuser--><g id="elem_SNSuser"><rect codeLine="22" fill="#F1F1F1" height="136.0469" id="SNSuser" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="129" x="390" y="339.5"/><ellipse cx="423.9" cy="355.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M425.9,352 Q426.1031,351.5 426.3375,351.25 Q426.5719,351 426.8375,351 Q427.3063,351 427.6031,351.2813 Q427.9,351.5625 427.9,352.2188 L427.9,353.7813 Q427.9,354.4375 427.6188,354.7188 Q427.3375,355 426.9,355 Q426.5094,355 426.2594,354.8281 Q426.0094,354.6563 425.9,354.2031 Q425.8531,353.8906 425.6813,353.7188 Q425.3688,353.3906 424.8063,353.2031 Q424.2438,353 423.6813,353 Q422.9781,353 422.3844,353.2813 Q421.8063,353.5625 421.3531,354.1875 Q420.9,354.8125 420.9,355.6719 L420.9,356.5938 Q420.9,357.625 421.7438,358.3125 Q422.5875,359 424.0875,359 Q424.9781,359 425.6031,358.7969 Q425.9625,358.6875 426.3688,358.3281 Q426.6344,358.125 426.775,358.0625 Q426.9156,358 427.0875,358 Q427.4156,358 427.65,358.2656 Q427.9,358.5156 427.9,358.875 Q427.9,359.2188 427.5563,359.625 Q427.0563,360.2188 426.2594,360.5469 Q425.2125,361 423.9313,361 Q422.4313,361 421.2281,360.4063 Q420.2594,359.9375 419.5719,358.9219 Q418.9,357.9063 418.9,356.7031 L418.9,355.6094 Q418.9,354.3594 419.4938,353.2656 Q420.1031,352.1719 421.15,351.5938 Q422.2125,351 423.4,351 Q424.1188,351 424.7438,351.25 Q425.3688,351.5 425.9,352 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="442.1" y="361.2285">SNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="391" x2="518" y1="371.5" y2="371.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="396" y="390.0332">-String name;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="396" y="407.6426">-int phoneNumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="396" y="425.252">-String sex;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="396" y="442.8613">-LocalDate birth;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="396" y="460.4707">-int SNSnumber;</text><line style="stroke:#181818;stroke-width:0.5;" x1="391" x2="518" y1="467.5469" y2="467.5469"/></g><!--MD5=[eed44e6cd1c01f98a4f62bcf310f76c2]
+class ConsultWaitingRoomUI--><g id="elem_ConsultWaitingRoomUI"><rect codeLine="30" fill="#F1F1F1" height="83.2188" id="ConsultWaitingRoomUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="315.5" y="7"/><ellipse cx="330.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M332.5,19.5 Q332.7031,19 332.9375,18.75 Q333.1719,18.5 333.4375,18.5 Q333.9063,18.5 334.2031,18.7813 Q334.5,19.0625 334.5,19.7188 L334.5,21.2813 Q334.5,21.9375 334.2188,22.2188 Q333.9375,22.5 333.5,22.5 Q333.1094,22.5 332.8594,22.3281 Q332.6094,22.1563 332.5,21.7031 Q332.4531,21.3906 332.2813,21.2188 Q331.9688,20.8906 331.4063,20.7031 Q330.8438,20.5 330.2813,20.5 Q329.5781,20.5 328.9844,20.7813 Q328.4063,21.0625 327.9531,21.6875 Q327.5,22.3125 327.5,23.1719 L327.5,24.0938 Q327.5,25.125 328.3438,25.8125 Q329.1875,26.5 330.6875,26.5 Q331.5781,26.5 332.2031,26.2969 Q332.5625,26.1875 332.9688,25.8281 Q333.2344,25.625 333.375,25.5625 Q333.5156,25.5 333.6875,25.5 Q334.0156,25.5 334.25,25.7656 Q334.5,26.0156 334.5,26.375 Q334.5,26.7188 334.1563,27.125 Q333.6563,27.7188 332.8594,28.0469 Q331.8125,28.5 330.5313,28.5 Q329.0313,28.5 327.8281,27.9063 Q326.8594,27.4375 326.1719,26.4219 Q325.5,25.4063 325.5,24.2031 L325.5,23.1094 Q325.5,21.8594 326.0938,20.7656 Q326.7031,19.6719 327.75,19.0938 Q328.8125,18.5 330,18.5 Q330.7188,18.5 331.3438,18.75 Q331.9688,19 332.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="344.5" y="28.7285">ConsultWaitingRoomUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="316.5" x2="490.5" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="316.5" x2="490.5" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="321.5" y="65.5332">+run()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="321.5" y="83.1426">+printWaitingList()</text></g><!--MD5=[c3f72e06384837eb595192cd067473f5]
+class ConsultWaitingRoomController--><g id="elem_ConsultWaitingRoomController"><rect codeLine="34" fill="#F1F1F1" height="100.8281" id="ConsultWaitingRoomController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="235" x="286" y="151"/><ellipse cx="305.05" cy="167" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M307.05,163.5 Q307.2531,163 307.4875,162.75 Q307.7219,162.5 307.9875,162.5 Q308.4563,162.5 308.7531,162.7813 Q309.05,163.0625 309.05,163.7188 L309.05,165.2813 Q309.05,165.9375 308.7688,166.2188 Q308.4875,166.5 308.05,166.5 Q307.6594,166.5 307.4094,166.3281 Q307.1594,166.1563 307.05,165.7031 Q307.0031,165.3906 306.8313,165.2188 Q306.5188,164.8906 305.9563,164.7031 Q305.3938,164.5 304.8313,164.5 Q304.1281,164.5 303.5344,164.7813 Q302.9563,165.0625 302.5031,165.6875 Q302.05,166.3125 302.05,167.1719 L302.05,168.0938 Q302.05,169.125 302.8938,169.8125 Q303.7375,170.5 305.2375,170.5 Q306.1281,170.5 306.7531,170.2969 Q307.1125,170.1875 307.5188,169.8281 Q307.7844,169.625 307.925,169.5625 Q308.0656,169.5 308.2375,169.5 Q308.5656,169.5 308.8,169.7656 Q309.05,170.0156 309.05,170.375 Q309.05,170.7188 308.7063,171.125 Q308.2063,171.7188 307.4094,172.0469 Q306.3625,172.5 305.0813,172.5 Q303.5813,172.5 302.3781,171.9063 Q301.4094,171.4375 300.7219,170.4219 Q300.05,169.4063 300.05,168.2031 L300.05,167.1094 Q300.05,165.8594 300.6438,164.7656 Q301.2531,163.6719 302.3,163.0938 Q303.3625,162.5 304.55,162.5 Q305.2688,162.5 305.8938,162.75 Q306.5188,163 307.05,163.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194" x="319.95" y="172.7285">ConsultWaitingRoomController</text><line style="stroke:#181818;stroke-width:0.5;" x1="287" x2="520" y1="183" y2="183"/><line style="stroke:#181818;stroke-width:0.5;" x1="287" x2="520" y1="191" y2="191"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="292" y="209.5332">+snsUsers (int index)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="223" x="292" y="227.1426">+snsUsersInWaitingRoom(int index)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="292" y="244.752">+getVaccinationFacilities()</text></g><!--MD5=[1b38487261d32948d9ecbf412e645a6e]
+link ConsultWaitingRoomUI to ConsultWaitingRoomController--><g id="link_ConsultWaitingRoomUI_ConsultWaitingRoomController"><path codeLine="41" d="M403.5,90.36 C403.5,107.45 403.5,127.55 403.5,145.88 " fill="none" id="ConsultWaitingRoomUI-to-ConsultWaitingRoomController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="403.5,151,407.5,142,403.5,146,399.5,142,403.5,151" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f721e2011bd7ab0589988d7554e9013e]
+link ConsultWaitingRoomController to Company--><g id="link_ConsultWaitingRoomController_Company"><path codeLine="42" d="M345.1,252.14 C324.77,269.42 301.2,289.46 277.91,309.25 " fill="none" id="ConsultWaitingRoomController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="273.88,312.68,283.3277,309.8979,277.6893,309.4413,278.1459,303.8029,273.88,312.68" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[37e0c62ba6cb1328b3d0f4333a4fa8d7]
+link ConsultWaitingRoomController to App--><g id="link_ConsultWaitingRoomController_App"><path codeLine="43" d="M463.63,252.02 C486.53,270.99 512.8,292.9 536.5,313 C555.31,328.96 575.81,346.63 593.85,362.28 " fill="none" id="ConsultWaitingRoomController-to-App" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="597.9,365.79,593.7249,356.8699,594.1239,362.5126,588.4811,362.9116,597.9,365.79" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[562b5f1e4988a8f02404f43afe700deb]
+link Company to SNSuser--><g id="link_Company_SNSuser"><path codeLine="44" d="M320.07,407.5 C342.67,407.5 364.91,407.5 384.6,407.5 " fill="none" id="Company-to-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="389.81,407.5,380.81,403.5,384.81,407.5,380.81,411.5,389.81,407.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="33" x="338.5" y="400.9951">Owns</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="327.8234" y="404.6192">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="377.0412" y="404.0877">*</text></g><!--MD5=[2dd8c22b7352c01dd2934d644b9eacf8]
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<String> snsUsers
+-List<SNSuser> SNSuserList
+-List<VaccinationFacility> vaccinationFacilityList
+    +getWaitingList(int index)
+    +snsUsersInWaitingRoom(int index)
+    +getSNSusers()
+    +validateWaitingList(int index)
+    +snsUser(int j, int index)
+}
+
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+- int phoneNumber;
+- String sex;
+- LocalDate birth;
+- int SNSnumber;
+}
+
+Class ConsultWaitingRoomUI{
++run()
++printWaitingList()
+}
+Class ConsultWaitingRoomController{
++snsUsers (int index)
++snsUsersInWaitingRoom(int index)
++getVaccinationFacilities()
+}
+
+
+ConsultWaitingRoomUI..>ConsultWaitingRoomController
+ConsultWaitingRoomController..>Company
+ConsultWaitingRoomController..>App
+Company"1"->"*"SNSuser:Owns
+
+@enduml
+
+@startuml
+
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<String> snsUsers
+-List<SNSuser> SNSuserList
+-List<VaccinationFacility> vaccinationFacilityList
+    +getWaitingList(int index)
+    +snsUsersInWaitingRoom(int index)
+    +getSNSusers()
+    +validateWaitingList(int index)
+    +snsUser(int j, int index)
+}
+
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+- int phoneNumber;
+- String sex;
+- LocalDate birth;
+- int SNSnumber;
+}
+
+Class ConsultWaitingRoomUI{
++run()
++printWaitingList()
+}
+Class ConsultWaitingRoomController{
++snsUsers (int index)
++snsUsersInWaitingRoom(int index)
++getVaccinationFacilities()
+}
+
+
+ConsultWaitingRoomUI..>ConsultWaitingRoomController
+ConsultWaitingRoomController..>Company
+ConsultWaitingRoomController..>App
+Company"1"->"*"SNSuser:Owns
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

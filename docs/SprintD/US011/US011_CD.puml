@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class Company {
+-String role
+-List<Employee> EmployeesList = new ArrayList<Employee>
+  +FillRoleArray(String role)
+  +validateRoleArray(ArrayList<Employee> EmployeesRoleList)
+  +PrintListEmployeesFromRole(List<Employee> EmployeesRoleList)
+}
+
+
+
+class RoleMenuController {
+  +FillRoleArray(role)
+  +PrintListEmployeesFromRole(EmployeesRoleList);
+}
+
+class RoleMenuUI {
+
+}
+class Employee{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+
+class OrganizationRole{
+-description
+}
+
+RoleMenuUI ..> RoleMenuController
+RoleMenuController ..> Company
+Company "1" --> "*" Employee : employs >
+Employee"*"--"1"OrganizationRole:has/plays >
+Company"1"--"*"OrganizationRole: comprehends >
+@enduml

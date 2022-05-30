@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="862px" preserveAspectRatio="none" style="width:1017px;height:862px;background:#FFFFFF;" version="1.1" viewBox="0 0 1017 862" width="1017px" zoomAndPan="magnify"><defs/><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="4" fill="#F1F1F1" height="171.2656" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="260" x="105" y="382.5"/><ellipse cx="200.75" cy="398.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M202.75,395 Q202.9531,394.5 203.1875,394.25 Q203.4219,394 203.6875,394 Q204.1563,394 204.4531,394.2813 Q204.75,394.5625 204.75,395.2188 L204.75,396.7813 Q204.75,397.4375 204.4688,397.7188 Q204.1875,398 203.75,398 Q203.3594,398 203.1094,397.8281 Q202.8594,397.6563 202.75,397.2031 Q202.7031,396.8906 202.5313,396.7188 Q202.2188,396.3906 201.6563,396.2031 Q201.0938,396 200.5313,396 Q199.8281,396 199.2344,396.2813 Q198.6563,396.5625 198.2031,397.1875 Q197.75,397.8125 197.75,398.6719 L197.75,399.5938 Q197.75,400.625 198.5938,401.3125 Q199.4375,402 200.9375,402 Q201.8281,402 202.4531,401.7969 Q202.8125,401.6875 203.2188,401.3281 Q203.4844,401.125 203.625,401.0625 Q203.7656,401 203.9375,401 Q204.2656,401 204.5,401.2656 Q204.75,401.5156 204.75,401.875 Q204.75,402.2188 204.4063,402.625 Q203.9063,403.2188 203.1094,403.5469 Q202.0625,404 200.7813,404 Q199.2813,404 198.0781,403.4063 Q197.1094,402.9375 196.4219,401.9219 Q195.75,400.9063 195.75,399.7031 L195.75,398.6094 Q195.75,397.3594 196.3438,396.2656 Q196.9531,395.1719 198,394.5938 Q199.0625,394 200.25,394 Q200.9688,394 201.5938,394.25 Q202.2188,394.5 202.75,395 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="221.25" y="404.2285">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="106" x2="364" y1="414.5" y2="414.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="111" y="433.0332">-List&lt;SNSuser&gt; SNSuserList</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="111" y="450.6426">-designation</text><line style="stroke:#181818;stroke-width:0.5;" x1="106" x2="364" y1="457.7188" y2="457.7188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="111" y="476.252">+createSNSuser(dtoSNSuser dto)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="209" x="111" y="493.8613">+validateSNSuser(SNSuser user)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="248" x="111" y="511.4707">-validateSNSuserDTO(dtoSNSuser dto)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="111" y="529.0801">+saveSNSuser(dtoSNSuser dto)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188" x="111" y="546.6895">+printSNSuser(SNSuser user)</text></g><!--MD5=[8ae808d068a8995f06b9b3ec51357f0b]
+class AuthFacade--><g id="elem_AuthFacade"><rect codeLine="13" fill="#F1F1F1" height="65.6094" id="AuthFacade" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="456" x="7" y="719"/><ellipse cx="192.25" cy="735" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M194.25,731.5 Q194.4531,731 194.6875,730.75 Q194.9219,730.5 195.1875,730.5 Q195.6563,730.5 195.9531,730.7813 Q196.25,731.0625 196.25,731.7188 L196.25,733.2813 Q196.25,733.9375 195.9688,734.2188 Q195.6875,734.5 195.25,734.5 Q194.8594,734.5 194.6094,734.3281 Q194.3594,734.1563 194.25,733.7031 Q194.2031,733.3906 194.0313,733.2188 Q193.7188,732.8906 193.1563,732.7031 Q192.5938,732.5 192.0313,732.5 Q191.3281,732.5 190.7344,732.7813 Q190.1563,733.0625 189.7031,733.6875 Q189.25,734.3125 189.25,735.1719 L189.25,736.0938 Q189.25,737.125 190.0938,737.8125 Q190.9375,738.5 192.4375,738.5 Q193.3281,738.5 193.9531,738.2969 Q194.3125,738.1875 194.7188,737.8281 Q194.9844,737.625 195.125,737.5625 Q195.2656,737.5 195.4375,737.5 Q195.7656,737.5 196,737.7656 Q196.25,738.0156 196.25,738.375 Q196.25,738.7188 195.9063,739.125 Q195.4063,739.7188 194.6094,740.0469 Q193.5625,740.5 192.2813,740.5 Q190.7813,740.5 189.5781,739.9063 Q188.6094,739.4375 187.9219,738.4219 Q187.25,737.4063 187.25,736.2031 L187.25,735.1094 Q187.25,733.8594 187.8438,732.7656 Q188.4531,731.6719 189.5,731.0938 Q190.5625,730.5 191.75,730.5 Q192.4688,730.5 193.0938,730.75 Q193.7188,731 194.25,731.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="212.75" y="740.7285">AuthFacade</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="462" y1="751" y2="751"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="462" y1="759" y2="759"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="444" x="13" y="777.5332">+addUserWithRole(String name, String email, String pwd, String roleId)</text></g><!--MD5=[335f4d9be48430461c68bf6d6fdba145]
+class App--><g id="elem_App"><rect codeLine="17" fill="#F1F1F1" height="83.2188" id="App" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="180" x="400" y="426.5"/><ellipse cx="473.25" cy="442.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M475.25,439 Q475.4531,438.5 475.6875,438.25 Q475.9219,438 476.1875,438 Q476.6563,438 476.9531,438.2813 Q477.25,438.5625 477.25,439.2188 L477.25,440.7813 Q477.25,441.4375 476.9688,441.7188 Q476.6875,442 476.25,442 Q475.8594,442 475.6094,441.8281 Q475.3594,441.6563 475.25,441.2031 Q475.2031,440.8906 475.0313,440.7188 Q474.7188,440.3906 474.1563,440.2031 Q473.5938,440 473.0313,440 Q472.3281,440 471.7344,440.2813 Q471.1563,440.5625 470.7031,441.1875 Q470.25,441.8125 470.25,442.6719 L470.25,443.5938 Q470.25,444.625 471.0938,445.3125 Q471.9375,446 473.4375,446 Q474.3281,446 474.9531,445.7969 Q475.3125,445.6875 475.7188,445.3281 Q475.9844,445.125 476.125,445.0625 Q476.2656,445 476.4375,445 Q476.7656,445 477,445.2656 Q477.25,445.5156 477.25,445.875 Q477.25,446.2188 476.9063,446.625 Q476.4063,447.2188 475.6094,447.5469 Q474.5625,448 473.2813,448 Q471.7813,448 470.5781,447.4063 Q469.6094,446.9375 468.9219,445.9219 Q468.25,444.9063 468.25,443.7031 L468.25,442.6094 Q468.25,441.3594 468.8438,440.2656 Q469.4531,439.1719 470.5,438.5938 Q471.5625,438 472.75,438 Q473.4688,438 474.0938,438.25 Q474.7188,438.5 475.25,439 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="493.75" y="448.2285">App</text><line style="stroke:#181818;stroke-width:0.5;" x1="401" x2="579" y1="458.5" y2="458.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="401" x2="579" y1="466.5" y2="466.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="406" y="485.0332">+getIntance()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="168" x="406" y="502.6426">+getIntance.getCompany()</text></g><!--MD5=[fd0a4d8e5e69f6a264816a697947f9e2]
+class SNSuser--><g id="elem_SNSuser"><rect codeLine="22" fill="#F1F1F1" height="206.4844" id="SNSuser" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="834" y="365"/><ellipse cx="890.25" cy="381" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M892.25,377.5 Q892.4531,377 892.6875,376.75 Q892.9219,376.5 893.1875,376.5 Q893.6563,376.5 893.9531,376.7813 Q894.25,377.0625 894.25,377.7188 L894.25,379.2813 Q894.25,379.9375 893.9688,380.2188 Q893.6875,380.5 893.25,380.5 Q892.8594,380.5 892.6094,380.3281 Q892.3594,380.1563 892.25,379.7031 Q892.2031,379.3906 892.0313,379.2188 Q891.7188,378.8906 891.1563,378.7031 Q890.5938,378.5 890.0313,378.5 Q889.3281,378.5 888.7344,378.7813 Q888.1563,379.0625 887.7031,379.6875 Q887.25,380.3125 887.25,381.1719 L887.25,382.0938 Q887.25,383.125 888.0938,383.8125 Q888.9375,384.5 890.4375,384.5 Q891.3281,384.5 891.9531,384.2969 Q892.3125,384.1875 892.7188,383.8281 Q892.9844,383.625 893.125,383.5625 Q893.2656,383.5 893.4375,383.5 Q893.7656,383.5 894,383.7656 Q894.25,384.0156 894.25,384.375 Q894.25,384.7188 893.9063,385.125 Q893.4063,385.7188 892.6094,386.0469 Q891.5625,386.5 890.2813,386.5 Q888.7813,386.5 887.5781,385.9063 Q886.6094,385.4375 885.9219,384.4219 Q885.25,383.4063 885.25,382.2031 L885.25,381.1094 Q885.25,379.8594 885.8438,378.7656 Q886.4531,377.6719 887.5,377.0938 Q888.5625,376.5 889.75,376.5 Q890.4688,376.5 891.0938,376.75 Q891.7188,377 892.25,377.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="910.75" y="386.7285">SNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="835" x2="1009" y1="397" y2="397"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="840" y="415.5332">-String name;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="840" y="433.1426">-String residenceAddress;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="840" y="450.752">-String email;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="840" y="468.3613">-int phoneNumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="840" y="485.9707">-int ccNumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="840" y="503.5801">-String sex;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="840" y="521.1895">-LocalDate birth;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="840" y="538.7988">-int SNSnumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="840" y="556.4082">-String password;</text><line style="stroke:#181818;stroke-width:0.5;" x1="835" x2="1009" y1="563.4844" y2="563.4844"/></g><!--MD5=[d4944a25d4754a7b0223128b8935cdea]
+class AddSNSfromCSVUI--><g id="elem_AddSNSfromCSVUI"><rect codeLine="34" fill="#F1F1F1" height="100.8281" id="AddSNSfromCSVUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="209" x="516.5" y="7"/><ellipse cx="557.15" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M559.15,19.5 Q559.3531,19 559.5875,18.75 Q559.8219,18.5 560.0875,18.5 Q560.5563,18.5 560.8531,18.7813 Q561.15,19.0625 561.15,19.7188 L561.15,21.2813 Q561.15,21.9375 560.8688,22.2188 Q560.5875,22.5 560.15,22.5 Q559.7594,22.5 559.5094,22.3281 Q559.2594,22.1563 559.15,21.7031 Q559.1031,21.3906 558.9313,21.2188 Q558.6188,20.8906 558.0563,20.7031 Q557.4938,20.5 556.9313,20.5 Q556.2281,20.5 555.6344,20.7813 Q555.0563,21.0625 554.6031,21.6875 Q554.15,22.3125 554.15,23.1719 L554.15,24.0938 Q554.15,25.125 554.9938,25.8125 Q555.8375,26.5 557.3375,26.5 Q558.2281,26.5 558.8531,26.2969 Q559.2125,26.1875 559.6188,25.8281 Q559.8844,25.625 560.025,25.5625 Q560.1656,25.5 560.3375,25.5 Q560.6656,25.5 560.9,25.7656 Q561.15,26.0156 561.15,26.375 Q561.15,26.7188 560.8063,27.125 Q560.3063,27.7188 559.5094,28.0469 Q558.4625,28.5 557.1813,28.5 Q555.6813,28.5 554.4781,27.9063 Q553.5094,27.4375 552.8219,26.4219 Q552.15,25.4063 552.15,24.2031 L552.15,23.1094 Q552.15,21.8594 552.7438,20.7656 Q553.3531,19.6719 554.4,19.0938 Q555.4625,18.5 556.65,18.5 Q557.3688,18.5 557.9938,18.75 Q558.6188,19 559.15,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="576.85" y="28.7285">AddSNSfromCSVUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="517.5" x2="724.5" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="517.5" x2="724.5" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="522.5" y="65.5332">+run()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="522.5" y="83.1426">-copyDataFromFile()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="522.5" y="100.752">-validateContents(String[] Line)</text></g><!--MD5=[5d03b164cd64ccb051dae51c0801286f]
+class AddSNSfromCSVController--><g id="elem_AddSNSfromCSVController"><rect codeLine="39" fill="#F1F1F1" height="100.8281" id="AddSNSfromCSVController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="224" x="402" y="186"/><ellipse cx="426.9" cy="202" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M428.9,198.5 Q429.1031,198 429.3375,197.75 Q429.5719,197.5 429.8375,197.5 Q430.3063,197.5 430.6031,197.7813 Q430.9,198.0625 430.9,198.7188 L430.9,200.2813 Q430.9,200.9375 430.6188,201.2188 Q430.3375,201.5 429.9,201.5 Q429.5094,201.5 429.2594,201.3281 Q429.0094,201.1563 428.9,200.7031 Q428.8531,200.3906 428.6813,200.2188 Q428.3688,199.8906 427.8063,199.7031 Q427.2438,199.5 426.6813,199.5 Q425.9781,199.5 425.3844,199.7813 Q424.8063,200.0625 424.3531,200.6875 Q423.9,201.3125 423.9,202.1719 L423.9,203.0938 Q423.9,204.125 424.7438,204.8125 Q425.5875,205.5 427.0875,205.5 Q427.9781,205.5 428.6031,205.2969 Q428.9625,205.1875 429.3688,204.8281 Q429.6344,204.625 429.775,204.5625 Q429.9156,204.5 430.0875,204.5 Q430.4156,204.5 430.65,204.7656 Q430.9,205.0156 430.9,205.375 Q430.9,205.7188 430.5563,206.125 Q430.0563,206.7188 429.2594,207.0469 Q428.2125,207.5 426.9313,207.5 Q425.4313,207.5 424.2281,206.9063 Q423.2594,206.4375 422.5719,205.4219 Q421.9,204.4063 421.9,203.2031 L421.9,202.1094 Q421.9,200.8594 422.4938,199.7656 Q423.1031,198.6719 424.15,198.0938 Q425.2125,197.5 426.4,197.5 Q427.1188,197.5 427.7438,197.75 Q428.3688,198 428.9,198.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="443.1" y="207.7285">AddSNSfromCSVController</text><line style="stroke:#181818;stroke-width:0.5;" x1="403" x2="625" y1="218" y2="218"/><line style="stroke:#181818;stroke-width:0.5;" x1="403" x2="625" y1="226" y2="226"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="408" y="244.5332">+createSNSuser(dtoSNSuser dto)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="408" y="262.1426">+saveSNSuser(dtoSNSuser dto)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="408" y="279.752">+printSNSuser()</text></g><!--MD5=[dab0e46459b21054476ab58630687929]
+class DTOSNSuser--><g id="elem_DTOSNSuser"><rect codeLine="45" fill="#F1F1F1" height="206.4844" id="DTOSNSuser" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="176" x="562" y="649"/><ellipse cx="603.55" cy="665" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M605.55,661.5 Q605.7531,661 605.9875,660.75 Q606.2219,660.5 606.4875,660.5 Q606.9563,660.5 607.2531,660.7813 Q607.55,661.0625 607.55,661.7188 L607.55,663.2813 Q607.55,663.9375 607.2688,664.2188 Q606.9875,664.5 606.55,664.5 Q606.1594,664.5 605.9094,664.3281 Q605.6594,664.1563 605.55,663.7031 Q605.5031,663.3906 605.3313,663.2188 Q605.0188,662.8906 604.4563,662.7031 Q603.8938,662.5 603.3313,662.5 Q602.6281,662.5 602.0344,662.7813 Q601.4563,663.0625 601.0031,663.6875 Q600.55,664.3125 600.55,665.1719 L600.55,666.0938 Q600.55,667.125 601.3938,667.8125 Q602.2375,668.5 603.7375,668.5 Q604.6281,668.5 605.2531,668.2969 Q605.6125,668.1875 606.0188,667.8281 Q606.2844,667.625 606.425,667.5625 Q606.5656,667.5 606.7375,667.5 Q607.0656,667.5 607.3,667.7656 Q607.55,668.0156 607.55,668.375 Q607.55,668.7188 607.2063,669.125 Q606.7063,669.7188 605.9094,670.0469 Q604.8625,670.5 603.5813,670.5 Q602.0813,670.5 600.8781,669.9063 Q599.9094,669.4375 599.2219,668.4219 Q598.55,667.4063 598.55,666.2031 L598.55,665.1094 Q598.55,663.8594 599.1438,662.7656 Q599.7531,661.6719 600.8,661.0938 Q601.8625,660.5 603.05,660.5 Q603.7688,660.5 604.3938,660.75 Q605.0188,661 605.55,661.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="623.45" y="670.7285">DTOSNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="563" x2="737" y1="681" y2="681"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="568" y="699.5332">-String name;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="568" y="717.1426">-String residenceAddress;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="568" y="734.752">-String email;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="568" y="752.3613">-int phoneNumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="568" y="769.9707">-int ccNumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="568" y="787.5801">-String sex;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="568" y="805.1895">-LocalDate birth;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="568" y="822.7988">-int SNSnumber;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="568" y="840.4082">-String password;</text><line style="stroke:#181818;stroke-width:0.5;" x1="563" x2="737" y1="847.4844" y2="847.4844"/></g><!--MD5=[aa5150cf1554aa2a2f479ecf9bc6bc20]
+class MapperSNSuser--><g id="elem_MapperSNSuser"><rect codeLine="57" fill="#F1F1F1" height="48" id="MapperSNSuser" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="684.5" y="212.5"/><ellipse cx="699.5" cy="228.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M701.5,225 Q701.7031,224.5 701.9375,224.25 Q702.1719,224 702.4375,224 Q702.9063,224 703.2031,224.2813 Q703.5,224.5625 703.5,225.2188 L703.5,226.7813 Q703.5,227.4375 703.2188,227.7188 Q702.9375,228 702.5,228 Q702.1094,228 701.8594,227.8281 Q701.6094,227.6563 701.5,227.2031 Q701.4531,226.8906 701.2813,226.7188 Q700.9688,226.3906 700.4063,226.2031 Q699.8438,226 699.2813,226 Q698.5781,226 697.9844,226.2813 Q697.4063,226.5625 696.9531,227.1875 Q696.5,227.8125 696.5,228.6719 L696.5,229.5938 Q696.5,230.625 697.3438,231.3125 Q698.1875,232 699.6875,232 Q700.5781,232 701.2031,231.7969 Q701.5625,231.6875 701.9688,231.3281 Q702.2344,231.125 702.375,231.0625 Q702.5156,231 702.6875,231 Q703.0156,231 703.25,231.2656 Q703.5,231.5156 703.5,231.875 Q703.5,232.2188 703.1563,232.625 Q702.6563,233.2188 701.8594,233.5469 Q700.8125,234 699.5313,234 Q698.0313,234 696.8281,233.4063 Q695.8594,232.9375 695.1719,231.9219 Q694.5,230.9063 694.5,229.7031 L694.5,228.6094 Q694.5,227.3594 695.0938,226.2656 Q695.7031,225.1719 696.75,224.5938 Q697.8125,224 699,224 Q699.7188,224 700.3438,224.25 Q700.9688,224.5 701.5,225 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="713.5" y="234.2285">MapperSNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="685.5" x2="818.5" y1="244.5" y2="244.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="685.5" x2="818.5" y1="252.5" y2="252.5"/></g><!--MD5=[f288aef74005c8b50530d73130849428]
+link AddSNSfromCSVUI to AddSNSfromCSVController--><g id="link_AddSNSfromCSVUI_AddSNSfromCSVController"><path codeLine="60" d="M590.91,108.28 C577.12,131.09 560.74,158.18 546.65,181.49 " fill="none" id="AddSNSfromCSVUI-to-AddSNSfromCSVController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="544.05,185.79,552.1326,180.1622,546.6393,181.5127,545.2889,176.0194,544.05,185.79" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1a95402ff187bc4255e8c98844bbc6c6]
+link AddSNSfromCSVUI to MapperSNSuser--><g id="link_AddSNSfromCSVUI_MapperSNSuser"><path codeLine="61" d="M657.84,108.28 C681.83,140.69 712.22,181.75 731.88,208.31 " fill="none" id="AddSNSfromCSVUI-to-MapperSNSuser" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="734.94,212.44,732.7947,202.8276,731.9628,208.423,726.3675,207.5911,734.94,212.44" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="691" y="152.4951">Uses</text></g><!--MD5=[284d078c17e4c31e65bedc14ae39737e]
+link MapperSNSuser to DTOSNSuser--><g id="link_MapperSNSuser_DTOSNSuser"><path codeLine="62" d="M747.99,260.6 C738.51,314.88 713.72,454.73 690,571 C685.19,594.57 679.76,619.82 674.48,643.72 " fill="none" id="MapperSNSuser-to-DTOSNSuser" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="673.36,648.8,679.2171,640.882,674.4447,643.9191,671.4076,639.1466,673.36,648.8" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="730" y="473.4951">Creates</text></g><!--MD5=[d926af47cea8a7e1a1c5a25809cb41ce]
+link MapperSNSuser to SNSuser--><g id="link_MapperSNSuser_SNSuser"><path codeLine="63" d="M769.24,260.77 C786.87,284.57 815.54,323.28 843.31,360.77 " fill="none" id="MapperSNSuser-to-SNSuser" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="846.34,364.86,844.1784,355.2513,843.356,360.848,837.7593,360.0257,846.34,364.86" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="822" y="331.4951">Creates</text></g><!--MD5=[cfbaea2d6b7a1c24dc1299ff9885fa6a]
+link AddSNSfromCSVController to Company--><g id="link_AddSNSfromCSVController_Company"><path codeLine="64" d="M453.8,287.02 C421.19,313.84 379.92,347.79 342.03,378.96 " fill="none" id="AddSNSfromCSVController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="337.91,382.35,347.407,379.741,341.7779,379.1815,342.3374,373.5524,337.91,382.35" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[bf7b092c1cfd695beae5ebce6010cc3a]
+link AddSNSfromCSVController to App--><g id="link_AddSNSfromCSVController_App"><path codeLine="65" d="M508.82,287.02 C504.65,326.87 498.84,382.43 494.78,421.25 " fill="none" id="AddSNSfromCSVController-to-App" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="494.25,426.37,499.1549,417.8294,494.7645,421.3965,491.1973,417.0062,494.25,426.37" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[5fe33b5e52c30aa1aa61318c15203fe1]
+link AddSNSfromCSVController to DTOSNSuser--><g id="link_AddSNSfromCSVController_DTOSNSuser"><path codeLine="66" d="M574.5,287.32 C582.51,296.41 589.75,306.41 595,317 C622.57,372.59 637.35,534.04 644.44,643.56 " fill="none" id="AddSNSfromCSVController-to-DTOSNSuser" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="644.77,648.73,648.1695,639.4864,644.4412,643.7408,640.1868,640.0125,644.77,648.73" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="640" y="473.4951">Uses</text></g><!--MD5=[562b5f1e4988a8f02404f43afe700deb]
+link Company to SNSuser--><g id="link_Company_SNSuser"><path codeLine="67" d="M346.35,382.3 C358,375.71 369.98,369.78 382,365 C453.17,336.71 476.11,345.57 552.5,340 C645.77,333.2 789.54,357.16 807,365 C814.59,368.41 822.04,372.51 829.26,377.07 " fill="none" id="Company-to-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="833.72,379.98,828.352,371.7226,829.5271,377.2561,823.9937,378.4312,833.72,379.98" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="33" x="553.5" y="331.4951">Owns</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="348.6184" y="371.7465">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="820.9186" y="369.2177">*</text></g><!--MD5=[717d4b03d3c4372f4eafe5e342a0a7dd]
+link Company to AuthFacade--><g id="link_Company_AuthFacade"><path codeLine="68" d="M235,553.61 C235,606.87 235,672.97 235,713.56 " fill="none" id="Company-to-AuthFacade" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="235,718.87,239,709.87,235,713.87,231,709.87,235,718.87" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[81609ceba30e9eab06d3d66a9b4c4636]
+link Company to DTOSNSuser--><g id="link_Company_DTOSNSuser"><path codeLine="69" d="M356.83,553.74 C365.34,559.6 373.79,565.4 382,571 C440.19,610.73 505.86,654.85 557.63,689.46 " fill="none" id="Company-to-DTOSNSuser" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="561.96,692.36,556.7101,684.027,557.8063,689.5766,552.2567,690.6728,561.96,692.36" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="449" y="615.4951">Uses</text></g><!--MD5=[f395627a06abcd1879c7280ae0a29961]
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<SNSuser> SNSuserList
+-designation
+    +createSNSuser(dtoSNSuser dto)
+    +validateSNSuser(SNSuser user)
+    -validateSNSuserDTO(dtoSNSuser dto)
+    +saveSNSuser(dtoSNSuser dto)
+    +printSNSuser(SNSuser user)
+}
+Class AuthFacade{
++addUserWithRole(String name, String email, String pwd, String roleId)
+}
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class AddSNSfromCSVUI{
++run()
+-copyDataFromFile()
+-validateContents(String[] Line)
+}
+Class AddSNSfromCSVController{
++createSNSuser(dtoSNSuser dto)
++saveSNSuser(dtoSNSuser dto)
++printSNSuser()
+}
+
+Class DTOSNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class MapperSNSuser{
+}
+
+AddSNSfromCSVUI..>AddSNSfromCSVController
+AddSNSfromCSVUI..>MapperSNSuser:Uses
+MapperSNSuser..>DTOSNSuser:Creates
+MapperSNSuser..>SNSuser:Creates
+AddSNSfromCSVController..>Company
+AddSNSfromCSVController..>App
+AddSNSfromCSVController..>DTOSNSuser:Uses
+Company"1"->"*"SNSuser:Owns
+Company..>AuthFacade
+Company..>DTOSNSuser:Uses
+
+
+@enduml
+
+@startuml
+skinparam classAttributeIconSize 0
+
+Class Company{
+-List<SNSuser> SNSuserList
+-designation
+    +createSNSuser(dtoSNSuser dto)
+    +validateSNSuser(SNSuser user)
+    -validateSNSuserDTO(dtoSNSuser dto)
+    +saveSNSuser(dtoSNSuser dto)
+    +printSNSuser(SNSuser user)
+}
+Class AuthFacade{
++addUserWithRole(String name, String email, String pwd, String roleId)
+}
+
+Class App{
++getIntance()
++getIntance.getCompany()
+}
+
+Class SNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class AddSNSfromCSVUI{
++run()
+-copyDataFromFile()
+-validateContents(String[] Line)
+}
+Class AddSNSfromCSVController{
++createSNSuser(dtoSNSuser dto)
++saveSNSuser(dtoSNSuser dto)
++printSNSuser()
+}
+
+Class DTOSNSuser{
+- String name;
+    - String residenceAddress;
+    - String email;
+    - int phoneNumber;
+    - int ccNumber;
+    - String sex;
+    - LocalDate birth;
+    - int SNSnumber;
+    - String password;
+}
+
+Class MapperSNSuser{
+}
+
+AddSNSfromCSVUI..>AddSNSfromCSVController
+AddSNSfromCSVUI..>MapperSNSuser:Uses
+MapperSNSuser..>DTOSNSuser:Creates
+MapperSNSuser..>SNSuser:Creates
+AddSNSfromCSVController..>Company
+AddSNSfromCSVController..>App
+AddSNSfromCSVController..>DTOSNSuser:Uses
+Company"1"->"*"SNSuser:Owns
+Company..>AuthFacade
+Company..>DTOSNSuser:Uses
+
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

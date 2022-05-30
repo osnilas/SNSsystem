@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="792px" preserveAspectRatio="none" style="width:407px;height:792px;background:#FFFFFF;" version="1.1" viewBox="0 0 407 792" width="407px" zoomAndPan="magnify"><defs/><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="4" fill="#F1F1F1" height="224.0938" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="293" x="7" y="330"/><ellipse cx="119.25" cy="346" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M121.25,342.5 Q121.4531,342 121.6875,341.75 Q121.9219,341.5 122.1875,341.5 Q122.6563,341.5 122.9531,341.7813 Q123.25,342.0625 123.25,342.7188 L123.25,344.2813 Q123.25,344.9375 122.9688,345.2188 Q122.6875,345.5 122.25,345.5 Q121.8594,345.5 121.6094,345.3281 Q121.3594,345.1563 121.25,344.7031 Q121.2031,344.3906 121.0313,344.2188 Q120.7188,343.8906 120.1563,343.7031 Q119.5938,343.5 119.0313,343.5 Q118.3281,343.5 117.7344,343.7813 Q117.1563,344.0625 116.7031,344.6875 Q116.25,345.3125 116.25,346.1719 L116.25,347.0938 Q116.25,348.125 117.0938,348.8125 Q117.9375,349.5 119.4375,349.5 Q120.3281,349.5 120.9531,349.2969 Q121.3125,349.1875 121.7188,348.8281 Q121.9844,348.625 122.125,348.5625 Q122.2656,348.5 122.4375,348.5 Q122.7656,348.5 123,348.7656 Q123.25,349.0156 123.25,349.375 Q123.25,349.7188 122.9063,350.125 Q122.4063,350.7188 121.6094,351.0469 Q120.5625,351.5 119.2813,351.5 Q117.7813,351.5 116.5781,350.9063 Q115.6094,350.4375 114.9219,349.4219 Q114.25,348.4063 114.25,347.2031 L114.25,346.1094 Q114.25,344.8594 114.8438,343.7656 Q115.4531,342.6719 116.5,342.0938 Q117.5625,341.5 118.75,341.5 Q119.4688,341.5 120.0938,341.75 Q120.7188,342 121.25,342.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="139.75" y="351.7285">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="299" y1="362" y2="362"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="13" y="380.5332">-designation</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="299" y1="387.6094" y2="387.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="13" y="406.1426">+createUser(String id)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="13" y="423.752">+validateUser(User user)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="13" y="441.3613">+saveUser(User user)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="277" x="13" y="458.9707">+createEmployee(String name, String email,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="277" x="17" y="476.5801">int phone, int cc,String adress, String roleId)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="256" x="13" y="494.1895">+validateEmployee(Employee employee)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="244" x="13" y="511.7988">+saveEmployees(Employee employee)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136" x="13" y="529.4082">+printUser(User user)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="13" y="547.0176">+printEmployee(Employee employee)</text></g><!--MD5=[7421f545a0d8420c5bec41e74b387d9c]
+class Employee--><g id="elem_Employee"><rect codeLine="15" fill="#F1F1F1" height="153.6563" id="Employee" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="106" x="200.5" y="632"/><ellipse cx="220.9" cy="648" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M222.9,644.5 Q223.1031,644 223.3375,643.75 Q223.5719,643.5 223.8375,643.5 Q224.3063,643.5 224.6031,643.7813 Q224.9,644.0625 224.9,644.7188 L224.9,646.2813 Q224.9,646.9375 224.6188,647.2188 Q224.3375,647.5 223.9,647.5 Q223.5094,647.5 223.2594,647.3281 Q223.0094,647.1563 222.9,646.7031 Q222.8531,646.3906 222.6813,646.2188 Q222.3688,645.8906 221.8063,645.7031 Q221.2438,645.5 220.6813,645.5 Q219.9781,645.5 219.3844,645.7813 Q218.8063,646.0625 218.3531,646.6875 Q217.9,647.3125 217.9,648.1719 L217.9,649.0938 Q217.9,650.125 218.7438,650.8125 Q219.5875,651.5 221.0875,651.5 Q221.9781,651.5 222.6031,651.2969 Q222.9625,651.1875 223.3688,650.8281 Q223.6344,650.625 223.775,650.5625 Q223.9156,650.5 224.0875,650.5 Q224.4156,650.5 224.65,650.7656 Q224.9,651.0156 224.9,651.375 Q224.9,651.7188 224.5563,652.125 Q224.0563,652.7188 223.2594,653.0469 Q222.2125,653.5 220.9313,653.5 Q219.4313,653.5 218.2281,652.9063 Q217.2594,652.4375 216.5719,651.4219 Q215.9,650.4063 215.9,649.2031 L215.9,648.1094 Q215.9,646.8594 216.4938,645.7656 Q217.1031,644.6719 218.15,644.0938 Q219.2125,643.5 220.4,643.5 Q221.1188,643.5 221.7438,643.75 Q222.3688,644 222.9,644.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="236.1" y="653.7285">Employee</text><line style="stroke:#181818;stroke-width:0.5;" x1="201.5" x2="305.5" y1="664" y2="664"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="16" x="206.5" y="682.5332">-id</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="206.5" y="700.1426">-name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="206.5" y="717.752">-address</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="206.5" y="735.3613">-phoneNumber</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="206.5" y="752.9707">-email</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="206.5" y="770.5801">-ccNumber</text><line style="stroke:#181818;stroke-width:0.5;" x1="201.5" x2="305.5" y1="777.6563" y2="777.6563"/></g><!--MD5=[4dee175ac5e3dcba71a5ebc459660a76]
+class ResgisterEmployeeUI--><g id="elem_ResgisterEmployeeUI"><rect codeLine="23" fill="#F1F1F1" height="83.2188" id="ResgisterEmployeeUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="170.5" y="7"/><ellipse cx="185.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M187.5,19.5 Q187.7031,19 187.9375,18.75 Q188.1719,18.5 188.4375,18.5 Q188.9063,18.5 189.2031,18.7813 Q189.5,19.0625 189.5,19.7188 L189.5,21.2813 Q189.5,21.9375 189.2188,22.2188 Q188.9375,22.5 188.5,22.5 Q188.1094,22.5 187.8594,22.3281 Q187.6094,22.1563 187.5,21.7031 Q187.4531,21.3906 187.2813,21.2188 Q186.9688,20.8906 186.4063,20.7031 Q185.8438,20.5 185.2813,20.5 Q184.5781,20.5 183.9844,20.7813 Q183.4063,21.0625 182.9531,21.6875 Q182.5,22.3125 182.5,23.1719 L182.5,24.0938 Q182.5,25.125 183.3438,25.8125 Q184.1875,26.5 185.6875,26.5 Q186.5781,26.5 187.2031,26.2969 Q187.5625,26.1875 187.9688,25.8281 Q188.2344,25.625 188.375,25.5625 Q188.5156,25.5 188.6875,25.5 Q189.0156,25.5 189.25,25.7656 Q189.5,26.0156 189.5,26.375 Q189.5,26.7188 189.1563,27.125 Q188.6563,27.7188 187.8594,28.0469 Q186.8125,28.5 185.5313,28.5 Q184.0313,28.5 182.8281,27.9063 Q181.8594,27.4375 181.1719,26.4219 Q180.5,25.4063 180.5,24.2031 L180.5,23.1094 Q180.5,21.8594 181.0938,20.7656 Q181.7031,19.6719 182.75,19.0938 Q183.8125,18.5 185,18.5 Q185.7188,18.5 186.3438,18.75 Q186.9688,19 187.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="199.5" y="28.7285">ResgisterEmployeeUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="171.5" x2="335.5" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="171.5" x2="335.5" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="176.5" y="65.5332">+register()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="176.5" y="83.1426">+run()</text></g><!--MD5=[7572be66b8a6a9960658a95bfe5759cb]
+class ResgisterEmployeeController--><g id="elem_ResgisterEmployeeController"><rect codeLine="27" fill="#F1F1F1" height="118.4375" id="ResgisterEmployeeController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="293" x="107" y="151"/><ellipse cx="157.25" cy="167" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M159.25,163.5 Q159.4531,163 159.6875,162.75 Q159.9219,162.5 160.1875,162.5 Q160.6563,162.5 160.9531,162.7813 Q161.25,163.0625 161.25,163.7188 L161.25,165.2813 Q161.25,165.9375 160.9688,166.2188 Q160.6875,166.5 160.25,166.5 Q159.8594,166.5 159.6094,166.3281 Q159.3594,166.1563 159.25,165.7031 Q159.2031,165.3906 159.0313,165.2188 Q158.7188,164.8906 158.1563,164.7031 Q157.5938,164.5 157.0313,164.5 Q156.3281,164.5 155.7344,164.7813 Q155.1563,165.0625 154.7031,165.6875 Q154.25,166.3125 154.25,167.1719 L154.25,168.0938 Q154.25,169.125 155.0938,169.8125 Q155.9375,170.5 157.4375,170.5 Q158.3281,170.5 158.9531,170.2969 Q159.3125,170.1875 159.7188,169.8281 Q159.9844,169.625 160.125,169.5625 Q160.2656,169.5 160.4375,169.5 Q160.7656,169.5 161,169.7656 Q161.25,170.0156 161.25,170.375 Q161.25,170.7188 160.9063,171.125 Q160.4063,171.7188 159.6094,172.0469 Q158.5625,172.5 157.2813,172.5 Q155.7813,172.5 154.5781,171.9063 Q153.6094,171.4375 152.9219,170.4219 Q152.25,169.4063 152.25,168.2031 L152.25,167.1094 Q152.25,165.8594 152.8438,164.7656 Q153.4531,163.6719 154.5,163.0938 Q155.5625,162.5 156.75,162.5 Q157.4688,162.5 158.0938,162.75 Q158.7188,163 159.25,163.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="177.75" y="172.7285">ResgisterEmployeeController</text><line style="stroke:#181818;stroke-width:0.5;" x1="108" x2="399" y1="183" y2="183"/><line style="stroke:#181818;stroke-width:0.5;" x1="108" x2="399" y1="191" y2="191"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="277" x="113" y="209.5332">+createEmployee(String name, String email,</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="281" x="113" y="227.1426">int phone, int cc, String adress, String roleId)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="113" y="244.752">+saveEmployee()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="113" y="262.3613">printEmployee()</text></g><!--MD5=[09366576ee87d48d594df10cacc83f45]
+link Company to Employee--><g id="link_Company_Employee"><path codeLine="33" d="M195.47,554.23 C204.66,578.56 214.21,603.88 222.85,626.77 " fill="none" id="Company-to-Employee" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="224.68,631.62,225.2553,621.788,222.9197,626.9401,217.7675,624.6045,224.68,631.62" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="219.2656,597.8537,218.8211,588.3535,213.322,590.4291,219.2656,597.8537" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="226.5" y="598.4951">employ</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="190.9345" y="575.4356">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="216.7927" y="621.2762">*</text></g><!--MD5=[df15290130a04fab2c28c94944254cae]
+link ResgisterEmployeeController to Company--><g id="link_ResgisterEmployeeController_Company"><path codeLine="34" d="M228.27,269.04 C220.85,286.09 212.47,305.38 204.06,324.72 " fill="none" id="ResgisterEmployeeController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="201.92,329.63,209.1669,322.9605,203.9068,325.0417,201.8257,319.7816,201.92,329.63" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[38532987b21f897cfcb2c1b2c379ed4a]
+link ResgisterEmployeeUI to ResgisterEmployeeController--><g id="link_ResgisterEmployeeUI_ResgisterEmployeeController"><path codeLine="35" d="M253.5,90.16 C253.5,107.03 253.5,127.01 253.5,145.72 " fill="none" id="ResgisterEmployeeUI-to-ResgisterEmployeeController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="253.5,150.96,257.5,141.96,253.5,145.96,249.5,141.96,253.5,150.96" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a56ea79f00703e7e84525a90c8137ec1]
+link ResgisterEmployeeController to Employee--><g id="link_ResgisterEmployeeController_Employee"><path codeLine="37" d="M292.15,269.17 C302.48,287.82 312.23,309.07 317.5,330 C341.81,426.54 336.98,456.37 317.5,554 C312.61,578.52 303.73,604.02 294.12,627.05 " fill="none" id="ResgisterEmployeeController-to-Employee" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="292.06,631.93,299.2391,625.1875,294.0003,627.3218,291.866,622.0831,292.06,631.93" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[aefb5c8b03640cf5fe93b0261191364b]
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+Class Company{
+-designation
+    +createUser(String id)
+    +validateUser(User user)
+    +saveUser(User user)
+    +createEmployee(String name, String email,\n int phone, int cc,String adress, String roleId)
+    +validateEmployee(Employee employee)
+    +saveEmployees(Employee employee)
+    +printUser(User user)
+    +printEmployee(Employee employee)
+}
+Class Employee{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+Class ResgisterEmployeeUI{
++register()
++run()
+}
+Class ResgisterEmployeeController{
++createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
++saveEmployee()
+printEmployee()
+}
+
+Company"1"- ->"*"Employee:employ >
+ResgisterEmployeeController..>Company
+ResgisterEmployeeUI..> ResgisterEmployeeController
+
+ResgisterEmployeeController..>Employee
+
+@enduml
+
+@startuml
+skinparam classAttributeIconSize 0
+
+Class Company{
+-designation
+    +createUser(String id)
+    +validateUser(User user)
+    +saveUser(User user)
+    +createEmployee(String name, String email,\n int phone, int cc,String adress, String roleId)
+    +validateEmployee(Employee employee)
+    +saveEmployees(Employee employee)
+    +printUser(User user)
+    +printEmployee(Employee employee)
+}
+Class Employee{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+Class ResgisterEmployeeUI{
++register()
++run()
+}
+Class ResgisterEmployeeController{
++createEmployee(String name, String email, \nint phone, int cc, String adress, String roleId)
++saveEmployee()
+printEmployee()
+}
+
+Company"1"- ->"*"Employee:employ >
+ResgisterEmployeeController..>Company
+ResgisterEmployeeUI..> ResgisterEmployeeController
+
+ResgisterEmployeeController..>Employee
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
