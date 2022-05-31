@@ -120,7 +120,7 @@ public class Company {
     public boolean saveEmployees(dtoEmployee dto){
         boolean flag=false;
         if(employeeList.isEmpty()){
-            authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT),dto.getRoleId());
+            authFacade.addUserWithRole(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGTH),dto.getRoleId());
             employeeList.add(createEmployee(dto));
         }
         else {
@@ -135,7 +135,7 @@ public class Company {
             }
         }
         if(flag){
-            authFacade.addUser(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGHT));
+            authFacade.addUser(dto.getName(),dto.getEmail(), Utils.generatePwd(Constants.PWD_LENGTH));
             employeeList.add(createEmployee(dto));
         }
         else {

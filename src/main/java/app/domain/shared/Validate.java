@@ -58,7 +58,7 @@ public class Validate {
      * @return boolean if phone number check out requirements
      */
     public static boolean validatePhone(int phone) {
-        if (getDigits(phone) != Constants.PHONE_NUMBER_LENGHT) {
+        if (getDigits(phone) != Constants.PHONE_NUMBER_LENGTH) {
             return false;
         } else {
             return true;
@@ -73,7 +73,7 @@ public class Validate {
      * @return boolean if cc number checks out requirements
      */
     public static boolean validateCC(int cc) {
-        if (getDigits(cc) != Constants.CC_LENGHT) {
+        if (getDigits(cc) != Constants.CC_LENGTH) {
             return false;
         }
         return true;
@@ -195,7 +195,7 @@ public class Validate {
     }
 
     public static boolean validateSNS (int sns){
-        if(getDigits(sns)==Constants.SNS_LENGHT){
+        if(getDigits(sns)==Constants.SNS_LENGTH){
             return true;
         }
         return false;

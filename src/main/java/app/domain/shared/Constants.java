@@ -2,7 +2,6 @@ package app.domain.shared;
 
 import app.domain.model.*;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -33,12 +32,12 @@ public class Constants {
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
 
     //Validation of int attributes
-    public static final int PHONE_NUMBER_LENGHT=9;
-    public static final int SNS_LENGHT=9;
-    public static final int CC_LENGHT=8;
+    public static final int PHONE_NUMBER_LENGTH =9;
+    public static final int SNS_LENGTH =9;
+    public static final int CC_LENGTH =8;
 
-    //Password Lenght
-    public static final int PWD_LENGHT=7;
+    //Password Length
+    public static final int PWD_LENGTH =7;
 
     public static final List<String> YES_OR_NO = new ArrayList<>(List.of("Yes", "No"));
 
@@ -75,7 +74,7 @@ public class Constants {
     public static final TypeVaccine TYPE_VACCINE_TESTER2= new TypeVaccine("Smallpox", "Smallpox was an infectious disease caused by one of two virus variants, Variola major and Variola minor", "smallP818", "Inactivated");
     private static final List<TypeVaccine> TYPE_VACCINE_LIST_TESTER=List.of(TYPE_VACCINE_TESTER1,TYPE_VACCINE_TESTER2);
     public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER1);
-    public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER=new HealthCareCenter("USF Pedrouços","Rua da Giesta", 229774710, "sns@email.com",229774710,"www.USF.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,60,3,TYPE_VACCINE_LIST_TESTER);
+    public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER=new HealthCareCenter("USF Pedrouï¿½os","Rua da Giesta", 229774710, "sns@email.com",229774710,"www.USF.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,60,3,TYPE_VACCINE_LIST_TESTER);
     public static final TypeVaccine TYPE_VACCINE_RECOMMENDED= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
 
     public static final List<String> VACCINE_TECHNOLOGY = List.of("Live-attenuated", "Inactivated", "Subunit", "Toxoid", "Viral vector", "Messenger RNA");
