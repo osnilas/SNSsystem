@@ -1,5 +1,4 @@
 package tests;
-
 import app.controller.AddSNSfromCSVController;
 import app.domain.model.SNSuser;
 import app.domain.shared.Constants;

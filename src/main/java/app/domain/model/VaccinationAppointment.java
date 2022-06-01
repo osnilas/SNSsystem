@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class VaccinationAppointment {
@@ -32,6 +33,14 @@ public class VaccinationAppointment {
      */
     public boolean isAppointmentSameTime(LocalDateTime appointmentTime){
         if(this.appointmentTime.isEqual(appointmentTime)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAppointmentToday(){
+        LocalDate date=appointmentTime.toLocalDate();
+        if(date.isEqual(LocalDate.now())){
             return true;
         }
         return false;
