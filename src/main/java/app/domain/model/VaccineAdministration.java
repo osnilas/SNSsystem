@@ -3,7 +3,7 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VaccineAdministration {
+public class  VaccineAdministration {
 
     private String brand;
     private List<Integer> minAge;

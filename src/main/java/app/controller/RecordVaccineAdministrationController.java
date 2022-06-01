@@ -5,11 +5,14 @@ import app.domain.model.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RecordVaccineAdministrationController {
 
     private SNSuser snSuser;
     private VaccinationAppointment appointment;
+
+    private VaccinationRecord userRecord;
     private VaccinationAdminstrationRecord adminstration;
     private VaccinationFacility facility;
     private Company company;
@@ -25,7 +28,8 @@ public class RecordVaccineAdministrationController {
     }
 
     public void saveVaccinationAdminstration(){
-
+        this.facility.addVaccinationAdminstrationRecord(adminstration);
+        updateVaccinationRecord(adminstration.getVaccine());
     }
 
     /**
@@ -46,18 +50,31 @@ public class RecordVaccineAdministrationController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
-    /**
-     * @author João Veiga
-     * @Description This method finds the SNS user through the SNS number.
-     * @param SNSnumber
-     * @return Boolean if it found one or not.
-     */
-    public boolean checkIfSNSuserExists(int SNSnumber){
-        if(this.company.SNSuserExistsNumber(SNSnumber) !=null){
-            this.snSuser=this.company.SNSuserExistsNumber(SNSnumber);
-            return true;
+    public void getUserFromWaitingList(){
+        this.snSuser=facility.getWaitingList().get(0).getSnSuser();
+        facility.getWaitingList().remove(0);
+    }
+
+    public String getAppoimentInfo() {
+        String info;
+        if (getUserVaccinationRecord()) {
+            info = "SNS user info:\n" + "Name: " + snSuser.getName() + "\nLast Vaccination" + userRecord.toString();
+        } else {
+            info = "SNS user info:\n" + "Name: " + snSuser.getName() + "\nLast Vaccination: None";
         }
-        return false;
+        return info;
+    }
+    private boolean getUserVaccinationRecord() {
+        if (snSuser.getVaccinationRecord().size() == 0) {
+            return false;
+        } else {
+            for (int i = 0; i < snSuser.getVaccinationRecord().size(); i++) {
+                if (snSuser.getVaccinationRecord().get(i).checkTypeVaccine(appointment.getTypeVaccine())) {
+                    this.userRecord=snSuser.getVaccinationRecord().get(i);
+                }
+            }
+        }
+        return true;
     }
 
     private void getVaccinationAppointment() throws Exception {
@@ -73,4 +90,13 @@ public class RecordVaccineAdministrationController {
         }
     }
 
+    private boolean validateVaccine (Vaccine vaccine){
+       return snSuser.checkIfTookVaccine(vaccine);
+    }
+
+    private void updateVaccinationRecord(Vaccine vaccine){
+        VaccinationRecord lastRecord=snSuser.getLatestVaccinationRecord(vaccine);
+        VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),lastRecord.getNumberDosesTaken()+1);
+        snSuser.addVaccinationRecord(newRecord);
+    }
 }

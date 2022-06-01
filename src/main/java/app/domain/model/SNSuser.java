@@ -135,6 +135,16 @@ public class SNSuser {
         return true;
     }
 
+    public boolean checkIfTookVaccine(Vaccine vaccine){
+        for(int i=0;i>vaccinationRecord.size();i++){
+         if(Objects.equals(vaccinationRecord.get(i).getVaccine(),vaccine)){
+             return true;
+            }
+        }
+        return false;
+    }
+
+
     /**@author João Veiga
      * @Description this method checks the SNS user Vaccination Record for all the records with the same vaccine as input and gets the latest record index from the List
      * @param vaccine
@@ -168,6 +178,10 @@ public class SNSuser {
             */
     public boolean SNSnumberSame(int snsNumber){
         return this.SNSnumber==snsNumber;
+    }
+
+    public void addVaccinationRecord(VaccinationRecord record){
+        this.vaccinationRecord.add(record);
     }
 
     @Override

@@ -28,6 +28,8 @@ public abstract class VaccinationFacility {
 
     private List<VaccinationAppointment> vaccinationScheduleList=new ArrayList<>();
 
+    private List<VaccinationAdminstrationRecord> vaccinationAdminstrationRecordList=new ArrayList<>();
+
     private List<Arrival> waitingList=new ArrayList<>();
 
     /**@author João Veiga
@@ -116,6 +118,8 @@ public abstract class VaccinationFacility {
         vaccinationScheduleList.add(schedule);
     }
 
+    public void addVaccinationAdminstrationRecord(VaccinationAdminstrationRecord record){vaccinationAdminstrationRecordList.add(record);
+    }
     public List<Arrival> getWaitingList() {
         return waitingList;
     }
