@@ -15,6 +15,8 @@ public class RecordVaccineAdministrationController {
     private VaccinationRecord userRecord;
     private VaccinationAdminstrationRecord adminstration;
     private VaccinationFacility facility;
+
+    private Vaccine vaccine;
     private Company company;
     private App app;
 
@@ -23,13 +25,13 @@ public class RecordVaccineAdministrationController {
         this.app = App.getInstance();
     }
 
-    public void createVaccinationAdminstration(int recoryTime,Vaccine vaccine,String lotNumber){
+    public void createVaccinationAdminstration(int recoryTime,String lotNumber){
         this.adminstration=new VaccinationAdminstrationRecord(snSuser.getSNSnumber(),vaccine,lotNumber,appointment.getAppointmentTime(), LocalDateTime.now(),LocalDateTime.now().plusMinutes(recoryTime));
     }
 
     public void saveVaccinationAdminstration(){
         this.facility.addVaccinationAdminstrationRecord(adminstration);
-        updateVaccinationRecord(adminstration.getVaccine());
+        updateVaccinationRecord();
     }
 
     /**
@@ -50,27 +52,54 @@ public class RecordVaccineAdministrationController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
-    public void getUserFromWaitingList(){
+    public void getUserFromWaitingList() throws Exception {
         this.snSuser=facility.getWaitingList().get(0).getSnSuser();
+        getVaccinationAppointment();
         facility.getWaitingList().remove(0);
     }
 
     public String getAppoimentInfo() {
         String info;
-        if (getUserVaccinationRecord()) {
-            info = "SNS user info:\n" + "Name: " + snSuser.getName() + "\nLast Vaccination" + userRecord.toString();
-        } else {
-            info = "SNS user info:\n" + "Name: " + snSuser.getName() + "\nLast Vaccination: None";
-        }
+        info = "SNS user info:\n" + "Name: " + snSuser.getName();
         return info;
     }
-    private boolean getUserVaccinationRecord() {
+
+    public String getVaccineInfo(){
+        int ageGroup=userRecord.getAgeGroup(snSuser.getAge());
+        return "Vaccine: "+userRecord.getVaccine().getName()+"\nDose: "+userRecord.getVaccine().getVaccineAdministration().getDoses().get(ageGroup)+" mL";
+    }
+
+    public List<String> getVaccineList(){
+        List<Vaccine> vaccineListFull=this.company.getVaccineList();
+        List<String> vaccineList=new ArrayList<>();
+        for (int i=0;i<vaccineListFull.size();i++){
+            if(Objects.equals(vaccineListFull.get(i).getTypeVaccine(),appointment.getTypeVaccine())){
+                vaccineList.add(vaccineListFull.get(i).getName());
+            }
+        }
+        return vaccineList;
+    }
+
+    public void setVaccine(int index){
+        List<Vaccine> vaccineListFull=this.company.getVaccineList();
+        List<Vaccine> vaccineList=new ArrayList<>();
+        for (int i=0;i<vaccineListFull.size();i++){
+            if(Objects.equals(vaccineListFull.get(i).getTypeVaccine(),appointment.getTypeVaccine())){
+                vaccineList.add(vaccineListFull.get(i));
+            }
+        }
+        this.vaccine=vaccineList.get(index);
+    }
+
+
+    public boolean getUserVaccinationRecord() {
         if (snSuser.getVaccinationRecord().size() == 0) {
             return false;
         } else {
             for (int i = 0; i < snSuser.getVaccinationRecord().size(); i++) {
                 if (snSuser.getVaccinationRecord().get(i).checkTypeVaccine(appointment.getTypeVaccine())) {
                     this.userRecord=snSuser.getVaccinationRecord().get(i);
+                    this.vaccine=snSuser.getVaccinationRecord().get(i).getVaccine();
                 }
             }
         }
@@ -90,11 +119,7 @@ public class RecordVaccineAdministrationController {
         }
     }
 
-    private boolean validateVaccine (Vaccine vaccine){
-       return snSuser.checkIfTookVaccine(vaccine);
-    }
-
-    private void updateVaccinationRecord(Vaccine vaccine){
+    private void updateVaccinationRecord(){
         VaccinationRecord lastRecord=snSuser.getLatestVaccinationRecord(vaccine);
         VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),lastRecord.getNumberDosesTaken()+1);
         snSuser.addVaccinationRecord(newRecord);

@@ -266,7 +266,7 @@ public class VaccinationScheduleController {
     public List<LocalDate> getDateList(){
         int count = 0;
         List<LocalDate> dateList = new ArrayList<>();
-        LocalDate inicial = LocalDate.now().plusDays(1);
+        LocalDate inicial = LocalDate.now();
         LocalDate temp = inicial;
         LocalDate end = inicial.plusMonths(1);
         do {

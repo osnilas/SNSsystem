@@ -3,17 +3,19 @@ package app.ui.console;
 import app.controller.AddSNSfromCSVController;
 import app.domain.shared.Constants;
 import app.domain.shared.Validate;
+import app.ui.console.utils.ReadFile;
 import app.ui.console.utils.Utils;
 import mappers.dto.dtoSNSuser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.PatternSyntaxException;
 
 import static java.time.LocalDate.parse;
 
-public class AddUserFromCSVUI implements Runnable {
+public class AddUserFromCSVUI implements Runnable, ReadFile {
 
     private AddSNSfromCSVController ctlr;
 
@@ -39,83 +41,60 @@ public class AddUserFromCSVUI implements Runnable {
         }
     }
 
-    private void copyDataFromFile(String file) throws Exception{
+    private void copyDataFromFile(String file) throws Exception {
         boolean success = false;
         boolean flag = true;
         int count = 0;
-        String split = null, uncutLine = null;
-        Scanner in = new Scanner(new File(file));
         dtoSNSuser temp = null;
-        if (in.hasNextLine()) {
-            uncutLine = in.nextLine();
-            if (uncutLine.contains(",")) {
-                split = ",";
-                in = new Scanner(new File(file));
-            } else if (uncutLine.contains(";")) {
-                split = ";";
-            }
-            if (split != null) {
-                while (in.hasNextLine()) {
-                    uncutLine = in.nextLine();
-                    try{
-                    String[] Line = uncutLine.split(split);
-                    if (validateContents(Line)) {
-                        String name = Line[0];
-                        String sex = Line[1];
-                        for(int i=0;i<Constants.SexListShort.length;i++){
-                            if(sex.equalsIgnoreCase(Constants.SexListShort[i])){
-                            sex=Constants.SexListFull[i];
-                            }
-                        }
-                        LocalDate birth = LocalDate.parse(Line[2], Constants.FORMATTER);
-                        String address = Line[3];
-                        int phoneNumber = Integer.parseInt(Line[4]);
-                        String email = Line[5];
-                        int SNSnumber = Integer.parseInt(Line[6]);
-                        int ccNumber = Integer.parseInt(Line[7]);
-                        String password=Utils.generatePwd(Constants.PWD_LENGTH);
-                        if (Line[1].isBlank()) {
-                            temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
-                        } else {
-                            if (Validate.validateSex(Line[1])) {
-                                temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber,password);
-                            } else {
-                                flag = false;
-                            }
-                        }
-                        if (flag) {
-                            success = ctlr.createSNSuser(temp);
-                            if (!success) {
-                                Utils.printText("User already exists or its invalid");
-                            }
-                            Utils.printText(ctlr.printSNSuser());
-                            if (Utils.confirm("Is it correct?(s/n)")) {
-                                success = ctlr.saveSNSuser(temp);
-                            } else {
-                                Utils.printText("-----Not saved, registration aborted-----");
-                            }
-                            if (success) {
-                                Utils.printText("-----------Registration done successfully-----------");
-                                count++;
-                            } else {
-                                Utils.printText("-----------Registration failed-----------");
-                            }
-                        } else {
-                            Utils.printText("-------Sex not valid----");
-                            throw new Exception("CSV file information format not valid");
-                        }
-                    } else {
-                        throw new Exception("CSV file information format not valid");
-                    }
-                }catch (PatternSyntaxException e){
-                        e.printStackTrace();
-                    }
-                }
+        List<String> fileData = readFile(file);
+        String split = null;
+        if (!fileData.get(0).contains(",")) {
+            fileData.remove(0);
+            split = ";";
+        }
+        else {
+            split = ",";
+        }
+
+        for (int i = 0; i < fileData.size(); i++) {
+            String[] line = fileData.get(i).split(split);
+            if (!validateContents(line)) {
+                throw new Exception("CSV file information format not valid");
             }
         }
-        in.close();
+        for (int i = 0; i < fileData.size(); i++) {
+            String[] line = fileData.get(i).split(split);
+            String name = line[0];
+            String sex = line[1];
+            LocalDate birth = LocalDate.parse(line[2], Constants.FORMATTER);
+            String address = line[3];
+            int phoneNumber = Integer.parseInt(line[4]);
+            String email = line[5];
+            int SNSnumber = Integer.parseInt(line[6]);
+            int ccNumber = Integer.parseInt(line[7]);
+            String password = Utils.generatePwd(Constants.PWD_LENGTH);
+            if (line[1].isBlank()) {
+                temp = new dtoSNSuser(name, birth, address, email, phoneNumber, SNSnumber, ccNumber, password);
+            } else {
+                temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber, password);
+            }
+            if (flag) {
+                success = ctlr.createSNSuser(temp);
+                if (!success) {
+                    Utils.printText("User already exists or its invalid");
+                }
+                success = ctlr.saveSNSuser(temp);
+                if (success) {
+                    Utils.printText("-----------Registration done successfully-----------");
+                    count++;
+                } else {
+                    Utils.printText("-----------Registration failed-----------");
+                }
+            } else {
+                throw new Exception("CSV file information format not valid");
+            }
+        }
     }
-
     /**
      * @author João Veiga
      * @Description This method validates all the mandatory attributes of an SNS user
@@ -137,5 +116,15 @@ public class AddUserFromCSVUI implements Runnable {
             return false;
         }
         return name && birth && address && phoneNumber && email && SNSnumber && ccNumber;
+    }
+
+    @Override
+    public List<String> readFile(String file) throws FileNotFoundException {
+        List<String> fileData=new ArrayList<>();
+        Scanner in = new Scanner(new File(file));
+        while (in.hasNextLine()){
+            fileData.add(in.nextLine());
+        }
+        return fileData;
     }
 }

@@ -96,11 +96,11 @@ public class Constants {
 
     private static final VaccineAdministration VACCINE_ADMINISTRATION_TESTER= new VaccineAdministration("Pfizer",MIN_AGE_TESTER,Max_AGE_TESTER,DOSAGE_TESTER,DOSE_TESTER,TIME_VACCINE_TESTER);
 
-    private static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
+    public static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
 
     public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,4,20,16,30,00),1);
     public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,8,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(222077507,LocalDateTime.of(2022,6,5,12,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(122137500,LocalDateTime.of(2022,6,1,12,00),TYPE_VACCINE_TESTER1);
 }
 

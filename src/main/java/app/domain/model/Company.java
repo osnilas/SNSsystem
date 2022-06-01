@@ -46,14 +46,13 @@ public class Company {
     }
 
     public void demo(){
+        vaccineList.add(Constants.VACCINE_TESTER);
+
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
 
@@ -84,6 +83,10 @@ public class Company {
 
     public VaccinationFacility getVaccinationFacilityFromList(int index){
         return vaccinationFacilityList.get(index);
+    }
+
+    public static List<Vaccine> getVaccineList() {
+        return vaccineList;
     }
 
     public SNSuser SNSuserExistsNumber(int SNSnumber){
