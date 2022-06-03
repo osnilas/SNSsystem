@@ -6,8 +6,7 @@ import app.domain.shared.Constants;
 import app.ui.console.ShowTextUI;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -185,7 +184,7 @@ public class Utils {
     }
 
     static public LocalDate createDate(String date){
-        String[] cut=date.split("-");
+        String[] cut=date.split("/");
         LocalDate result=LocalDate.of(Integer.parseInt(cut[2]),Integer.parseInt(cut[1]),Integer.parseInt(cut[0]));
         return result;
     }
@@ -264,5 +263,34 @@ public class Utils {
         }
         System.out.println("");
         System.out.println("0 - Cancel");
+    }
+
+    public static List read(String filePath){
+        File ficheiro =new File(filePath);
+        List list=new ArrayList();
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(ficheiro));
+            try {
+                list = (List) in.readObject();
+            } finally {
+                in.close();
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+        }
+        return list;
+    }
+
+    public static void save(String filePath,List list){
+        File ficheiro =new File(filePath);
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream(ficheiro));
+            try {
+                out.writeObject(list);
+            } finally {
+                out.close();
+            }
+        } catch (IOException ex) {
+        }
     }
 }

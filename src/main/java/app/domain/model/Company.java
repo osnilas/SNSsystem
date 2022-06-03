@@ -8,6 +8,8 @@ import mappers.dto.dtoEmployee;
 import mappers.dto.dtoSNSuser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
@@ -19,7 +21,7 @@ import static app.domain.model.Employee.fillRoleList;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Company {
+public class Company implements Serializable {
     private String designation;
     private AuthFacade authFacade;
 
@@ -42,16 +44,39 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        demo();
+        load();
+        //demo();
+    }
+
+    public void load(){
+        employeeList=(List<Employee>) Utils.read(Constants.FILEPATH_EMPLOYEES);
+        typeVaccineList=(List<TypeVaccine>) Utils.read(Constants.FILEPATH_TYPE_VACCINES);
+        vaccineAdministrationList=(List<VaccineAdministration>) Utils.read(Constants.FILEPATH_VACCINE_ADMINISTRATIONS);
+        vaccineList=(List<Vaccine>) Utils.read(Constants.FILEPATH_VACCINES);
+        vaccinationFacilityList=(List<VaccinationFacility>) Utils.read(Constants.FILEPATH_VACCINATION_FACILITIES);
+        SNSuserList=(List<SNSuser>) Utils.read(Constants.FILEPATH_SNSUSERS);
+    }
+
+    public void save(){
+        Utils.save(Constants.FILEPATH_EMPLOYEES,employeeList);
+        Utils.save(Constants.FILEPATH_TYPE_VACCINES,typeVaccineList);
+        Utils.save(Constants.FILEPATH_VACCINE_ADMINISTRATIONS,vaccineAdministrationList);
+        Utils.save(Constants.FILEPATH_VACCINES,vaccineList);
+        Utils.save(Constants.FILEPATH_VACCINATION_FACILITIES,vaccinationFacilityList);
+        Utils.save(Constants.FILEPATH_SNSUSERS,SNSuserList);
     }
 
     public void demo(){
         vaccineList.add(Constants.VACCINE_TESTER);
+        typeVaccineList.add(Constants.TYPE_VACCINE_TESTER1);
+        typeVaccineList.add(Constants.TYPE_VACCINE_TESTER2);
 
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,2,17,30),Constants.TYPE_VACCINE_TESTER1));
+        vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
         vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
@@ -322,7 +347,7 @@ public class Company {
         return flag;
     }
 
-    public List getTypeVaccineList() {
+    public List<TypeVaccine> getTypeVaccineList() {
         return typeVaccineList;
     }
 
@@ -418,8 +443,10 @@ public class Company {
     }
 
     private void clearWaitingList(int index) {
-        if (LocalDateTime.now().getDayOfMonth() != getWaitingList(index).get(0).getTimeOfArrival().getDayOfMonth()) {
-            getWaitingList(index).clear();
+        if(getWaitingList(index).size()!=0) {
+            if (LocalDateTime.now().getDayOfMonth() != getWaitingList(index).get(0).getTimeOfArrival().getDayOfMonth()) {
+                getWaitingList(index).clear();
+            }
         }
     }
 

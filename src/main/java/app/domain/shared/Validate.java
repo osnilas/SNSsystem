@@ -1,9 +1,11 @@
 package app.domain.shared;
 
+import app.ui.console.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
 import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
@@ -204,8 +206,8 @@ public class Validate {
     public static boolean validateDate(String date){
         if(date!=null) {
             try {
-                Date test = Constants.df.parse(date);
-            } catch (ParseException e) {
+                LocalDate test = Utils.createDate(date);
+            } catch (DateTimeException e) {
                 return false;
             }
             return true;

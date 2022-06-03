@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.model.Company;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.util.List;
@@ -10,11 +11,13 @@ import java.util.List;
  */
 public class AuthController {
 
+    Company company;
     private App app;
 
     public AuthController()
     {
         this.app = App.getInstance();
+        this.company=App.getInstance().getCompany();
     }
 
     public boolean doLogin(String email, String pwd)
@@ -35,6 +38,10 @@ public class AuthController {
         }
         return null;
     }
+    public void save(){
+        this.company.save();
+    }
+
 
     public void doLogout()
     {

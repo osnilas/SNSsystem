@@ -1,8 +1,9 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TypeVaccine {
+public class TypeVaccine implements Serializable {
 
     private String name;
     private String description;

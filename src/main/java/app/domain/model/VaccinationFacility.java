@@ -1,10 +1,11 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class VaccinationFacility {
+public abstract class VaccinationFacility implements Serializable {
 
     private String name;
 

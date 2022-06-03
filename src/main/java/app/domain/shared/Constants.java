@@ -60,7 +60,7 @@ public class Constants {
 
     public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(16,00);
 
-    public static final LocalDate BIRTH_TESTER=LocalDate.of(2004,9,11);
+    public static final LocalDate BIRTH_TESTER=LocalDate.of(2007,9,11);
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
 
@@ -79,9 +79,9 @@ public class Constants {
 
     public static final List<String> VACCINE_TECHNOLOGY = List.of("Live-attenuated", "Inactivated", "Subunit", "Toxoid", "Viral vector", "Messenger RNA");
 
-    private static final List<Integer> MIN_AGE_TESTER= List.of(11,21);
+    private static final List<Integer> MIN_AGE_TESTER= List.of(8,21);
 
-    private static final List<Integer> Max_AGE_TESTER= List.of(20,50);
+    private static final List<Integer> Max_AGE_TESTER= List.of(20,70);
 
     private static final List<Integer> DOSAGE_TESTER=List.of(1,3);
 
@@ -98,9 +98,19 @@ public class Constants {
 
     public static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
 
-    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,4,20,16,30,00),1);
-    public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,8,12,30,00),2);
+    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,20,16,30,00),1);
+    public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(122137500,LocalDateTime.of(2022,6,1,12,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,2,17,00),TYPE_VACCINE_TESTER1);
+
+    public static final String FILEPATH_SNSUSERS="bin/SNSusers.bin";
+    public static final String FILEPATH_VACCINES="bin/Vaccines.bin";
+    public static final String FILEPATH_VACCINATION_FACILITIES="bin/VaccinationFacility.bin";
+    public static final String FILEPATH_TYPE_VACCINES="bin/TypeVaccines.bin";
+    public static final String FILEPATH_VACCINE_ADMINISTRATIONS="bin/VaccineAdministrations.bin";
+    public static final String FILEPATH_EMPLOYEES="bin/Employees.bin";
+
+
+
 }
 

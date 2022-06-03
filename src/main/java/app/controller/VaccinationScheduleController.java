@@ -41,6 +41,10 @@ public class VaccinationScheduleController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
+    public void record(){
+        System.out.println(snSuser.getVaccinationRecord().size());
+    }
+
     /**
      * @author João Veiga
      * @US 01 **ONLY**

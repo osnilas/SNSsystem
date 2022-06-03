@@ -1,6 +1,8 @@
 package app.domain.model;
 
-public class Vaccine {
+import java.io.Serializable;
+
+public class Vaccine implements Serializable {
 
     private VaccineAdministration vaccineAdministration;
     private TypeVaccine typeVaccine;
@@ -14,7 +16,7 @@ public class Vaccine {
      * @param typeVaccine
      */
     public Vaccine(VaccineAdministration vaccineAdministration,TypeVaccine typeVaccine){
-        this.name=typeVaccine.getName();
+        this.name=vaccineAdministration.getBrand();
         this.typeVaccine=typeVaccine;
         this.vaccineAdministration=vaccineAdministration;
     }

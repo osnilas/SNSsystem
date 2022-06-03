@@ -1,9 +1,10 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class VaccinationRecord {
+public class VaccinationRecord implements Serializable {
 
     private Vaccine vaccine;
     private LocalDateTime date;
@@ -40,7 +41,7 @@ public class VaccinationRecord {
      * @return Boolean if the vaccination record vaccine's type is the same as the input.
      */
     public boolean checkTypeVaccine(TypeVaccine typeVaccine){
-        if (Objects.equals(vaccine.getTypeVaccine(),typeVaccine)){
+        if(typeVaccine.getCode().equalsIgnoreCase(typeVaccine.getCode())){
             return true;
         }
         return false;

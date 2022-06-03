@@ -1,8 +1,9 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class VaccinationAdminstrationRecord {
+public class VaccinationAdminstrationRecord implements Serializable {
 
     private int SNSuserNumber;
     private Vaccine vaccine;

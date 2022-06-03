@@ -1,11 +1,13 @@
 package app.controller;
 
 import app.domain.model.*;
+import app.domain.shared.SendSMSTask;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class RecordVaccineAdministrationController {
 
@@ -31,7 +33,12 @@ public class RecordVaccineAdministrationController {
 
     public void saveVaccinationAdminstration(){
         this.facility.addVaccinationAdminstrationRecord(adminstration);
-        updateVaccinationRecord();
+        if(userRecord==null){
+            createVaccinationRecord();
+        }
+        else {
+            updateVaccinationRecord();
+        }
     }
 
     /**
@@ -52,11 +59,28 @@ public class RecordVaccineAdministrationController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
-    public void getUserFromWaitingList() throws Exception {
-        this.snSuser=facility.getWaitingList().get(0).getSnSuser();
-        getVaccinationAppointment();
-        facility.getWaitingList().remove(0);
+    public void checkIfWaitingListEmpty() throws Exception {
+        if(facility.getWaitingList().size()==0){
+            throw new Exception("Waiting list is empty");
+        }
     }
+
+    public void getUserFromWaitingListSNSnumber(int SNSnumber) throws Exception {
+        List<Arrival> arrivalList=facility.getWaitingList();
+        for(int i=0;i<arrivalList.size();i++){
+            if(arrivalList.get(i).getSnSuser().SNSnumberSame(SNSnumber)){
+                getUserFromWaitingList(i);
+            }
+        }
+    }
+
+    public void getUserFromWaitingList(int index) throws Exception {
+        this.snSuser=facility.getWaitingList().get(index).getSnSuser();
+        getVaccinationAppointment();
+        facility.getWaitingList().remove(index);
+    }
+
+
 
     public String getAppoimentInfo() {
         String info;
@@ -65,15 +89,15 @@ public class RecordVaccineAdministrationController {
     }
 
     public String getVaccineInfo(){
-        int ageGroup=userRecord.getAgeGroup(snSuser.getAge());
-        return "Vaccine: "+userRecord.getVaccine().getName()+"\nDose: "+userRecord.getVaccine().getVaccineAdministration().getDoses().get(ageGroup)+" mL";
+        int ageGroup=vaccine.getAgeGroup(snSuser.getAge());
+        return "Vaccine: "+vaccine.getName()+"\nDose: "+vaccine.getVaccineAdministration().getDosage().get(ageGroup)+" mL";
     }
 
     public List<String> getVaccineList(){
         List<Vaccine> vaccineListFull=this.company.getVaccineList();
         List<String> vaccineList=new ArrayList<>();
         for (int i=0;i<vaccineListFull.size();i++){
-            if(Objects.equals(vaccineListFull.get(i).getTypeVaccine(),appointment.getTypeVaccine())){
+            if(vaccineListFull.get(i).getTypeVaccine().getCode().equalsIgnoreCase(appointment.getTypeVaccine().getCode())){
                 vaccineList.add(vaccineListFull.get(i).getName());
             }
         }
@@ -118,10 +142,22 @@ public class RecordVaccineAdministrationController {
             throw new Exception("SNS user doesn't have a appointment");
         }
     }
-
+    private void createVaccinationRecord(){
+        VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),1);
+        snSuser.addVaccinationRecord(newRecord);
+    }
     private void updateVaccinationRecord(){
         VaccinationRecord lastRecord=snSuser.getLatestVaccinationRecord(vaccine);
         VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),lastRecord.getNumberDosesTaken()+1);
         snSuser.addVaccinationRecord(newRecord);
+    }
+
+    public void sendSMS(int minutes) throws FileNotFoundException {
+        SendSMSTask sms=new SendSMSTask();
+        sms.setMessage(snSuser.getName()+", you can now leave the vaccination facility,"+facility.getName()+".\n " +
+                "If any side effects are detected, contact SNS24");
+        long time=(long)minutes*60000;
+        Timer timer=new Timer();
+        timer.schedule(sms,time);
     }
 }

@@ -1,8 +1,9 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Arrival {
+public class Arrival implements Serializable {
 
     private SNSuser snSuser;
 

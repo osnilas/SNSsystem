@@ -45,7 +45,7 @@ public class VaccineAdministrationUI implements Runnable {
         } else {
 
             Utils.showTypeVaccinne(company.getTypeVaccineList(), "Select Vaccine: ");
-            TypeVaccine typeVaccine = (TypeVaccine) company.getTypeVaccineList().get(Utils.selectsIndex(company.getTypeVaccineList()));
+            TypeVaccine typeVaccine = company.getTypeVaccineList().get(Utils.selectsIndex(company.getTypeVaccineList()));
             System.out.println();
 
             System.out.println("Vaccine brand: ");

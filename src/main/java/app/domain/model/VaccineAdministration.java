@@ -1,9 +1,10 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class  VaccineAdministration {
+public class  VaccineAdministration implements Serializable {
 
     private String brand;
     private List<Integer> minAge;

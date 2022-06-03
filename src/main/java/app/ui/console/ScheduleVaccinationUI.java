@@ -30,10 +30,10 @@ public class ScheduleVaccinationUI implements Runnable {
 
     private boolean Schedule() throws Exception {
         boolean success = false;
-
         if (ctlr.checkIfVaccinationFaciltyListIsEmpty()) {
             setSNSuser();
             setVaccinationFacility();
+            ctlr.record();
             selectVaccineType();
             getDateTimeAppointment();
 

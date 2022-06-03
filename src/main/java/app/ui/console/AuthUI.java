@@ -48,6 +48,7 @@ public class AuthUI implements Runnable{
                 }
             }
         }
+        ctrl.save();
         this.logout();
     }
 

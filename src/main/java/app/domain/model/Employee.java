@@ -1,9 +1,10 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee extends User {
+public class Employee extends User implements Serializable {
     private int employeeID;
 
     private String roleId;

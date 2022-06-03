@@ -5,10 +5,10 @@ import app.domain.shared.Constants;
 import app.domain.shared.Validate;
 import app.ui.console.utils.ReadFile;
 import app.ui.console.utils.Utils;
+import jdk.jshell.execution.Util;
 import mappers.dto.dtoSNSuser;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.PatternSyntaxException;
@@ -47,6 +47,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
         int count = 0;
         dtoSNSuser temp = null;
         List<String> fileData = readFile(file);
+        System.out.println("Size:"+fileData.size() );
         String split = null;
         if (!fileData.get(0).contains(",")) {
             fileData.remove(0);
@@ -58,6 +59,18 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
 
         for (int i = 0; i < fileData.size(); i++) {
             String[] line = fileData.get(i).split(split);
+            /**
+            for( i=0;i<line.length;i++) {
+                System.out.println("Name: " + line[0]);
+                System.out.println("Sexo: " + line[1]);
+                System.out.println("Address: " + line[2]);
+                System.out.println("Birth: " + line[3]);
+                System.out.println("Phone: " + line[4]);
+                System.out.println("Email: " + line[5]);
+                System.out.println("SNS user number: " + line[6]);
+                System.out.println("CC: " + line[7]);
+            }
+            */
             if (!validateContents(line)) {
                 throw new Exception("CSV file information format not valid");
             }
@@ -66,7 +79,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
             String[] line = fileData.get(i).split(split);
             String name = line[0];
             String sex = line[1];
-            LocalDate birth = LocalDate.parse(line[2], Constants.FORMATTER);
+            LocalDate birth = Utils.createDate(line[2]);
             String address = line[3];
             int phoneNumber = Integer.parseInt(line[4]);
             String email = line[5];
@@ -78,22 +91,16 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
             } else {
                 temp = new dtoSNSuser(name, sex, birth, address, email, phoneNumber, SNSnumber, ccNumber, password);
             }
-            if (flag) {
+
                 success = ctlr.createSNSuser(temp);
                 if (!success) {
                     Utils.printText("User already exists or its invalid");
                 }
-                success = ctlr.saveSNSuser(temp);
-                if (success) {
-                    Utils.printText("-----------Registration done successfully-----------");
-                    count++;
-                } else {
-                    Utils.printText("-----------Registration failed-----------");
+                else {
+                    success = ctlr.saveSNSuser(temp);
                 }
-            } else {
-                throw new Exception("CSV file information format not valid");
-            }
         }
+        Utils.printText("-----------Registration done successfully-----------");
     }
     /**
      * @author João Veiga
@@ -119,7 +126,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
     }
 
     @Override
-    public List<String> readFile(String file) throws FileNotFoundException {
+    public List<String> readFile(String file) throws IOException {
         List<String> fileData=new ArrayList<>();
         Scanner in = new Scanner(new File(file));
         while (in.hasNextLine()){

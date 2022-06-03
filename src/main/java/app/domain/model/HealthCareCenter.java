@@ -2,12 +2,13 @@ package app.domain.model;
 
 import app.ui.console.utils.Utils;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthCareCenter extends VaccinationFacility{
+public class HealthCareCenter extends VaccinationFacility implements Serializable {
 
     private List<TypeVaccine> TypeVaccineList;
 

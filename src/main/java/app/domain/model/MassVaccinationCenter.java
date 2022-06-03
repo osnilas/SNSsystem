@@ -1,8 +1,9 @@
 package app.domain.model;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class MassVaccinationCenter extends VaccinationFacility {
+public class MassVaccinationCenter extends VaccinationFacility implements Serializable {
 
     private TypeVaccine typeOfVaccine;
 
