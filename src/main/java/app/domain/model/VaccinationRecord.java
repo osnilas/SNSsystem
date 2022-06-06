@@ -41,7 +41,7 @@ public class VaccinationRecord implements Serializable {
      * @return Boolean if the vaccination record vaccine's type is the same as the input.
      */
     public boolean checkTypeVaccine(TypeVaccine typeVaccine){
-        if(typeVaccine.getCode().equalsIgnoreCase(typeVaccine.getCode())){
+        if(typeVaccine.getCode().equalsIgnoreCase(vaccine.getTypeVaccine().getCode())){
             return true;
         }
         return false;

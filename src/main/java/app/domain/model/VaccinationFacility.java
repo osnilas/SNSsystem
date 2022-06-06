@@ -124,4 +124,8 @@ public abstract class VaccinationFacility implements Serializable {
     public List<Arrival> getWaitingList() {
         return waitingList;
     }
+
+    public List<VaccinationAdminstrationRecord> getVaccinationAdminstrationRecordList() {
+        return vaccinationAdminstrationRecordList;
+    }
 }

@@ -2,6 +2,7 @@ package app.domain.model;
 
 
 import app.domain.shared.Constants;
+import app.domain.shared.DGSReportTask;
 import app.ui.console.utils.Utils;
 import mappers.dto.MapperSNSuser;
 import mappers.dto.dtoEmployee;
@@ -10,9 +11,11 @@ import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static app.domain.model.Employee.fillRoleList;
 
@@ -44,17 +47,18 @@ public class Company implements Serializable {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        load();
-        //demo();
+        //load();
+        demo();
+        dgsReportAuto();
     }
-
+    @SuppressWarnings("unchecked")
     public void load(){
-        employeeList=(List<Employee>) Utils.read(Constants.FILEPATH_EMPLOYEES);
-        typeVaccineList=(List<TypeVaccine>) Utils.read(Constants.FILEPATH_TYPE_VACCINES);
-        vaccineAdministrationList=(List<VaccineAdministration>) Utils.read(Constants.FILEPATH_VACCINE_ADMINISTRATIONS);
-        vaccineList=(List<Vaccine>) Utils.read(Constants.FILEPATH_VACCINES);
-        vaccinationFacilityList=(List<VaccinationFacility>) Utils.read(Constants.FILEPATH_VACCINATION_FACILITIES);
-        SNSuserList=(List<SNSuser>) Utils.read(Constants.FILEPATH_SNSUSERS);
+        employeeList=(List<Employee>) Utils.readFile(Constants.FILEPATH_EMPLOYEES);
+        typeVaccineList=(List<TypeVaccine>) Utils.readFile(Constants.FILEPATH_TYPE_VACCINES);
+        vaccineAdministrationList=(List<VaccineAdministration>) Utils.readFile(Constants.FILEPATH_VACCINE_ADMINISTRATIONS);
+        vaccineList=(List<Vaccine>) Utils.readFile(Constants.FILEPATH_VACCINES);
+        vaccinationFacilityList=(List<VaccinationFacility>) Utils.readFile(Constants.FILEPATH_VACCINATION_FACILITIES);
+        SNSuserList=(List<SNSuser>) Utils.readFile(Constants.FILEPATH_SNSUSERS);
     }
 
     public void save(){
@@ -75,7 +79,7 @@ public class Company implements Serializable {
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,2,17,30),Constants.TYPE_VACCINE_TESTER1));
+        vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,4,15,30),Constants.TYPE_VACCINE_TESTER1));
         vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
         vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
@@ -89,6 +93,35 @@ public class Company implements Serializable {
         SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER2);
         SNSuserList.get(1).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
 
+    }
+
+    public void dgsReportAuto(){
+        DGSReportTask task=new DGSReportTask();
+
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 14);
+        today.set(Calendar.MINUTE, 40);
+        today.set(Calendar.SECOND, 0);
+
+        // every night at am you run your task
+        Timer timer = new Timer();
+        timer.schedule(task, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
+    }
+
+    public List<String> generateDGSreportContent(){
+        int count=0;
+        List<String> list=new ArrayList<>();
+        for(int i=0;i<vaccinationFacilityList.size();i++){
+            count=0;
+           for (int j=0;j<vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().size();j++){
+               if(vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().get(j).getLeavingDateTime().toLocalDate().isEqual(LocalDate.now())){
+                   count++;
+               }
+           }
+           String report=LocalDate.now().format(Constants.FORMATTER)+";"+vaccinationFacilityList.get(i).getName()+";"+count;
+           list.add(report);
+        }
+        return list;
     }
 
     public String getDesignation() {

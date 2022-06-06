@@ -28,10 +28,10 @@ COMP- -> CTRL: tStore
 
 CTRL - -> UI: ok
 
-UI - -> USER: asks to type/read the barcode \nof any sample of the target test
+UI - -> USER: asks to type/readFile the barcode \nof any sample of the target test
 
 
-USER -> UI: types/read the barcode
+USER -> UI: types/readFile the barcode
 UI -> CTRL:  getTestByBarcode(barcode)
 
 CTRL -> STORE: getTestByBarcodeWithPendingResults(barcode)

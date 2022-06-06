@@ -3,7 +3,6 @@ package app.ui.console.utils;
 import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
-import app.ui.console.ShowTextUI;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.io.*;
@@ -265,13 +264,13 @@ public class Utils {
         System.out.println("0 - Cancel");
     }
 
-    public static List read(String filePath){
+    public static List readFile(String filePath){
         File ficheiro =new File(filePath);
         List list=new ArrayList();
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(ficheiro));
             try {
-                list = (List) in.readObject();
+               list = (List) in.readObject();
             } finally {
                 in.close();
             }
@@ -283,8 +282,7 @@ public class Utils {
     public static void save(String filePath,List list){
         File ficheiro =new File(filePath);
         try {
-            ObjectOutputStream out = new ObjectOutputStream(
-                    new FileOutputStream(ficheiro));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ficheiro));
             try {
                 out.writeObject(list);
             } finally {

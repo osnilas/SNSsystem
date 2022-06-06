@@ -19,7 +19,7 @@ public class RecordVaccineAdministrationController {
     private VaccinationFacility facility;
 
     private Vaccine vaccine;
-    private Company company;
+    Company company;
     private App app;
 
     public RecordVaccineAdministrationController(){
@@ -105,7 +105,7 @@ public class RecordVaccineAdministrationController {
     }
 
     public void setVaccine(int index){
-        List<Vaccine> vaccineListFull=this.company.getVaccineList();
+        List<Vaccine> vaccineListFull=company.getVaccineList();
         List<Vaccine> vaccineList=new ArrayList<>();
         for (int i=0;i<vaccineListFull.size();i++){
             if(Objects.equals(vaccineListFull.get(i).getTypeVaccine(),appointment.getTypeVaccine())){

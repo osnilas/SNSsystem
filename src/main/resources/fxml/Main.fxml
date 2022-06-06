@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.ui.MainUI">
+   <center>
+      <AnchorPane prefHeight="201.0" prefWidth="619.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnLogin" layoutX="79.0" layoutY="135.0" mnemonicParsing="false" onAction="#loginBtnPress" prefHeight="54.0" prefWidth="167.0" text="Login" />
+            <Button layoutX="374.0" layoutY="135.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Meet the Team" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="134.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="231.0" layoutY="-9.0" prefHeight="122.0" prefWidth="251.0" text="VMS" textAlignment="CENTER" textFill="#058618">
+               <font>
+                  <Font name="Elephant" size="96.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="139.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/kisspng-medicine-medical-cannabis-physician-health-care-cl-free-high-quality-plus-icon-5ab0d3d22b5001.1286129315215380021774.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="102.0" prefHeight="30.0" prefWidth="271.0" text="Vaccination management System" textAlignment="JUSTIFY" textFill="#058618">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

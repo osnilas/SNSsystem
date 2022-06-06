@@ -66,7 +66,7 @@ public class Constants {
 
     public static final SNSuser SN_SUSER_TESTER_FULL=new SNSuser("Joao Veiga", SexListFull[0], BIRTH_TESTER, "Rua General", "joao@gmail.com",912422195, 222077500, 17555697,"911");
 
-    public static final SNSuser SNS_USER_TESTER_EMPTY=new SNSuser("Maria Santos", SexListFull[1], (LocalDate.of(1960,5,11)),"Rua da maria","maria@gmail.com",91233569,122077500,17555788,"mariaTest");
+    public static final SNSuser SNS_USER_TESTER_EMPTY=new SNSuser("Maria Santos", SexListFull[1], (LocalDate.of(1980,5,11)),"Rua da maria","maria@gmail.com",91233569,122077500,17555788,"mariaTest");
 
     public static final SNSuser SNS_USER_TESTER_ONE=new SNSuser("Pedro Cardoso", SexListFull[0], (LocalDate.of(1994,9,1)),"Rua da maria","pedro@gmail.com",91234569,122137500,17555688,"pedroTest");
 
@@ -98,10 +98,10 @@ public class Constants {
 
     public static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
 
-    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,20,16,30,00),1);
+    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
     public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,2,17,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,4,15,00),TYPE_VACCINE_TESTER1);
 
     public static final String FILEPATH_SNSUSERS="bin/SNSusers.bin";
     public static final String FILEPATH_VACCINES="bin/Vaccines.bin";

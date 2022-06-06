@@ -12,7 +12,7 @@ public class SendSMSTask extends TimerTask {
     private String message;
     @Override
     public void run() {
-        File file = new File("C:\\Users\\jonas\\IdeaProjects\\lei-22-s2-1da-g03\\bin\\sms.txt");
+        File file = new File("testDocs/sms.txt");
         PrintWriter out= null;
         try {
             out = new PrintWriter(file);
