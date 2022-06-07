@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class MainUI implements Initializable {
 
-    private App mainApp;
+    private MainScene mainScene;
 
     @FXML
     private Button btnLogin;
@@ -22,15 +22,13 @@ public class MainUI implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void setMainApp(App mainApp) {
-        this.mainApp = mainApp;
+    public void setMainApp(MainScene mainScene) {
+        this.mainScene = mainScene;
     }
 
     @FXML
     public void loginBtnPress(ActionEvent event) {
-        this.mainApp.setSCENE_WIDTH(700);
-        this.mainApp.setSCENE_HEIGHT(506);
-        LoginUI loginUI=new LoginUI(this.mainApp);
+        LoginUI loginUI=new LoginUI(this.mainScene);
         loginUI.toLoginUI();
     }
 }

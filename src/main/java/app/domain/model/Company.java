@@ -371,7 +371,7 @@ public class Company implements Serializable {
         for(int i = 0; i< vaccinationFacilityList.size(); i++){
             for(int j = 0; j< vaccinationFacilityList.get(i).getVaccinationScheduleList().size(); j++){
                 if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getSNSnumber()==SNSnumber){
-                    if(Objects.equals(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getTypeVaccine(),vaccine)){
+                    if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getTypeVaccine().getCode().equalsIgnoreCase(vaccine.getCode())){
                         flag=false;
                     }
                 }

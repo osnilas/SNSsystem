@@ -24,7 +24,7 @@ public class ScheduleVaccinationUI implements Runnable {
         try {
             boolean sucess = Schedule();
         } catch (Exception e) {
-            e.printStackTrace();
+            Utils.printText(e.getMessage());
         }
     }
 

@@ -2,6 +2,7 @@ package app.ui.gui.ui;
 
 
 import app.controller.AuthController;
+import app.domain.shared.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -9,8 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -23,11 +26,11 @@ public class Login1UI implements Initializable {
     public Button btnLogin;
     public Button btnCancel;
     public PasswordField txtPwd;
-    private App mainApp;
+    private MainScene mainScene;
 
 
-    public void setMainApp(App mainApp) {
-        this.mainApp = mainApp;
+    public void setMainApp(MainScene mainScene) {
+        this.mainScene = mainScene;
     }
     private void createController(){
         this.ctlr=new AuthController();
@@ -45,10 +48,11 @@ public class Login1UI implements Initializable {
 
     public void loginPressed(ActionEvent event) {
         createController();
-        System.out.println(txtEmail.getText());
         if(ctlr.doLogin(txtEmail.getText(),txtPwd.getText())){
             Welcome();
-
+            redirectToRole();
+            //RoleUI roleUI=new RoleUI(mainApp);
+            //roleUI.toNurse();
         }else{
             Failed();
             clearTxtFields();
@@ -77,11 +81,29 @@ public class Login1UI implements Initializable {
     }
 
     private void redirectToRole(){
-
+        RoleUI roleUI=new RoleUI(mainScene);
+        roleUI.setLoginUI(loginUI);
+        List<UserRoleDTO> roleDTO=ctlr.getUserRoles();
+        String role=roleDTO.get(0).getDescription();
+        switch (role){
+            case Constants.ROLE_SNS:
+                roleUI.toSNS();
+                break;
+            case Constants.ROLE_NURSE:
+                roleUI.toNurse();
+                break;
+            case Constants.ROLE_ADMIN:
+                roleUI.toAdmin();
+                break;
+            case Constants.ROLE_RES:
+                roleUI.toReceptionist();
+                break;
+            default:
+        }
     }
 
     public void cancelPressed(ActionEvent event) {
-        mainApp.toMainScene();
+        mainScene.toMainScene();
     }
 
     public void pwdPressed(KeyEvent keyEvent) {

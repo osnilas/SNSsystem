@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.*;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
 import mappers.dto.dtoScheduleVaccine;
 
 import java.time.Duration;
@@ -113,7 +114,7 @@ public class VaccinationScheduleController {
         try{
             flag=validateScheduleVaccineType() && validateVaccinationRecord();
         }catch (Exception e){
-            e.printStackTrace();
+            Utils.printText(e.getMessage());
             return false;
         }
         return flag;

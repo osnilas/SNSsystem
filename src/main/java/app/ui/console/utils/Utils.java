@@ -3,6 +3,8 @@ package app.ui.console.utils;
 import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
+import app.ui.console.ScheduleVaccinationUI;
+import javafx.scene.control.Alert;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.io.*;
@@ -291,4 +293,14 @@ public class Utils {
         } catch (IOException ex) {
         }
     }
+
+    public static void ConsoleSwitch(){
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Switching to Console");
+        alert.setContentText("Graphical interface to this feature is not yet available");
+        alert.setHeaderText("This window will be minimized and the program will run on console");
+        alert.showAndWait();
+    }
+
+
 }

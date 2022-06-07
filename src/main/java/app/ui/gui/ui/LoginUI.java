@@ -5,24 +5,26 @@ import java.util.logging.Logger;
 
 public class LoginUI {
 
-    private final App mainApp;
+    private final MainScene mainScene;
 
 
-    public LoginUI(App mainApp){
-        this.mainApp=mainApp;
+    public LoginUI(MainScene mainApp){
+        this.mainScene=mainApp;
     }
 
-    public App getMainApp(){
-        return this.mainApp;
+    public MainScene getMainApp(){
+        return this.mainScene;
     }
 
     public void toLoginUI(){
         try{
-            Login1UI loginUI=(Login1UI) this.mainApp.replaceSceneContent("/fxml/Login.fxml");
-            loginUI.setMainApp(mainApp);
+            this.mainScene.setSCENE_WIDTH(700);
+            this.mainScene.setSCENE_HEIGHT(506);
+            Login1UI loginUI=(Login1UI) this.mainScene.replaceSceneContent("/fxml/Login.fxml");
+            loginUI.setMainApp(mainScene);
             loginUI.setLoginUI(this);
         }catch (Exception ex){
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE,null,ex);
+            Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
  }

@@ -36,7 +36,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
             try {
                 copyDataFromFile(file);
             } catch (Exception  e) {
-                e.printStackTrace();
+                Utils.printText(e.getMessage());
             }
         }
     }
