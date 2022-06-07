@@ -10,6 +10,8 @@ import mappers.dto.dtoSNSuser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +26,7 @@ import static app.domain.model.Employee.fillRoleList;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Company implements Serializable {
+public class Company {
     private String designation;
     private AuthFacade authFacade;
 
@@ -47,10 +49,53 @@ public class Company implements Serializable {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        //load();
         demo();
+        //bootstrap();
         dgsReportAuto();
     }
+
+
+    private void bootstrap()
+    {
+        if(checkIfBinFilesExist()){
+            if(!checkIfBinFilesEmpty()){
+                load();
+            }else{
+                deleteBinFiles();
+                demo();
+            }
+        }else{
+            demo();
+        }
+    }
+
+    public void deleteBinFiles(){
+        Utils.deleteFile(Constants.FILEPATH_SNSUSERS);
+        Utils.deleteFile(Constants.FILEPATH_EMPLOYEES);
+        Utils.deleteFile(Constants.FILEPATH_VACCINES);
+        Utils.deleteFile(Constants.FILEPATH_VACCINATION_FACILITIES);
+        Utils.deleteFile(Constants.FILEPATH_VACCINE_ADMINISTRATIONS);
+        Utils.deleteFile(Constants.FILEPATH_TYPE_VACCINES);
+    }
+
+    private boolean checkIfBinFilesExist(){
+        return Utils.checkIfFileExists(Constants.FILEPATH_EMPLOYEES) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_VACCINES) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_VACCINATION_FACILITIES) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_VACCINE_ADMINISTRATIONS) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_TYPE_VACCINES) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_SNSUSERS);
+    }
+    private boolean checkIfBinFilesEmpty(){
+        return Utils.checkIfFileEmpty(Constants.FILEPATH_EMPLOYEES) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_VACCINES) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_VACCINATION_FACILITIES) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_VACCINE_ADMINISTRATIONS) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_TYPE_VACCINES) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_SNSUSERS);
+    }
+
+
     @SuppressWarnings("unchecked")
     public void load(){
         employeeList=(List<Employee>) Utils.readFile(Constants.FILEPATH_EMPLOYEES);
@@ -61,14 +106,34 @@ public class Company implements Serializable {
         SNSuserList=(List<SNSuser>) Utils.readFile(Constants.FILEPATH_SNSUSERS);
     }
 
-    public void save(){
-        Utils.save(Constants.FILEPATH_EMPLOYEES,employeeList);
-        Utils.save(Constants.FILEPATH_TYPE_VACCINES,typeVaccineList);
-        Utils.save(Constants.FILEPATH_VACCINE_ADMINISTRATIONS,vaccineAdministrationList);
-        Utils.save(Constants.FILEPATH_VACCINES,vaccineList);
-        Utils.save(Constants.FILEPATH_VACCINATION_FACILITIES,vaccinationFacilityList);
+    public void saveAll(){
+        saveEmployees();
+        saveTypeVaccines();
+        saveVaccineAdministrations();
+        saveVaccines();
+        saveVaccinationFacilities();
+        saveSNSusers();
+    }
+
+    public void saveSNSusers(){
         Utils.save(Constants.FILEPATH_SNSUSERS,SNSuserList);
     }
+    public void saveEmployees(){
+        Utils.save(Constants.FILEPATH_EMPLOYEES,employeeList);
+    }
+    public void saveTypeVaccines(){
+        Utils.save(Constants.FILEPATH_TYPE_VACCINES,typeVaccineList);
+    }
+    public void saveVaccineAdministrations(){
+        Utils.save(Constants.FILEPATH_VACCINE_ADMINISTRATIONS,vaccineAdministrationList);
+    }
+    public void saveVaccines(){
+        Utils.save(Constants.FILEPATH_VACCINES,vaccineList);
+    }
+    public void saveVaccinationFacilities(){
+        Utils.save(Constants.FILEPATH_VACCINATION_FACILITIES,vaccinationFacilityList);
+    }
+
 
     public void demo(){
         vaccineList.add(Constants.VACCINE_TESTER);
@@ -371,7 +436,7 @@ public class Company implements Serializable {
         for(int i = 0; i< vaccinationFacilityList.size(); i++){
             for(int j = 0; j< vaccinationFacilityList.get(i).getVaccinationScheduleList().size(); j++){
                 if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getSNSnumber()==SNSnumber){
-                    if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getTypeVaccine().getCode().equalsIgnoreCase(vaccine.getCode())){
+                    if(vaccinationFacilityList.get(i).getVaccinationScheduleList().get(j).getTypeVaccine().equals(vaccine)){
                         flag=false;
                     }
                 }

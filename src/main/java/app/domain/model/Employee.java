@@ -4,7 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee extends User implements Serializable {
+public class Employee implements Serializable {
+
+    private String name;
+    private String residenceAddress;
+    private String email;
+    private int phoneNumber;
+    private int ccNumber;
     private int employeeID;
 
     private String roleId;
@@ -23,16 +29,33 @@ public class Employee extends User implements Serializable {
      */
     public Employee(String name, String address, int phone, int cc, String email, String roleId) {
 
-        super(email,name,address,email,phone,cc);
-
+        this.name=name;
+        this.residenceAddress=address;
+        this.phoneNumber=phone;
+        this.ccNumber=cc;
+        this.email=email;
         count++;
-
         this.employeeID = count;
 
         this.roleId = roleId;
     }
 
     //getters
+    public String getName() {
+        return name;
+    }
+    public String getResidenceAddress() {
+        return residenceAddress;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+    public int getCcNumber() {
+        return ccNumber;
+    }
     public int getEmployeeID() {
         return employeeID;
     }
@@ -64,10 +87,10 @@ public class Employee extends User implements Serializable {
     @Override
     public String toString() {
         return "Employee: \n" +
-                "name: " + getName() + '\t' +
-                "residence adress: " + getResidenceAddress() +'\t'+
-                "email: " + getEmail() + '\t' +
-                "phone: " + getPhoneNumber() +'\t'+
+                "name: " + name + '\t' +
+                "residence adress: " + residenceAddress +'\t'+
+                "email: " + email + '\t' +
+                "phone: " + phoneNumber +'\t'+
                 "roleId: " + roleId;
     }
 }

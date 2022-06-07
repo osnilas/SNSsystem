@@ -128,4 +128,20 @@ public abstract class VaccinationFacility implements Serializable {
     public List<VaccinationAdminstrationRecord> getVaccinationAdminstrationRecordList() {
         return vaccinationAdminstrationRecordList;
     }
+    @Override
+    public boolean equals(Object o){
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof VaccinationFacility)) {
+            return false;
+        }
+        VaccinationFacility vaccinationFacility = (VaccinationFacility) o;
+        return this.name.equals(vaccinationFacility.name) && this.address.equals(vaccinationFacility.address)
+                && this.phoneNumber == vaccinationFacility.phoneNumber && this.emailAddress.equals(vaccinationFacility.emailAddress)
+                && this.faxNumber == vaccinationFacility.faxNumber && this.websiteAddress.equals(vaccinationFacility.websiteAddress)
+                && this.openingHours.equals(vaccinationFacility.openingHours) && this.closingHours.equals(vaccinationFacility.closingHours)
+                && this.slotDuration == vaccinationFacility.slotDuration &&
+                this.maximumNumberOfVaccinesPerSlot == vaccinationFacility.maximumNumberOfVaccinesPerSlot;
+    }
 }

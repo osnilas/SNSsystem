@@ -2,7 +2,6 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.shared.Constants;
-import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
 

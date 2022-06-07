@@ -38,9 +38,6 @@ public class AuthController {
         }
         return null;
     }
-    public void save(){
-        this.company.save();
-    }
 
 
     public void doLogout()

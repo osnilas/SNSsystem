@@ -29,8 +29,8 @@ public class VaccinationScheduleController {
 
 
     public VaccinationScheduleController() {
-        this.company = App.getInstance().getCompany();
         this.app = App.getInstance();
+        this.company = App.getInstance().getCompany();
     }
 
     public VaccinationScheduleController(Company company) {

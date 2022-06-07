@@ -36,4 +36,17 @@ public class TypeVaccine implements Serializable {
     public String getTechnology() {
         return technology;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof TypeVaccine)) {
+            return false;
+        }
+        TypeVaccine typeVaccine = (TypeVaccine) o;
+        return this.name.equals(typeVaccine.name) && this.description.equals(typeVaccine.description)
+                && this.code.equals(typeVaccine.code) && this.technology.equals(typeVaccine.technology);
+    }
 }

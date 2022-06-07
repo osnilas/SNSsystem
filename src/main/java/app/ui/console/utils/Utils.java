@@ -288,6 +288,7 @@ public class Utils {
             try {
                 out.writeObject(list);
             } finally {
+                out.flush();
                 out.close();
             }
         } catch (IOException ex) {
@@ -302,5 +303,38 @@ public class Utils {
         alert.showAndWait();
     }
 
+    public static void ExceptionWarning(Exception e){
+        Alert alert=new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setContentText(e.getMessage());
+        alert.setHeaderText("Wasn't possible to do this action due to invalid data");
+        alert.showAndWait();
+    }
 
+    public static boolean checkIfFileEmpty(String pathToFile){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(pathToFile));
+            if (br.readLine() == null) {
+                System.out.println("No errors, and file empty");
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkIfFileExists(String pathToFile){
+        File file =new File(pathToFile);
+        if(file.exists()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static void deleteFile(String pathToFile){
+        File file =new File(pathToFile);
+        file.delete();
+    }
 }

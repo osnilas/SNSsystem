@@ -97,7 +97,7 @@ public class RecordVaccineAdministrationController {
         List<Vaccine> vaccineListFull=this.company.getVaccineList();
         List<String> vaccineList=new ArrayList<>();
         for (int i=0;i<vaccineListFull.size();i++){
-            if(vaccineListFull.get(i).getTypeVaccine().getCode().equalsIgnoreCase(appointment.getTypeVaccine().getCode())){
+            if(vaccineListFull.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
                 vaccineList.add(vaccineListFull.get(i).getName());
             }
         }
@@ -108,7 +108,7 @@ public class RecordVaccineAdministrationController {
         List<Vaccine> vaccineListFull=company.getVaccineList();
         List<Vaccine> vaccineList=new ArrayList<>();
         for (int i=0;i<vaccineListFull.size();i++){
-            if(Objects.equals(vaccineListFull.get(i).getTypeVaccine(),appointment.getTypeVaccine())){
+            if(vaccineListFull.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
                 vaccineList.add(vaccineListFull.get(i));
             }
         }

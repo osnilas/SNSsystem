@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.controller.App;
 import app.controller.AuthController;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
@@ -48,7 +49,6 @@ public class AuthUI implements Runnable{
                 }
             }
         }
-        ctrl.save();
         this.logout();
     }
 
@@ -81,7 +81,6 @@ public class AuthUI implements Runnable{
             {
                 System.out.println("Invalid UserId and/or Password. \n You have  " + maxAttempts + " more attempt(s).");
             }
-
         } while (!success && maxAttempts > 0);
         return success;
     }
