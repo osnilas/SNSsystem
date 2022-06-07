@@ -46,6 +46,7 @@ public class ScheduleVaccinationUI implements Runnable {
                 if (success) {
                     ctlr.saveSchedule();
                     Utils.printText("-----Appointment added successfully-----");
+                    ctlr.save();
                 } else {
                     Utils.printText("----Appoint creation failed----");
                 }

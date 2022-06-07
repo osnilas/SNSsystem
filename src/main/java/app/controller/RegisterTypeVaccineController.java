@@ -33,5 +33,9 @@ public class RegisterTypeVaccineController {
      */
     public boolean saveTypeVaccine () { return company.saveTypeVaccine(typeVaccine); }
 
+    public void save(){
+        company.saveTypeVaccinesListFile();
+    }
+
 }
 

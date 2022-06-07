@@ -38,5 +38,8 @@ public class RegisterVaccinationCenterController {
         this.company.printVaccinationCenter(vc);
     }
 
+    public void save(){
+        this.company.saveVaccinationFacilityListFile();
+    }
 }
 

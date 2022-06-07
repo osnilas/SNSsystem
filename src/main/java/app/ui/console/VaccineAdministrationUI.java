@@ -122,6 +122,7 @@ public class VaccineAdministrationUI implements Runnable {
             if (Utils.confirm("Are you sure you want to save? (s/n)")) {
                 ctrl.saveVaccineAdministration();
                 System.out.printf("-------------------------Successfully Saved!-------------------------%n%n");
+                ctrl.save();
             }
         }
     }

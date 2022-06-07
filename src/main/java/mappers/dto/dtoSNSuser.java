@@ -1,9 +1,5 @@
 package mappers.dto;
 
-import app.domain.model.User;
-import app.domain.shared.Constants;
-
-import java.lang.ref.PhantomReference;
 import java.time.LocalDate;
 
 public class dtoSNSuser {

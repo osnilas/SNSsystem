@@ -134,6 +134,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
 
         if (success){
             System.out.println("registration successful");
+            ctlr.save();
         } else {
             System.out.println("registration not successful");
         }

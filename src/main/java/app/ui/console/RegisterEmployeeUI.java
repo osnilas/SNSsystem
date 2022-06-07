@@ -109,6 +109,7 @@ public class RegisterEmployeeUI implements Runnable {
         }
         if (success) {
             System.out.println("-----------Registration done successfully-----------");
+            ctlr.save();
         } else {
             System.out.println("-----------Registration failed---------------");
         }

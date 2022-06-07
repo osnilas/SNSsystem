@@ -12,7 +12,6 @@ import static java.lang.System.out;
 
 public class DGSReportTask extends TimerTask {
     private List<String> report = new ArrayList<>();
-    private App app;
     private Company company;
 
     @Override
@@ -35,9 +34,11 @@ public class DGSReportTask extends TimerTask {
         out.close();
     }
 
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public void setMessage() {
-        this.app = App.getInstance();
-        this.company = App.getInstance().getCompany();
         report = new ArrayList<>(company.generateDGSreportContent());
     }
 }

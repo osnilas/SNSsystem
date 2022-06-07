@@ -39,6 +39,7 @@ public class RecordVaccineAdministrationController {
         else {
             updateVaccinationRecord();
         }
+        save();
     }
 
     /**
@@ -159,5 +160,10 @@ public class RecordVaccineAdministrationController {
         long time=(long)minutes*60000;
         Timer timer=new Timer();
         timer.schedule(sms,time);
+    }
+
+    private void save(){
+        this.company.saveVaccinationFacilityListFile();
+        this.company.saveEmployeesListFile();
     }
 }

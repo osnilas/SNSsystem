@@ -68,5 +68,6 @@ public class RecordVaccineAdministrationUI implements Runnable {
         ctlr.createVaccinationAdminstration(recoveryTime, lotNumber);
         ctlr.saveVaccinationAdminstration();
         ctlr.sendSMS(recoveryTime);
+        ctlr.save
     }
 }

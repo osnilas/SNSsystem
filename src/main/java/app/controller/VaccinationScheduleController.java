@@ -411,4 +411,8 @@ public class VaccinationScheduleController {
         "\nDate: " + dateSheducle.format(Constants.FORMATTER)+
         "\nTime: "+ dateSheducle.format(Constants.TIME_FORMATTER);
     }
+
+    public void save(){
+        company.saveVaccinationFacilityListFile();
+    }
 }

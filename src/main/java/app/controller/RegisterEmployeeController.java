@@ -52,4 +52,8 @@ public class RegisterEmployeeController {
     public void printEmployee() {
         this.company.printEmployee(employee);
     }
+
+    public void save(){
+        this.company.saveEmployeesListFile();
+    }
 }

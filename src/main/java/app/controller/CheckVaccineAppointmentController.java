@@ -98,4 +98,8 @@ public class CheckVaccineAppointmentController {
     public Arrival getArrival() {
         return arrival;
     }
+
+    public void save(){
+        company.saveVaccinationFacilityListFile();
+    }
 }

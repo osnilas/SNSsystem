@@ -49,8 +49,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        demo();
-        //bootstrap();
+        bootstrap();
         dgsReportAuto();
     }
 
@@ -58,7 +57,7 @@ public class Company {
     private void bootstrap()
     {
         if(checkIfBinFilesExist()){
-            if(!checkIfBinFilesEmpty()){
+            if(checkIfBinFilesEmpty()){
                 load();
             }else{
                 deleteBinFiles();
@@ -107,30 +106,30 @@ public class Company {
     }
 
     public void saveAll(){
-        saveEmployees();
-        saveTypeVaccines();
-        saveVaccineAdministrations();
-        saveVaccines();
-        saveVaccinationFacilities();
-        saveSNSusers();
+        saveEmployeesListFile();
+        saveTypeVaccinesListFile();
+        saveVaccineAdministrationListFile();
+        saveVaccineListFile();
+        saveVaccinationFacilityListFile();
+        saveSNSusersListFile();
     }
 
-    public void saveSNSusers(){
+    public void saveSNSusersListFile(){
         Utils.save(Constants.FILEPATH_SNSUSERS,SNSuserList);
     }
-    public void saveEmployees(){
+    public void saveEmployeesListFile(){
         Utils.save(Constants.FILEPATH_EMPLOYEES,employeeList);
     }
-    public void saveTypeVaccines(){
+    public void saveTypeVaccinesListFile(){
         Utils.save(Constants.FILEPATH_TYPE_VACCINES,typeVaccineList);
     }
-    public void saveVaccineAdministrations(){
+    public void saveVaccineAdministrationListFile(){
         Utils.save(Constants.FILEPATH_VACCINE_ADMINISTRATIONS,vaccineAdministrationList);
     }
-    public void saveVaccines(){
+    public void saveVaccineListFile(){
         Utils.save(Constants.FILEPATH_VACCINES,vaccineList);
     }
-    public void saveVaccinationFacilities(){
+    public void saveVaccinationFacilityListFile(){
         Utils.save(Constants.FILEPATH_VACCINATION_FACILITIES,vaccinationFacilityList);
     }
 
@@ -163,14 +162,16 @@ public class Company {
     public void dgsReportAuto(){
         DGSReportTask task=new DGSReportTask();
 
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 14);
-        today.set(Calendar.MINUTE, 40);
-        today.set(Calendar.SECOND, 0);
-
+        Calendar schedule = Calendar.getInstance();
+        schedule.set(Calendar.HOUR_OF_DAY, 14);
+        schedule.set(Calendar.MINUTE, 40);
+        schedule.set(Calendar.SECOND, 0);
+        if(schedule.before(Calendar.getInstance())){
+            schedule.add(Calendar.DATE, 1);
+        }
         // every night at am you run your task
         Timer timer = new Timer();
-        timer.schedule(task, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
+        timer.schedule(task, schedule.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
     }
 
     public List<String> generateDGSreportContent(){

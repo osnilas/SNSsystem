@@ -56,6 +56,7 @@ public class CheckVaccineAppointmentUI implements Runnable {
                 if (Utils.confirm("Confirm Data? (s or n)")) {
                     if (ctrl.requestToSaveSnsUserArrival()) {
                         System.out.println("------------------------- Successfully registered SNS User arrival and added to waiting list -------------------------");
+                        ctrl.save();
                     }
                 } else {
                     System.out.println("--------Process cancelled--------");

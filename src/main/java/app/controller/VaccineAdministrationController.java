@@ -48,5 +48,7 @@ public class VaccineAdministrationController {
         company.saveVaccine(vaccine);
        return company.saveVaccineAdministration(vaccineAdministration);
     }
-
+    public void save(){
+        company.saveVaccineAdministrationListFile();
+    }
 }
