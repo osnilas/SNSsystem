@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+object Coordinator
+object StatisticalReportVaccination
+object StatisticsCharts
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+object MassVaccinationCenter{
+-**TypeVaccine**
+}
+object HealthCareCenter{
+-**Several TypeVaccine**
+}
+object DGS
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+
+Coordinator"1" -- "*"StatisticalReportVaccination: < requested by
+StatisticalReportVaccination"1" -- "*"StatisticsCharts: > has
+DGS"1" - "*"Employees : > owns
+Employees"1"-"1" Coordinator: > plays as
+VaccinationFacility"1"<--"*" MassVaccinationCenter: < is a
+VaccinationFacility"1"<--"*" HealthCareCenter: < is a
+StatisticsCharts"*" -- "*"VaccinationFacility: > with data from
+
+
+@enduml

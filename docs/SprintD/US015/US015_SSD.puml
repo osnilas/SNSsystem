@@ -1,0 +1,37 @@
+@startuml
+autonumber
+actor "Center Coordinator" as cc
+
+activate cc
+cc -> ":System" : asks to check vaccination statistics.
+activate ":System"
+":System" --> cc : requests data (fromDate, toDate).
+deactivate ":System"
+
+cc -> ":System" : types requested data.
+activate ":System"
+":System" --> cc : shows vaccination statistics and asks if \nuser would like to export data.
+deactivate ":System"
+
+cc -> ":System" : confirms option.
+
+alt if no
+activate ":System"
+":System" --> cc : informs operation success.
+
+else if yes
+":System" --> cc : requests new file name (name).
+deactivate ":System"
+
+cc -> ":System" : types requested data.
+activate ":System"
+":System" --> cc : requests confirmation.
+deactivate ":System"
+
+cc -> ":System" : confirms data.
+activate ":System"
+":System" --> cc : informs operation success
+end
+
+
+@enduml

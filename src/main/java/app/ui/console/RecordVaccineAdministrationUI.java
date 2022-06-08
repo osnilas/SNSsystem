@@ -12,7 +12,7 @@ public class RecordVaccineAdministrationUI implements Runnable {
     private RecordVaccineAdministrationController ctlr;
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * Iniciates controller
      */
     public RecordVaccineAdministrationUI() {
@@ -68,6 +68,6 @@ public class RecordVaccineAdministrationUI implements Runnable {
         ctlr.createVaccinationAdminstration(recoveryTime, lotNumber);
         ctlr.saveVaccinationAdminstration();
         ctlr.sendSMS(recoveryTime);
-        ctlr.save
+
     }
 }

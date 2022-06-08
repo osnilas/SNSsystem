@@ -14,26 +14,20 @@ actor SNSUser
 
 rectangle System {
 
-        Receptionist -- (UC03: Resgister a SNS user)
-        Receptionist -- (UC14: Check if the SNS user has a scheduled vaccination)
-        Receptionist -- (UC04: Register the arrival of the patient on the system)
+
         SNSUser -- (UC01: Schedule Vaccination)
-        SNSUser -- (UC17: Receive an SMS confirming SNS user scheduled vaccination)
-        Nurse -- (UC18:Check the list of the SNS users in the waiting room)
-        CenterCoordinator  -- (UC19:Generate reports and analyze reports from other vaccination centers)
-        Administrator -- (UC09: Register a vaccination center to responde a certain pandemic)
+        Receptionist -- (UC04: Register the arrival of the patient on the system)
+        Nurse -- (UC05: Consult the users in the waiting room of a vaccination center. )
+        Nurse -- (UC08: Record the administration of vaccine to an SNS user.\nReceive an SMS/EMAIL notification that the recovery period is over)
+        Administrator -- (UC09: Register a vaccination center to respond a certain pandemic)
         Administrator -- (UC10: Register an Employee)
-        Administrator -- (UC11: Get a list of Employees with a given funtion/role)
-        Administrator -- (UC12:Register type of vaccine)
+        Administrator -- (UC11: Get a list of Employees with a given function/role)
         Administrator -- (UC13: Specify a new vaccine and its administration)
-        Administrator -- (UC17:Register centers, SNS users, center coordinators, receptionists and nurses)
-        Nurse -- (UC06 -- receive informations about SNS users and instructions about the vaccination, dosage and brand of vaccine )
-        Nurse -- (UC05: Consult the users in the waiting room of a vacination center. )
-        Nurse -- (UC07 -- Register the vaccination on the system)
-        SNSUser-- (UC08: receive an SMS/EMAIL notification that the recovery period is over)
-        Nurse -- (UC15: Register an adverse reaction to the vaccine during the recovery time)
-        SNSUser-- (UC16: Receive an EU COVID Digital Certificate)
-        Receptionist -- (UC02:Schedule Vaccination)
+        Administrator -- (UC14: Load a set of users from a CSV file)
+        CenterCoordinator -- (UC15: Check and export vaccination statistics to csv file, the total number of fully vaccinated user per day.)
+        CenterCoordinator-- (UC16: Analyze the performance of a center.)
+        CenterCoordinator -- (UC17: Import data from a legacy system that was used in the past to manage centers.)
+
 
    }
 @enduml
