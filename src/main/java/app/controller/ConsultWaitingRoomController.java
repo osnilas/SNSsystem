@@ -22,7 +22,6 @@ public class ConsultWaitingRoomController {
         return this.company.getWaitingList(index);
     }
 
-
     /**
      * @author Filipe Magalhães
      * @Description Asks company to fill a string array with the SNS users in the waiting room
