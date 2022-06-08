@@ -1,14 +1,25 @@
 package app.ui.gui.ui;
 
 
+import app.controller.App;
+import app.ui.console.utils.Utils;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.InputStream;
 import java.util.logging.Level;
@@ -17,6 +28,7 @@ import java.util.logging.Logger;
 public class MainScene extends Application {
 
     private Stage stage;
+    private String AppName="Vaccination management system";
     private final double MINIMUM_WINDOW_WIDTH = 500.0;
     private final double MINIMUM_WINDOW_HEIGHT = 400.0;
     private  double SCENE_WIDTH = 700;
@@ -26,7 +38,7 @@ public class MainScene extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
-        stage.setTitle("Vaccination management system");
+        stage.setTitle(AppName);
         Image icon=new Image("Images/H082651ae82074da2bccb37051799d887P.jpg");
         stage.getIcons().add(icon);
         stage.setResizable(false);
@@ -48,6 +60,23 @@ public class MainScene extends Application {
 
     public void toMainScene() {
         try {
+            //Close app
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Alert alert= Utils.createConfirmation(AppName, "Are you sure you want to exit?",null);
+
+                    if (alert.showAndWait().get() == ButtonType.CANCEL) {
+                        event.consume();
+
+                    }
+                    else {
+                        Platform.exit();
+                        System.exit(0);
+                    }
+                }
+            });
+
             setSCENE_WIDTH(604);
             setSCENE_HEIGHT(400);
             MainUI MainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
@@ -82,6 +111,8 @@ public class MainScene extends Application {
         this.stage.sizeToScene();
         return (Initializable) loader.getController();
     }
+
+
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.

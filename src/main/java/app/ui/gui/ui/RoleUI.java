@@ -23,7 +23,7 @@ public class RoleUI {
             mainScene.setSCENE_HEIGHT(437);
             AdminUI adminUI = (AdminUI) this.mainScene.replaceSceneContent("/fxml/AdminMenu.fxml");
             adminUI.setMainApp(mainScene);
-            adminUI.setLoginUI(loginUI);
+            adminUI.setRoleUI(this);
         }catch (Exception ex){
             Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
         }
@@ -34,7 +34,7 @@ public class RoleUI {
         mainScene.setSCENE_HEIGHT(400);
         NurseUI nurseUI = (NurseUI) this.mainScene.replaceSceneContent("/fxml/NurseMenu.fxml");
         nurseUI.setMainApp(mainScene);
-        nurseUI.setLoginUI(loginUI);
+        nurseUI.setRoleUI(this);
     }catch (Exception ex){
         Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
     }}
@@ -45,7 +45,7 @@ public class RoleUI {
             mainScene.setSCENE_HEIGHT(400);
             ReceptionistUI resUI = (ReceptionistUI) this.mainScene.replaceSceneContent("/fxml/ReceptionistMenu .fxml");
             resUI.setMainApp(mainScene);
-            resUI.setLoginUI(loginUI);
+            resUI.setRoleUI(this);
         }catch (Exception ex){
             Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
         }
@@ -57,9 +57,25 @@ public class RoleUI {
             mainScene.setSCENE_HEIGHT(400);
             SNSuserUI snSuserUI=(SNSuserUI)  this.mainScene.replaceSceneContent("/fxml/SNSuserMenu.fxml");
             snSuserUI.setMainApp(mainScene);
-            snSuserUI.setLoginUI(loginUI);
+            snSuserUI.setRoleUI(this);
         }catch (Exception ex){
             Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
         }
+    }
+
+    public void toCoordinator(){
+        try {
+            mainScene.setSCENE_WIDTH(600);
+            mainScene.setSCENE_HEIGHT(400);
+            CoordinatorUI coordinatorUI=(CoordinatorUI)  this.mainScene.replaceSceneContent("/fxml/CoordinatorMenu.fxml");
+            coordinatorUI.setMainApp(mainScene);
+            coordinatorUI.setRoleUI(this);
+        } catch (Exception ex) {
+            Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
+
+    public void goBack(){
+        loginUI.toLoginUI();
     }
 }

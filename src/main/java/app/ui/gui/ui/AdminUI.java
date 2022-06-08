@@ -1,5 +1,6 @@
 package app.ui.gui.ui;
 
+import app.controller.VaccineAdministrationController;
 import app.ui.console.*;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
@@ -8,14 +9,12 @@ import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AdminUI implements Initializable {
 
     private MainScene mainScene;
+    private RoleUI roleUI;
 
-    private LoginUI loginUI;
     public Button btnResCenter;
     public Button btnAddCSV;
     public Button btnResType;
@@ -30,8 +29,9 @@ public class AdminUI implements Initializable {
 
     }
 
-    public void setLoginUI(LoginUI loginUI) {
-        this.loginUI = loginUI;
+
+    public void setRoleUI(RoleUI roleUI) {
+        this.roleUI = roleUI;
     }
 
     public void setMainApp(MainScene mainScene) {
@@ -94,7 +94,11 @@ public class AdminUI implements Initializable {
         mainScene.bringBackWindow();
     }
 
+    public void goBack(){
+        roleUI.toAdmin();
+    }
+
     public void backPressed(ActionEvent event) {
-        loginUI.toLoginUI();
+        roleUI.goBack();
     }
 }

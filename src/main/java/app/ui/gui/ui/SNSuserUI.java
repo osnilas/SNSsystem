@@ -12,8 +12,9 @@ import java.util.ResourceBundle;
 public class SNSuserUI implements Initializable {
 
     private MainScene mainScene;
+    private RoleUI roleUI;
 
-    private LoginUI loginUI;
+
     public Button btnVaccination;
     public Button btnBack;
 
@@ -23,13 +24,11 @@ public class SNSuserUI implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-    public void setLoginUI(LoginUI loginUI) {
-        this.loginUI = loginUI;
-    }
-
     public void setMainApp(MainScene mainScene) {
         this.mainScene = mainScene;
+    }
+    public void setRoleUI(RoleUI roleUI) {
+        this.roleUI = roleUI;
     }
 
     public void VaccinatioPressed(ActionEvent event) {
@@ -40,7 +39,11 @@ public class SNSuserUI implements Initializable {
         mainScene.bringBackWindow();
     }
 
+    public void goBack(){
+        roleUI.toSNS();
+    }
+
     public void BackPressed(ActionEvent event) {
-        loginUI.toLoginUI();
+        roleUI.goBack();
     }
 }

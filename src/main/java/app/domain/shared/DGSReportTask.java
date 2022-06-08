@@ -25,7 +25,7 @@ public class DGSReportTask extends TimerTask {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        if(file.exists() && !file.isDirectory()) {
+        if(!file.exists() && !file.isDirectory()) {
             out.write("Date;Vaccination Facility;Total of vaccinated users");
         }
         for(int i=0;i<report.size();i++) {

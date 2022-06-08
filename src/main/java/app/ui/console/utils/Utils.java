@@ -5,6 +5,8 @@ import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
 import app.ui.console.ScheduleVaccinationUI;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.io.*;
@@ -309,6 +311,25 @@ public class Utils {
         alert.setContentText(e.getMessage());
         alert.setHeaderText("Wasn't possible to do this action due to invalid data");
         alert.showAndWait();
+    }
+
+    public static Alert createConfirmation(String title, String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+        return alert;
+    }
+
+    public static Alert Warning(String title, String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("OK");
+        return alert;
     }
 
     public static boolean checkIfFileEmpty(String pathToFile){

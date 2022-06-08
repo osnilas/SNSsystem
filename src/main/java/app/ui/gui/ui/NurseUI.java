@@ -12,8 +12,7 @@ import java.util.ResourceBundle;
 public class NurseUI implements Initializable {
 
     private MainScene mainScene;
-
-    private LoginUI loginUI;
+    private RoleUI roleUI;
     public Button btnConsult;
     public Button btnVaccine;
     public Button btnBack;
@@ -23,12 +22,11 @@ public class NurseUI implements Initializable {
 
     }
 
-    public void setLoginUI(LoginUI loginUI) {
-        this.loginUI = loginUI;
-    }
-
     public void setMainApp(MainScene mainScene) {
         this.mainScene = mainScene;
+    }
+    public void setRoleUI(RoleUI roleUI) {
+        this.roleUI = roleUI;
     }
 
     public void consultPressed(ActionEvent event) {
@@ -41,9 +39,16 @@ public class NurseUI implements Initializable {
     }
 
     public void vaccinePressed(ActionEvent event) {
+        RegisterVaccineAdministrationUI registerVaccineAdministrationUI=new RegisterVaccineAdministrationUI(mainScene,this);
+        registerVaccineAdministrationUI.toVaccineAdministrationScene1();
+
+    }
+
+    public void goBack(){
+        roleUI.toNurse();
     }
 
     public void backPressed(ActionEvent event) {
-        loginUI.toLoginUI();
+        roleUI.goBack();
     }
 }

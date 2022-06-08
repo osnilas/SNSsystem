@@ -74,10 +74,13 @@ public class App {
     private void bootstrap()
     {
         this.authFacade.addUserRole(Constants.ROLE_ADMIN,Constants.ROLE_ADMIN);
+        this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
+        this.authFacade.addUserRole(Constants.ROLE_SNS,Constants.ROLE_SNS);
+        this.authFacade.addUserRole(Constants.ROLE_RES,Constants.ROLE_RES);
+        this.authFacade.addUserRole(Constants.ROLE_COR,Constants.ROLE_COR);
 
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456",Constants.ROLE_ADMIN);
 
-        this.authFacade.addUserRole(Constants.ROLE_SNS,Constants.ROLE_SNS);
 
         this.authFacade.addUserWithRole("Test SNS user", "sns@lei.sem2.pt", "11",Constants.ROLE_SNS);
 
@@ -87,13 +90,11 @@ public class App {
 
         this.authFacade.addUserWithRole(Constants.SNS_USER_TESTER_EMPTY.getName(),Constants.SNS_USER_TESTER_EMPTY.getEmail(),Constants.SNS_USER_TESTER_EMPTY.getPassword(),Constants.ROLE_SNS);
 
-        this.authFacade.addUserRole(Constants.ROLE_RES,Constants.ROLE_RES);
-
         this.authFacade.addUserWithRole(" Test Receptionist", "res@lei.sem2.pt", "22",Constants.ROLE_RES);
 
-        this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
-
         this.authFacade.addUserWithRole("Test nurse", "nurse@lei.sem2.pt", "33",Constants.ROLE_NURSE);
+
+        this.authFacade.addUserWithRole("Coordinator", "coor@lei.sem2.pt","44",Constants.ROLE_COR);
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

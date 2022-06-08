@@ -32,9 +32,11 @@ public class Login1UI implements Initializable {
     public void setMainApp(MainScene mainScene) {
         this.mainScene = mainScene;
     }
-    private void createController(){
-        this.ctlr=new AuthController();
+
+    public void setCtlr(AuthController ctlr) {
+        this.ctlr = ctlr;
     }
+
     public void setLoginUI(LoginUI loginUI){
         this.loginUI=loginUI;
     }
@@ -47,7 +49,6 @@ public class Login1UI implements Initializable {
     }
 
     public void loginPressed(ActionEvent event) {
-        createController();
         if(ctlr.doLogin(txtEmail.getText(),txtPwd.getText())){
             Welcome();
             redirectToRole();
@@ -97,6 +98,9 @@ public class Login1UI implements Initializable {
                 break;
             case Constants.ROLE_RES:
                 roleUI.toReceptionist();
+                break;
+            case Constants.ROLE_COR:
+                roleUI.toCoordinator();
                 break;
             default:
         }

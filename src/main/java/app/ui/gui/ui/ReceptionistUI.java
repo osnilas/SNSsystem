@@ -14,15 +14,11 @@ import java.util.ResourceBundle;
 public class ReceptionistUI implements Initializable {
 
     private MainScene mainScene;
-
-    private LoginUI loginUI;
+    private RoleUI roleUI;
     public Button btnCheck;
     public Button btnVaccine;
     public Button btnBack;
 
-    public void setLoginUI(LoginUI loginUI) {
-        this.loginUI = loginUI;
-    }
 
     public void setMainApp(MainScene mainScene) {
         this.mainScene = mainScene;
@@ -31,6 +27,10 @@ public class ReceptionistUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void setRoleUI(RoleUI roleUI) {
+        this.roleUI = roleUI;
     }
 
     public void checkPressed(ActionEvent event) {
@@ -50,6 +50,6 @@ public class ReceptionistUI implements Initializable {
     }
 
     public void backPressed(ActionEvent event) {
-        loginUI.toLoginUI();
+        roleUI.goBack();
     }
 }
