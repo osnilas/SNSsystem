@@ -22,6 +22,7 @@ public class LoginUI {
     public void toLoginUI(){
         try{
             ctlr.doLogout();
+            ctlr.saveAll();
             this.mainScene.setSCENE_WIDTH(700);
             this.mainScene.setSCENE_HEIGHT(506);
             Login1UI loginUI=(Login1UI) this.mainScene.replaceSceneContent("/fxml/Login.fxml");

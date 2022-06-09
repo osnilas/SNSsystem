@@ -143,8 +143,8 @@ public class Company {
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,4,15,30),Constants.TYPE_VACCINE_TESTER1));
-        vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
+        //vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,9,19,30),Constants.TYPE_VACCINE_TESTER1));
+        //vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
         vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);

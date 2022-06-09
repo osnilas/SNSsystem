@@ -12,7 +12,7 @@ public class RecordVaccineAdministrationUI implements Runnable {
     private RecordVaccineAdministrationController ctlr;
 
     /**
-     * @author Jo�o Veiga
+     * @author João Veiga
      * Iniciates controller
      */
     public RecordVaccineAdministrationUI() {
@@ -54,14 +54,14 @@ public class RecordVaccineAdministrationUI implements Runnable {
             default:
                 throw new Exception("No option chosen");
         }
-        Utils.printText(ctlr.getAppoimentInfo());
+        ctlr.getAppoimentInfo();
 
         if (ctlr.getUserVaccinationRecord()) {
-            Utils.printText(ctlr.getVaccineInfo());
+            ctlr.getVaccineInfo();
         } else {
             int vaccine = Utils.showAndSelectIndex(ctlr.getVaccineList(), "Select a vaccine");
             ctlr.setVaccine(vaccine);
-            Utils.printText(ctlr.getVaccineInfo());
+            ctlr.getVaccineInfo();
         }
         String lotNumber = Utils.readLineFromConsole("Introduce vaccine lot number:");
         int recoveryTime = Utils.readIntegerFromConsole("Introduce recovery time:");

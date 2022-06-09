@@ -308,8 +308,8 @@ public class Utils {
     public static void ExceptionWarning(Exception e){
         Alert alert=new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning");
-        alert.setContentText(e.getMessage());
-        alert.setHeaderText("Wasn't possible to do this action due to invalid data");
+        alert.setContentText("Wasn't possible to do this action due to invalid data");
+        alert.setHeaderText(e.getMessage());
         alert.showAndWait();
     }
 

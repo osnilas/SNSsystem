@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="293.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="293.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.ui.RegisterVaccineAdministration1UI">
    <top>
       <AnchorPane prefHeight="81.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,6 +20,14 @@
       </AnchorPane>
    </top>
    <center>
-      <ComboBox prefHeight="39.0" prefWidth="176.0" BorderPane.alignment="CENTER" />
+      <ComboBox fx:id="cmbFacilty" onAction="#cmbFacilitySelected" prefHeight="39.0" prefWidth="176.0" promptText="--Choose--" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <AnchorPane prefHeight="56.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnNext" layoutX="116.0" layoutY="8.0" mnemonicParsing="false" onAction="#nextPressed" prefHeight="36.0" prefWidth="63.0" text="Next" />
+            <Button fx:id="btnCancel" layoutX="285.0" layoutY="6.0" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="38.0" prefWidth="75.0" text="Cancel" />
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

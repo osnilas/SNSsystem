@@ -21,7 +21,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="btnCheck" mnemonicParsing="false" onAction="#checkPressed" prefHeight="46.0" prefWidth="215.0" text="Check Vaccine Appointment" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="btnVaccine" mnemonicParsing="false" onAction="#vaccinePressed" prefHeight="46.0" prefWidth="231.0" text="Record a vaccine administration" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="btnVaccine" mnemonicParsing="false" onAction="#vaccinePressed" prefHeight="46.0" prefWidth="253.0" text="Create vaccination appointment" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <Button fx:id="btnBack" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onAction="#backPressed" text="Back" />

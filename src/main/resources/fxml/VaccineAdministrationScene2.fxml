@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.VaccineAdministrationScene2">
-   <children>
-      <ListView layoutX="106.0" layoutY="87.0" prefHeight="226.0" prefWidth="389.0" />
-      <Label layoutX="14.0" layoutY="14.0" text="Select a SNS user ">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.ui.RegisterVaccineAdministration2UI">
+   <top>
+      <AnchorPane prefHeight="62.0" prefWidth="587.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Vaccine Admnistration" />
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="360.0" prefWidth="827.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="txtSNSname" editable="false" layoutX="136.0" layoutY="154.0" prefHeight="31.0" prefWidth="295.0" />
+            <TextField fx:id="txtSNSage" editable="false" layoutX="574.0" layoutY="154.0" prefHeight="31.0" prefWidth="48.0" />
+            <Label layoutX="76.0" layoutY="159.0" text="Name" />
+            <Label layoutX="518.0" layoutY="159.0" text="Age" />
+            <TextArea fx:id="txtReactions" editable="false" layoutX="142.0" layoutY="212.0" prefHeight="116.0" prefWidth="592.0" />
+            <Label layoutX="16.0" layoutY="212.0" text="Adverse Reactions" />
+            <Label layoutX="50.0" layoutY="399.0" text="Vaccine Information" />
+            <TextField fx:id="txtVaccineName" editable="false" layoutX="150.0" layoutY="455.0" />
+            <TextField fx:id="txtVaccineDose" editable="false" layoutX="480.0" layoutY="455.0" prefHeight="31.0" prefWidth="65.0" />
+            <Label layoutX="96.0" layoutY="460.0" text="Name" />
+            <Label layoutX="431.0" layoutY="460.0" text="Dose" />
+            <Label layoutX="557.0" layoutY="460.0" text="ml" />
+            <Button fx:id="btnVaccine" layoutX="220.0" layoutY="529.0" mnemonicParsing="false" onAction="#vaccinePressed" prefHeight="37.0" prefWidth="262.0" text="Resgister Vaccine Administration" />
+            <Label layoutX="46.0" layoutY="104.0" text="SNS user Information" />
+            <Label layoutX="96.0" layoutY="18.0" text="Select SNS user">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="CMBSNSuser" layoutX="243.0" layoutY="11.0" onAction="#SNSuserSelected" prefHeight="41.0" prefWidth="342.0" promptText="---Select one---" />
+            <Button fx:id="btnCancel" layoutX="528.0" layoutY="529.0" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="37.0" prefWidth="75.0" text="Cancel" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

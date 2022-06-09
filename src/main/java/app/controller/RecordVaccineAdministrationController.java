@@ -33,12 +33,13 @@ public class RecordVaccineAdministrationController {
 
     public void saveVaccinationAdminstration(){
         this.facility.addVaccinationAdminstrationRecord(adminstration);
-        if(userRecord==null){
+        if(snSuser.getVaccinationRecord().size()==0){
             createVaccinationRecord();
         }
         else {
             updateVaccinationRecord();
         }
+        deleteAppoiment();
         save();
     }
 
@@ -60,10 +61,21 @@ public class RecordVaccineAdministrationController {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
-    public void checkIfWaitingListEmpty() throws Exception {
+    public boolean checkIfWaitingListEmpty() throws Exception {
         if(facility.getWaitingList().size()==0){
             throw new Exception("Waiting list is empty");
         }
+        return true;
+    }
+
+    public List <String> getWaitingList(){
+        List<String> waitingList=new ArrayList<>();
+        for(int i=0;i<facility.getWaitingList().size();i++){
+            StringBuilder sb=new StringBuilder();
+            sb.append((i+1)+"-"+facility.getWaitingList().get(i).getSnSuser().getName());
+            waitingList.add(sb.toString());
+        }
+        return waitingList;
     }
 
     public void getUserFromWaitingListSNSnumber(int SNSnumber) throws Exception {
@@ -78,20 +90,27 @@ public class RecordVaccineAdministrationController {
     public void getUserFromWaitingList(int index) throws Exception {
         this.snSuser=facility.getWaitingList().get(index).getSnSuser();
         getVaccinationAppointment();
-        facility.getWaitingList().remove(index);
     }
 
 
 
-    public String getAppoimentInfo() {
-        String info;
-        info = "SNS user info:\n" + "Name: " + snSuser.getName();
-        return info;
+    public List<String> getAppoimentInfo() {
+        StringBuilder sb=new StringBuilder();
+        List<String> appoimentInfo=new ArrayList<>();
+        appoimentInfo.add(sb.append(snSuser.getName()).toString());
+        sb=new StringBuilder();
+        appoimentInfo.add(sb.append(snSuser.getAge()).toString());
+        return appoimentInfo;
     }
 
-    public String getVaccineInfo(){
+    public List<StringBuilder> getVaccineInfo(){
+        StringBuilder sb=new StringBuilder();
         int ageGroup=vaccine.getAgeGroup(snSuser.getAge());
-        return "Vaccine: "+vaccine.getName()+"\nDose: "+vaccine.getVaccineAdministration().getDosage().get(ageGroup)+" mL";
+        List<StringBuilder> vaccineInfo=new ArrayList<>();
+        vaccineInfo.add(sb.append(vaccine.getName()));
+        sb=new StringBuilder();
+        vaccineInfo.add(sb.append(vaccine.getVaccineAdministration().getDosage().get(ageGroup)));
+        return vaccineInfo;
     }
 
     public List<String> getVaccineList(){
@@ -153,6 +172,10 @@ public class RecordVaccineAdministrationController {
         snSuser.addVaccinationRecord(newRecord);
     }
 
+    public boolean checkIfAlldataSet() {
+        return snSuser!=null && facility!=null && appointment!=null && vaccine!=null;
+    }
+
     public void sendSMS(int minutes) throws FileNotFoundException {
         SendSMSTask sms=new SendSMSTask();
         sms.setMessage(snSuser.getName()+", you can now leave the vaccination facility,"+facility.getName()+".\n " +
@@ -162,6 +185,15 @@ public class RecordVaccineAdministrationController {
         timer.schedule(sms,time);
     }
 
+    private void deleteAppoiment(){
+        facility.getVaccinationScheduleList().remove(appointment);
+        for(int i=0;i<facility.getWaitingList().size();i++){
+            if(facility.getWaitingList().get(i).getSnSuser().getSNSnumber()==snSuser.getSNSnumber()){
+                facility.getWaitingList().remove(i);
+            }
+        }
+
+    }
     private void save(){
         this.company.saveVaccinationFacilityListFile();
         this.company.saveEmployeesListFile();

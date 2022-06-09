@@ -101,7 +101,7 @@ public class Constants {
     public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
     public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,4,15,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,9,18,00),TYPE_VACCINE_TESTER1);
 
     public static final String FILEPATH_SNSUSERS="bin/SNSusers.bin";
     public static final String FILEPATH_VACCINES="bin/Vaccines.bin";
