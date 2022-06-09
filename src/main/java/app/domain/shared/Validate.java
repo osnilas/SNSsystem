@@ -238,4 +238,17 @@ public class Validate {
         return false;
     }
 
+    public static boolean validateLotNumber (String lotNumber){
+
+        if(lotNumber.length()!=8){
+         return false;
+        }
+        else {
+            String lotNumberRegex = "[a-zA-Z0-9]{5}";
+            Pattern pattern = Pattern.compile(lotNumberRegex);
+            return pattern.matcher(lotNumberRegex).matches();
+        }
+
+    }
+
 }

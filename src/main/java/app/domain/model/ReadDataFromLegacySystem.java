@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.domain.shared.Validate;
 import app.ui.console.utils.ReadFile;
 import app.ui.console.utils.ReadFileData;
 
@@ -28,7 +29,6 @@ public class ReadDataFromLegacySystem {
     public List<String> copyDataFromLegacySystem (String file) throws  Exception{
 
         List<String> fileData = readFileData.readFile(file);
-        System.out.println("Size:"+fileData.size() );
         String split = null;
 
         if (!fileData.get(0).contains(",")) {
@@ -53,14 +53,14 @@ public class ReadDataFromLegacySystem {
 
         for (int i = 0; i < fileData.size(); i++) {
             String[] line = fileData.get(i).split(split);
-            int SNSnumber = Integer.parseInt(line[0]);
+            int snsNumber = Integer.parseInt(line[0]);
             String vaccineName = line[1];
             String dosage = line[2];
             String lotNumber = line[3];
             String scheduleDateTime = line[4];
             String arrivalDateTime = line [5];
             String nurseAdministrationTime = line [6];
-            String leavingDateNumber = line [7];
+            String leavingDateTime = line [7];
 
 
         }
@@ -72,6 +72,19 @@ public class ReadDataFromLegacySystem {
 
 
     public boolean validateDataFromLegacySystem (String[] line){
+        boolean snsNumber, vaccineName,dosage,lotNumber,scheduleDateTime,arrivalDateTime,nurseAdministrationTime,leavingDateTime;
+
+        snsNumber = Validate.validateSNS(Integer.parseInt(line[0]));
+        vaccineName=;
+        dosage=;
+        lotNumber=Validate.validateLotNumber(line[3]);
+        scheduleDateTime=;
+        arrivalDateTime=;
+        nurseAdministrationTime=;
+        leavingDateTime=;
+
+
+
 
         return false;
     }
