@@ -41,13 +41,15 @@ public class RegisterVaccineAdministration2UI implements Initializable {
             List<StringBuilder> vaccineInfo =vaccineAdministrationController.getVaccineInfo();
             txtVaccineName.setText(vaccineInfo.get(0).toString());
             txtVaccineDose.setText(vaccineInfo.get(1).toString());
+            setBtnVaccine();
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        btnVaccine.setDisable(true);
     }
+
     public void initComboBox() {
         ObservableList<String> options = FXCollections.observableArrayList(vaccineAdministrationController.getWaitingList());
         //ObservableList<String> options = FXCollections.observableArrayList(new ArrayList<>());
@@ -81,6 +83,9 @@ public class RegisterVaccineAdministration2UI implements Initializable {
 
     }
 
+    public void setBtnVaccine() {
+        btnVaccine.setDisable(false);
+    }
     public void vaccinePressed(ActionEvent event) {
         registerVaccineAdministrationUI.toVaccineAdministrationScene4();
     }

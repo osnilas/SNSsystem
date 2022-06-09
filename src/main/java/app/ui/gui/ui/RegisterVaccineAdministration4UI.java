@@ -91,8 +91,11 @@ public class RegisterVaccineAdministration4UI implements Initializable {
                 }catch (Exception e) {
                     Utils.ExceptionWarning(e);
                     registerVaccineAdministrationUI.returnNurseUI();
+                    registerVaccineAdministrationUI.closePopUp();
+
                 }
                 registerVaccineAdministrationUI.returnNurseUI();
+                registerVaccineAdministrationUI.closePopUp();
 
             }
         }

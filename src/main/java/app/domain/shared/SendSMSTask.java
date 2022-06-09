@@ -10,9 +10,11 @@ import static java.lang.System.out;
 public class SendSMSTask extends TimerTask {
 
     private String message;
+
+    private String path;
     @Override
     public void run() {
-        File file = new File("testDocs/sms.txt");
+        File file = new File(path);
         PrintWriter out= null;
         try {
             out = new PrintWriter(file);
@@ -21,6 +23,10 @@ public class SendSMSTask extends TimerTask {
         }
         out.println(message);
         out.close();
+    }
+
+    public void setPath(int phoneNumber) {
+        this.path = "testDocs/"+ phoneNumber+".txt";
     }
 
     public void setMessage(String message) {

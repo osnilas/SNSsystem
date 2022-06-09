@@ -110,6 +110,8 @@ public class Constants {
     public static final String FILEPATH_VACCINE_ADMINISTRATIONS="bin/VaccineAdministrations.bin";
     public static final String FILEPATH_EMPLOYEES="bin/Employees.bin";
 
+    public static final String FILEPATH_REPORT="testDocs/report.csv";
+
 
 
 }

@@ -2,6 +2,7 @@ package app.ui.gui.ui;
 
 
 import app.controller.App;
+import app.domain.model.Company;
 import app.ui.console.utils.Utils;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -71,6 +72,8 @@ public class MainScene extends Application {
 
                     }
                     else {
+                        Company company=App.getInstance().getCompany();
+                        company.saveAll();
                         Platform.exit();
                         System.exit(0);
                     }

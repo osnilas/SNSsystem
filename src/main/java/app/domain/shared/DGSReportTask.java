@@ -11,34 +11,14 @@ import java.util.TimerTask;
 import static java.lang.System.out;
 
 public class DGSReportTask extends TimerTask {
-    private List<String> report = new ArrayList<>();
-    private Company company;
 
+    private Company company;
     @Override
     public void run() {
-        setMessage();
-        File file = new File("C:\\Users\\jonas\\IdeaProjects\\lei-22-s2-1da-g03\\testDocs\\ReportVaccination.csv");
-        PrintWriter out= null;
-        try {
-            FileWriter fileWriter = new FileWriter("testDocs/Report.csv", true);
-            out = new PrintWriter(fileWriter);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if(!file.exists() && !file.isDirectory()) {
-            out.write("Date;Vaccination Facility;Total of vaccinated users");
-        }
-        for(int i=0;i<report.size();i++) {
-            out.println(report.get(i));
-        }
-        out.close();
+        company.generateDGSreportContent();
     }
 
     public void setCompany(Company company) {
         this.company = company;
-    }
-
-    public void setMessage() {
-        report = new ArrayList<>(company.generateDGSreportContent());
     }
 }

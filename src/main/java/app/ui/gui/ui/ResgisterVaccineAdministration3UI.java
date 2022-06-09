@@ -38,5 +38,6 @@ public class ResgisterVaccineAdministration3UI implements Initializable {
 
     public void nextPressed(ActionEvent event) {
         registerVaccineAdministrationUI.toVaccineAdministrationScene2();
+        registerVaccineAdministrationUI.closePopUp();
     }
 }

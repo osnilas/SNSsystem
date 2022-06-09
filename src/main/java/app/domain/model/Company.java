@@ -10,9 +10,7 @@ import mappers.dto.dtoSNSuser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -143,8 +141,8 @@ public class Company {
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
         vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        //vaccinationFacilityList.get(0).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,9,19,30),Constants.TYPE_VACCINE_TESTER1));
-        //vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
+        vaccinationFacilityList.get(1).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,9,19,30),Constants.TYPE_VACCINE_TESTER1));
+        vaccinationFacilityList.get(1).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
         vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
@@ -153,18 +151,20 @@ public class Company {
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
         SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
 
+        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
+
         SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
         SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER2);
         SNSuserList.get(1).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
 
     }
 
-    public void dgsReportAuto(){
+    private void dgsReportAuto(){
         DGSReportTask task=new DGSReportTask();
-
+        task.setCompany(this);
         Calendar schedule = Calendar.getInstance();
-        schedule.set(Calendar.HOUR_OF_DAY, 14);
-        schedule.set(Calendar.MINUTE, 40);
+        schedule.set(Calendar.HOUR_OF_DAY, 10);
+        schedule.set(Calendar.MINUTE, 57);
         schedule.set(Calendar.SECOND, 0);
         if(schedule.before(Calendar.getInstance())){
             schedule.add(Calendar.DATE, 1);
@@ -174,21 +174,36 @@ public class Company {
         timer.schedule(task, schedule.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
     }
 
-    public List<String> generateDGSreportContent(){
-        int count=0;
-        List<String> list=new ArrayList<>();
-        for(int i=0;i<vaccinationFacilityList.size();i++){
-            count=0;
-           for (int j=0;j<vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().size();j++){
-               if(vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().get(j).getLeavingDateTime().toLocalDate().isEqual(LocalDate.now())){
-                   count++;
-               }
-           }
-           String report=LocalDate.now().format(Constants.FORMATTER)+";"+vaccinationFacilityList.get(i).getName()+";"+count;
-           list.add(report);
+    public void generateDGSreportContent() {
+        StringBuilder sb = new StringBuilder();
+        try {
+            File file = new File(Constants.FILEPATH_REPORT);
+            if (!file.exists()) {
+                file.createNewFile();
+                FileWriter fileWriter = new FileWriter(Constants.FILEPATH_REPORT, true);
+                fileWriter.append("Date;Vaccination Facility;Total of vaccinated users\n");
+                fileWriter.close();
+            }
+            FileWriter fileWriter = new FileWriter(Constants.FILEPATH_REPORT, true);
+            int count = 0;
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < vaccinationFacilityList.size(); i++) {
+                count = 0;
+                for (int j = 0; j < vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().size(); j++) {
+                    if (vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().get(j).getLeavingDateTime().toLocalDate().isEqual(LocalDate.now())) {
+                        count++;
+                    }
+                }
+                sb = new StringBuilder();
+
+                fileWriter.append(LocalDate.now().format(Constants.FORMATTER) + ";" + vaccinationFacilityList.get(i).getName() + ";" + count+"\n");
+            }
+            fileWriter.close();
+        }catch (IOException e){
+            e.printStackTrace();
         }
-        return list;
     }
+
 
     public String getDesignation() {
         return designation;

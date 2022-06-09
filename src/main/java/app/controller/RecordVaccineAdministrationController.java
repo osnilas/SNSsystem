@@ -178,8 +178,8 @@ public class RecordVaccineAdministrationController {
 
     public void sendSMS(int minutes) throws FileNotFoundException {
         SendSMSTask sms=new SendSMSTask();
-        sms.setMessage(snSuser.getName()+", you can now leave the vaccination facility,"+facility.getName()+".\n " +
-                "If any side effects are detected, contact SNS24");
+        sms.setPath(snSuser.getPhoneNumber());
+        sms.setMessage("You can now leave the vaccination facility.\nIf any side effects are detected, contact SNS24");
         long time=(long)minutes*60000;
         Timer timer=new Timer();
         timer.schedule(sms,time);
@@ -192,7 +192,10 @@ public class RecordVaccineAdministrationController {
                 facility.getWaitingList().remove(i);
             }
         }
+    }
 
+    public boolean checkIfVaccineChosen(){
+        return vaccine!=null;
     }
     private void save(){
         this.company.saveVaccinationFacilityListFile();
