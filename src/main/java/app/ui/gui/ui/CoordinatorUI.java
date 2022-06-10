@@ -29,7 +29,11 @@ public class CoordinatorUI implements Initializable {
 
     }
 
-    public void vaccinationStatisticsPressed(ActionEvent event) {
+    public void vaccinationStatisticsPressed(ActionEvent event) throws Exception {
+        CheckVaccinationStatisticsUI checkVaccinationStatisticsUI
+                = (CheckVaccinationStatisticsUI) this.mainScene.
+                replaceSceneContent("/fxml/CheckVaccinationStatistics.fxml");
+        checkVaccinationStatisticsUI.setRoleUI(roleUI);
     }
 
     public void LegacySystemPressed(ActionEvent event) {
