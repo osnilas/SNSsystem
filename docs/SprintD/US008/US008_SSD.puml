@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Nurse" as nurse
+activate nurse
+
+nurse-> System : Ask to record a vaccine administration
+activate System
+System--> nurse : requests to select a vaccination facility
+deactivate System
+
+nurse-> System : Selects one
+activate System
+System--> nurse : requests to select a SNS user
+deactivate System
+
+nurse-> System : Selects one
+activate System
+alt if it's SNS user first vaccine
+    System--> nurse : requests to select a vaccine
+    deactivate System
+
+    nurse-> System : Selects one
+    activate System
+    end
+
+System--> nurse : requests data(Lot number and recovery period)
+deactivate System
+
+nurse-> System : Types requested data
+activate System
+System--> nurse : Informs operation success
+
+@enduml

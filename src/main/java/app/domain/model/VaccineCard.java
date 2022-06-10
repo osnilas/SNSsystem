@@ -2,16 +2,15 @@ package app.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-public class VaccinationRecord implements Serializable {
+public class VaccineCard implements Serializable {
 
     private Vaccine vaccine;
     private LocalDateTime date;
     private int numberDosesTaken;
 
 
-    public VaccinationRecord(Vaccine vaccine, LocalDateTime date,int numberDose){
+    public VaccineCard(Vaccine vaccine, LocalDateTime date, int numberDose){
 
         this.vaccine=vaccine;
         this.date=date;
@@ -45,6 +44,10 @@ public class VaccinationRecord implements Serializable {
             return true;
         }
         return false;
+    }
+
+    public void updateNumberDosesTaken(){
+        numberDosesTaken++;
     }
 
     public int getNumberDosesTaken() {

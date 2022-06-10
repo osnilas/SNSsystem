@@ -217,13 +217,13 @@ public class VaccinationScheduleController {
     public boolean validateDoseTime(Vaccine vaccine) throws Exception {
         int ageGroupIndex= vaccine.getAgeGroup(snSuser.getAge());
         if(ageGroupIndex !=-1) {
-            VaccinationRecord vaccinationRecordLatest = snSuser.getLatestVaccinationRecord(vaccine);
-            if(vaccinationRecordLatest.getVaccine().getVaccineAdministration().getDoses().get(ageGroupIndex)==vaccinationRecordLatest.getNumberDosesTaken()){
+            VaccineCard vaccinationRecord = snSuser.getVaccinationRecord(vaccine);
+            if(vaccinationRecord.getVaccine().getVaccineAdministration().getDoses().get(ageGroupIndex)==vaccinationRecord.getNumberDosesTaken()){
                 throw new Exception("SNS user has taken all doses of this vaccine");
             }
-            Duration dayBetweenDosageTemp = Duration.between(vaccinationRecordLatest.getDate(), schedule.getAppointmentTime());
+            Duration dayBetweenDosageTemp = Duration.between(vaccinationRecord.getDate(), schedule.getAppointmentTime());
             int daysBetweendDosage = (int) Math.abs(dayBetweenDosageTemp.toDays());
-            if (daysBetweendDosage > vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecordLatest.getNumberDosesTaken() - 1)) {
+            if (daysBetweendDosage > vaccine.getVaccineAdministration().getVaccineInterval().get(ageGroupIndex).get(vaccinationRecord.getNumberDosesTaken() - 1)) {
                 return true;
             }
             throw new Exception("Too soon to take next dose");

@@ -99,8 +99,8 @@ public class Constants {
 
     public static final Vaccine VACCINE_TESTER=new Vaccine(VACCINE_ADMINISTRATION_TESTER,TYPE_VACCINE_TESTER1);
 
-    public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
-    public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
+    public static final VaccineCard VACCINATION_RECORD_TESTER=new VaccineCard(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
+    public static final VaccineCard VACCINATION_RECORD_TESTER2=new VaccineCard(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
     public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,10,18,00),TYPE_VACCINE_TESTER1);
 

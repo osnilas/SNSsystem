@@ -17,7 +17,7 @@ public class SNSuser implements Serializable {
     private LocalDate birth;
     private int SNSnumber;
 
-    private List<VaccinationRecord> vaccinationRecord;
+    private List<VaccineCard> vaccinationRecord;
 
     private final static String DEFAULT_SEX = "N/A";
 
@@ -121,11 +121,11 @@ public class SNSuser implements Serializable {
         return SNSnumber;
     }
 
-    public  List <VaccinationRecord> getVaccinationRecord() {
+    public  List <VaccineCard> getVaccinationRecord() {
         return vaccinationRecord;
     }
 
-    public void setVaccinationRecord(VaccinationRecord record){
+    public void setVaccinationRecord(VaccineCard record){
         vaccinationRecord.add(record);
     }
 
@@ -151,14 +151,12 @@ public class SNSuser implements Serializable {
      * @param vaccine
      * @return index of the lastest vaccination record of the vaccine taken by SNS user
      */
-    public VaccinationRecord getLatestVaccinationRecord(Vaccine vaccine){
-        int numberDosageTemp=-300,index=-1;
+    public VaccineCard getVaccinationRecord(Vaccine vaccine){
+        int index=-1;
         for (int i=0;i<vaccinationRecord.size();i++){
             if(Objects.equals(vaccinationRecord.get(i).getVaccine(),vaccine)){
-                if (vaccinationRecord.get(i).getNumberDosesTaken() > numberDosageTemp) {
-                    numberDosageTemp = vaccinationRecord.get(i).getNumberDosesTaken();
-                    index = i;
-                }
+                index=i;
+
             }
         }
         return vaccinationRecord.get(index);
@@ -181,7 +179,7 @@ public class SNSuser implements Serializable {
         return this.SNSnumber==snsNumber;
     }
 
-    public void addVaccinationRecord(VaccinationRecord record){
+    public void addVaccinationRecord(VaccineCard record){
         this.vaccinationRecord.add(record);
     }
 

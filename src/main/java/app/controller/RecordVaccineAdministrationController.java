@@ -12,7 +12,7 @@ public class RecordVaccineAdministrationController {
     private SNSuser snSuser;
     private VaccinationAppointment appointment;
 
-    private VaccinationRecord userRecord;
+    private VaccineCard userRecord;
     private VaccinationAdminstrationRecord adminstration;
     private VaccinationFacility facility;
 
@@ -161,13 +161,12 @@ public class RecordVaccineAdministrationController {
         }
     }
     private void createVaccinationRecord(){
-        VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),1);
+        VaccineCard newRecord=new VaccineCard(vaccine,LocalDateTime.now(),1);
         snSuser.addVaccinationRecord(newRecord);
     }
     private void updateVaccinationRecord(){
-        VaccinationRecord lastRecord=snSuser.getLatestVaccinationRecord(vaccine);
-        VaccinationRecord newRecord=new VaccinationRecord(vaccine,LocalDateTime.now(),lastRecord.getNumberDosesTaken()+1);
-        snSuser.addVaccinationRecord(newRecord);
+        VaccineCard record=snSuser.getVaccinationRecord(vaccine);
+        record.updateNumberDosesTaken();
     }
 
     public boolean checkIfAlldataSet() {
