@@ -1,4 +1,4 @@
-package app.domain.shared;
+package Timer;
 
 import app.controller.App;
 import app.domain.model.Company;

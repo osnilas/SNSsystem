@@ -72,11 +72,12 @@ public class RegisterVaccineAdministration2UI implements Initializable {
         List<String> appointment =vaccineAdministrationController.getAppoimentInfo(); ;
         txtSNSname.setText(appointment.get(0));
         txtSNSage.setText(appointment.get(1));
-        txtReactions.setText("None");
+        txtReactions.setText("No Adverse Reactions registered in the system");
         if(vaccineAdministrationController.getUserVaccinationRecord()){
             List<StringBuilder> vaccineInfo =vaccineAdministrationController.getVaccineInfo();
             txtVaccineName.setText(vaccineInfo.get(0).toString());
             txtVaccineDose.setText(vaccineInfo.get(1).toString());
+            setBtnVaccine();
         }else {
             registerVaccineAdministrationUI.toVaccineAdministrationScene3();
         }
@@ -89,4 +90,5 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     public void vaccinePressed(ActionEvent event) {
         registerVaccineAdministrationUI.toVaccineAdministrationScene4();
     }
+
 }

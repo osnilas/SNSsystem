@@ -75,13 +75,13 @@ public class ReadDataFromLegacySystem {
         boolean snsNumber, vaccineName,dosage,lotNumber,scheduleDateTime,arrivalDateTime,nurseAdministrationTime,leavingDateTime;
 
         snsNumber = Validate.validateSNS(Integer.parseInt(line[0]));
-        vaccineName=;
-        dosage=;
+        vaccineName=Validate.validateName(line[1]);
+        dosage=!line[2].isBlank();
         lotNumber=Validate.validateLotNumber(line[3]);
-        scheduleDateTime=;
-        arrivalDateTime=;
-        nurseAdministrationTime=;
-        leavingDateTime=;
+        //scheduleDateTime=Validate.;
+        //arrivalDateTime=;
+        //nurseAdministrationTime=;
+        //leavingDateTime=;
 
 
 

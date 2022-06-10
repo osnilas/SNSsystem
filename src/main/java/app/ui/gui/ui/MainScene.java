@@ -30,8 +30,6 @@ public class MainScene extends Application {
 
     private Stage stage;
     private String AppName="Vaccination management system";
-    private final double MINIMUM_WINDOW_WIDTH = 500.0;
-    private final double MINIMUM_WINDOW_HEIGHT = 400.0;
     private  double SCENE_WIDTH = 700;
     private  double SCENE_HEIGHT = 506;
 

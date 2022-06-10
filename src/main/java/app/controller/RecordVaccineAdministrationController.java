@@ -1,11 +1,9 @@
 package app.controller;
 
 import app.domain.model.*;
-import app.domain.shared.SendSMSTask;
+import Timer.SendSMSTask;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.*;
 

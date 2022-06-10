@@ -1,4 +1,6 @@
-package app.domain.shared;
+package Timer;
+
+import app.domain.shared.Constants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +28,7 @@ public class SendSMSTask extends TimerTask {
     }
 
     public void setPath(int phoneNumber) {
-        this.path = "testDocs/"+ phoneNumber+".txt";
+        this.path = Constants.TestDocs_Directory+"/"+ phoneNumber+".txt";
     }
 
     public void setMessage(String message) {

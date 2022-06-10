@@ -1,6 +1,7 @@
 package app.domain.shared;
 
 import app.domain.model.*;
+import app.ui.console.utils.Utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -101,16 +102,19 @@ public class Constants {
     public static final VaccinationRecord VACCINATION_RECORD_TESTER=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
     public static final VaccinationRecord VACCINATION_RECORD_TESTER2=new VaccinationRecord(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,9,18,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,10,18,00),TYPE_VACCINE_TESTER1);
 
-    public static final String FILEPATH_SNSUSERS="bin/SNSusers.bin";
-    public static final String FILEPATH_VACCINES="bin/Vaccines.bin";
-    public static final String FILEPATH_VACCINATION_FACILITIES="bin/VaccinationFacility.bin";
-    public static final String FILEPATH_TYPE_VACCINES="bin/TypeVaccines.bin";
-    public static final String FILEPATH_VACCINE_ADMINISTRATIONS="bin/VaccineAdministrations.bin";
-    public static final String FILEPATH_EMPLOYEES="bin/Employees.bin";
+    public static final String BinFile_Directory = Utils.ReadProppeties("BinFiles.Directory");
+    public static final String TestDocs_Directory= Utils.ReadProppeties("TestDocs.Directory");
 
-    public static final String FILEPATH_REPORT="testDocs/report.csv";
+    public static final String FILEPATH_SNSUSERS=BinFile_Directory+"/SNSusers.bin";
+    public static final String FILEPATH_VACCINES=BinFile_Directory+"/Vaccines.bin";
+    public static final String FILEPATH_VACCINATION_FACILITIES=BinFile_Directory+"/VaccinationFacility.bin";
+    public static final String FILEPATH_TYPE_VACCINES=BinFile_Directory+"/TypeVaccines.bin";
+    public static final String FILEPATH_VACCINE_ADMINISTRATIONS=BinFile_Directory+"/VaccineAdministrations.bin";
+    public static final String FILEPATH_EMPLOYEES= BinFile_Directory+"/Employees.bin";
+
+    public static final String FILEPATH_REPORT=Utils.ReadProppeties("Auto.Report.Path");
 
 
 

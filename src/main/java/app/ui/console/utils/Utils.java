@@ -15,10 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -357,5 +354,19 @@ public class Utils {
     public static void deleteFile(String pathToFile){
         File file =new File(pathToFile);
         file.delete();
+    }
+
+    public static String ReadProppeties(String property){
+        Properties props = new Properties();
+        try {
+
+
+            InputStream in = new FileInputStream(Constants.PARAMS_FILENAME);
+            props.load(in);
+            in.close();
+        } catch (IOException e) {
+        }
+        String value = props.getProperty(property);
+        return value;
     }
 }
