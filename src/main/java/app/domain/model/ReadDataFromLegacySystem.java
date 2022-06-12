@@ -78,8 +78,8 @@ public class ReadDataFromLegacySystem {
         vaccineName=Validate.validateName(line[1]);
         dosage=!line[2].isBlank();
         lotNumber=Validate.validateLotNumber(line[3]);
-        //scheduleDateTime=Validate.;
-        //arrivalDateTime=;
+        scheduleDateTime=Validate.validateScheduleDateTime(line[4]);
+        arrivalDateTime=Validate.validateArrivalDateTime(line[5]);
         //nurseAdministrationTime=;
         //leavingDateTime=;
 

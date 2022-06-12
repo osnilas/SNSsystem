@@ -244,11 +244,24 @@ public class Validate {
          return false;
         }
         else {
-            String lotNumberRegex = "[a-zA-Z0-9]{5}";
+            String lotNumberRegex = "^([a-zA-Z0-9]{5}-[0-9]{2})+$";
             Pattern pattern = Pattern.compile(lotNumberRegex);
             return pattern.matcher(lotNumberRegex).matches();
         }
 
     }
+
+    public static boolean validateScheduleDateTime (String scheduleDateTime){
+
+
+ return false;
+    }
+    public static boolean validateArrivalDateTime (String arrivalDateTime){
+      if (arrivalDateTime.isBlank())
+        return false;
+      else
+          return true;
+    }
+
 
 }
