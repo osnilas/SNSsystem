@@ -1,6 +1,7 @@
 package app.domain.model;
 
 
+import app.domain.Store.FullyVaccinatedPerDayStore;
 import app.domain.shared.Constants;
 import Timer.DGSReportTask;
 import app.ui.console.utils.Utils;
@@ -41,6 +42,8 @@ public class Company {
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
     private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
+    private static FullyVaccinatedPerDayStore fullyVaccinatedPerDayStore;
+
     public Company(String designation)
     {
         if (StringUtils.isBlank(designation))
@@ -588,4 +591,7 @@ public class Company {
     }
 
 
+    public void updateTotalNumberOfFullyVaccinated() {
+        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
+    }
 }

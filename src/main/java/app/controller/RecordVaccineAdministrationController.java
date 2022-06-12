@@ -26,7 +26,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method clears SNS user, appointment, vaccineCard, adminstration, vaccine attributes of the controller.
      */
     public void clear(){
@@ -38,7 +38,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method creates a Vaccination Administration.
      * @param recoryTime
      * @param lotNumber
@@ -53,7 +53,7 @@ public class RecordVaccineAdministrationController {
 
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method creates a Vaccination Administration(To be used on TESTS).
      * @param recoryTime
      * @param lotNumber
@@ -70,7 +70,7 @@ public class RecordVaccineAdministrationController {
 
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method saves a Vaccination Administration on the vaccination facilty selected.
      */
     public boolean saveVaccinationAdminstration(){
@@ -88,7 +88,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets vaccination facility list from company and fills a string list with the facility's name.
      * @return List<String> with vaccination facility name's.
      */
@@ -102,7 +102,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method sets the vaccination facility selected from list from company.
      * @param index
      */
@@ -111,7 +111,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method check if waiting list empty or not.
      * @return boolean
      * @throws FileNotFoundException If waiting list is empty.
@@ -124,7 +124,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method creates a List of Strings with the name of the SNS user on the waiting list.
      * @return a List of Strings with the name of the SNS user on the waiting list.
      */
@@ -139,7 +139,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets the SNS user from the waiting list.
      * @param index
      * @throws Exception If user doesn't have an appointment.
@@ -150,7 +150,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets the appointment information, SNS user's name and age.
      * @return List of Strings with the appointment information.
      */
@@ -164,7 +164,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets the vaccine information, vaccine name and vaccine dose.
      * @return List of Strings with the vaccine information.
      */
@@ -179,7 +179,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets a list of Strings with the name of the vaccines saved on company that the SNS user can take.
      * @return List of Strings with the name of the vaccines saved on company.
      */
@@ -195,7 +195,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method sets the vaccine from the list of vaccines saved on company.
      * @param index of the list of vaccines on the company
      */
@@ -211,7 +211,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets the vaccine card of the vaccine of this appointment from the SNS user.
      * @return boolean of if the SNS user has or not a vaccine card.
      */
@@ -231,7 +231,7 @@ public class RecordVaccineAdministrationController {
 
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method gets the vaccination appointment from the vaccination facilty with the same SNS number as the SNS number.
      * @throws Exception If SNS number doesn't have an appoiment.
      */
@@ -249,7 +249,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method creates a vaccine card for the vaccine administration on this appointment.
      */
     private void createVaccineCard(){
@@ -258,15 +258,18 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method updates a vaccine card of the SNS user.
      */
     private void updateVaccineCard(){
         vaccineCard.updateNumberDosesTaken();
+        if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
+            company.updateTotalNumberOfFullyVaccinated();
+        }
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method validates the vaccine administration attributes.
      * @return boolean of if the attributes are valid or not.
      */
@@ -275,7 +278,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method creates a timer for a SMS to be sent in M minutes.
      * @param minutes
      * @throws FileNotFoundException If the SMS file doesn't exist.
@@ -290,7 +293,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This deletes the vaccination appointment from the vaccination facility and the SNS user from the waiting list.
      */
     private void deleteAppoiment(){
@@ -303,7 +306,7 @@ public class RecordVaccineAdministrationController {
     }
 
     /**
-     * @author João Veiga
+     * @author Joï¿½o Veiga
      * @Description This method validates the vaccine.
      * @return boolean of if the vaccine is valid or not.
      */
