@@ -12,7 +12,7 @@ public class RecordVaccineAdministrationController {
     private SNSuser snSuser;
     private VaccinationAppointment appointment;
 
-    private VaccineCard userRecord;
+    private VaccineCard vaccineCard;
     private VaccinationAdminstrationRecord adminstration;
     private VaccinationFacility facility;
 
@@ -25,20 +25,66 @@ public class RecordVaccineAdministrationController {
         this.app = App.getInstance();
     }
 
-    public void createVaccinationAdminstration(int recoryTime,String lotNumber){
-        this.adminstration=new VaccinationAdminstrationRecord(snSuser.getSNSnumber(),vaccine,lotNumber,appointment.getAppointmentTime(), LocalDateTime.now(),LocalDateTime.now().plusMinutes(recoryTime));
+    /**
+     * @author João Veiga
+     * @Description This method clears SNS user, appointment, vaccineCard, adminstration, vaccine attributes of the controller.
+     */
+    public void clear(){
+        this.snSuser = null;
+        this.appointment = null;
+        this.vaccineCard = null;
+        this.adminstration = null;
+        this.vaccine = null;
     }
 
-    public void saveVaccinationAdminstration(){
-        this.facility.addVaccinationAdminstrationRecord(adminstration);
-        if(snSuser.getVaccinationRecord().size()==0){
-            createVaccinationRecord();
+    /**
+     * @author João Veiga
+     * @Description This method creates a Vaccination Administration.
+     * @param recoryTime
+     * @param lotNumber
+     */
+    public void createVaccinationAdminstration(int recoryTime,String lotNumber){
+        if(recoryTime!=0 && !lotNumber.isBlank()) {
+            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+        }else {
+            throw new IllegalArgumentException("Invalid Input");
         }
-        else {
-            updateVaccinationRecord();
+    }
+
+
+    /**
+     * @author João Veiga
+     * @Description This method creates a Vaccination Administration(To be used on TESTS).
+     * @param recoryTime
+     * @param lotNumber
+     * @param snSuser
+     * @param facility
+     */
+    public void createVaccinationAdminstrationTester(SNSuser snSuser,VaccinationFacility facility,int recoryTime,String lotNumber) throws Exception {
+        this.snSuser=snSuser;
+        this.facility=facility;
+        getUserVaccineCard();
+        getVaccinationAppointment();
+        this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+    }
+
+
+    /**
+     * @author João Veiga
+     * @Description This method saves a Vaccination Administration on the vaccination facilty selected.
+     */
+    public boolean saveVaccinationAdminstration(){
+        if(validateVaccineAdministration()) {
+            this.facility.addVaccinationAdminstrationRecord(adminstration);
+            if (snSuser.getVaccineCards().size() == 0) {
+                createVaccineCard();
+            } else {
+                updateVaccineCard();
+            }
+            deleteAppoiment();
+            save();
         }
-        deleteAppoiment();
-        save();
+        return validateVaccineAdministration();
     }
 
     /**
@@ -55,10 +101,21 @@ public class RecordVaccineAdministrationController {
         return vaccinationFacilityNameList;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method sets the vaccination facility selected from list from company.
+     * @param index
+     */
     public void setVaccinationFacility(int index) {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method check if waiting list empty or not.
+     * @return boolean
+     * @throws FileNotFoundException If waiting list is empty.
+     */
     public boolean checkIfWaitingListEmpty() throws Exception {
         if(facility.getWaitingList().size()==0){
             throw new Exception("Waiting list is empty");
@@ -66,6 +123,11 @@ public class RecordVaccineAdministrationController {
         return true;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method creates a List of Strings with the name of the SNS user on the waiting list.
+     * @return a List of Strings with the name of the SNS user on the waiting list.
+     */
     public List <String> getWaitingList(){
         List<String> waitingList=new ArrayList<>();
         for(int i=0;i<facility.getWaitingList().size();i++){
@@ -76,31 +138,36 @@ public class RecordVaccineAdministrationController {
         return waitingList;
     }
 
-    public void getUserFromWaitingListSNSnumber(int SNSnumber) throws Exception {
-        List<Arrival> arrivalList=facility.getWaitingList();
-        for(int i=0;i<arrivalList.size();i++){
-            if(arrivalList.get(i).getSnSuser().SNSnumberSame(SNSnumber)){
-                getUserFromWaitingList(i);
-            }
-        }
-    }
-
+    /**
+     * @author João Veiga
+     * @Description This method gets the SNS user from the waiting list.
+     * @param index
+     * @throws Exception If user doesn't have an appointment.
+     */
     public void getUserFromWaitingList(int index) throws Exception {
         this.snSuser=facility.getWaitingList().get(index).getSnSuser();
         getVaccinationAppointment();
     }
 
-
-
+    /**
+     * @author João Veiga
+     * @Description This method gets the appointment information, SNS user's name and age.
+     * @return List of Strings with the appointment information.
+     */
     public List<String> getAppoimentInfo() {
         StringBuilder sb=new StringBuilder();
         List<String> appoimentInfo=new ArrayList<>();
         appoimentInfo.add(sb.append(snSuser.getName()).toString());
-        sb=new StringBuilder();
+        sb.setLength(0);
         appoimentInfo.add(sb.append(snSuser.getAge()).toString());
         return appoimentInfo;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method gets the vaccine information, vaccine name and vaccine dose.
+     * @return List of Strings with the vaccine information.
+     */
     public List<StringBuilder> getVaccineInfo(){
         StringBuilder sb=new StringBuilder();
         int ageGroup=vaccine.getAgeGroup(snSuser.getAge());
@@ -111,6 +178,11 @@ public class RecordVaccineAdministrationController {
         return vaccineInfo;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method gets a list of Strings with the name of the vaccines saved on company that the SNS user can take.
+     * @return List of Strings with the name of the vaccines saved on company.
+     */
     public List<String> getVaccineList(){
         List<Vaccine> vaccineListFull=this.company.getVaccineList();
         List<String> vaccineList=new ArrayList<>();
@@ -122,6 +194,11 @@ public class RecordVaccineAdministrationController {
         return vaccineList;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method sets the vaccine from the list of vaccines saved on company.
+     * @param index of the list of vaccines on the company
+     */
     public void setVaccine(int index){
         List<Vaccine> vaccineListFull=company.getVaccineList();
         List<Vaccine> vaccineList=new ArrayList<>();
@@ -133,21 +210,31 @@ public class RecordVaccineAdministrationController {
         this.vaccine=vaccineList.get(index);
     }
 
-
-    public boolean getUserVaccinationRecord() {
-        if (snSuser.getVaccinationRecord().size() == 0) {
+    /**
+     * @author João Veiga
+     * @Description This method gets the vaccine card of the vaccine of this appointment from the SNS user.
+     * @return boolean of if the SNS user has or not a vaccine card.
+     */
+    public boolean getUserVaccineCard() {
+        if (snSuser.getVaccineCards().size() == 0) {
             return false;
         } else {
-            for (int i = 0; i < snSuser.getVaccinationRecord().size(); i++) {
-                if (snSuser.getVaccinationRecord().get(i).checkTypeVaccine(appointment.getTypeVaccine())) {
-                    this.userRecord=snSuser.getVaccinationRecord().get(i);
-                    this.vaccine=snSuser.getVaccinationRecord().get(i).getVaccine();
+            for (int i = 0; i < snSuser.getVaccineCards().size(); i++) {
+                if (snSuser.getVaccineCards().get(i).checkTypeVaccine(appointment.getTypeVaccine())) {
+                    this.vaccineCard =snSuser.getVaccineCards().get(i);
+                    this.vaccine=snSuser.getVaccineCards().get(i).getVaccine();
                 }
             }
         }
         return true;
     }
 
+
+    /**
+     * @author João Veiga
+     * @Description This method gets the vaccination appointment from the vaccination facilty with the same SNS number as the SNS number.
+     * @throws Exception If SNS number doesn't have an appoiment.
+     */
     private void getVaccinationAppointment() throws Exception {
         boolean flag=true;
         for(int i=0;i<facility.getVaccinationScheduleList().size();i++){
@@ -160,28 +247,52 @@ public class RecordVaccineAdministrationController {
             throw new Exception("SNS user doesn't have a appointment");
         }
     }
-    private void createVaccinationRecord(){
-        VaccineCard newRecord=new VaccineCard(vaccine,LocalDateTime.now(),1);
-        snSuser.addVaccinationRecord(newRecord);
-    }
-    private void updateVaccinationRecord(){
-        VaccineCard record=snSuser.getVaccinationRecord(vaccine);
-        record.updateNumberDosesTaken();
+
+    /**
+     * @author João Veiga
+     * @Description This method creates a vaccine card for the vaccine administration on this appointment.
+     */
+    private void createVaccineCard(){
+        VaccineCard newCard=new VaccineCard(vaccine,LocalDateTime.now(),1);
+        snSuser.addVaccinationRecord(newCard);
     }
 
-    public boolean checkIfAlldataSet() {
+    /**
+     * @author João Veiga
+     * @Description This method updates a vaccine card of the SNS user.
+     */
+    private void updateVaccineCard(){
+        vaccineCard.updateNumberDosesTaken();
+    }
+
+    /**
+     * @author João Veiga
+     * @Description This method validates the vaccine administration attributes.
+     * @return boolean of if the attributes are valid or not.
+     */
+    public boolean validateVaccineAdministration() {
         return snSuser!=null && facility!=null && appointment!=null && vaccine!=null;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method creates a timer for a SMS to be sent in M minutes.
+     * @param minutes
+     * @throws FileNotFoundException If the SMS file doesn't exist.
+     */
     public void sendSMS(int minutes) throws FileNotFoundException {
         SendSMSTask sms=new SendSMSTask();
-        sms.setPath(snSuser.getPhoneNumber());
+        sms.setPath();
         sms.setMessage("You can now leave the vaccination facility.\nIf any side effects are detected, contact SNS24");
         long time=(long)minutes*60000;
         Timer timer=new Timer();
         timer.schedule(sms,time);
     }
 
+    /**
+     * @author João Veiga
+     * @Description This deletes the vaccination appointment from the vaccination facility and the SNS user from the waiting list.
+     */
     private void deleteAppoiment(){
         facility.getVaccinationScheduleList().remove(appointment);
         for(int i=0;i<facility.getWaitingList().size();i++){
@@ -191,11 +302,18 @@ public class RecordVaccineAdministrationController {
         }
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method validates the vaccine.
+     * @return boolean of if the vaccine is valid or not.
+     */
     public boolean checkIfVaccineChosen(){
         return vaccine!=null;
     }
+
+
     private void save(){
         this.company.saveVaccinationFacilityListFile();
-        this.company.saveEmployeesListFile();
+        this.company.saveSNSusersListFile();
     }
 }

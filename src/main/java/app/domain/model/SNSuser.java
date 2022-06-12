@@ -17,7 +17,7 @@ public class SNSuser implements Serializable {
     private LocalDate birth;
     private int SNSnumber;
 
-    private List<VaccineCard> vaccinationRecord;
+    private List<VaccineCard> vaccineCards;
 
     private final static String DEFAULT_SEX = "N/A";
 
@@ -46,7 +46,7 @@ public class SNSuser implements Serializable {
         this.sex = sex;
         this.birth = birth;
         this.SNSnumber = SNSnumber;
-        this.vaccinationRecord=new ArrayList<>();
+        this.vaccineCards =new ArrayList<>();
         this.password=password;
     }
 
@@ -121,24 +121,24 @@ public class SNSuser implements Serializable {
         return SNSnumber;
     }
 
-    public  List <VaccineCard> getVaccinationRecord() {
-        return vaccinationRecord;
+    public  List <VaccineCard> getVaccineCards() {
+        return vaccineCards;
     }
 
-    public void setVaccinationRecord(VaccineCard record){
-        vaccinationRecord.add(record);
+    public void setVaccineCards(VaccineCard record){
+        vaccineCards.add(record);
     }
 
-    public boolean checkIfHasVaccinationRecord(){
-        if(vaccinationRecord.size()==0){
+    public boolean checkIfHasVaccineCard(){
+        if(vaccineCards.size()==0){
             return false;
         }
         return true;
     }
 
     public boolean checkIfTookVaccine(Vaccine vaccine){
-        for(int i=0;i>vaccinationRecord.size();i++){
-         if(Objects.equals(vaccinationRecord.get(i).getVaccine(),vaccine)){
+        for(int i = 0; i> vaccineCards.size(); i++){
+         if(Objects.equals(vaccineCards.get(i).getVaccine(),vaccine)){
              return true;
             }
         }
@@ -153,13 +153,13 @@ public class SNSuser implements Serializable {
      */
     public VaccineCard getVaccinationRecord(Vaccine vaccine){
         int index=-1;
-        for (int i=0;i<vaccinationRecord.size();i++){
-            if(Objects.equals(vaccinationRecord.get(i).getVaccine(),vaccine)){
+        for (int i = 0; i< vaccineCards.size(); i++){
+            if(Objects.equals(vaccineCards.get(i).getVaccine(),vaccine)){
                 index=i;
 
             }
         }
-        return vaccinationRecord.get(index);
+        return vaccineCards.get(index);
     }
 
     /**@author João Veiga
@@ -180,7 +180,7 @@ public class SNSuser implements Serializable {
     }
 
     public void addVaccinationRecord(VaccineCard record){
-        this.vaccinationRecord.add(record);
+        this.vaccineCards.add(record);
     }
 
     @Override

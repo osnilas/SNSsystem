@@ -31,7 +31,7 @@
             <Label layoutX="96.0" layoutY="460.0" text="Name" />
             <Label layoutX="431.0" layoutY="460.0" text="Dose" />
             <Label layoutX="557.0" layoutY="460.0" text="ml" />
-            <Button fx:id="btnVaccine" layoutX="220.0" layoutY="529.0" mnemonicParsing="false" onAction="#vaccinePressed" prefHeight="37.0" prefWidth="262.0" text="Resgister Vaccine Administration" />
+            <Button fx:id="btnVaccineAdmin" layoutX="220.0" layoutY="529.0" mnemonicParsing="false" onAction="#vaccineAdminPressed" prefHeight="37.0" prefWidth="262.0" text="Resgister Vaccine Administration" />
             <Label layoutX="46.0" layoutY="104.0" text="SNS user Information" />
             <Label layoutX="96.0" layoutY="18.0" text="Select SNS user">
                <font>
@@ -40,6 +40,7 @@
             </Label>
             <ComboBox fx:id="CMBSNSuser" layoutX="243.0" layoutY="11.0" onAction="#SNSuserSelected" prefHeight="41.0" prefWidth="342.0" promptText="---Select one---" />
             <Button fx:id="btnCancel" layoutX="528.0" layoutY="529.0" mnemonicParsing="false" onAction="#cancelPressed" prefHeight="37.0" prefWidth="75.0" text="Cancel" />
+            <Button fx:id="btnVaccine" layoutX="197.0" layoutY="394.0" mnemonicParsing="false" onAction="#vaccinePressed" text="Get Vaccine info" />
          </children>
       </AnchorPane>
    </left>

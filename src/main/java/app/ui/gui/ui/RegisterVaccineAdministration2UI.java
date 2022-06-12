@@ -21,6 +21,7 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     public TextField txtVaccineDose;
     public ComboBox CMBSNSuser;
     public Button btnVaccine;
+    public Button btnVaccineAdmin;
     private boolean flag=false;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
     private RecordVaccineAdministrationController vaccineAdministrationController;
@@ -32,12 +33,12 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     }
 
     public void setData(){
-        if(vaccineAdministrationController.checkIfAlldataSet()){
+        if(vaccineAdministrationController.validateVaccineAdministration()){
             CMBSNSuser.disableProperty().setValue(true);
             List<String> appointment =vaccineAdministrationController.getAppoimentInfo(); ;
             txtSNSname.setText(appointment.get(0));
             txtSNSage.setText(appointment.get(1));
-            txtReactions.setText("None");
+            txtReactions.setText("No Adverse Reactions registered in the system");
             List<StringBuilder> vaccineInfo =vaccineAdministrationController.getVaccineInfo();
             txtVaccineName.setText(vaccineInfo.get(0).toString());
             txtVaccineDose.setText(vaccineInfo.get(1).toString());
@@ -47,12 +48,11 @@ public class RegisterVaccineAdministration2UI implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnVaccine.setDisable(true);
+        btnVaccineAdmin.setDisable(true);
     }
 
     public void initComboBox() {
         ObservableList<String> options = FXCollections.observableArrayList(vaccineAdministrationController.getWaitingList());
-        //ObservableList<String> options = FXCollections.observableArrayList(new ArrayList<>());
         this.CMBSNSuser.setItems(options);
     }
 
@@ -68,27 +68,28 @@ public class RegisterVaccineAdministration2UI implements Initializable {
             Utils.ExceptionWarning(e);
             registerVaccineAdministrationUI.returnNurseUI();
         }
-
         List<String> appointment =vaccineAdministrationController.getAppoimentInfo(); ;
         txtSNSname.setText(appointment.get(0));
         txtSNSage.setText(appointment.get(1));
         txtReactions.setText("No Adverse Reactions registered in the system");
-        if(vaccineAdministrationController.getUserVaccinationRecord()){
+    }
+
+    public void setBtnVaccine() {
+        btnVaccineAdmin.setDisable(false);
+    }
+    public void vaccineAdminPressed(ActionEvent event) {
+        registerVaccineAdministrationUI.toVaccineAdministrationScene4();
+    }
+
+    public void vaccinePressed(ActionEvent event) {
+        if(vaccineAdministrationController.getUserVaccineCard()){
             List<StringBuilder> vaccineInfo =vaccineAdministrationController.getVaccineInfo();
             txtVaccineName.setText(vaccineInfo.get(0).toString());
             txtVaccineDose.setText(vaccineInfo.get(1).toString());
             setBtnVaccine();
         }else {
+            Utils.Warning("Warning","No previous vaccine found","Vaccine must be selected").showAndWait();
             registerVaccineAdministrationUI.toVaccineAdministrationScene3();
         }
-
     }
-
-    public void setBtnVaccine() {
-        btnVaccine.setDisable(false);
-    }
-    public void vaccinePressed(ActionEvent event) {
-        registerVaccineAdministrationUI.toVaccineAdministrationScene4();
-    }
-
 }

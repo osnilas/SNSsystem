@@ -156,10 +156,10 @@ public class Company {
         vaccinationFacilityList.add(Constants.VACCINATION_CENTER_TESTER);
         vaccinationFacilityList.add(Constants.HEALTH_CARE_CENTER_TESTER);
 
-        vaccinationFacilityList.get(0).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
-        vaccinationFacilityList.get(1).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(2022,06,10,19,30),Constants.TYPE_VACCINE_TESTER1));
+        vaccinationFacilityList.get(1).addSchedule(Constants.VACCINATION_SCHEDULE_TESTER);
+        vaccinationFacilityList.get(1).addSchedule(new VaccinationAppointment(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),LocalDateTime.of(LocalDate.now(),LocalTime.of(15,10)),Constants.TYPE_VACCINE_TESTER1));
         vaccinationFacilityList.get(1).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_EMPTY));
-        vaccinationFacilityList.get(0).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
+        vaccinationFacilityList.get(1).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
 
@@ -169,8 +169,8 @@ public class Company {
 
         vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
 
-        SNSuserList.get(0).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER2);
-        SNSuserList.get(1).getVaccinationRecord().add(Constants.VACCINATION_RECORD_TESTER);
+        SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
+        SNSuserList.get(1).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER);
 
     }
 

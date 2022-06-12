@@ -38,12 +38,17 @@ public class VaccinationScheduleController {
         this.schedule = schedule;
     }
 
+    /**
+     * @author João Veiga
+     * @Description This method sets the vaccination facility selected from list from company.
+     * @param index
+     */
     public void setVaccinationFacility(int index) {
         this.facility = this.company.getVaccinationFacilityFromList(index);
     }
 
     public void record(){
-        System.out.println(snSuser.getVaccinationRecord().size());
+        System.out.println(snSuser.getVaccineCards().size());
     }
 
     /**
@@ -180,14 +185,14 @@ public class VaccinationScheduleController {
      */
     private boolean validateVaccinationRecord() throws Exception {
         int dose=0;
-        if(snSuser.getVaccinationRecord().size()==0){
+        if(snSuser.getVaccineCards().size()==0){
             return true;
         }
         else{
-            for(int i=0;i<snSuser.getVaccinationRecord().size();i++){
-                if(snSuser.getVaccinationRecord().get(i).checkTypeVaccine(typeVaccine)) {
-                    validateDoseTime(snSuser.getVaccinationRecord().get(i).getVaccine());
-                    validateAgeGroup(snSuser.getVaccinationRecord().get(i).getVaccine());
+            for(int i = 0; i<snSuser.getVaccineCards().size(); i++){
+                if(snSuser.getVaccineCards().get(i).checkTypeVaccine(typeVaccine)) {
+                    validateDoseTime(snSuser.getVaccineCards().get(i).getVaccine());
+                    validateAgeGroup(snSuser.getVaccineCards().get(i).getVaccine());
                 }
             }
         }

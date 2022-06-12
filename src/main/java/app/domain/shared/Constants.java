@@ -102,7 +102,7 @@ public class Constants {
     public static final VaccineCard VACCINATION_RECORD_TESTER=new VaccineCard(VACCINE_TESTER,LocalDateTime.of(2022,5,30,16,30,00),1);
     public static final VaccineCard VACCINATION_RECORD_TESTER2=new VaccineCard(VACCINE_TESTER,LocalDateTime.of(2022,5,28,12,30,00),2);
 
-    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(2022,6,10,18,00),TYPE_VACCINE_TESTER1);
+    public static final VaccinationAppointment VACCINATION_SCHEDULE_TESTER=new VaccinationAppointment(SNS_USER_TESTER_ONE.getSNSnumber(),LocalDateTime.of(LocalDate.now(),LocalTime.of(15,16)),TYPE_VACCINE_TESTER1);
 
     public static final String BinFile_Directory = Utils.ReadProppeties("BinFiles.Directory");
     public static final String TestDocs_Directory= Utils.ReadProppeties("TestDocs.Directory");

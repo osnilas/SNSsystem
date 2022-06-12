@@ -316,7 +316,7 @@ public class Utils {
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
-        ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
         return alert;
     }
 
@@ -328,6 +328,16 @@ public class Utils {
         ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("OK");
         return alert;
     }
+
+    public static Alert Information(String title, String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("OK");
+        return alert;
+    }
+
 
     public static boolean checkIfFileEmpty(String pathToFile){
         try {

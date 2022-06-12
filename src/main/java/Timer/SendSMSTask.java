@@ -27,8 +27,8 @@ public class SendSMSTask extends TimerTask {
         out.close();
     }
 
-    public void setPath(int phoneNumber) {
-        this.path = Constants.TestDocs_Directory+"/"+ phoneNumber+".txt";
+    public void setPath() {
+        this.path = Constants.TestDocs_Directory+"/SMS.txt";
     }
 
     public void setMessage(String message) {

@@ -22,7 +22,6 @@ public class NurseUI implements Runnable{
 
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Consult waiting room", new ConsultWaitingRoomUI()));
-        options.add(new MenuItem("Record a vaccine administration",new RecordVaccineAdministrationUI()));
 
         int option;
         do
