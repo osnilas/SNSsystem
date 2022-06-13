@@ -19,22 +19,6 @@ public class VaccineCard implements Serializable {
 
     /**
      * @author João Veiga
-     * @Description This method gets the vaccine adminstration index for the input age.
-     * @param age
-     * @return Vaccine adminstration index for the input age.
-     */
-    public int getAgeGroup(int age){
-        int indexNumber=-1;
-        for(int i=0;i<vaccine.getVaccineAdministration().getMaxAge().size();i++) {
-            if (age >= vaccine.getVaccineAdministration().getMinAge().get(i) && age <= vaccine.getVaccineAdministration().getMaxAge().get(i)) {
-                indexNumber = i;
-            }
-        }
-        return indexNumber;
-    }
-
-    /**
-     * @author João Veiga
      * @Description This method checks if the vaccination record vaccine's type is the same as the input.
      * @param typeVaccine
      * @return Boolean if the vaccination record vaccine's type is the same as the input.
@@ -47,6 +31,7 @@ public class VaccineCard implements Serializable {
     }
 
     public void updateNumberDosesTaken(){
+        this.date=LocalDateTime.now();
         numberDosesTaken++;
     }
 

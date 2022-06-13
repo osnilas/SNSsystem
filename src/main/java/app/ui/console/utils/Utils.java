@@ -1,5 +1,6 @@
 package app.ui.console.utils;
 
+import app.domain.Store.FullyVaccinatedPerDayStore;
 import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
@@ -265,27 +266,28 @@ public class Utils {
         System.out.println("0 - Cancel");
     }
 
-    public static List readFile(String filePath){
+    public static Object readFile(String filePath){
         File ficheiro =new File(filePath);
-        List list=new ArrayList();
+        Object object=null;
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(ficheiro));
             try {
-               list = (List) in.readObject();
+                object = in.readObject();
             } finally {
                 in.close();
             }
         } catch (IOException | ClassNotFoundException ex) {
         }
-        return list;
+        return object;
     }
 
-    public static void save(String filePath,List list){
+
+    public static void save(String filePath,Object object){
         File ficheiro =new File(filePath);
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ficheiro));
             try {
-                out.writeObject(list);
+                out.writeObject(object);
             } finally {
                 out.flush();
                 out.close();

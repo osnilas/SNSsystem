@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+object SNSuser{
+-**name**
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+object DGS
+object Employees
+object Nurse
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+object HealthCareCenter{
+-**Several TypeVaccine**
+}
+object MassVaccinationCenter{
+-**TypeVaccine**
+}
+object TypeVaccine{
+-**disease**
+-**code**
+-**description**
+}
+
+object Vaccine
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object VaccineAdministration {
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
+}
+object VaccinationCertificate
+
+
+DGS"1" -- "*"Employees : > owns
+Employees"1"--"1" Nurse: > plays as
+SNSuser"*"--"1" DGS : < owns
+SNSuser "1"--"*" VaccinationCertificate: < requested by
+VaccinationFacility"1"<--"*" MassVaccinationCenter: < is a
+VaccinationFacility"1"<--"*" HealthCareCenter: < is a
+VaccinationFacility "*"--"*" Vaccine: > can administer
+VaccineSchedule"*" -- "1"SNSuser: > created for
+VaccineAdministration"*" -- "1"Nurse: > administered by //change
+Vaccine"1" -- "*"VaccineAdministration: < of
+VaccineAdministration"*" -- "1"SNSuser: > administered on
+VaccineAdministration"0,1" -- "1"VaccineSchedule: < fulfilling //change
+VaccinationCertificate"*" -- "1"Nurse: > issued by
+VaccineSchedule"*" -- "*"TypeVaccine:> for taking
+Vaccine"1" --"1" TypeVaccine:> is of
+
+@enduml

@@ -114,6 +114,8 @@ public class Constants {
     public static final String FILEPATH_VACCINE_ADMINISTRATIONS=BinFile_Directory+"/VaccineAdministrations.bin";
     public static final String FILEPATH_EMPLOYEES= BinFile_Directory+"/Employees.bin";
 
+    public static final String FILEPATH_FULLY_VACCINATED_PER_DAY=BinFile_Directory+"/VaccinatedPerDay.bin";
+
     public static final String FILEPATH_REPORT=Utils.ReadProppeties("Auto.Report.Path");
 
 

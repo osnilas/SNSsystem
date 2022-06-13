@@ -10,27 +10,29 @@ nurse-> System : Ask to record a vaccine administration
 activate System
 System--> nurse : requests to select a vaccination facility
 deactivate System
-
 nurse-> System : Selects one
 activate System
+loop If waiting list stil has a SNS user or the nurse asks to stop
 System--> nurse : requests to select a SNS user
 deactivate System
-
 nurse-> System : Selects one
 activate System
+System--> nurse : shows SNS user information(name, age and adverse reactions .)
+deactivate System
+
 alt if it's SNS user first vaccine
     System--> nurse : requests to select a vaccine
-    deactivate System
+
 
     nurse-> System : Selects one
     activate System
     end
 
-System--> nurse : requests data(Lot number and recovery period)
+System--> nurse : shows vaccine information(Name and dosage) and requests data(Lot number and recovery period)
 deactivate System
-
 nurse-> System : Types requested data
 activate System
 System--> nurse : Informs operation success
-
+deactivate System
+end
 @enduml

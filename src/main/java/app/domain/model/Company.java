@@ -42,7 +42,7 @@ public class Company {
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
     private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
-    private static FullyVaccinatedPerDayStore fullyVaccinatedPerDayStore;
+    private static FullyVaccinatedPerDayStore fullyVaccinatedPerDayStore=new FullyVaccinatedPerDayStore();
 
     public Company(String designation)
     {
@@ -50,6 +50,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
+
         bootstrap();
         dgsReportAuto();
     }
@@ -92,6 +93,7 @@ public class Company {
         Utils.deleteFile(Constants.FILEPATH_VACCINATION_FACILITIES);
         Utils.deleteFile(Constants.FILEPATH_VACCINE_ADMINISTRATIONS);
         Utils.deleteFile(Constants.FILEPATH_TYPE_VACCINES);
+        Utils.deleteFile(Constants.FILEPATH_FULLY_VACCINATED_PER_DAY);
     }
 
     private boolean checkIfBinFilesExist(){
@@ -100,7 +102,8 @@ public class Company {
                 Utils.checkIfFileExists(Constants.FILEPATH_VACCINATION_FACILITIES) &&
                 Utils.checkIfFileExists(Constants.FILEPATH_VACCINE_ADMINISTRATIONS) &&
                 Utils.checkIfFileExists(Constants.FILEPATH_TYPE_VACCINES) &&
-                Utils.checkIfFileExists(Constants.FILEPATH_SNSUSERS);
+                Utils.checkIfFileExists(Constants.FILEPATH_SNSUSERS) &&
+                Utils.checkIfFileExists(Constants.FILEPATH_FULLY_VACCINATED_PER_DAY);
     }
     private boolean checkIfBinFilesEmpty(){
         return Utils.checkIfFileEmpty(Constants.FILEPATH_EMPLOYEES) &&
@@ -108,7 +111,8 @@ public class Company {
                 Utils.checkIfFileEmpty(Constants.FILEPATH_VACCINATION_FACILITIES) &&
                 Utils.checkIfFileEmpty(Constants.FILEPATH_VACCINE_ADMINISTRATIONS) &&
                 Utils.checkIfFileEmpty(Constants.FILEPATH_TYPE_VACCINES) &&
-                Utils.checkIfFileEmpty(Constants.FILEPATH_SNSUSERS);
+                Utils.checkIfFileEmpty(Constants.FILEPATH_SNSUSERS) &&
+                Utils.checkIfFileEmpty(Constants.FILEPATH_FULLY_VACCINATED_PER_DAY);
     }
 
 
@@ -120,6 +124,7 @@ public class Company {
         vaccineList=(List<Vaccine>) Utils.readFile(Constants.FILEPATH_VACCINES);
         vaccinationFacilityList=(List<VaccinationFacility>) Utils.readFile(Constants.FILEPATH_VACCINATION_FACILITIES);
         SNSuserList=(List<SNSuser>) Utils.readFile(Constants.FILEPATH_SNSUSERS);
+        fullyVaccinatedPerDayStore=(FullyVaccinatedPerDayStore) Utils.readFile(Constants.FILEPATH_FULLY_VACCINATED_PER_DAY);
     }
 
     public void saveAll(){
@@ -129,6 +134,7 @@ public class Company {
         saveVaccineListFile();
         saveVaccinationFacilityListFile();
         saveSNSusersListFile();
+        saveFullyVaccinatedPerDayStoreFile();
     }
 
     public void saveSNSusersListFile(){
@@ -150,6 +156,9 @@ public class Company {
         Utils.save(Constants.FILEPATH_VACCINATION_FACILITIES,vaccinationFacilityList);
     }
 
+     public void saveFullyVaccinatedPerDayStoreFile(){
+        Utils.save(Constants.FILEPATH_FULLY_VACCINATED_PER_DAY,fullyVaccinatedPerDayStore);
+    }
 
     public void demo(){
         vaccineList.add(Constants.VACCINE_TESTER);
@@ -170,7 +179,9 @@ public class Company {
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
         SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
 
-        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
+        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
+        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
+        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
         SNSuserList.get(1).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER);
@@ -261,6 +272,17 @@ public class Company {
         for(int i=0;i<SNSuserList.size();i++){
             if(SNSuserList.get(i).emailSame(email)){
                 return  SNSuserList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Coordinator getCoordinatorFacility(String email){
+        for(int i=0;i<employeeList.size();i++){
+            if(employeeList.get(i) instanceof Coordinator) {
+                if (employeeList.get(i).getEmail().equals(email)) {
+                    return (Coordinator) employeeList.get(i);
+                }
             }
         }
         return null;
