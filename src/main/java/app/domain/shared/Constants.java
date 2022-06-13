@@ -61,6 +61,8 @@ public class Constants {
 
     public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(16,00);
 
+    public static final int TOTAL_MINUTES = 720;
+
     public static final LocalDate BIRTH_TESTER=LocalDate.of(2007,9,11);
 
     public static final Employee EMPLOYEE_TESTER=new Employee("Carlos Santos","Rua da Casa",911356879,15467765,"carlos@gmail.com",ROLE_NURSE);
