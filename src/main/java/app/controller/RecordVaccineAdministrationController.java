@@ -267,7 +267,7 @@ public class RecordVaccineAdministrationController {
     private void updateVaccineCard(){
         vaccineCard.updateNumberDosesTaken();
         if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
-            company.updateTotalNumberOfFullyVaccinated();
+            company.updateTotalNumberOfFullyVaccinated(facility);
         }
     }
 

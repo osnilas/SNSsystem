@@ -78,6 +78,8 @@ public class Constants {
     private static final List<TypeVaccine> TYPE_VACCINE_LIST_TESTER=List.of(TYPE_VACCINE_TESTER1,TYPE_VACCINE_TESTER2);
     public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER1);
     public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER=new HealthCareCenter("USF Pedrou�os","Rua da Giesta", 229774710, "sns@email.com",229774710,"www.USF.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,60,3,TYPE_VACCINE_LIST_TESTER);
+
+    public static final Coordinator COORDINATOR_TESTER = new Coordinator("Jodson Santos", "Rua das Palmeiras", 936547223, 16328635, "coor@lei.sem2.pt", ROLE_COR, VACCINATION_CENTER_TESTER);
     public static final TypeVaccine TYPE_VACCINE_RECOMMENDED= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
 
     public static final List<String> VACCINE_TECHNOLOGY = List.of("Live-attenuated", "Inactivated", "Subunit", "Toxoid", "Viral vector", "Messenger RNA");
@@ -93,7 +95,6 @@ public class Constants {
     private static final ArrayList<Integer> TIME_VACCINE_TESTER1= new ArrayList<>(Arrays.asList(20));
 
     private static final ArrayList<Integer> TIME_VACCINE_TESTER2=  new ArrayList<>(Arrays.asList(20,30));
-
 
     private static final ArrayList<ArrayList<Integer>> TIME_VACCINE_TESTER= new ArrayList<>(Arrays.asList(TIME_VACCINE_TESTER1,TIME_VACCINE_TESTER2));
 

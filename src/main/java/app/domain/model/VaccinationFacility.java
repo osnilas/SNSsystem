@@ -33,6 +33,8 @@ public abstract class VaccinationFacility implements Serializable {
 
     private List<Arrival> waitingList=new ArrayList<>();
 
+    private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList = new ArrayList<>();
+
     /**@author João Veiga
      * @Description Constructor
      * Creates an Employee with the following arttributes
@@ -128,6 +130,11 @@ public abstract class VaccinationFacility implements Serializable {
     public List<VaccinationAdminstrationRecord> getVaccinationAdminstrationRecordList() {
         return vaccinationAdminstrationRecordList;
     }
+    public List<FullyVaccinatedPerDay> getFullyVaccinatedPerDayList() {
+        return fullyVaccinatedPerDayList;
+    }
+
+
     @Override
     public boolean equals(Object o){
         if (o == this) {

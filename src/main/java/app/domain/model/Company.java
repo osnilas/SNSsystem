@@ -174,14 +174,14 @@ public class Company {
         vaccinationFacilityList.get(1).getWaitingList().add(new Arrival(Constants.SNS_USER_TESTER_ONE));
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
+        employeeList.add(Constants.COORDINATOR_TESTER);
 
         SNSuserList.add(Constants.SN_SUSER_TESTER_FULL);
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
         SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
 
         vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
-        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
-        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
+        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
         SNSuserList.get(1).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER);
@@ -613,7 +613,7 @@ public class Company {
     }
 
 
-    public void updateTotalNumberOfFullyVaccinated() {
-        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay();
+    public void updateTotalNumberOfFullyVaccinated(VaccinationFacility facility) {
+        facility.getFullyVaccinatedPerDayList().get(facility.getFullyVaccinatedPerDayList().size()).updateTotalNumberOfFullyVaccinated();
     }
 }

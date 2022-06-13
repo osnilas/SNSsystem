@@ -29,4 +29,3 @@ public class Exit implements Serializable {
             return LeavingDateTime;
         }
     }
-}

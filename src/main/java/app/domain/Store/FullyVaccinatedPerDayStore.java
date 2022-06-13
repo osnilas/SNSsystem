@@ -1,6 +1,7 @@
 package app.domain.Store;
 
 import app.domain.model.FullyVaccinatedPerDay;
+import app.domain.model.VaccinationFacility;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,12 +11,12 @@ import java.util.List;
 public class FullyVaccinatedPerDayStore implements Serializable {
     private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList = new ArrayList<>();
 
-    public void updateFullyVaccinatedPerDay () {
+    public void updateFullyVaccinatedPerDay (VaccinationFacility facility) {
         boolean flag = false;
-        for (int i = 0; i < fullyVaccinatedPerDayList.size(); i++) {
-            if (fullyVaccinatedPerDayList.get(i).checkIfSameDay(LocalDate.now())) {
+        for (int i = 0; i < facility.getFullyVaccinatedPerDayList().size(); i++) {
+            if (facility.getFullyVaccinatedPerDayList().get(i).checkIfSameDay(LocalDate.now())) {
                 flag = true;
-                fullyVaccinatedPerDayList.get(i).updateTotalNumberOfFullyVaccinated();
+                facility.getFullyVaccinatedPerDayList().get(i).updateTotalNumberOfFullyVaccinated();
             }
         }
         if (!flag) {
