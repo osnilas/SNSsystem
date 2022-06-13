@@ -16,8 +16,10 @@ public class RecordVaccineAdministrationController {
     private VaccinationAdminstrationRecord adminstration;
     private VaccinationFacility facility;
 
+    private Arrival arrival;
+
     private Vaccine vaccine;
-    Company company;
+    private Company company;
     private App app;
 
     public RecordVaccineAdministrationController(){
@@ -45,7 +47,7 @@ public class RecordVaccineAdministrationController {
      */
     public void createVaccinationAdminstration(int recoryTime,String lotNumber){
         if(recoryTime!=0 && !lotNumber.isBlank()) {
-            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber,arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
         }else {
             throw new IllegalArgumentException("Invalid Input");
         }
@@ -60,12 +62,12 @@ public class RecordVaccineAdministrationController {
      * @param snSuser
      * @param facility
      */
-    public void createVaccinationAdminstrationTester(SNSuser snSuser,VaccinationFacility facility,int recoryTime,String lotNumber) throws Exception {
+    public void createVaccinationAdminstrationTester(SNSuser snSuser,VaccinationFacility facility,int recoryTime,String lotNumber,Arrival arrival) throws Exception {
         this.snSuser=snSuser;
         this.facility=facility;
         getUserVaccineCard();
         getVaccinationAppointment();
-        this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+        this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
     }
 
 
@@ -146,6 +148,7 @@ public class RecordVaccineAdministrationController {
      */
     public void getUserFromWaitingList(int index) throws Exception {
         this.snSuser=facility.getWaitingList().get(index).getSnSuser();
+        this.arrival=facility.getWaitingList().get(index);
         getVaccinationAppointment();
     }
 

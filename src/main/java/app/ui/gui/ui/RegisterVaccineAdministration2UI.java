@@ -22,7 +22,6 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     public ComboBox CMBSNSuser;
     public Button btnVaccine;
     public Button btnVaccineAdmin;
-    private boolean flag=false;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
     private RecordVaccineAdministrationController vaccineAdministrationController;
     public Button btnCancel;

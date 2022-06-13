@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 public class ResgisterVaccineAdministration3UI implements Initializable {
     public ComboBox<String> cmbVaccine;
     public Button btnNext;
-    RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
-    RecordVaccineAdministrationController controller = new RecordVaccineAdministrationController();
+    private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
+    private RecordVaccineAdministrationController controller;
 
     public void RegisterVaccineAdministration3UI(RegisterVaccineAdministrationUI registerVaccineAdministrationUI){
         this.registerVaccineAdministrationUI = registerVaccineAdministrationUI;

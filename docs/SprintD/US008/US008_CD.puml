@@ -222,6 +222,8 @@ Class TypeVaccine{
 -String technology;
 }
 
-
-
+RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration1UI
+RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration2UI
+RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration3UI
+RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration4UI
 @enduml
