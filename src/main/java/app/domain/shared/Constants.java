@@ -47,11 +47,15 @@ public class Constants {
 
     public static final String DATE_FORMAT_FULL= "dd/MM/yyyy HH:mm";
 
+    public static final String DATE_FORMAT_FULL_ALT= "MM/dd/yyyy HH:mm";
+
     public static final DateFormat df = new SimpleDateFormat(DATE_FORMAT);
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT_FULL);
+
+    public static final DateTimeFormatter DATE_TIME_FORMATTER_ALT= DateTimeFormatter.ofPattern(DATE_FORMAT_FULL_ALT);
     public static final String TIME_FORMAT = "HH:mm";
 
     public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);

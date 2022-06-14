@@ -1,4 +1,7 @@
-.label{
-    -fx-font-size: 28;
-    -fx-font-family: "Neue Montreal Bold";
+.text-area .scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: always;
+}
+.text-area .content{
+    -fx-padding: 8 0 0 8;
 }

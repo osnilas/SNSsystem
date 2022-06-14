@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="464.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.PerformanceEvaluator">
+   <children>
+      <DatePicker fx:id="dateField" layoutX="89.0" layoutY="76.0" onAction="#dateSelected" />
+      <Button fx:id="btnAnalysis" layoutX="269.0" layoutY="167.0" mnemonicParsing="false" onAction="#analysisSelected" text="Get analysis" />
+      <ComboBox fx:id="CMBinterval" layoutX="444.0" layoutY="76.0" onAction="#intervalSelected" prefHeight="31.0" prefWidth="58.0" />
+      <Label layoutX="30.0" layoutY="81.0" text="Date" />
+      <Label layoutX="347.0" layoutY="81.0" text="Time interval" />
+      <Label layoutX="512.0" layoutY="81.0" text="minutes" />
+      <Label layoutX="45.0" layoutY="217.0" text="Performance " />
+      <TextArea layoutX="48.0" layoutY="244.0" prefHeight="152.0" prefWidth="540.0" />
+      <Label layoutX="20.0" layoutY="14.0" text="Performance analysis" />
+      <Button layoutX="14.0" layoutY="410.0" mnemonicParsing="false" text="Back" />
+   </children>
+</AnchorPane>

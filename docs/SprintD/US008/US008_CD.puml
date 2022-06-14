@@ -226,4 +226,20 @@ RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration1UI
 RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration2UI
 RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration3UI
 RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration4UI
+RegisterVaccineAdministrationUI..> RecordVaccineAdministrationController
+RecordVaccineAdministrationController..>Company
+RecordVaccineAdministrationController..>VaccinationFacility
+RecordVaccineAdministrationController..>SNSuser
+RecordVaccineAdministrationController..>VaccinationAdministrationRecord
+RecordVaccineAdministrationController..>Vaccine
+Company"1"-->"+"SNSuser:"owns"
+SNSuser"1"-->"+"VaccineCard:"has"
+VaccineCard"*"-->"1"Vaccine:"has"
+Vaccine"1"-->"+"VaccineAdministration:"has"
+VaccinationFacility..>HealthCenter
+VaccinationFacility..>VaccinationCenter
+HealthCenter-->TypeVaccine
+VaccinationCenter-->TypeVaccine
+Vaccine-->TypeVaccine
+
 @enduml

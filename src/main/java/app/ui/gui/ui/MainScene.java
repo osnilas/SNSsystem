@@ -57,6 +57,7 @@ public class MainScene extends Application {
         this.SCENE_WIDTH = SCENE_WIDTH;
     }
 
+
     public void toMainScene() {
         try {
             //Close app
@@ -80,10 +81,12 @@ public class MainScene extends Application {
 
             setSCENE_WIDTH(604);
             setSCENE_HEIGHT(400);
+            //setSCENE_WIDTH(1000);
+            //setSCENE_HEIGHT(600);
             MainUI MainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
             MainUI.setMainApp(this);
-            //LoginUI loginUI = (LoginUI) replaceSceneContent("fxml/Login.fxml");
-            //loginUI.setMainApp(this);
+            //tstesr tester=(tstesr)replaceSceneContent("/fxml/tester.fxml");
+            //tester.setMainScene(this);
         } catch (Exception ex) {
             Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
         }
