@@ -180,6 +180,8 @@ public class Company {
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
         SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
 
+        Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().add(new FullyVaccinatedPerDay());
+        Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().get(0).updateTotalNumberOfFullyVaccinated();
         vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,2,"nut",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
         fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
 

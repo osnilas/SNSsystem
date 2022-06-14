@@ -5,3 +5,7 @@
 .text-area .content{
     -fx-padding: 8 0 0 8;
 }
+
+#listView .list-cell {
+    -fx-alignment: center;
+}

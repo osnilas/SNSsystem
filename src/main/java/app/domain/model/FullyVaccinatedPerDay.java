@@ -2,16 +2,22 @@ package app.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class FullyVaccinatedPerDay implements Serializable {
 
     private LocalDate day = LocalDate.now();
     private int count = 1;
 
+    public FullyVaccinatedPerDay(LocalDate day, int count) {
+        this.day = day;
+        this.count = count;
+    }
+
+    public FullyVaccinatedPerDay () {
+    }
+
     public void updateTotalNumberOfFullyVaccinated () {
-        count++;
+        int temp = Integer.parseInt(String.valueOf(count));
     }
 
     public int getCount() {
@@ -24,5 +30,10 @@ public class FullyVaccinatedPerDay implements Serializable {
 
     public LocalDate getDay() {
         return day;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s  %d", day, count);
     }
 }

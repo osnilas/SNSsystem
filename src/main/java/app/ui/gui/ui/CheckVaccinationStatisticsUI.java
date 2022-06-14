@@ -1,23 +1,22 @@
 package app.ui.gui.ui;
 
 import app.controller.CheckAndExportController;
-import app.domain.Store.FullyVaccinatedPerDayStore;
+import app.domain.model.FullyVaccinatedPerDay;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.toList;
 
 public class CheckVaccinationStatisticsUI implements Initializable {
 
@@ -31,12 +30,14 @@ public class CheckVaccinationStatisticsUI implements Initializable {
     private DatePicker fromDateTextField;
     @FXML
     private DatePicker toDateTextField;
-    @FXML
-    private TextArea txtAreaVaccinationStatistics;
     private RoleUI roleUI;
+    @FXML
+    private ListView<String> listView;
 
-    private FullyVaccinatedPerDayStore fullyVaccinatedPerDayStore;
+    private List<String> fullyVaccinatedPerDayString = new ArrayList<>();
+    private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList;
     private CheckAndExportController ctrl = new CheckAndExportController();
+
     public void setRoleUI(RoleUI roleUI) {
         this.roleUI = roleUI;
     }
@@ -53,17 +54,31 @@ public class CheckVaccinationStatisticsUI implements Initializable {
         } else if (ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()) == null) {
             Utils.Warning("Error", "Cannot show list", "List is empty!").show();
         } else {
-            //txtAreaVaccinationStatistics.setText(String.join("\n", (CharSequence) IntStream.rangeClosed(1, ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()).size()).mapToObj(i ->  ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()).get(i)).collect(toList())));
-            txtAreaVaccinationStatistics.setText(ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()).toString());
-        }
+            clearList(fullyVaccinatedPerDayString);
+            clearList(listView.getItems());
+            fullyVaccinatedPerDayList = ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue());
+            fullyVaccinatedPerDayString.add("           Date               Number");
 
+            for (int i = 0; i < fullyVaccinatedPerDayList.size(); i++) {
+
+                fullyVaccinatedPerDayString.add(String.format("%s                %d", fullyVaccinatedPerDayList.get(i).getDay(), fullyVaccinatedPerDayList.get(i).getCount()));
+
+            }
+
+            listView.getItems().addAll(fullyVaccinatedPerDayString);
+
+        }
     }
 
     @FXML
     void btnExportPressed(ActionEvent event) {
         FileChooser flChooser = FileChooserVaccinationStatisticsUI.createFileChooserVaccinationStatistics();
-        File exportFile = flChooser.showSaveDialog(txtAreaVaccinationStatistics.getScene().getWindow());
+        File exportFile = flChooser.showSaveDialog(listView.getScene().getWindow());
 
+    }
+
+    public <E> void clearList(List<E> list) {
+        list.clear();
     }
 
     @Override
