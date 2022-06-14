@@ -59,18 +59,6 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
 
         for (int i = 0; i < fileData.size(); i++) {
             String[] line = fileData.get(i).split(split);
-            /**
-            for( i=0;i<line.length;i++) {
-                System.out.println("Name: " + line[0]);
-                System.out.println("Sexo: " + line[1]);
-                System.out.println("Address: " + line[2]);
-                System.out.println("Birth: " + line[3]);
-                System.out.println("Phone: " + line[4]);
-                System.out.println("Email: " + line[5]);
-                System.out.println("SNS user number: " + line[6]);
-                System.out.println("CC: " + line[7]);
-            }
-            */
             if (!validateContents(line)) {
                 throw new Exception("CSV file information format not valid");
             }
@@ -100,6 +88,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
                     success = ctlr.saveSNSuser(temp);
                 }
         }
+        Utils.printText("\n"+ fileData.size() +" SNS users added successfully");
         Utils.printText("-----------Registration done successfully-----------");
     }
     /**

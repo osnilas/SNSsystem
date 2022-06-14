@@ -48,7 +48,7 @@ public class RegisterTypeVaccineUI implements Runnable{
                 System.out.printf("Vaccine Technology: %s%n", vaccineTechnology);
             }
 
-            if (Utils.confirm("Are you sure you want to save? (s/n)")) {
+            if (Utils.confirm("Are you sure you want to save? (y/n)")) {
                 ctrl.saveTypeVaccine();
                 System.out.printf("-------------------------Successfully Saved!-------------------------%n%n");
                 ctrl.save();

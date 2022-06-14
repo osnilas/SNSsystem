@@ -41,7 +41,7 @@ public class ScheduleVaccinationUI implements Runnable {
         if (ctlr.validateCreationSchedule()) {
             ctlr.createSchedule();
             Utils.printText(ctlr.printSchedule());
-            if (Utils.confirm("Is this correct?")) {
+            if (Utils.confirm("Is this correct?(y/n)")) {
                 success =ctlr.validateScheduleVaccine();
                 if (success) {
                     ctlr.saveSchedule();
@@ -188,7 +188,7 @@ public class ScheduleVaccinationUI implements Runnable {
         String typeVaccine = ctlr.getTypeVaccineFromMassVaccinationCenter();
         Utils.printText("Vaccine of this vaccination center:");
         Utils.printText(typeVaccine);
-        if (Utils.confirm("Confirms type of Vaccine?")) {
+        if (Utils.confirm("Confirms type of Vaccine?(y/n)")) {
             ctlr.setTypeVaccineMassVaccinationCenter();
         } else {
             throw new Exception("Vaccine type not chosen");
