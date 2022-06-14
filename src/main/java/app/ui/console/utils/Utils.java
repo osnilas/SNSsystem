@@ -15,7 +15,9 @@ import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -380,5 +382,18 @@ public class Utils {
         }
         String value = props.getProperty(property);
         return value;
+    }
+
+    public static LocalDateTime parseDateTimeAmerican(String fuldate) {
+        String[] temp= fuldate.split(" ");
+        if(temp[0].length()!=10) {
+            temp[0]="0"+temp[0];
+        }
+        if(temp[1].length()!=5) {
+            temp[1]="0"+temp[1];
+        }
+        LocalDate date = LocalDate.parse(temp[0], DateTimeFormatter.ofPattern(Constants.DATE_FORMAT_AMERICAN));
+        LocalTime time = LocalTime.parse(temp[1], DateTimeFormatter.ofPattern(Constants.TIME_FORMAT));
+        return LocalDateTime.of(date, time);
     }
 }

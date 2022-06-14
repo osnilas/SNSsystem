@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.domain.model.Company;
+import app.domain.model.ReadDataFromLegacySystem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class ImportDataFromLegacySystemController {
 
     private Company company;
     private App app;
+    private ReadDataFromLegacySystem read;
 
 
 

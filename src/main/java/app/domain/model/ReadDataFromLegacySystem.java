@@ -3,6 +3,7 @@ package app.domain.model;
 import app.domain.shared.Validate;
 import app.ui.console.utils.ReadFile;
 import app.ui.console.utils.ReadFileData;
+import app.ui.console.utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,17 +18,17 @@ public class ReadDataFromLegacySystem {
 
     String file;
 
-    DateTimeFormatter formatter;
+
     ReadFileData readFileData= new ReadFileData();
     List<String> fileData = new ArrayList<>();
 
-    public ReadDataFromLegacySystem(String file,DateTimeFormatter formatter) throws IOException {
+    public ReadDataFromLegacySystem(String file) throws IOException {
         this.file=file;
-        this.formatter=formatter;
         this.fileData.addAll(readFileData.readFile(file));
+
     }
 
-    public List<String> copyDataFromLegacySystem (String file) throws  Exception{
+    public List<VaccinationAdminstrationRecord> copyDataFromLegacySystem () throws  Exception{
 
         List<String> fileData = readFileData.readFile(file);
         ArrayList<VaccinationAdminstrationRecord> appointmentsFromLegacySystem = new ArrayList<>();
@@ -47,29 +48,42 @@ public class ReadDataFromLegacySystem {
             if (!validateDataFromLegacySystem(line)) {
                 throw new Exception("CSV file information format not valid");
             }
-
-
-
-
       }
 
         for (int i = 0; i < fileData.size(); i++) {
             String[] line = fileData.get(i).split(split);
             int snsNumber = Integer.parseInt(line[0]);
             String vaccineName = line[1];
-            String dosage = line[2];
+            int dosage =parseDose(line [2]);
             String lotNumber = line[3];
-            String scheduleDateTime = line[4];
-            String arrivalDateTime = line [5];
-            String nurseAdministrationTime = line [6];
-            String leavingDateTime = line [7];
-
-
+            LocalDateTime scheduleDateTime = Utils.parseDateTimeAmerican(line[4]);
+            LocalDateTime arrivalDateTime =Utils.parseDateTimeAmerican(line [5]);
+            LocalDateTime nurseAdministrationTime =Utils.parseDateTimeAmerican(line [6]);
+            LocalDateTime leavingDateTime =Utils.parseDateTimeAmerican(line [7]);
+            VaccinationAdminstrationRecord temp=new VaccinationAdminstrationRecord(snsNumber,vaccineName,dosage,lotNumber,scheduleDateTime,arrivalDateTime,nurseAdministrationTime,leavingDateTime);
+            appointmentsFromLegacySystem.add(temp);
         }
-        return fileData;
+
+
+        return appointmentsFromLegacySystem;
     }
 
+    private int parseDose(String dose){
+        switch (dose){
+            case "Primeira":
+                return 1;
+                break;
+            case "Segunda":
+                return 2;
+                break;
+            case "Terceira":
+                return 3;
+                break;
+            default:
 
+        }
+
+    }
 
 
 

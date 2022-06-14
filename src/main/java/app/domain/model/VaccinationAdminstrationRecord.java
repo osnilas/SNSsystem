@@ -7,17 +7,18 @@ public class VaccinationAdminstrationRecord implements Serializable {
 
     private int SNSuserNumber;
     private Vaccine vaccine;
+    private int dose;
     private String lotNumber;
-
     private LocalDateTime arrivalTime;
     private LocalDateTime ScheduledDateTime;
     private LocalDateTime NurseAdministrationDateTime;
     private LocalDateTime LeavingDateTime;
 
 
-    public VaccinationAdminstrationRecord(int SNSuserNumber,Vaccine vaccine,String lotNumber,LocalDateTime arrivalTime,LocalDateTime ScheduledDateTime,LocalDateTime NurseAdministrationDateTime,LocalDateTime LeavingDateTime){
+    public VaccinationAdminstrationRecord(int SNSuserNumber,Vaccine vaccine,int dose,String lotNumber,LocalDateTime arrivalTime,LocalDateTime ScheduledDateTime,LocalDateTime NurseAdministrationDateTime,LocalDateTime LeavingDateTime){
         this.SNSuserNumber=SNSuserNumber;
         this.vaccine=vaccine;
+        this.dose=dose;
         this.lotNumber=lotNumber;
         this.arrivalTime=arrivalTime;
         this.ScheduledDateTime=ScheduledDateTime;

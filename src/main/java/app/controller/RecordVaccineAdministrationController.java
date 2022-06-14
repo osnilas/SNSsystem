@@ -47,7 +47,7 @@ public class RecordVaccineAdministrationController {
      */
     public void createVaccinationAdminstration(int recoryTime,String lotNumber){
         if(recoryTime!=0 && !lotNumber.isBlank()) {
-            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber,arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine,snSuser.getVaccinationRecord(vaccine).getNumberDosesTaken()+1, lotNumber,arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
         }else {
             throw new IllegalArgumentException("Invalid Input");
         }
