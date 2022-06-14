@@ -7,6 +7,7 @@ import app.ui.console.utils.ReadFileData;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class ReadDataFromLegacySystem {
     public List<String> copyDataFromLegacySystem (String file) throws  Exception{
 
         List<String> fileData = readFileData.readFile(file);
+        ArrayList<VaccinationAdminstrationRecord> appointmentsFromLegacySystem = new ArrayList<>();
         String split = null;
 
         if (!fileData.get(0).contains(",")) {
