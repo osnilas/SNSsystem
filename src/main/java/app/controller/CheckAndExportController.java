@@ -27,6 +27,15 @@ public class CheckAndExportController {
     }
 
 
+    public boolean validateDate (int i, String type, LocalDate referenceDate) {
+        if (type.equals("after")) {
+            return getFullyVaccinatedDay(i).isAfter(referenceDate) || getFullyVaccinatedDay(i).isEqual(referenceDate);
+        } else if (type.equals("before")) {
+            return getFullyVaccinatedDay(i).isBefore(referenceDate) || getFullyVaccinatedDay(i).isEqual(referenceDate);
+        }
+        return false;
+    }
+
     public LocalDate getFullyVaccinatedDay (int i) {
         return fullyVaccinatedPerDayList.get(i).getDay();
     }

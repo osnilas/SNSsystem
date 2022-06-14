@@ -34,6 +34,10 @@ public class VaccinationAdminstrationRecord implements Serializable {
         return vaccine;
     }
 
+    public int getDose() {
+        return dose;
+    }
+
     public String getLotNumber() {
         return lotNumber;
     }
@@ -52,5 +56,19 @@ public class VaccinationAdminstrationRecord implements Serializable {
 
     public LocalDateTime getLeavingDateTime() {
         return LeavingDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "VaccinationAdminstrationRecord{" +
+                "SNSuserNumber=" + SNSuserNumber +
+                ", vaccine=" + vaccine +
+                ", dose=" + dose +
+                ", lotNumber='" + lotNumber + '\'' +
+                ", arrivalTime=" + arrivalTime +
+                ", ScheduledDateTime=" + ScheduledDateTime +
+                ", NurseAdministrationDateTime=" + NurseAdministrationDateTime +
+                ", LeavingDateTime=" + LeavingDateTime +
+                '}';
     }
 }

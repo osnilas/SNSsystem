@@ -180,7 +180,7 @@ public class Company {
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
         SNSuserList.add(Constants.SNS_USER_TESTER_EMPTY);
 
-        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,"Nuts",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
+        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,2,"nut",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
         fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
@@ -191,9 +191,10 @@ public class Company {
     private void dgsReportAuto(){
         DGSReportTask task=new DGSReportTask();
         task.setCompany(this);
+        String[] date=  Utils.ReadProppeties("Auto.Report.Time").split(":");
         Calendar schedule = Calendar.getInstance();
-        schedule.set(Calendar.HOUR_OF_DAY, 10);
-        schedule.set(Calendar.MINUTE, 57);
+        schedule.set(Calendar.HOUR_OF_DAY, Integer.parseInt(date[0]));
+        schedule.set(Calendar.MINUTE, Integer.parseInt(date[1]));
         schedule.set(Calendar.SECOND, 0);
         if(schedule.before(Calendar.getInstance())){
             schedule.add(Calendar.DATE, 1);

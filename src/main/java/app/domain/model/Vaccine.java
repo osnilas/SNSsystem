@@ -45,6 +45,10 @@ public class Vaccine implements Serializable {
         return ageGroup;
     }
 
+    public boolean nameSame(String name){
+        return this.name.equalsIgnoreCase(name);
+    }
+
     public VaccineAdministration getVaccineAdministration() {
         return vaccineAdministration;
     }

@@ -62,9 +62,9 @@ public class Constants {
     public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern(TIME_FORMAT);
 
     public static final ArrayList<Employee> EMPLOYEE_ARRAY_LIST = new ArrayList<>();
-    public static final LocalTime OPENING_TIME_FOR_VACCINATION_FACILITY = LocalTime.of(9,00);
+    public static final LocalTime OPENING_TIME_FOR_VACCINATION_FACILITY = LocalTime.of(8,00);
 
-    public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(16,00);
+    public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(20,00);
 
     public static final int TOTAL_MINUTES = 720;
 

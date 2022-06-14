@@ -118,7 +118,7 @@ public class AddUserFromCSVUI implements Runnable, ReadFile {
     public List<String> readFile(String file) throws IOException {
         List<String> fileData=new ArrayList<>();
         Scanner in = new Scanner(new File(file));
-        while (in.hasNextLine()){
+        while (in.hasNext()){
             fileData.add(in.nextLine());
         }
         return fileData;
