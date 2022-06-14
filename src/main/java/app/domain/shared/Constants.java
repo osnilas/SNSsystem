@@ -44,6 +44,7 @@ public class Constants {
 
     //Date
     public static final String DATE_FORMAT = "dd/MM/yyyy";
+    public static final String DATE_FORMAT_AMERICAN="MM/dd/yyyy";
 
     public static final String DATE_FORMAT_FULL= "dd/MM/yyyy HH:mm";
 
