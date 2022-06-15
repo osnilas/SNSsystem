@@ -1,7 +1,10 @@
 package app.domain.model;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -179,8 +182,17 @@ public class SNSuser implements Serializable {
         return this.SNSnumber==snsNumber;
     }
 
-    public void addVaccinationRecord(VaccineCard record){
-        this.vaccineCards.add(record);
+    public void addVaccinationRecord(Vaccine vaccine, LocalDateTime administraitonTime){
+        if(checkIfTookVaccine(vaccine)) {
+            for(int i=0;i<vaccineCards.size();i++){
+                if(vaccineCards.get(i).getVaccine().equals(vaccine)){
+                    vaccineCards.get(i).updateNumberDosesTaken();
+                }
+            }
+        }else{
+            vaccineCards.add(new VaccineCard(vaccine,administraitonTime,1));
+        }
+
     }
 
    @Override

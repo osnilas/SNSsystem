@@ -126,6 +126,10 @@ public class Constants {
 
     public static final String FILEPATH_REPORT=Utils.ReadProppeties("Auto.Report.Path");
 
+    public static final String FILEPATH_SMS=TestDocs_Directory+"/SMS.txt";
+
+    public static final String FILEPATH_REPORT_TEST="Testing/report.csv";
+    public static final String FILEPATH_REPORTINVALID_TEST_2="Testing/reportInvalid.csv";
 
 
 }

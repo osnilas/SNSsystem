@@ -82,11 +82,7 @@ public class RecordVaccineAdministrationController {
     public boolean saveVaccinationAdminstration(){
         if(validateVaccineAdministration()) {
             this.facility.addVaccinationAdminstrationRecord(adminstration);
-            if (snSuser.checkIfTookVaccine(vaccine)) {
-                createVaccineCard();
-            } else {
-                updateVaccineCard();
-            }
+            updateVaccineCard();
             deleteAppoiment();
             save();
         }
@@ -191,7 +187,7 @@ public class RecordVaccineAdministrationController {
      * @return List of Strings with the name of the vaccines saved on company.
      */
     public List<String> getVaccineList(){
-        List<Vaccine> vaccineList=getVaccineListWithVaccineType(appointment.getTypeVaccine());
+        List<Vaccine> vaccineList=company.getVaccineListByVaccineType(appointment.getTypeVaccine());
         List<String> vaccineListString=new ArrayList<>();
         for (int i=0;i<vaccineList.size();i++){
             if(vaccineList.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
@@ -200,31 +196,16 @@ public class RecordVaccineAdministrationController {
         }
         return vaccineListString;
     }
-    /**
-     * @author Jo�o Veiga
-     * @Description This method gets with the vaccines saved on company that the SNS user can take and with the same type vaccine as the appointment.
-     * @param typeVaccine
-     * @return List of Strings with the name of the vaccines saved on company.
-     */
-    private List<Vaccine> getVaccineListWithVaccineType(TypeVaccine typeVaccine){
-        List<Vaccine> vaccineListFull=this.company.getVaccineList();
-        List<Vaccine> vaccineList=new ArrayList<>();
-        for (int i=0;i<vaccineListFull.size();i++){
-            if(vaccineListFull.get(i).getTypeVaccine().equals(typeVaccine) && vaccineListFull.get(i).getAgeGroup(snSuser.getAge())!=-1){
-                vaccineList.add(vaccineListFull.get(i));
-            }
-        }
-        return vaccineList;
-    }
 
     /**
      * @author Jo�o Veiga
      * @Description This method sets the vaccine from the list of vaccines saved on company.
      * @param index of the list of vaccines on the company
      */
-    public void setVaccine(int index){
-        List<Vaccine> vaccineList=getVaccineListWithVaccineType(appointment.getTypeVaccine());
+    public boolean setVaccine(int index){
+        List<Vaccine> vaccineList=company.getVaccineListByVaccineType(appointment.getTypeVaccine());
         this.vaccine=vaccineList.get(index);
+        return vaccine.getAgeGroup(snSuser.getAge())!=-1;
     }
 
     /**
@@ -265,23 +246,19 @@ public class RecordVaccineAdministrationController {
         }
     }
 
-    /**
-     * @author Jo�o Veiga
-     * @Description This method creates a vaccine card for the vaccine administration on this appointment.
-     */
-    private void createVaccineCard(){
-        VaccineCard newCard=new VaccineCard(vaccine,LocalDateTime.now(),1);
-        snSuser.addVaccinationRecord(newCard);
-    }
 
     /**
      * @author Jo�o Veiga
      * @Description This method updates a vaccine card of the SNS user.
      */
     private void updateVaccineCard(){
-        vaccineCard.updateNumberDosesTaken();
-        if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
-            company.updateTotalNumberOfFullyVaccinated(facility);
+        if(vaccineCard==null){
+            snSuser.addVaccinationRecord(vaccine,LocalDateTime.now());
+        }else {
+            vaccineCard.updateNumberDosesTaken();
+            if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
+                company.updateTotalNumberOfFullyVaccinated(facility);
+            }
         }
     }
 
@@ -291,7 +268,7 @@ public class RecordVaccineAdministrationController {
      * @return boolean of if the attributes are valid or not.
      */
     public boolean validateVaccineAdministration() {
-        return snSuser!=null && facility!=null && appointment!=null && vaccine!=null;
+        return snSuser!=null && facility!=null && appointment!=null && vaccine!=null && adminstration!=null;
     }
 
     /**
