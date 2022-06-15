@@ -1,7 +1,8 @@
 package app.domain.model;
 
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.List;
 
 public class FullyVaccinatedPerDay implements Serializable {
 
@@ -32,8 +33,23 @@ public class FullyVaccinatedPerDay implements Serializable {
         return day;
     }
 
+    public boolean save (File file, List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream(file));
+            try {
+                out.writeObject(fullyVaccinatedPerDayList);
+            } finally {
+                out.close();
+            }
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
-        return String.format("%s  %d", day, count);
+        return String.format("%s               %d", day, count);
     }
 }

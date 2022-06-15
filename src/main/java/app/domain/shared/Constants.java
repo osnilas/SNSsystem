@@ -79,9 +79,15 @@ public class Constants {
     public static final SNSuser SNS_USER_TESTER_ONE=new SNSuser("Pedro Cardoso", SexListFull[0], (LocalDate.of(1994,9,1)),"Rua da maria","pedro@gmail.com",91234569,122137500,17555688,"pedroTest");
 
     public static final TypeVaccine TYPE_VACCINE_TESTER1= new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
+
     public static final TypeVaccine TYPE_VACCINE_TESTER2= new TypeVaccine("Smallpox", "Smallpox was an infectious disease caused by one of two virus variants, Variola major and Variola minor", "smallP818", "Inactivated");
+    public static final String EXPORT_MESSAGE = "Export List.";
+    public static final String APPLICATION_TITLE = "Vaccination Management System";
+
     private static final List<TypeVaccine> TYPE_VACCINE_LIST_TESTER=List.of(TYPE_VACCINE_TESTER1,TYPE_VACCINE_TESTER2);
+
     public static final MassVaccinationCenter VACCINATION_CENTER_TESTER=new MassVaccinationCenter("CV Porto","Rua de Paranhos",222077500,"sns24@gov.pt",222077500, "www.sns24.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,30,5,TYPE_VACCINE_TESTER1);
+
     public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER=new HealthCareCenter("USF Pedrou�os","Rua da Giesta", 229774710, "sns@email.com",229774710,"www.USF.pt",OPENING_TIME_FOR_VACCINATION_FACILITY,CLOSING_TIME_FOR_VACCINATION_FACILITY,60,3,TYPE_VACCINE_LIST_TESTER);
 
     public static final Coordinator COORDINATOR_TESTER = new Coordinator("Jodson Santos", "Rua das Palmeiras", 936547223, 16328635, "coor@lei.sem2.pt", ROLE_COR, VACCINATION_CENTER_TESTER);
