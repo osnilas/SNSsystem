@@ -8,7 +8,10 @@ object SNSuser{
 -e-mail address
 -health conditions
 }
-object DGS
+object Company{
+-name
+-designation
+}
 object Employees
 object Nurse
 object VaccinationFacility{
@@ -50,9 +53,9 @@ object VaccineAdministration {
 object VaccinationCertificate
 
 
-DGS"1" -- "*"Employees : > owns
+Company"1" -- "*"Employees : > owns
 Employees"1"--"1" Nurse: > plays as
-SNSuser"*"--"1" DGS : < owns
+SNSuser"*"--"1" Company : < owns
 SNSuser "1"--"*" VaccinationCertificate: < requested by
 VaccinationFacility"1"<--"*" MassVaccinationCenter: < is a
 VaccinationFacility"1"<--"*" HealthCareCenter: < is a

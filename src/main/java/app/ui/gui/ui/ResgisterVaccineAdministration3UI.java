@@ -33,8 +33,11 @@ public class ResgisterVaccineAdministration3UI implements Initializable {
     }
 
     public void vaccineSelected(ActionEvent event) {
-        btnNext.setDisable(false);
-        controller.setVaccine(cmbVaccine.getSelectionModel().getSelectedIndex());
+        if(controller.setVaccine(cmbVaccine.getSelectionModel().getSelectedIndex())){
+            btnNext.setDisable(false);
+        }else{
+            Utils.Warning("Vaccine not for user","Vaccine not for user","User out of age group").showAndWait();
+        }
     }
 
     public void nextPressed(ActionEvent event) {

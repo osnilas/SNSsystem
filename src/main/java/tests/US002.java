@@ -24,7 +24,7 @@ class US002 {
         VaccinationScheduleController ctlr = new VaccinationScheduleController();
         // Arrange
         boolean flag = true;
-        dtoScheduleVaccine dto = new dtoScheduleVaccine(122137500, LocalDateTime.of(2022, 6, 1, 12, 00), Constants.TYPE_VACCINE_TESTER1);
+        dtoScheduleVaccine dto = new dtoScheduleVaccine(122137500, LocalDateTime.of(2022, 6, 1, 12, 00), Constants.TYPE_VACCINE_TESTER2);
         ctlr.createScheduleFromDTO(dto);
         ctlr.setVaccinationFacility(0);
         // Act

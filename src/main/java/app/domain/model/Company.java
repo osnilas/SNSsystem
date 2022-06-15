@@ -53,8 +53,8 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-
-        bootstrap();
+        demo();
+        //bootstrap();
         dgsReportAuto();
     }
 
@@ -185,7 +185,6 @@ public class Company {
 
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().add(new FullyVaccinatedPerDay());
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().get(0).updateTotalNumberOfFullyVaccinated();
-        //vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,2,"nut",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
         fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
@@ -267,6 +266,17 @@ public class Company {
     }
 
     public static List<Vaccine> getVaccineList() {
+        return vaccineList;
+    }
+
+    public List<Vaccine> getVaccineListByVaccineType(TypeVaccine typeVaccine){
+        List<Vaccine> vaccineListFull=getVaccineList();
+        List<Vaccine> vaccineList=new ArrayList<>();
+        for (int i=0;i<vaccineListFull.size();i++){
+            if(vaccineListFull.get(i).getTypeVaccine().equals(typeVaccine)){
+                vaccineList.add(vaccineListFull.get(i));
+            }
+        }
         return vaccineList;
     }
 
