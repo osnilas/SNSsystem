@@ -2,7 +2,9 @@
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
 
-Class :ScheduleVaccinationUI {
+ScheduleVaccinationUI .> VaccinationScheduleController
+
+Class ScheduleVaccinationUI {
 +run()
 -Schedule()
 -setSNSuser()
@@ -15,7 +17,9 @@ Class :ScheduleVaccinationUI {
 -getTypeVaccineFromHealthCareCenter()
 }
 
-Class :VaccinationScheduleController {
+VaccinationScheduleController..>Company
+
+Class VaccinationScheduleController {
 +setVaccinationFacility(int index)
 +SNSuserExistsEmail()
 +createSchedule()
@@ -45,12 +49,8 @@ Class :VaccinationScheduleController {
 +printScheduleInfo(String VaccinationCenter, LocalDateTime dateSheducle)
 }
 
-Class :dtoScheduleVaccine {
--int SNSnumber
--LocalDateTime appointmentDate
--TypeVaccine TypeVaccine
+VaccinationScheduleController..>VaccinationAppointment
 
-}
 
 Class Company{
 -List<TypeVaccine> typeVaccineList
@@ -64,10 +64,12 @@ Class Company{
     +SNSuserExistsEmail(String email)
     +checkOtherCentersForVaccination(TypeVaccine vaccine,int SNSnumber)
 }
+Company  ->  VaccinationAppointment : > schedules
 
-Class App{
-+getIntance()
-+getIntance.getCompany()
+Class VaccinationAppointment{
+-int snsNumber
+-LocalDateTime appointmentTime
+-TypeVaccine typeVaccine
 }
 
 
