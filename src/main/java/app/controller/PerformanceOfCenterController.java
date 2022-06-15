@@ -3,22 +3,22 @@ package app.controller;
 import algorithms.performance.BruteForce;
 import app.domain.model.*;
 import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
+import pt.isep.lei.esoft.auth.domain.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class PerformanceOfCenterController {
 
-    private VaccinationFacility facility;
+    private LocalTime OpeningHours=LocalTime.of(8,0);
+    private LocalTime ClosingHours=LocalTime.of(20,0);
     private List<LocalDateTime> timeSlots = new ArrayList<>();
 
     private  int[] numberUsersAtFacility= new int[1];
-    private List<VaccinationAdminstrationRecord> adminstrationRecordList = new ArrayList<>();
+    private List<LegacySystemData> adminstrationRecordList = new ArrayList<>();
     private App app;
     private Company company;
 
@@ -26,25 +26,20 @@ public class PerformanceOfCenterController {
     public PerformanceOfCenterController() {
         this.app = App.getInstance();
         this.company = App.getInstance().getCompany();
+        this.adminstrationRecordList=this.company.getLegacySystemDataFromStore();
+        if(adminstrationRecordList.size()==0){
+            throw new IllegalArgumentException("No data to analyze");
+        }
     }
 
-    public void setFacility() {
-        Coordinator coordinator = company.getCoordinatorFacility(app.getCurrentUserSession().getUserId().getEmail());
-        List<VaccinationFacility> facilities = company.getVaccinationFacilityList();
-        for (int i = 0; i < facilities.size(); i++) {
-            if (coordinator.FacilitySame(facilities.get(i))) {
-                this.facility = facilities.get(i);
-                this.adminstrationRecordList.addAll(facility.getVaccinationAdminstrationRecordList());
-            }
-        }
-        if(adminstrationRecordList.size()==0){
-            throw new IllegalArgumentException("No vaccination administration records found");
-        }
+    public void clear(){
+        this.timeSlots.clear();
+        this.numberUsersAtFacility = new int[1];
     }
 
     private void setTimeSlots(LocalDate date,int timeIntervals) {
-        LocalDateTime start = LocalDateTime.of(date, facility.getOpeningHours());
-        LocalDateTime end = LocalDateTime.of(date, facility.getClosingHours());
+        LocalDateTime start = LocalDateTime.of(date,OpeningHours);
+        LocalDateTime end = LocalDateTime.of(date, ClosingHours);
         LocalDateTime temp = start;
         do {
             timeSlots.add(temp);

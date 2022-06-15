@@ -45,10 +45,14 @@ public class RecordVaccineAdministrationController {
      * @param recoryTime
      * @param lotNumber
      */
-    public void createVaccinationAdminstration(int recoryTime,String lotNumber){
-        if(recoryTime!=0 && !lotNumber.isBlank()) {
-            this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine,snSuser.getVaccinationRecord(vaccine).getNumberDosesTaken()+1, lotNumber,arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
-        }else {
+    public void createVaccinationAdminstration(int recoryTime,String lotNumber) {
+        if (recoryTime != 0 && !lotNumber.isBlank()) {
+            if (snSuser.checkIfTookVaccine(vaccine)) {
+                this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, snSuser.getVaccinationRecord(vaccine).getNumberDosesTaken() + 1, lotNumber, LocalDateTime.now());
+            } else {
+                this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, 1, lotNumber, LocalDateTime.now());
+            }
+        } else {
             throw new IllegalArgumentException("Invalid Input");
         }
     }
@@ -78,7 +82,7 @@ public class RecordVaccineAdministrationController {
     public boolean saveVaccinationAdminstration(){
         if(validateVaccineAdministration()) {
             this.facility.addVaccinationAdminstrationRecord(adminstration);
-            if (snSuser.getVaccineCards().size() == 0) {
+            if (snSuser.checkIfTookVaccine(vaccine)) {
                 createVaccineCard();
             } else {
                 updateVaccineCard();
@@ -187,11 +191,27 @@ public class RecordVaccineAdministrationController {
      * @return List of Strings with the name of the vaccines saved on company.
      */
     public List<String> getVaccineList(){
+        List<Vaccine> vaccineList=getVaccineListWithVaccineType(appointment.getTypeVaccine());
+        List<String> vaccineListString=new ArrayList<>();
+        for (int i=0;i<vaccineList.size();i++){
+            if(vaccineList.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
+                vaccineListString.add(vaccineList.get(i).getName());
+            }
+        }
+        return vaccineListString;
+    }
+    /**
+     * @author Jo�o Veiga
+     * @Description This method gets with the vaccines saved on company that the SNS user can take and with the same type vaccine as the appointment.
+     * @param typeVaccine
+     * @return List of Strings with the name of the vaccines saved on company.
+     */
+    private List<Vaccine> getVaccineListWithVaccineType(TypeVaccine typeVaccine){
         List<Vaccine> vaccineListFull=this.company.getVaccineList();
-        List<String> vaccineList=new ArrayList<>();
+        List<Vaccine> vaccineList=new ArrayList<>();
         for (int i=0;i<vaccineListFull.size();i++){
-            if(vaccineListFull.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
-                vaccineList.add(vaccineListFull.get(i).getName());
+            if(vaccineListFull.get(i).getTypeVaccine().equals(typeVaccine) && vaccineListFull.get(i).getAgeGroup(snSuser.getAge())!=-1){
+                vaccineList.add(vaccineListFull.get(i));
             }
         }
         return vaccineList;
@@ -203,13 +223,7 @@ public class RecordVaccineAdministrationController {
      * @param index of the list of vaccines on the company
      */
     public void setVaccine(int index){
-        List<Vaccine> vaccineListFull=company.getVaccineList();
-        List<Vaccine> vaccineList=new ArrayList<>();
-        for (int i=0;i<vaccineListFull.size();i++){
-            if(vaccineListFull.get(i).getTypeVaccine().equals(appointment.getTypeVaccine())){
-                vaccineList.add(vaccineListFull.get(i));
-            }
-        }
+        List<Vaccine> vaccineList=getVaccineListWithVaccineType(appointment.getTypeVaccine());
         this.vaccine=vaccineList.get(index);
     }
 
@@ -288,7 +302,6 @@ public class RecordVaccineAdministrationController {
      */
     public void sendSMS(int minutes) throws FileNotFoundException {
         SendSMSTask sms=new SendSMSTask();
-        sms.setPath();
         sms.setMessage("You can now leave the vaccination facility.\nIf any side effects are detected, contact SNS24");
         long time=(long)minutes*60000;
         Timer timer=new Timer();
@@ -307,16 +320,6 @@ public class RecordVaccineAdministrationController {
             }
         }
     }
-
-    /**
-     * @author Jo�o Veiga
-     * @Description This method validates the vaccine.
-     * @return boolean of if the vaccine is valid or not.
-     */
-    public boolean checkIfVaccineChosen(){
-        return vaccine!=null;
-    }
-
 
     private void save(){
         this.company.saveVaccinationFacilityListFile();

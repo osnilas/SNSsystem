@@ -48,6 +48,7 @@ public class CoordinatorUI implements Initializable {
         mainScene.setSCENE_HEIGHT(464);
         PerformanceOfCenterUI performanceOfCenterUI = (PerformanceOfCenterUI) this.mainScene.replaceSceneContent("/fxml/PerformanceEvaluator.fxml");
         performanceOfCenterUI.setCoordinatorUI(this);
+        performanceOfCenterUI.set();
     }
 
     public void goBack(){

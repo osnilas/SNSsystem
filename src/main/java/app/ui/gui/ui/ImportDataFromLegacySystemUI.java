@@ -34,13 +34,13 @@ public class ImportDataFromLegacySystemUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ctrl = new ImportDataFromLegacySystemController();
-        ctrl.setFacility();
     }
 
     public void setCoordinatorUI(CoordinatorUI coordinatorUI) {
         this.coordinatorUI = coordinatorUI;
     }
     public void filePressed(ActionEvent event) {
+        listData.getItems().clear();
         FileChooser flChooser = FileChooserVaccinationStatisticsUI.createFileChooserVaccinationStatistics();
         File importFile = flChooser.showOpenDialog(txtFileName.getScene().getWindow());
         if (importFile != null) {
@@ -50,8 +50,11 @@ public class ImportDataFromLegacySystemUI implements Initializable {
             }catch (Exception e){
                 Utils.ExceptionWarning(e);
             }finally {
-                ctrl.sort();
-                updateList(ctrl.getInfo());
+                try {
+                    ctrl.sort();
+                    updateList(ctrl.getInfo());
+                }catch (Exception IGNORE){}
+
             }
         }
     }
@@ -65,6 +68,8 @@ public class ImportDataFromLegacySystemUI implements Initializable {
 
     public void savePressed(ActionEvent event) {
         ctrl.save();
+        Utils.Information("Data saved successfully", "Saved",null);
+        coordinatorUI.goBack();
     }
 
     public void ascPressed(ActionEvent event) {

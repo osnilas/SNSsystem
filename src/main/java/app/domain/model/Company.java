@@ -2,6 +2,7 @@ package app.domain.model;
 
 
 import app.domain.Store.FullyVaccinatedPerDayStore;
+import app.domain.Store.LegacySystemStore;
 import app.domain.shared.Constants;
 import Timer.DGSReportTask;
 import app.ui.console.utils.Utils;
@@ -42,6 +43,8 @@ public class Company {
 
     private static List<SNSuser> SNSuserList=new ArrayList<>();
     private static MapperSNSuser mapperSNSuser=new MapperSNSuser();
+
+    private static LegacySystemStore LegacySystemStore= new LegacySystemStore();
     private static FullyVaccinatedPerDayStore fullyVaccinatedPerDayStore=new FullyVaccinatedPerDayStore();
 
     public Company(String designation)
@@ -182,7 +185,7 @@ public class Company {
 
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().add(new FullyVaccinatedPerDay());
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().get(0).updateTotalNumberOfFullyVaccinated();
-        vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,2,"nut",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
+        //vaccinationFacilityList.get(0).getVaccinationAdminstrationRecordList().add(new VaccinationAdminstrationRecord(Constants.SNS_USER_TESTER_EMPTY.getSNSnumber(),Constants.VACCINE_TESTER,2,"nut",vaccinationFacilityList.get(1).getWaitingList().get(0).getTimeOfArrival(),LocalDateTime.of(2022,06,9,8,30),LocalDateTime.of(2022,06,9,9,30),LocalDateTime.of(2022,06,9,10,30)));
         fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
@@ -222,7 +225,7 @@ public class Company {
             for (int i = 0; i < vaccinationFacilityList.size(); i++) {
                 count = 0;
                 for (int j = 0; j < vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().size(); j++) {
-                    if (vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().get(j).getLeavingDateTime().toLocalDate().isEqual(LocalDate.now())) {
+                    if (vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().get(j).getNurseAdministrationDateTime().toLocalDate().isEqual(LocalDate.now())) {
                         count++;
                     }
                 }
@@ -236,6 +239,13 @@ public class Company {
         }
     }
 
+    public void addLegacySystemDataToStore(List<LegacySystemData> list){
+        LegacySystemStore.add(list);
+    }
+
+    public List<LegacySystemData> getLegacySystemDataFromStore(){
+        return LegacySystemStore.getAll();
+    }
 
     public String getDesignation() {
         return designation;

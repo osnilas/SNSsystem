@@ -35,6 +35,19 @@ public class VaccineCard implements Serializable {
         numberDosesTaken++;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof VaccineCard)) {
+            return false;
+        }
+        VaccineCard vaccineCard = (VaccineCard) o;
+        return this.vaccine.equals(vaccineCard.vaccine) && this.date.equals(vaccineCard.date)
+                && this.numberDosesTaken == vaccineCard.numberDosesTaken;
+    }
+
     public int getNumberDosesTaken() {
         return numberDosesTaken;
     }

@@ -15,7 +15,7 @@ public class ImportDataFromLegacySystemController {
     private Company company;
     private App app;
     private ReadDataFromLegacySystem read;
-    private List<VaccinationAdminstrationRecord> fileVaccinations;
+    private List<LegacySystemData> fileVaccinations;
 
     private VaccinationFacility facility;
 
@@ -26,15 +26,7 @@ public class ImportDataFromLegacySystemController {
         this.app = App.getInstance();
     }
 
-    public void setFacility() {
-        Coordinator coordinator = company.getCoordinatorFacility(app.getCurrentUserSession().getUserId().getEmail());
-        List<VaccinationFacility> facilities = company.getVaccinationFacilityList();
-        for (int i = 0; i < facilities.size(); i++) {
-            if (coordinator.FacilitySame(facilities.get(i))) {
-                this.facility = facilities.get(i);
-            }
-        }
-    }
+
 
     ArrayList<String> fileData = new ArrayList<>();
 
@@ -43,14 +35,12 @@ public class ImportDataFromLegacySystemController {
    public void readData(String filePath) throws Exception {
            this.read = new ReadDataFromLegacySystem(filePath, company.getVaccineList());
            this.fileVaccinations= read.copyDataFromLegacySystem();
-       System.out.println(fileVaccinations.size());
    }
 
    public void save(){
-       saveAdminstrationSNSuser();
-       facility.getVaccinationAdminstrationRecordList().addAll(fileVaccinations);
-       company.saveSNSusersListFile();
-       company.saveVaccinationFacilityListFile();
+       company.addLegacySystemDataToStore(fileVaccinations);
+       //saveAdminstrationSNSuser();
+       //company.saveSNSusersListFile();
    }
 
     private void saveAdminstrationSNSuser() {
@@ -95,7 +85,6 @@ public class ImportDataFromLegacySystemController {
 
    public void sort(){
        String sortBy = Utils.ReadProppeties("Import.View");
-       System.out.println("Sort by "+sortBy);
        switch (sortBy) {
            case "Arrival":
                sortByArrival();
@@ -110,14 +99,11 @@ public class ImportDataFromLegacySystemController {
 
    private void sortByArrival() {
        String sortAlgorithm = Utils.ReadProppeties("Import.Arrival.Sort");
-       System.out.println("Sort with  "+sortAlgorithm);
        switch (sortAlgorithm) {
            case "Bubble":
-               System.out.println("Arrival sort by Bubble");
                BubleSort.sortByArrivalTime(fileVaccinations);
                break;
            case "Quick":
-               System.out.println("Arrival sort by Quick");
                QuickSort.sortByArrivalTime(fileVaccinations, 0, fileVaccinations.size());
                break;
            default:
@@ -126,14 +112,11 @@ public class ImportDataFromLegacySystemController {
 
    private void sortByLeaving() {
        String sortAlgorithm = Utils.ReadProppeties("Import.Leaving.Sort");
-       System.out.println("Sort with  "+sortAlgorithm);
        switch (sortAlgorithm) {
            case "Bubble":
-               System.out.println("LeavingBubble");
                BubleSort.sortByLeavingTime(fileVaccinations);
                break;
            case "Quick":
-               System.out.println("LeavingQuick");
                QuickSort.sortByLeavingTime(fileVaccinations, 0, fileVaccinations.size());
                break;
            default:

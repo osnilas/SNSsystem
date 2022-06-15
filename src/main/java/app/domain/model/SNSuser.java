@@ -183,6 +183,13 @@ public class SNSuser implements Serializable {
         this.vaccineCards.add(record);
     }
 
+   @Override
+   public boolean equals(Object o) {
+       if (this == o) return true;
+       if (o == null || getClass() != o.getClass()) return false;
+       SNSuser snSuser = (SNSuser) o;
+       return SNSnumber == snSuser.SNSnumber;
+   }
     @Override
     public String toString() {
         return "SNSuser:" +

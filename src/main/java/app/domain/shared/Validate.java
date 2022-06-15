@@ -207,7 +207,7 @@ public class Validate {
         if(date!=null) {
             try {
                 LocalDate test = Utils.createDate(date);
-            } catch (DateTimeException e) {
+            } catch (Exception e) {
                 return false;
             }
             return true;

@@ -52,8 +52,15 @@ public class PerformanceOfCenterUI implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ctrl = new PerformanceOfCenterController();
-        ctrl.setFacility();
+    }
+
+    public void set() {
+        try {
+            ctrl = new PerformanceOfCenterController();
+        } catch (Exception e) {
+            Utils.ExceptionWarning(e);
+            coordinatorUI.goBack();
+        }
     }
 
     public void dateSelected(ActionEvent event) {
@@ -76,6 +83,7 @@ public class PerformanceOfCenterUI implements Initializable {
             txtMinutes.clear();
         }catch (Exception ignored){
         }
+        ctrl.clear();
 
 
     }

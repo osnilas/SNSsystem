@@ -13,9 +13,9 @@ public class SendSMSTask extends TimerTask {
 
     private String message;
 
-    private String path;
     @Override
     public void run() {
+        String path = Constants.TestDocs_Directory+"/SMS.txt";
         File file = new File(path);
         PrintWriter out= null;
         try {
@@ -25,10 +25,6 @@ public class SendSMSTask extends TimerTask {
         }
         out.println(message);
         out.close();
-    }
-
-    public void setPath() {
-        this.path = Constants.TestDocs_Directory+"/SMS.txt";
     }
 
     public void setMessage(String message) {

@@ -1,6 +1,7 @@
 package app.domain.model;
 
 import app.controller.App;
+import app.domain.Store.LegacySystemStore;
 import app.domain.shared.Validate;
 import app.ui.console.utils.ReadFile;
 import app.ui.console.utils.ReadFileData;
@@ -19,6 +20,7 @@ public class ReadDataFromLegacySystem {
 
     String file;
 
+
     List<Vaccine>  vaccineList = new ArrayList<>();
 
     ReadFileData readFileData= new ReadFileData();
@@ -30,10 +32,10 @@ public class ReadDataFromLegacySystem {
         this.fileData.addAll(readFileData.readFile(file));
     }
 
-    public List<VaccinationAdminstrationRecord> copyDataFromLegacySystem () throws  Exception{
+    public List<LegacySystemData> copyDataFromLegacySystem () throws  Exception{
 
         List<String> fileData = readFileData.readFile(file);
-        ArrayList<VaccinationAdminstrationRecord> appointmentsFromLegacySystem = new ArrayList<>();
+        ArrayList<LegacySystemData> appointmentsFromLegacySystem = new ArrayList<>();
         String split = null;
 
         if (!fileData.get(0).contains(",")) {
@@ -55,8 +57,7 @@ public class ReadDataFromLegacySystem {
                 LocalDateTime arrivalDateTime = Utils.parseDateTimeAmerican(line[5]);
                 LocalDateTime nurseAdministrationTime = Utils.parseDateTimeAmerican(line[6]);
                 LocalDateTime leavingDateTime = Utils.parseDateTimeAmerican(line[7]);
-                VaccinationAdminstrationRecord temp = new VaccinationAdminstrationRecord(snsNumber, vaccine, dosage, lotNumber, arrivalDateTime,scheduleDateTime, nurseAdministrationTime, leavingDateTime);
-                System.out.println(temp.toString());
+                LegacySystemData temp = new LegacySystemData(snsNumber, vaccine, dosage, lotNumber, arrivalDateTime,scheduleDateTime, nurseAdministrationTime, leavingDateTime);
                 appointmentsFromLegacySystem.add(temp);
             }
         }

@@ -1,12 +1,13 @@
 package algorithms.sort;
 
+import app.domain.model.LegacySystemData;
 import app.domain.model.VaccinationAdminstrationRecord;
 
 import java.util.Collections;
 import java.util.List;
 
 public class BubleSort {
-    public static void sortByArrivalTime(List<VaccinationAdminstrationRecord> list) {
+    public static void sortByArrivalTime(List<LegacySystemData> list) {
         int aux;
         boolean flag;
 
@@ -27,7 +28,7 @@ public class BubleSort {
         }
     }
 
-    public static void sortByLeavingTime(List<VaccinationAdminstrationRecord> list) {
+    public static void sortByLeavingTime(List<LegacySystemData> list) {
         int aux;
         boolean flag;
 

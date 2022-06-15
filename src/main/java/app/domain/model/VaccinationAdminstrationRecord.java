@@ -9,21 +9,15 @@ public class VaccinationAdminstrationRecord implements Serializable {
     private Vaccine vaccine;
     private int dose;
     private String lotNumber;
-    private LocalDateTime arrivalTime;
-    private LocalDateTime ScheduledDateTime;
     private LocalDateTime NurseAdministrationDateTime;
-    private LocalDateTime LeavingDateTime;
 
 
-    public VaccinationAdminstrationRecord(int SNSuserNumber,Vaccine vaccine,int dose,String lotNumber,LocalDateTime arrivalTime,LocalDateTime ScheduledDateTime,LocalDateTime NurseAdministrationDateTime,LocalDateTime LeavingDateTime){
+    public VaccinationAdminstrationRecord(int SNSuserNumber,Vaccine vaccine,int dose,String lotNumber,LocalDateTime NurseAdministrationDateTime){
         this.SNSuserNumber=SNSuserNumber;
         this.vaccine=vaccine;
         this.dose=dose;
         this.lotNumber=lotNumber;
-        this.arrivalTime=arrivalTime;
-        this.ScheduledDateTime=ScheduledDateTime;
         this.NurseAdministrationDateTime=NurseAdministrationDateTime;
-        this.LeavingDateTime=LeavingDateTime;
     }
 
     public int getSNSuserNumber() {
@@ -42,21 +36,10 @@ public class VaccinationAdminstrationRecord implements Serializable {
         return lotNumber;
     }
 
-    public LocalDateTime getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public LocalDateTime getScheduledDateTime() {
-        return ScheduledDateTime;
-    }
-
     public LocalDateTime getNurseAdministrationDateTime() {
         return NurseAdministrationDateTime;
     }
 
-    public LocalDateTime getLeavingDateTime() {
-        return LeavingDateTime;
-    }
 
     @Override
     public String toString() {
@@ -65,10 +48,7 @@ public class VaccinationAdminstrationRecord implements Serializable {
                 ", vaccine=" + vaccine +
                 ", dose=" + dose +
                 ", lotNumber='" + lotNumber + '\'' +
-                ", arrivalTime=" + arrivalTime +
-                ", ScheduledDateTime=" + ScheduledDateTime +
                 ", NurseAdministrationDateTime=" + NurseAdministrationDateTime +
-                ", LeavingDateTime=" + LeavingDateTime +
                 '}';
     }
 }
