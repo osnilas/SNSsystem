@@ -6,14 +6,15 @@ import app.domain.model.FullyVaccinatedPerDay;
 import app.domain.model.VaccinationFacility;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckAndExportController {
     private Company company = App.getInstance().getCompany();
     private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList;
-    private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayListFromTo;
+    private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayListFromTo = new ArrayList<>();
     private VaccinationFacility facility;
-    private App app = App.getInstance();
+
 
     public List<FullyVaccinatedPerDay> getFullyVaccinatedListFromTo (LocalDate fromDate, LocalDate toDate) {
         setFacility();
@@ -33,7 +34,7 @@ public class CheckAndExportController {
 
     public void setFacility() {
         Coordinator coordinator = company.getCoordinatorFacility(company.getAuthFacade().getCurrentUserSession().getUserId().getEmail());
-        List<VaccinationFacility> facilities = company.getVaccinationFacilityList();
+        List<VaccinationFacility> facilities = Company.getVaccinationFacilityList();
         for (int i = 0; i < facilities.size(); i++) {
             if (coordinator.FacilitySame(facilities.get(i))) {
                 this.facility = facilities.get(i);

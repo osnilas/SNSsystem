@@ -22,7 +22,8 @@ deactivate System
 
 alt if it's SNS user first vaccine
     System--> nurse : requests to select a vaccine
-
+       activate System
+       deactivate System
 
     nurse-> System : Selects one
     activate System

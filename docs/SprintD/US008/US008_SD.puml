@@ -1,11 +1,49 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor "Nurse" as nurse
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+participant ":RegisterVaccineAdministrationUI" as UI
+    participant ":RegisterVaccineAdministrationController" as  CTRL
+    participant "Company" as COMP
+    participant ":SNS user" as user
+    participant ":VaccinationFacility" as facility
+    participant ":Vaccine" as vaccine
+    participant VaccinationAppointment as appointment
+
+
+
+activate nurse
+
+nurse-> UI : Ask to record a vaccine administration
+activate UI
+UI--> nurse : requests to select a vaccination facility
+deactivate UI
+nurse-> UI : Selects one
+activate UI
+loop If waiting list stil has a SNS user or the nurse asks to stop
+UI--> nurse : requests to select a SNS user
+deactivate UI
+nurse-> UI : Selects one
+activate UI
+UI--> nurse : shows SNS user information(name, age and adverse reactions .)
+deactivate UI
+
+alt if it's SNS user first vaccine
+    UI--> nurse : requests to select a vaccine
+    activate UI
+    deactivate UI
+
+
+    nurse-> UI : Selects one
+    activate UI
+    end
+
+UI--> nurse : shows vaccine information(Name and dosage) and requests data(Lot number and recovery period)
+deactivate UI
+nurse-> UI : Types requested data
+activate UI
+UI--> nurse : Informs operation success
+deactivate UI
+end
 @enduml

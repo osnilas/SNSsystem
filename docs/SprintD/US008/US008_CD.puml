@@ -232,10 +232,10 @@ RecordVaccineAdministrationController..>VaccinationFacility
 RecordVaccineAdministrationController..>SNSuser
 RecordVaccineAdministrationController..>VaccinationAdministrationRecord
 RecordVaccineAdministrationController..>Vaccine
-Company"1"-->"+"SNSuser:"owns"
-SNSuser"1"-->"+"VaccineCard:"has"
+Company"1"-->"*"SNSuser:"owns"
+SNSuser"1"-->"*"VaccineCard:"has"
 VaccineCard"*"-->"1"Vaccine:"has"
-Vaccine"1"-->"+"VaccineAdministration:"has"
+Vaccine"1"-->"*"VaccineAdministration:"has"
 VaccinationFacility..>HealthCenter
 VaccinationFacility..>VaccinationCenter
 HealthCenter-->TypeVaccine

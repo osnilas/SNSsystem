@@ -8,14 +8,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class PerformanceOfCenterController {
 
     private VaccinationFacility facility;
     private List<LocalDateTime> timeSlots = new ArrayList<>();
 
-    private int[] numberUsersAtFacility;
+    private  int[] numberUsersAtFacility= new int[1];
     private List<VaccinationAdminstrationRecord> adminstrationRecordList = new ArrayList<>();
     private App app;
     private Company company;
@@ -26,7 +28,7 @@ public class PerformanceOfCenterController {
         this.company = App.getInstance().getCompany();
     }
 
-    public void setFacility(VaccinationFacility facility) {
+    public void setFacility() {
         Coordinator coordinator = company.getCoordinatorFacility(app.getCurrentUserSession().getUserId().getEmail());
         List<VaccinationFacility> facilities = company.getVaccinationFacilityList();
         for (int i = 0; i < facilities.size(); i++) {
@@ -35,24 +37,27 @@ public class PerformanceOfCenterController {
                 this.adminstrationRecordList.addAll(facility.getVaccinationAdminstrationRecordList());
             }
         }
+        if(adminstrationRecordList.size()==0){
+            throw new IllegalArgumentException("No vaccination administration records found");
+        }
     }
 
-    public void setTimeSlots(int timeIntervals) {
-        LocalDateTime start = LocalDateTime.of(LocalDate.now(), facility.getOpeningHours());
-        LocalDateTime end = LocalDateTime.of(LocalDate.now(), facility.getClosingHours());
+    private void setTimeSlots(LocalDate date,int timeIntervals) {
+        LocalDateTime start = LocalDateTime.of(date, facility.getOpeningHours());
+        LocalDateTime end = LocalDateTime.of(date, facility.getClosingHours());
         LocalDateTime temp = start;
         do {
             timeSlots.add(temp);
-            temp = temp.plusMinutes(facility.getSlotDuration());
+            temp = temp.plusMinutes(timeIntervals);
         } while (end.isAfter(temp));
         timeSlots.add(end);
-        numberUsersAtFacility = new int[timeIntervals/Constants.TOTAL_MINUTES];
+        numberUsersAtFacility = new int[Constants.TOTAL_MINUTES/timeIntervals];
     }
 
 
-    public void setNumberUsersAtFacility() {
+    private void setNumberUsersAtFacility() {
         int countIn = 0,countOut = 0;
-        for (int i = 0; i < timeSlots.size(); i++) {
+        for (int i = 0; i < timeSlots.size()-1; i++) {
             countIn = 0;
             countOut = 0;
             for (int j = 0; j < adminstrationRecordList.size(); j++) {
@@ -67,13 +72,20 @@ public class PerformanceOfCenterController {
         }
     }
 
-    public List<String> getPerformanceData() throws Exception {
-        List<String> performanceData = new ArrayList<>();
-        List<Integer> data=performance();
-        performanceData.add(String.valueOf(timeSlots.get(data.get(0))));
-        performanceData.add(String.valueOf(timeSlots.get(data.get(1))));
-        performanceData.add(String.valueOf(data.get(2)));
-        return performanceData;
+    public List<String> getPerformanceData(LocalDate date,int timeInterval) throws Exception {
+        setTimeSlots(date,timeInterval);
+        setNumberUsersAtFacility();
+        if(validateArray(numberUsersAtFacility)) {
+            List<String> performanceData = new ArrayList<>();
+            List<Integer> data = performance();
+            performanceData.add(Arrays.toString(Arrays.copyOfRange(numberUsersAtFacility, data.get(0), data.get(1) + 1)));
+            performanceData.add(String.valueOf(timeSlots.get(data.get(0)).format(Constants.DATE_TIME_FORMATTER_ALT)));
+            performanceData.add(String.valueOf(timeSlots.get(data.get(1)+1).format(Constants.DATE_TIME_FORMATTER_ALT)));
+            performanceData.add(String.valueOf(data.get(2)));
+            return performanceData;
+        }
+        throw new IllegalArgumentException("No vaccination administration records found");
+
     }
 
     private List<Integer>  performance() throws Exception {
@@ -83,44 +95,13 @@ public class PerformanceOfCenterController {
     }
 
 
-    public int[] ArrivalsByInterval(int interval, List<Arrival> list){
-        int nrOfArrivals, postion, index=0;
-        int [] arrivals= new int[Constants.TOTAL_MINUTES/interval];
-        for (int i=0; i<arrivals.length; i++){
-            postion= convertToMinutes(Constants.OPENING_TIME_FOR_VACCINATION_FACILITY) + (i+1)*interval;
-            nrOfArrivals=0;
-            while (index < list.size() && convertToMinutes(splitDateFromTime(list.get(index).getTimeOfArrival())) < postion){
-                nrOfArrivals++;
-                index++;
+    private boolean validateArray(int[] array) {
+        int count= 0;
+        for (int i=0; i<array.length; i++) {
+            if (array[i] ==0) {
+                count++;
             }
-            arrivals[i] = nrOfArrivals;
         }
-        return arrivals;
+        return count != array.length;
     }
-
-    public int[] ExitsByInterval(int interval, List<Exit> list){
-        int nrOfExits, postion, index=0;
-        int [] exits= new int[Constants.TOTAL_MINUTES/interval];
-        for (int i=0; i<exits.length; i++){
-            postion= convertToMinutes(Constants.OPENING_TIME_FOR_VACCINATION_FACILITY) + (i+1)*interval;
-            nrOfExits=0;
-            while (index < list.size() && convertToMinutes(splitDateFromTime(list.get(index).getLeavingDateTime())) < postion){
-                nrOfExits++;
-                index++;
-            }
-            exits[i] = nrOfExits;
-        }
-        return exits;
-    }
-
-    public int convertToMinutes(LocalTime openingTime){
-        int minutes = (openingTime.getHour() * 60) + (openingTime.getMinute());
-        return minutes;
-    }
-
-    public LocalTime splitDateFromTime(LocalDateTime leavingDateTime){
-        LocalTime exitTime = LocalTime.of(leavingDateTime.getHour(), leavingDateTime.getMinute());
-        return exitTime;
-    }
-
 }

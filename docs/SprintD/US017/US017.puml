@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+    autonumber
+    actor Coordinator
+    activate Coordinator
+    Coordinator -> System: requests to import data from a legacy system
+    activate System
+
+    System --> Coordinator: requests data(file name or file path)
+    deactivate System
+    System <- Coordinator: Types requested data
+    activate System
+    group loop: [while CSV file has a line with valid information]
+    Coordinator <-- System: shows the user data and requests confirmation
+    deactivate System
+    Coordinator -> System: confirms the data
+    activate System
+    Coordinator <-- System: informs operation success
+    deactivate System
+    end
+
+@enduml

@@ -67,7 +67,7 @@ public class RecordVaccineAdministrationController {
         this.facility=facility;
         getUserVaccineCard();
         getVaccinationAppointment();
-        this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
+        //this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
     }
 
 

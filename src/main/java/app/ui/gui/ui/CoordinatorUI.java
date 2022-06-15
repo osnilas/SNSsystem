@@ -36,10 +36,22 @@ public class CoordinatorUI implements Initializable {
         checkVaccinationStatisticsUI.setRoleUI(roleUI);
     }
 
-    public void LegacySystemPressed(ActionEvent event) {
+    public void LegacySystemPressed(ActionEvent event) throws Exception {
+        mainScene.setSCENE_WIDTH(1000);
+        mainScene.setSCENE_HEIGHT(700);
+        ImportDataFromLegacySystemUI importDataFromLegacySystemUI = (ImportDataFromLegacySystemUI) this.mainScene.replaceSceneContent("/fxml/ImportDataFromLegacySystem.fxml");
+        importDataFromLegacySystemUI.setCoordinatorUI(this);
     }
 
-    public void performancePressed(ActionEvent event) {
+    public void performancePressed(ActionEvent event) throws Exception {
+        mainScene.setSCENE_WIDTH(623);
+        mainScene.setSCENE_HEIGHT(464);
+        PerformanceOfCenterUI performanceOfCenterUI = (PerformanceOfCenterUI) this.mainScene.replaceSceneContent("/fxml/PerformanceEvaluator.fxml");
+        performanceOfCenterUI.setCoordinatorUI(this);
+    }
+
+    public void goBack(){
+        roleUI.toCoordinator();
     }
 
     public void backPressed(ActionEvent event) {

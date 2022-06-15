@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.ui.ImportDataFromLegacySystemUI">
+   <top>
+      <AnchorPane prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="24.0" layoutY="22.0" text="Import Data From Legacy System">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="txtFileName" layoutX="252.0" layoutY="35.0" />
+            <Button fx:id="btnFile" layoutX="44.0" layoutY="30.0" mnemonicParsing="false" onAction="#filePressed" prefHeight="31.0" prefWidth="105.0" text="Select File" />
+            <Button fx:id="btnSave" layoutX="419.0" layoutY="496.0" mnemonicParsing="false" onAction="#savePressed" prefHeight="40.0" prefWidth="124.0" text="Save" />
+            <ListView fx:id="listData" editable="true" layoutX="31.0" layoutY="96.0" prefHeight="388.0" prefWidth="901.0" />
+            <Button fx:id="btnAsc" layoutX="739.0" layoutY="51.0" mnemonicParsing="false" onAction="#ascPressed" prefHeight="39.0" prefWidth="88.0" text="Sort asc" />
+            <Button fx:id="btnDesc" layoutX="836.0" layoutY="51.0" mnemonicParsing="false" onAction="#descPressed" prefHeight="39.0" prefWidth="89.0" text="Sort desc" />
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="511.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="36.0" prefWidth="60.0" text="Back" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

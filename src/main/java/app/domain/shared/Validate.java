@@ -251,17 +251,18 @@ public class Validate {
 
     }
 
-    public static boolean validateScheduleDateTime (String scheduleDateTime){
-
-
- return false;
-    }
-    public static boolean validateArrivalDateTime (String arrivalDateTime){
-      if (arrivalDateTime.isBlank())
+    public static boolean validateTimeFile (String scheduleDateTime){
+        if(scheduleDateTime!=null) {
+            try {
+                LocalDateTime test = Utils.parseDateTimeAmerican(scheduleDateTime);
+            } catch (DateTimeException e) {
+                return false;
+            }
+            return true;
+        }
         return false;
-      else
-          return true;
     }
+
 
 
 }
