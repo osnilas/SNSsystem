@@ -2,7 +2,9 @@ package app.ui.console;
 
 import app.controller.App;
 import app.controller.RegisterVaccinationCenterController;
+import app.domain.model.Company;
 import app.domain.model.MassVaccinationCenter;
+import app.domain.model.TypeVaccine;
 import app.ui.console.utils.Utils;
 import app.domain.shared.Validate;
 
@@ -39,7 +41,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
         String name, adress, emailAdress, websiteAdress, openingHoursString,closingHoursString, typeOfVaccine;
         int phoneNumber, faxNumber, slotDuration, maximumNumberOfVaccinesPerSlot;
         LocalTime openingHours,closingHours;
-
+        TypeVaccine typeVaccine=null;
         do {
             name = Utils.readLineFromConsole("Enter name: ");
             if (name.isBlank()) {
@@ -69,13 +71,16 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         } while (!Validate.validateEmail(emailAdress));
 
-        do {
-            typeOfVaccine = Utils.readLineFromConsole("Enter type of vaccine: ");
-            if (!Validate.validateTypeOfVaccine(typeOfVaccine)) {
-                System.out.println("Input a valid type of vaccine");
-            }
-        } while (!Validate.validateTypeOfVaccine(typeOfVaccine));
+        Company company=App.getInstance().getCompany();
 
+        if (company.getTypeVaccineList().isEmpty()) {
+            System.out.println("No vaccines available");
+        } else {
+
+            Utils.showTypeVaccinne(company.getTypeVaccineList(), "Select Vaccine: ");
+            typeVaccine = company.getTypeVaccineList().get(Utils.selectsIndex(company.getTypeVaccineList()));
+            System.out.println();
+        }
         do {
             faxNumber = Utils.readIntegerFromConsole("Enter fax number: ");
             if (!Validate.validatePhone(faxNumber)) {
@@ -120,7 +125,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
             }
         } while (!Validate.validateMaximumNumberOfVaccinesPerSlot(maximumNumberOfVaccinesPerSlot));
 
-        //success = ctlr.createVaccinationCenter(name, address, phoneNumber, emailAddress, faxNumber, websiteAddress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeOfVaccine);
+        success = ctlr.createVaccinationCenter(name, adress, phoneNumber, emailAdress, faxNumber, websiteAdress, openingHours,closingHours, slotDuration, maximumNumberOfVaccinesPerSlot, typeVaccine);
 
         if (success){
             ctlr.printVaccinationCenter();

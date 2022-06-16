@@ -10,10 +10,7 @@ public class BruteForce {
     int maxJ;
 
 
-    public void MaxSubArray(int[] numberUsersAtFacility) throws Exception {
-        if(numberUsersAtFacility.length == 0) {
-            throw new Exception("Invalid input, theres no appoiments for this day");
-        }
+    public void MaxSubArray(int[] numberUsersAtFacility){
         maxSum = numberUsersAtFacility[0];
         for(int i = 0; i < numberUsersAtFacility.length; i++)
         {

@@ -1,14 +1,12 @@
 package app.ui.gui.ui;
 
-import app.controller.CheckAndExportController;
+import app.ui.gui.controller.CheckAndExportController;
 import app.domain.model.FullyVaccinatedPerDay;
-import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;

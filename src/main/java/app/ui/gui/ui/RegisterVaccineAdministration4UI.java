@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;

@@ -53,8 +53,7 @@ public class Company {
             throw new IllegalArgumentException("Designation cannot be blank.");
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        demo();
-        //bootstrap();
+        bootstrap();
         dgsReportAuto();
     }
 

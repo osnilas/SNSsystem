@@ -1,7 +1,7 @@
 package tests;
 
 import app.controller.App;
-import app.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.domain.model.*;
 import app.domain.shared.Constants;
 import org.junit.jupiter.api.Test;

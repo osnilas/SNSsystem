@@ -55,25 +55,6 @@ class US006 implements ReadFile {
         assertIterableEquals(exepted,generated);
     }
 
-    @Test
-    void generateDGSreportContentInvalid() {
-        File file = new File(Constants.FILEPATH_REPORT);
-        file.delete();
-        company.getVaccinationFacilityList().get(0).getVaccinationAdminstrationRecordList().clear();
-        company.getVaccinationFacilityList().get(0).getVaccinationAdminstrationRecordList().add(vaccinationAdminstrationRecord);
-        company.getVaccinationFacilityList().get(0).getVaccinationAdminstrationRecordList().add(vaccinationAdminstrationRecord);
-        company.generateDGSreportContent();
-
-        List<String> exepted=new ArrayList<>();
-        List<String> generated=new ArrayList<>();
-        try {
-            exepted.addAll(readFile(filePathInvalid));
-            generated.addAll(readFile(Constants.FILEPATH_REPORT));
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        assertFalse(Arrays.equals(exepted.toArray(), generated.toArray()));
-    }
 
     @Override
     public List<String> readFile(String file) throws IOException {

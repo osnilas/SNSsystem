@@ -1,5 +1,6 @@
-package app.controller;
+package app.ui.gui.controller;
 
+import app.controller.App;
 import app.domain.model.Company;
 import app.domain.model.Coordinator;
 import app.domain.model.FullyVaccinatedPerDay;

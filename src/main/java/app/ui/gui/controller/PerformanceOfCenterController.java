@@ -1,6 +1,8 @@
-package app.controller;
+package app.ui.gui.controller;
 
 import algorithms.performance.BruteForce;
+import algorithms.performance.Sum;
+import app.controller.App;
 import app.domain.model.*;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
@@ -84,8 +86,20 @@ public class PerformanceOfCenterController {
     }
 
     private List<Integer>  performance() throws Exception {
+        int[] temp=numberUsersAtFacility.clone();
         BruteForce bruteForce = new BruteForce();
+        Sum sum = new Sum();
+        long start = System.nanoTime();
         bruteForce.MaxSubArray(numberUsersAtFacility);
+        long end = System.nanoTime();
+        System.out.println("Brute force time: " + (end - start)  + " nano seconds");
+
+        start=System.nanoTime();
+        sum.Max(numberUsersAtFacility);
+        end=System.nanoTime();
+        System.out.println("Sum time: " + (end - start) + " nano seconds");
+
+
         return bruteForce.getResults();
     }
 

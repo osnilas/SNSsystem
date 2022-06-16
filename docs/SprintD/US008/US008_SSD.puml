@@ -12,7 +12,7 @@ System--> nurse : requests to select a vaccination facility
 deactivate System
 nurse-> System : Selects one
 activate System
-loop If waiting list stil has a SNS user or the nurse asks to stop
+loop If waiting list stil has a SNS user unless the nurse asks to stop
 System--> nurse : requests to select a SNS user
 deactivate System
 nurse-> System : Selects one
@@ -20,7 +20,7 @@ activate System
 System--> nurse : shows SNS user information(name, age and adverse reactions .)
 deactivate System
 
-alt if it's SNS user first vaccine
+opt if it's SNS user first vaccine
     System--> nurse : requests to select a vaccine
        activate System
        deactivate System

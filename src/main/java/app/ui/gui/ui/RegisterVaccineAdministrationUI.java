@@ -1,19 +1,13 @@
 package app.ui.gui.ui;
 
-import app.controller.RecordVaccineAdministrationController;
-import app.controller.VaccineAdministrationController;
+import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.InputStream;
 import java.util.logging.Level;

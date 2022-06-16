@@ -1,7 +1,9 @@
-package app.controller;
+package app.ui.gui.controller;
 
 import algorithms.sort.BubleSort;
+import algorithms.sort.Merge;
 import algorithms.sort.QuickSort;
+import app.controller.App;
 import app.domain.model.*;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
@@ -13,11 +15,14 @@ public class ImportDataFromLegacySystemController {
 
 
     private Company company;
+    ArrayList<String> fileData = new ArrayList<>();
     private App app;
     private ReadDataFromLegacySystem read;
     private List<LegacySystemData> fileVaccinations;
 
-    private VaccinationFacility facility;
+    private long startTime;
+    private long endTime;
+
 
 
 
@@ -26,12 +31,6 @@ public class ImportDataFromLegacySystemController {
         this.app = App.getInstance();
     }
 
-
-
-    ArrayList<String> fileData = new ArrayList<>();
-
-   int n = fileData .size();
-
    public void readData(String filePath) throws Exception {
            this.read = new ReadDataFromLegacySystem(filePath, company.getVaccineList());
            this.fileVaccinations= read.copyDataFromLegacySystem();
@@ -39,28 +38,7 @@ public class ImportDataFromLegacySystemController {
 
    public void save(){
        company.addLegacySystemDataToStore(fileVaccinations);
-       //saveAdminstrationSNSuser();
-       //company.saveSNSusersListFile();
    }
-
-    private void saveAdminstrationSNSuser() {
-        List<SNSuser> snsUsers = company.getSNSuserList();
-        VaccineCard vaccineCard;
-        boolean found = false;
-        for(int i=0;i<fileVaccinations.size();i++){
-            found=false;
-            for (int j=0;j<snsUsers.size();j++){
-                if(snsUsers.get(j).getSNSnumber()==fileVaccinations.get(i).getSNSuserNumber()){
-                    found=true;
-                    vaccineCard=new VaccineCard(fileVaccinations.get(i).getVaccine(),fileVaccinations.get(i).getNurseAdministrationDateTime(),fileVaccinations.get(i).getDose());
-                    snsUsers.get(j).getVaccineCards().add(vaccineCard);
-                }
-            }
-            if(!found){
-                Utils.Warning("SNSuser not found","nul","nul").showAndWait();
-            }
-        }
-    }
 
     public List<String> getInfo(){
        List<String> info = new ArrayList<>();
@@ -101,10 +79,16 @@ public class ImportDataFromLegacySystemController {
        String sortAlgorithm = Utils.ReadProppeties("Import.Arrival.Sort");
        switch (sortAlgorithm) {
            case "Bubble":
+               startTime= System.nanoTime();
                BubleSort.sortByArrivalTime(fileVaccinations);
+                endTime= System.nanoTime();
+               System.out.println("BubbleSort arrival: "+(endTime-startTime)+" nanoseconds");
                break;
            case "Quick":
-               QuickSort.sortByArrivalTime(fileVaccinations, 0, fileVaccinations.size());
+                startTime= System.nanoTime();
+                QuickSort.quickSort(fileVaccinations,0,fileVaccinations.size()-1);
+                endTime= System.nanoTime();
+                System.out.println("QuickSort arrival: "+(endTime-startTime)+" nanoseconds");
                break;
            default:
        }
@@ -117,7 +101,7 @@ public class ImportDataFromLegacySystemController {
                BubleSort.sortByLeavingTime(fileVaccinations);
                break;
            case "Quick":
-               QuickSort.sortByLeavingTime(fileVaccinations, 0, fileVaccinations.size());
+               Merge.sort(fileVaccinations, 0, fileVaccinations.size()-1);
                break;
            default:
        }

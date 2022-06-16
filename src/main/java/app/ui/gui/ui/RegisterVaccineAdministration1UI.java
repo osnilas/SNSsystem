@@ -1,7 +1,6 @@
 package app.ui.gui.ui;
 
-import app.controller.RecordVaccineAdministrationController;
-import app.controller.VaccineAdministrationController;
+import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegisterVaccineAdministration1UI implements Initializable {

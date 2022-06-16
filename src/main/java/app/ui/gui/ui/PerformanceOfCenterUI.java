@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.controller.PerformanceOfCenterController;
+import app.ui.gui.controller.PerformanceOfCenterController;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -10,27 +10,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
-import java.util.stream.IntStream;
 
 
-import app.ui.console.utils.ReadFile;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.TextArea;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.*;
-import java.util.stream.IntStream;
-
-
-import static java.util.stream.Collectors.toList;
 
 public class PerformanceOfCenterUI implements Initializable {
 

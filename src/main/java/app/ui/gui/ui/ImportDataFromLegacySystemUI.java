@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.controller.ImportDataFromLegacySystemController;
+import app.ui.gui.controller.ImportDataFromLegacySystemController;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -68,7 +68,7 @@ public class ImportDataFromLegacySystemUI implements Initializable {
 
     public void savePressed(ActionEvent event) {
         ctrl.save();
-        Utils.Information("Data saved successfully", "Saved",null);
+        Utils.Information("Data saved successfully", "Saved",null).showAndWait();
         coordinatorUI.goBack();
     }
 
