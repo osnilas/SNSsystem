@@ -1,5 +1,6 @@
 package app.ui.gui.ui;
 
+import app.domain.model.WriteToFile;
 import app.ui.gui.controller.CheckAndExportController;
 import app.domain.model.FullyVaccinatedPerDay;
 import app.domain.shared.Constants;
@@ -42,7 +43,6 @@ public class CheckVaccinationStatisticsUI implements Initializable {
 
 
 
-
     public void setRoleUI(RoleUI roleUI) {
         this.roleUI = roleUI;
     }
@@ -58,18 +58,17 @@ public class CheckVaccinationStatisticsUI implements Initializable {
             listView.getItems().clear();
             Utils.Warning("Date Error", "Invalid Date!", "End date must be after Start date!").show();
 
-        } else if (fromDateTextField.getValue() == null|| toDateTextField.getValue() == null) {
+        } else if (fromDateTextField.getValue() == null || toDateTextField.getValue() == null) {
             Utils.Warning("Date Error", "Invalid Date!", "Date must be picked!").show();
 
-        } else if (ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()) == null) {
-            listView.getItems().clear();
-            Utils.Warning("Error", "Cannot show list", "List is empty!").show();
-
-        } else {
+        } else if (ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()).size() > 0) {
             clear();
-            listView.getItems().add("          Date              Number");
             listView.getItems().addAll(ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()));
             System.out.printf("getFullyVaccinatedListFromTo: %s\nlistView: %s\n", ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()), listView.getItems());
+
+        } else if (ctrl.getFullyVaccinatedListFromTo(fromDateTextField.getValue(), toDateTextField.getValue()).size() == 0) {
+            clear();
+            Utils.Warning("Error", "Cannot show list", "List is empty!").show();
         }
     }
 
@@ -81,7 +80,7 @@ public class CheckVaccinationStatisticsUI implements Initializable {
 
             if (exportFile != null) {
                 if (ctrl.save(exportFile)) {
-                    Utils.Information("Vaccination Management System", Constants.EXPORT_MESSAGE, "Data succeddfully exported!.").show();
+                    Utils.Information("Vaccination Management System", Constants.EXPORT_MESSAGE, "Data successfully exported!.").show();
                 } else {
                     Utils.Warning(Constants.APPLICATION_TITLE, Constants.EXPORT_MESSAGE, "There was a problem while exporting the data!").show();
                 }
@@ -91,8 +90,9 @@ public class CheckVaccinationStatisticsUI implements Initializable {
         }
     }
 
-    public void clear () {
+    public void clear() {
         listView.getItems().clear();
+        ctrl.clear();
         System.out.println("listView: " + listView.getItems());
     }
 

@@ -16,7 +16,7 @@ public class FileChooserVaccinationStatisticsUI {
     }
 
     private void associarFiltro(String descricao, String extensao) {
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter(descricao, extensao);
-        fileChooser.getExtensionFilters().add(filtro);
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(descricao, extensao);
+        fileChooser.getExtensionFilters().add(filter);
     }
 }
