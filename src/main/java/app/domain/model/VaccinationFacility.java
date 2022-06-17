@@ -1,6 +1,7 @@
 package app.domain.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -134,6 +135,18 @@ public abstract class VaccinationFacility implements Serializable {
         return fullyVaccinatedPerDayList;
     }
 
+    public void updateFullyVaccinatedPerDayList(){
+        boolean flag=true;
+        for(int i=0;i<fullyVaccinatedPerDayList.size();i++){
+            if(fullyVaccinatedPerDayList.get(i).checkIfSameDay(LocalDate.now())){
+                fullyVaccinatedPerDayList.get(i).updateTotalNumberOfFullyVaccinated();
+                flag=false;
+            }
+        }
+        if(flag){
+            fullyVaccinatedPerDayList.add(new FullyVaccinatedPerDay());
+        }
+    }
 
     @Override
     public boolean equals(Object o){
