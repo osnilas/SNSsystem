@@ -14,9 +14,9 @@ public class BubleSort {
         for (int i = 0; i < list.size() - 1; i++) {
 
             flag = false;
-
+            //list.get(j).getArrivalTime().isAfter(list.get(j + 1).getArrivalTime())
             for (int j = 0; j < list.size() - i - 1; j++) {
-                if (list.get(j).getArrivalTime().isAfter(list.get(j + 1).getArrivalTime())) {
+                if (list.get(j).getArrivalTime().compareTo(list.get(j + 1).getArrivalTime()) >0) {
                     Collections.swap(list, j, j + 1);
                     flag = true;
                 }
