@@ -2,33 +2,39 @@
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
 
-Class Company{
--List<VaccinationFacility> vaccinationFacilityList
--List<Vaccine> vaccineList
+package UI{
+    package GUI{
+    Class RegisterVaccineAdministrationUI{
+    -MainScene mainScene
+    -NurseUI nurseUI
+    -Stage popUpWindow
 
-
-+getVaccinationFacilityList()
-+getVaccinationFacilityFromList(index)
-+getVaccineList()
-+saveVaccinationFacilityListFile();
-+saveSNSusersListFile();
+    +getMainScene()
+    +getController()
+    +returnNurseUI()
+    +toVaccineAdministrationScene1()
+    +toVaccineAdministrationScene2()
+    +toVaccineAdministrationScene2FreshController()
+    +toVaccineAdministrationScene3()
+    +toVaccineAdministrationScene4()
+    +closePopUp()
+    -replacePopUp(fxml)
+    }
+    }
 }
 
+package core{
+    package controller{
+
 Class RecordVaccineAdministrationController{
--SNSuser snSuser
--VaccinationAppointment appointment
--VaccineCard vaccineCard
--VaccinationAdminstrationRecord adminstration
--VaccinationFacility facility
--Vaccine vaccine
--Company company
+
 - App app
 
 +clear()
 +createVaccinationAdminstration(int recoryTime,String lotNumber)
 +saveVaccinationAdminstration()
 +getVaccinationFacilities()
-+setVaccinationFacility(int index)
++setVaccinationFacility(index)
 +checkIfWaitingListEmpty()
 +getWaitingList()
 +getAppoimentInfo()
@@ -40,98 +46,23 @@ Class RecordVaccineAdministrationController{
 -createVaccineCard()
 -updateVaccineCard()
 +validateVaccineAdministration()
-+ sendSMS(int minutes)
++ sendSMS(minutes)
 -deleteAppoiment()
 -save()
 }
-
-
-Class RegisterVaccineAdministrationUI{
--MainScene mainScene
--NurseUI nurseUI
--RecordVaccineAdministrationController ctlr
--Stage popUpWindow
-
-+getMainScene()
-+getController()
-+returnNurseUI()
-+toVaccineAdministrationScene1()
-+toVaccineAdministrationScene2()
-+toVaccineAdministrationScene2FreshController()
-+toVaccineAdministrationScene3()
-+toVaccineAdministrationScene4()
-+closePopUp()
--replacePopUp(String fxml)
 }
+package domain{
+Class Company{
+-List<VaccinationFacility> vaccinationFacilityList
+-List<Vaccine> vaccineList
 
-Class RegisterVaccineAdministration1UI{
-+ComboBox<String> cmbFacilty
--boolean flag
-+Button btnNext
-+Button btnCancel;
--RegisterVaccineAdministrationUI registerVaccineAdministrationUI
--RecordVaccineAdministrationController vaccineAdministrationController
 
-+initialize(URL url, ResourceBundle resourceBundle)
-+initComboBox()
-+cmbFacilitySelected(ActionEvent event)
-+nextPressed(ActionEvent event)
-+cancelPressed(ActionEvent event)
++getVaccinationFacilityList()
++getVaccinationFacilityFromList(index)
++getVaccineListByVaccineType(typeVaccine)
++saveVaccinationFacilityListFile();
++saveSNSusersListFile();
 }
-
-Class RegisterVaccineAdministration2UI{
-+TextField txtSNSname
-+TextField txtSNSage
-+TextArea txtReactions
-+TextField txtVaccineName
-+TextField txtVaccineDose
-+ComboBox CMBSNSuser
-+Button btnVaccine
-+Button btnVaccineAdmin
--RegisterVaccineAdministrationUI registerVaccineAdministrationUI
--RecordVaccineAdministrationController vaccineAdministrationController
-+Button btnCancel
-
-+setData()
-+initialize(URL url, ResourceBundle resourceBundle)
-+initComboBox()
-+cancelPressed(ActionEvent event)
-+SNSuserSelected(ActionEvent event)
-+setBtnVaccine()
-+vaccinePressed(ActionEvent event)
-}
-
-Class RegisterVaccineAdministration3UI{
-+ComboBox<String> cmbVaccine
-+Button btnNext
--RegisterVaccineAdministrationUI registerVaccineAdministrationUI
--RecordVaccineAdministrationController controller
-
-+initialize(URL url, ResourceBundle resourceBundle)
-+intComboBox()
-+vaccineSelected(ActionEvent event)
-+nextPressed(ActionEvent event)
-}
-
-Class RegisterVaccineAdministration4UI{
-+TextField txtLot1
-+TextField txtLot2
-+TextField txtRecovery
-+Button btnDone
--int flag
--RegisterVaccineAdministrationUI registerVaccineAdministrationUI
--RecordVaccineAdministrationController vaccineAdministrationController
-
-+initialize(URL url, ResourceBundle resourceBundle)
-+setRegisterVaccineAdministrationUI(RegisterVaccineAdministrationUI registerVaccineAdministrationUI)
-+lot1Written(KeyEvent keyEvent)
-+lot2Written(KeyEvent keyEvent)
--validateNumber(String s)
-+recoveryWritten(KeyEvent keyEvent)
--validateData()
-+donePressed(ActionEvent event)
-}
-
 
 Class SNSuser{
 -String name
@@ -142,14 +73,13 @@ Class SNSuser{
 -String sex
 -LocalDate birth
 -int SNSnumber
--List<VaccineCard> vaccineCards
 -String password
 
 +getVaccineCards()
 +getName()
 +getAge()
 +getSNSnumber()
-+addVaccinationRecord(VaccineCard record)
++updateVaccinationRecord(vaccine,administraitonTime)
 }
 
 Class VaccinationFacility{
@@ -163,33 +93,23 @@ Class VaccinationFacility{
 -LocalTime closingHours
 -int slotDuration
 -int maximumNumberOfVaccinesPerSlot
--List<VaccinationAdminstrationRecord> vaccinationAdminstrationRecordList
 -List<Arrival> waitingList
 
 +getWaitingList()
 +getVaccinationScheduleList()
-+addVaccinationAdminstrationRecord(VaccinationAdminstrationRecord record)
++addVaccinationAdminstrationRecord(record)
 }
 
-Class VaccinationCenter{
--List<TypeVaccine> TypeVaccineList
-}
-
-Class HealthCenter{
--TypeVaccine typeOfVaccine
-}
 
 Class VaccineCard{
--Vaccine vaccine
 -LocalDateTime date
 -int numberDosesTaken
 
-+checkTypeVaccine(TypeVaccine typeVaccine)
++checkTypeVaccine(typeVaccine)
 }
 
 Class VaccinationAdministrationRecord{
 -int SNSuserNumber
--Vaccine vaccine
 -String lotNumber
 -LocalDateTime ScheduledDateTime
 -LocalDateTime NurseAdministrationDateTime
@@ -197,12 +117,11 @@ Class VaccinationAdministrationRecord{
 }
 
 Class Vaccine{
--VaccineAdministration vaccineAdministration
--TypeVaccine typeVaccine
+
 -String name
 
 +getName()
-+getAgeGroup(int age)
++getAgeGroup(age)
 +getVaccineAdministration()
 }
 
@@ -222,34 +141,39 @@ Class TypeVaccine{
 -String technology;
 }
 
+Class Arrival{
+-SNSuser snSuser
+-LocalDateTime timeOfArrival
+
++getSnSuser()
+}
+
 Class SendSMSTask{
 -setMessage();
 }
-
+}
+}
 Interface TimerTask{
 +run()
 }
 
-RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration1UI
-RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration2UI
-RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration3UI
-RegisterVaccineAdministrationUI ..> RegisterVaccineAdministration4UI
+
 RegisterVaccineAdministrationUI..> RecordVaccineAdministrationController
-RecordVaccineAdministrationController..>Company
-RecordVaccineAdministrationController..>VaccinationFacility
-RecordVaccineAdministrationController..>SNSuser
-RecordVaccineAdministrationController..>VaccinationAdministrationRecord
-RecordVaccineAdministrationController..>Vaccine
-RecordVaccineAdministrationController..>SendSMSTask
-SendSMSTask..|>TimerTask
+
+RecordVaccineAdministrationController ..>Company
+RecordVaccineAdministrationController ..>VaccinationFacility
+RecordVaccineAdministrationController ..>SNSuser
+RecordVaccineAdministrationController ..>VaccinationAdministrationRecord
+RecordVaccineAdministrationController ..>Vaccine
+RecordVaccineAdministrationController ..>SendSMSTask
+
 Company"1" -->"*"SNSuser:"owns"
 SNSuser"1" -->"*"VaccineCard:"has"
 VaccineCard"*"-->"1"Vaccine:"has"
 Vaccine"1" -->"*"VaccineAdministration:"has"
-VaccinationFacility<|--HealthCenter
-VaccinationFacility<|--VaccinationCenter
-HealthCenter"*"*-->"1"TypeVaccine
-VaccinationCenter"1"*-->"*"TypeVaccine
-Vaccine"1"-->"*"TypeVaccine
+VaccinationFacility"1"-->"*"VaccinationAdministrationRecord:"has"
+VaccinationFacility"1"-->"*"Arrival:"has"
+Vaccine"1"-->"*"TypeVaccine:"has"
 
+SendSMSTask..|>TimerTask
 @enduml

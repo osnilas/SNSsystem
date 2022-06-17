@@ -3,6 +3,7 @@ package app.ui.gui.controller;
 import app.controller.App;
 import app.domain.model.*;
 import Timer.SendSMSTask;
+import app.ui.console.utils.Utils;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
@@ -42,11 +43,11 @@ public class RecordVaccineAdministrationController {
 
     /**
      * @author Jo�o Veiga
-     * @Description This method creates a Vaccination Administration.
-     * @param recoryTime
+     * @Description This method creates a Vaccination Administration
      * @param lotNumber
      */
-    public void createVaccinationAdminstration(int recoryTime,String lotNumber) {
+    public void createVaccinationAdminstration(String lotNumber) {
+        int recoryTime= Integer.parseInt(Utils.ReadProppeties("Recovery.time"));
         if (recoryTime != 0 && !lotNumber.isBlank()) {
             if (snSuser.checkIfTookVaccine(vaccine)) {
                 this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, snSuser.getVaccinationRecord(vaccine).getNumberDosesTaken() + 1, lotNumber, LocalDateTime.now());
@@ -58,30 +59,12 @@ public class RecordVaccineAdministrationController {
         }
     }
 
-
-    /**
-     * @author Jo�o Veiga
-     * @Description This method creates a Vaccination Administration(To be used on TESTS).
-     * @param recoryTime
-     * @param lotNumber
-     * @param snSuser
-     * @param facility
-     */
-    public void createVaccinationAdminstrationTester(SNSuser snSuser,VaccinationFacility facility,int recoryTime,String lotNumber,Arrival arrival) throws Exception {
-        this.snSuser=snSuser;
-        this.facility=facility;
-        getUserVaccineCard();
-        getVaccinationAppointment();
-        //this.adminstration = new VaccinationAdminstrationRecord(snSuser.getSNSnumber(), vaccine, lotNumber, arrival.getTimeOfArrival(),appointment.getAppointmentTime(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(recoryTime));
-    }
-
-
     /**
      * @author Jo�o Veiga
      * @Description This method saves a Vaccination Administration on the vaccination facilty selected.
      */
     public boolean saveVaccinationAdminstration(){
-        if(validateVaccineAdministration()) {
+        if(validateVaccineAdministrationCreation()) {
             this.facility.addVaccinationAdminstrationRecord(adminstration);
             updateVaccineCard();
             deleteAppoiment();
@@ -135,7 +118,7 @@ public class RecordVaccineAdministrationController {
         List<String> waitingList=new ArrayList<>();
         for(int i=0;i<facility.getWaitingList().size();i++){
             StringBuilder sb=new StringBuilder();
-            sb.append((i+1)+"-"+facility.getWaitingList().get(i).getSnSuser().getName());
+            sb.append((i+1)+"-"+facility.getWaitingList().get(i).getSnSuser().getName()+", SNS number: "+facility.getWaitingList().get(i).getSnSuser().getSNSnumber());
             waitingList.add(sb.toString());
         }
         return waitingList;
@@ -254,9 +237,9 @@ public class RecordVaccineAdministrationController {
      */
     private void updateVaccineCard(){
         if(vaccineCard==null){
-            snSuser.addVaccinationRecord(vaccine,LocalDateTime.now());
+            snSuser.updateVaccinationRecord(vaccine,LocalDateTime.now());
         }else {
-            vaccineCard.updateNumberDosesTaken();
+            vaccineCard.updateNumberDosesTaken();//US15
             if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
                 company.updateTotalNumberOfFullyVaccinated(facility);
             }
@@ -269,18 +252,27 @@ public class RecordVaccineAdministrationController {
      * @return boolean of if the attributes are valid or not.
      */
     public boolean validateVaccineAdministration() {
+        return snSuser!=null && facility!=null && appointment!=null && vaccine!=null;
+    }
+
+    /**
+     * @author Jo�o Veiga
+     * @Description This method validates the vaccine administration attributes.
+     * @return boolean of if the attributes are valid or not.
+     */
+    public boolean validateVaccineAdministrationCreation() {
         return snSuser!=null && facility!=null && appointment!=null && vaccine!=null && adminstration!=null;
     }
 
     /**
      * @author Jo�o Veiga
      * @Description This method creates a timer for a SMS to be sent in M minutes.
-     * @param minutes
      * @throws FileNotFoundException If the SMS file doesn't exist.
      */
-    public void sendSMS(int minutes) throws FileNotFoundException {
+    public void sendSMS() throws FileNotFoundException {
         SendSMSTask sms=new SendSMSTask();
-        sms.setMessage("You can now leave the vaccination facility.\nIf any side effects are detected, contact SNS24");
+        sms.setMessage(Utils.ReadProppeties("SMS.Text"));
+        int minutes= Integer.parseInt(Utils.ReadProppeties("Recovery.time"));
         long time=(long)minutes*60000;
         Timer timer=new Timer();
         timer.schedule(sms,time);

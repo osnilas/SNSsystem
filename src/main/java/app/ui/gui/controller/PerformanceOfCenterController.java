@@ -48,7 +48,7 @@ public class PerformanceOfCenterController {
             temp = temp.plusMinutes(timeIntervals);
         } while (end.isAfter(temp));
         timeSlots.add(end);
-        numberUsersAtFacility = new int[Constants.TOTAL_MINUTES/timeIntervals];
+        numberUsersAtFacility = new int[timeSlots.size()];
     }
 
 

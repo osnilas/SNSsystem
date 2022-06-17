@@ -1,5 +1,6 @@
 package app.ui.gui.ui;
 
+import app.domain.shared.Constants;
 import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
@@ -14,7 +15,7 @@ public class RegisterVaccineAdministration4UI implements Initializable {
 
     public TextField txtLot1;
     public TextField txtLot2;
-    public TextField txtRecovery;
+
     public Button btnDone;
     private int flag=0;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
@@ -51,21 +52,15 @@ public class RegisterVaccineAdministration4UI implements Initializable {
     }
     private boolean validateData(){
         boolean flag2=true;
-        if(txtLot1.getText().length()!=5){
+        if(txtLot1.getText().length()!= Constants.LOT_NUMBER_LENGTH_PART1){
             System.out.println("bransh");
         }
-        if (txtLot1.getText().length() != 5 || txtLot2.getText().length() != 2 || !validateNumber(txtLot2.getText())) {
+        if (txtLot1.getText().length() !=Constants.LOT_NUMBER_LENGTH_PART1  || txtLot2.getText().length() != Constants.LOT_NUMBER_LENGTH_PART2|| !validateNumber(txtLot2.getText())) {
             Utils.Warning("Warning","Lot number not valid", "Lot number must have five alphanumeric characters an Hyphen and two numerical characters ").showAndWait();
             txtLot1.clear();
             txtLot1.requestFocus();
             txtLot2.clear();
             txtLot2.requestFocus();
-            flag2=false;
-        }
-        if ( !validateNumber(txtRecovery.getText())) {
-            Utils.Warning("Warning","Recovery number not valid", "Recovery number must be a number").showAndWait();
-            txtRecovery.clear();
-            txtRecovery.requestFocus();
             flag2=false;
         }
         return flag2;
@@ -79,10 +74,10 @@ public class RegisterVaccineAdministration4UI implements Initializable {
             if(validateData()) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(txtLot1.getText() + "-" + txtLot2.getText());
-                vaccineAdministrationController.createVaccinationAdminstration(Integer.parseInt(txtRecovery.getText()), sb.toString());
+                vaccineAdministrationController.createVaccinationAdminstration( sb.toString());
                 vaccineAdministrationController.saveVaccinationAdminstration();
                 try {
-                    vaccineAdministrationController.sendSMS(Integer.parseInt(txtRecovery.getText()));
+                    vaccineAdministrationController.sendSMS();
                 }catch (Exception e) {
                     Utils.ExceptionWarning(e);
                     registerVaccineAdministrationUI.returnNurseUI();

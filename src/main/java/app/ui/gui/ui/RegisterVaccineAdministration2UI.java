@@ -2,6 +2,7 @@ package app.ui.gui.ui;
 
 import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.ui.console.utils.Utils;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,8 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
     private RecordVaccineAdministrationController vaccineAdministrationController;
     public Button btnCancel;
+
+    private boolean flag=false;
 
     public void setRegisterVaccineAdministrationUI(RegisterVaccineAdministrationUI registerVaccineAdministrationUI) {
         this.registerVaccineAdministrationUI = registerVaccineAdministrationUI;
@@ -81,7 +84,7 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     }
 
     public void vaccinePressed(ActionEvent event) {
-        if(vaccineAdministrationController.getUserVaccineCard()){
+        if(vaccineAdministrationController.getUserVaccineCard() || flag){
             List<StringBuilder> vaccineInfo =vaccineAdministrationController.getVaccineInfo();
             txtVaccineName.setText(vaccineInfo.get(0).toString());
             txtVaccineDose.setText(vaccineInfo.get(1).toString());

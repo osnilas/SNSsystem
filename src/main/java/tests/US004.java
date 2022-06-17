@@ -21,9 +21,10 @@ class US004 {
         Arrival arrival = new Arrival(snSuser);
         Company company = App.getInstance().getCompany();
         //Act
+        int expected =company.getWaitingList(0).size();
         company.addSnsUserToWaitingList(0, arrival);
         int test = company.getWaitingList(0).size();
-        int expected = 1;
+        expected = expected+1;
         //Assert
         assertEquals(test,expected);
     }

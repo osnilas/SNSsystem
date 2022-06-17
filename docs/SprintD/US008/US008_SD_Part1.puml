@@ -1,0 +1,81 @@
+@startuml
+autonumber
+
+actor "Nurse" as nurse
+
+participant ":RegisterVaccineAdministrationUI" as UI
+participant ":RegisterVaccineAdministrationController" as  CTRL
+participant "Company" as COMP
+participant "facility:VaccinationFacility" as facility
+participant "snsUser:SNS user" as user
+participant "arrival:Arrival" as arrival
+participant "appointment:VaccinationAppointment" as appointment
+participant ":Vaccine" as vaccine
+participant ":VaccineAdministration" as administration
+participant ":VaccineCard" as card
+participant "adminstration\n:VaccinationAdministrationRecord" as record
+participant ":TypeVaccine" as type
+participant ":SendSMSTask" as task
+participant "timer:Timer" as timer
+hide footbox
+
+activate nurse
+nurse-> UI : Ask to record a vaccine administration
+activate UI
+'get vaccination facility list
+UI->CTRL: getVaccinationFacilities()
+activate CTRL
+CTRL->COMP: getVaccinationFacilityList()
+activate COMP
+deactivate COMP
+deactivate CTRL
+UI--> nurse : requests to select a vaccination facility
+deactivate UI
+'set vaccination facility
+nurse-> UI : Selects one
+activate UI
+CTRL->UI: facility=setVaccinationFacility(index)
+activate CTRL
+CTRL->COMP: getVaccinationFacilityFromList(index)
+activate COMP
+deactivate COMP
+deactivate CTRL
+loop If waiting list stil has a SNS user unless the nurse asks to stop
+UI->CTRL:getWaitingList()
+activate CTRL
+CTRL->facility:getWaitingList()
+activate facility
+deactivate facility
+deactivate CTRL
+UI--> nurse : requests to select a SNS user
+deactivate UI
+nurse-> UI : Selects one
+activate UI
+UI->CTRL: getUserFromWaitingList(index)
+activate CTRL
+CTRL->facility:snsUser=getUserFromWaitingList(index)
+activate facility
+facility->arrival:getSNSuser()
+activate arrival
+deactivate arrival
+deactivate facility
+CTRL->CTRL:getVaccinationAppointment
+opt if SNS user has a scheduled vaccination appointment
+    CTRL->facility:appointment=getVaccinationScheduleList()
+    activate facility
+    deactivate facility
+
+deactivate CTRL
+UI->CTRL: getAppoimentInfo()
+activate CTRL
+CTRL->user:getName()
+activate user
+deactivate user
+CTRL->user:getAge()
+activate user
+deactivate user
+deactivate CTRL
+UI--> nurse : shows SNS user information(name, age and adverse reactions .)
+note across: next steps omitted, see next diagram(US008_SD_Part2)
+
+@enduml

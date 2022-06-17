@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+    participant ":RegisterVaccineAdministrationController" as  CTRL
+    participant "adminstration\n:VaccinationAdministrationRecord" as record
+    participant ":Vaccine" as vaccine
+
+
+autonumber
+->CTRL:createVaccinationAdminstration(recoryTime,lotNumber)
+activate CTRL
+create record
+CTRL->record:VaccinationAdminstrationRecord(SNSuserNumber, vaccine, dose, lotNumber, NurseAdministrationDateTime)
+
+
+@enduml

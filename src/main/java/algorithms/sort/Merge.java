@@ -125,7 +125,7 @@ public class Merge {
 
             // Merge the sorted halves
             String sortBy = Utils.ReadProppeties("Import.View");
-            switch (sortBy) {
+           /** switch (sortBy) {
                 case "Arrival":
                     mergeByArrival(list, left, middle, right);
                     break;
@@ -134,6 +134,8 @@ public class Merge {
                     break;
                 default:
             }
+            */
+            mergeByArrival(list, left, middle, right);
         }
     }
 

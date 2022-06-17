@@ -26,15 +26,15 @@ object VaccinationFacility{
 -maximum number of vaccines per slot
 }
 object HealthCareCenter{
--**Several TypeVaccine**
+-Several TypeVaccine
 }
 object MassVaccinationCenter{
--**TypeVaccine**
+-TypeVaccine
 }
 object TypeVaccine{
--**disease**
--**code**
--**description**
+-disease
+-code
+-description
 }
 
 object Vaccine

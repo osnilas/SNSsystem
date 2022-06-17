@@ -1,0 +1,82 @@
+@startuml
+autonumber
+
+actor "Nurse" as nurse
+
+participant ":RegisterVaccineAdministrationUI" as UI
+participant ":RegisterVaccineAdministrationController" as  CTRL
+participant "Company" as COMP
+participant "facility:VaccinationFacility" as facility
+participant "snsUser:SNS user" as user
+participant "arrival:Arrival" as arrival
+participant "appointment:VaccinationAppointment" as appointment
+participant ":Vaccine" as vaccine
+participant ":VaccineAdministration" as administration
+participant ":VaccineCard" as card
+participant "adminstration\n:VaccinationAdministrationRecord" as record
+participant ":TypeVaccine" as type
+participant ":SendSMSTask" as task
+participant "timer:Timer" as timer
+
+note across: previous steps omitted, see previous diagram(US008_SD_Part1)
+activate nurse
+loop If waiting list stil has a SNS user unless the nurse asks to stop
+
+opt if SNS user has a scheduled vaccination appointment
+
+UI--> nurse : shows SNS user information(name, age and adverse reactions .)
+
+
+opt if it's SNS user first administration of this vaccine
+    UI--> nurse : requests to select a vaccine
+    UI->CTRL: getVaccineList()
+    activate CTRL
+    CTRL->appointment:getTypeVaccine()
+    activate appointment
+    deactivate appointment
+    CTRL->COMP:getVaccineListByVaccineType(TypeVaccine)
+    activate COMP
+    deactivate COMP
+    deactivate CTRL
+
+    nurse-> UI : Selects one
+    UI->CTRL: setVaccine(index)
+    activate CTRL
+        CTRL->appointment:getTypeVaccine()
+        activate appointment
+        deactivate appointment
+        CTRL->COMP:vaccine=getVaccineListByVaccineType(TypeVaccine).get(index)
+        activate COMP
+        deactivate COMP
+        deactivate CTRL
+    end
+UI->CTRL: getVaccineInfo()
+activate CTRL
+deactivate CTRL
+ref over CTRL: US008_GetVaccineInfo\n(Controller gets  a string contationg the vaccine information)
+UI--> nurse : shows vaccine information(Name and dosage) and requests data(Lot number)
+deactivate UI
+nurse-> UI : Types requested data
+activate UI
+UI->UI:validateData()
+activate UI
+deactivate UI
+UI->CTRL: createVaccinationAdminstration(lotNumber)
+activate CTRL
+ref over CTRL: US008_CreateRecord\n(Controller creates a VaccinationAdministrationRecord)
+deactivate CTRL
+UI->CTRL: saveVaccinationAdminstration()
+activate CTRL
+ref over CTRL: US008_SaveAdministration\n(Controller saves the VaccinationAdministrationRecord in the vaccination facility.\n May or may not create a vaccine card too)
+deactivate CTRL
+UI->CTRL: sendSMS(minutes)
+activate CTRL
+ref over CTRL: US008_CreateAndSendSMS\n(Controller creates a timer to send a SMS)
+deactivate CTRL
+end
+UI--> nurse : Informs operation success
+
+deactivate UI
+
+end
+@enduml

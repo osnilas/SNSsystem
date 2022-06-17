@@ -18,18 +18,11 @@ deactivate System
 nurse-> System : Selects one
 activate System
 System--> nurse : shows SNS user information(name, age and adverse reactions .)
-deactivate System
-
 opt if it's SNS user first vaccine
     System--> nurse : requests to select a vaccine
-       activate System
-       deactivate System
-
     nurse-> System : Selects one
-    activate System
     end
-
-System--> nurse : shows vaccine information(Name and dosage) and requests data(Lot number and recovery period)
+System--> nurse : shows vaccine information(Name and dosage) and requests data(Lot number)
 deactivate System
 nurse-> System : Types requested data
 activate System

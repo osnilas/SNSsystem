@@ -1,0 +1,28 @@
+@startuml
+
+participant ":RegisterVaccineAdministrationController" as  CTRL
+participant "snsUser:SNS user" as user
+participant ":Vaccine" as vaccine
+participant ":VaccineAdministration" as administration
+
+
+activate CTRL
+->CTRL:getVaccineInfo()
+CTRL->user:getAge()
+activate user
+deactivate user
+CTRL->vaccine:getAgeGroup()
+activate vaccine
+deactivate vaccine
+CTRL->vaccine:getName()
+activate vaccine
+deactivate vaccine
+CTRL->vaccine:getVaccineAdministration()
+activate vaccine
+vaccine->administration:getDosage()
+activate administration
+deactivate administration
+deactivate vaccine
+deactivate CTRL
+
+@enduml

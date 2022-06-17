@@ -48,7 +48,7 @@ class US014 {
     @Test
     void SNSuserValid(){
         MapperSNSuser mapper=new MapperSNSuser();
-        SNSuser user=new SNSuser("Carlos",Constants.SexListFull[0],Constants.BIRTH_TESTER,"Rua","carlos@gmail.com",91608799,22207756,15789996,"password");
+        SNSuser user=new SNSuser("Carlos",Constants.SexListFull[0],Constants.BIRTH_TESTER,"Rua","carlos.tester@gmail.com",91508799,22206756,15489996,"password");
         dtoSNSuser dto=mapper.toDTO(user);
         AddSNSfromCSVController ctlr=new AddSNSfromCSVController();
         boolean test= ctlr.saveSNSuser(dto);

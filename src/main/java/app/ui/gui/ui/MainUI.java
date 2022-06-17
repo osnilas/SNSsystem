@@ -1,5 +1,6 @@
 package app.ui.gui.ui;
 
+import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

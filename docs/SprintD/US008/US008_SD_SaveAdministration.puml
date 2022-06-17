@@ -1,0 +1,56 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+participant ":RegisterVaccineAdministrationController" as  CTRL
+participant "Company" as COMP
+participant "facility:VaccinationFacility" as facility
+participant "snsUser:SNS user" as user
+participant "arrival:Arrival" as arrival
+participant "appointment:VaccinationAppointment" as appointment
+participant ":Vaccine" as vaccine
+participant ":VaccineAdministration" as administration
+participant "card:VaccineCard" as card
+participant "adminstration\n:VaccinationAdministrationRecord" as record
+participant ":TypeVaccine" as type
+
+autonumber
+
+->CTRL:saveVaccinationAdminstration()
+activate CTRL
+CTRL->CTRL:validateVaccineAdministration()
+activate CTRL
+deactivate CTRL
+opt if  vaccination appointment is valid
+
+CTRL->facility:addVaccinationAdminstrationRecord(record)
+activate facility
+deactivate facility
+CTRL->CTRL:updateVaccineCard()
+alt if it's SNS user first administration of this vaccine
+activate CTRL
+CTRL->user:updateVaccinationRecord(vaccine,  administraitonTime)
+activate user
+create card
+user->card: card=createVaccineCard(vaccine,  administrationTime,numberDose)
+deactivate user
+else if it's not SNS user first administration of this vaccine
+CTRL->user:updateVaccinationRecord(vaccine,  administraitonTime)
+activate user
+user->card: updateNumberDosesTaken();
+activate card
+deactivate card
+deactivate user
+deactivate CTRL
+end
+CTRL->CTRL:deleteAppoiment()
+activate CTRL
+CTRL->facility:getVaccinationScheduleList().remove(appointment)
+activate facility
+deactivate facility
+CTRL->facility:  getWaitingList().remove(arrival)
+activate facility
+deactivate facility
+deactivate CTRL
+end
+@enduml

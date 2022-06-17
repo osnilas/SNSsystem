@@ -40,6 +40,9 @@ public class Constants {
     //Password Length
     public static final int PWD_LENGTH =7;
 
+    public static final int LOT_NUMBER_LENGTH_PART1 =5;
+    public static final int LOT_NUMBER_LENGTH_PART2 =2;
+
     public static final List<String> YES_OR_NO = new ArrayList<>(List.of("Yes", "No"));
 
     //Date

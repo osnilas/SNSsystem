@@ -86,7 +86,7 @@ public class ImportDataFromLegacySystemController {
                break;
            case "Quick":
                 startTime= System.nanoTime();
-                QuickSort.quickSort(fileVaccinations,0,fileVaccinations.size()-1);
+                Merge.sort(fileVaccinations,0,fileVaccinations.size()-1);
                 endTime= System.nanoTime();
                 System.out.println("QuickSort arrival: "+(endTime-startTime)+" nanoseconds");
                break;

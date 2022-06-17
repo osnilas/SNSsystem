@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant ":RegisterVaccineAdministrationController" as  CTRL
+participant "sms:SendSMSTask" as task
+participant "timer:Timer" as timer
+
+autonumber
+
+->CTRL:sendSMS(minutes)
+activate CTRL
+create task
+CTRL->task:sms=new SendSMSTask()
+CTRL->task:setMessage(message)
+activate task
+deactivate task
+create timer
+CTRL->timer:new Timer()
+CTRL->timer:schedule(sms,time);
+activate timer
+deactivate timer
+deactivate CTRL
+note across:"After the expecified time passed, the message will be sent"
+timer->task:run()
+activate task
+activate timer
+deactivate timer
+deactivate task
+
+
+
+@enduml

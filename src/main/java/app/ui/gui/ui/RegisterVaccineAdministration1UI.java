@@ -45,11 +45,13 @@ public class RegisterVaccineAdministration1UI implements Initializable {
     public void nextPressed(ActionEvent event)  {
 
         if(this.flag){
-            this.registerVaccineAdministrationUI.getController().setVaccinationFacility(this.cmbFacilty.getSelectionModel().getSelectedIndex());
+            vaccineAdministrationController.setVaccinationFacility(this.cmbFacilty.getSelectionModel().getSelectedIndex());
             try{
-               if(vaccineAdministrationController.checkIfWaitingListEmpty()){
+               if(vaccineAdministrationController.getWaitingList().size()!=0){
                    this.registerVaccineAdministrationUI.toVaccineAdministrationScene2();
-               };
+               }else {
+               throw new Exception("There are no appointments for this facilty");
+               }
             }catch (Exception e){
                 Utils.ExceptionWarning(e);
                 registerVaccineAdministrationUI.returnNurseUI();

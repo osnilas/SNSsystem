@@ -39,7 +39,7 @@ public class US008 {
 
     void prep() {
         Company company = App.getInstance().getCompany();
-        SNSuserWithVaccine.addVaccinationRecord(vaccineCard.getVaccine(),vaccineCard.getDate());
+        SNSuserWithVaccine.updateVaccinationRecord(vaccineCard.getVaccine(),vaccineCard.getDate());
         company.getSNSuserList().addAll(Arrays.asList(SNSuserNoVaccine,SNSuserWithVaccine));
         company.getVaccinationFacilityList().get(0).addSchedule(SNSuserNoVaccineAppoiment);
         company.getVaccinationFacilityList().get(0).addSchedule(SNSuserWithVaccineAppoiment);
@@ -124,7 +124,7 @@ public class US008 {
         try {
             controller.getUserFromWaitingList(indexListNoVaccine);
             controller.setVaccine(0);
-            controller.createVaccinationAdminstration(5,"US256-65");
+            controller.createVaccinationAdminstration("US256-65");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -138,32 +138,20 @@ public class US008 {
         try {
             controller.getUserFromWaitingList(indexListNoVaccine);
             controller.setVaccine(0);
-            controller.createVaccinationAdminstration(5,null);
+            controller.createVaccinationAdminstration("");
         } catch (Exception e) {
         }
         assertFalse(controller.saveVaccinationAdminstration());
         clean();
     }
 
-    @Test
-    void InvalidAdministrationNoTime(){
-        prep();
-        try {
-            controller.getUserFromWaitingList(indexListNoVaccine);
-            controller.setVaccine(0);
-            controller.createVaccinationAdminstration(0,"US256-65");
-        } catch (Exception e) {
-        }
-        assertFalse(controller.saveVaccinationAdminstration());
-        clean();
-    }
 
     @Test
     void InvalidAdministrationNoVaccine(){
         prep();
         try {
             controller.getUserFromWaitingList(indexListNoVaccine);
-            controller.createVaccinationAdminstration(5,"US256-65");
+            controller.createVaccinationAdminstration("US256-65");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
