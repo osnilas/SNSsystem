@@ -1,10 +1,7 @@
 package app.ui.gui.controller;
 
 import app.controller.App;
-import app.domain.model.Company;
-import app.domain.model.Coordinator;
-import app.domain.model.FullyVaccinatedPerDay;
-import app.domain.model.VaccinationFacility;
+import app.domain.model.*;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -19,7 +16,7 @@ public class CheckAndExportController {
     private List<String> fullyVaccinatedPerDayListFromToString;
     private List<FullyVaccinatedPerDay> fullyVaccinatedPerDayList = new ArrayList<>();
 
-    public List<String> getFullyVaccinatedListFromTo (LocalDate fromDate, LocalDate toDate) {
+    public List<String> getFullyVaccinatedListFromTo(LocalDate fromDate, LocalDate toDate) {
         setFacility();
         fullyVaccinatedPerDayList = facility.getFullyVaccinatedPerDayList();
         for (int i = 0; i < fullyVaccinatedPerDayList.size(); i++) {
@@ -30,15 +27,15 @@ public class CheckAndExportController {
         return getFullyVaccinatedPerDayListFromToString();
     }
 
-    public List<String> getFullyVaccinatedPerDayListFromToString () {
+    public List<String> getFullyVaccinatedPerDayListFromToString() {
         fullyVaccinatedPerDayListFromToString = new ArrayList<>();
-        for (int i = 0 ; i < fullyVaccinatedPerDayList.size() ; i++) {
-            fullyVaccinatedPerDayListFromToString.add(fullyVaccinatedPerDayList.get(i).toString());
+        for (int i = 0; i < fullyVaccinatedPerDayListFromTo.size(); i++) {
+            fullyVaccinatedPerDayListFromToString.add(fullyVaccinatedPerDayListFromTo.get(i).toString());
         }
         return fullyVaccinatedPerDayListFromToString;
     }
 
-    public LocalDate getFullyVaccinatedDay (int i) {
+    public LocalDate getFullyVaccinatedDay(int i) {
         return fullyVaccinatedPerDayList.get(i).getDay();
     }
 
@@ -53,6 +50,18 @@ public class CheckAndExportController {
     }
 
     public boolean save(File exportFile) {
-        return new FullyVaccinatedPerDay().save(exportFile, fullyVaccinatedPerDayListFromTo);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Date;Fully Vaccinated People\n");
+        for (int i = 0; i < fullyVaccinatedPerDayListFromTo.size() / 2; i++) {
+            sb.append(fullyVaccinatedPerDayListFromTo.get(i).getDay() + ";" + fullyVaccinatedPerDayListFromTo.get(i).getCount() + "\n");
+        }
+
+        return new FullyVaccinatedPerDay().save(exportFile.getAbsolutePath(), sb);
+    }
+
+    public void clear() {
+        fullyVaccinatedPerDayListFromTo.clear();
+
+
     }
 }
