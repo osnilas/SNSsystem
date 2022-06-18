@@ -192,7 +192,7 @@ public class Utils {
         return result;
     }
 
-    static public LocalTime createTime(LocalDate date, String time){
+    static public LocalTime createTime( String time){
         String[] cut=time.split(":");
         LocalTime result=LocalTime.of(Integer.parseInt(cut[0]),Integer.parseInt(cut[1]));
         return result;

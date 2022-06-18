@@ -21,7 +21,17 @@ public class LegacySystemStore {
         return new LegacySystemData(SNSuserNumber, vaccine, dose, lotNumber, arrivalTime, ScheduledDateTime, NurseAdministrationDateTime, LeavingDateTime);
     }
     public void add(List<LegacySystemData> data) {
-        legacySystemDataList.addAll(data);
+        if(legacySystemDataList.size()==0) {
+            legacySystemDataList.addAll(data);
+        }else {
+            for (int i = 0; i < legacySystemDataList.size(); i++) {
+                for (int j = 0; j < data.size(); j++) {
+                    if (legacySystemDataList.get(i).equals(data.get(j))) {
+                        legacySystemDataList.add(data.get(j));
+                    }
+                }
+            }
+        }
     }
 
     public boolean checkIfEmpty () {

@@ -69,6 +69,9 @@ public class Constants {
 
     public static final LocalTime CLOSING_TIME_FOR_VACCINATION_FACILITY =LocalTime.of(20,00);
 
+    public static final LocalTime OPENING_TIME_LEGACY_SYSTEM = Utils.createTime(Utils.ReadProppeties("LegacySystem.Opening.Time"));
+    public static final LocalTime CLOSING_TIME_LEGACY_SYSTEM = Utils.createTime(Utils.ReadProppeties("LegacySystem.Closing.Time"));
+
     public static final int TOTAL_MINUTES = 720;
 
     public static final LocalDate BIRTH_TESTER=LocalDate.of(2007,9,11);

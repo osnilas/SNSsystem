@@ -101,7 +101,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
                 System.out.println("Input opening hours, it can not be empty");
             }
         } while (openingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
-        openingHours=Utils.createTime(LocalDate.now(),openingHoursString);
+        openingHours=Utils.createTime(openingHoursString);
 
         do {
             closingHoursString = Utils.readLineFromConsole("Enter closing hours: ");
@@ -109,7 +109,7 @@ public class RegisterVaccinationCenterUI implements Runnable {
                 System.out.println("Input closing hours, it can not be empty");
             }
         } while (closingHoursString.isBlank() && !Validate.validateTime(openingHoursString));
-        closingHours=Utils.createTime(LocalDate.now(),closingHoursString);
+        closingHours=Utils.createTime(closingHoursString);
 
         do {
             slotDuration = Utils.readIntegerFromConsole("Enter the slot duration: ");

@@ -1,12 +1,9 @@
 package app.ui.gui.controller;
 
 import algorithms.performance.BruteForce;
-import algorithms.performance.Sum;
 import app.controller.App;
 import app.domain.model.*;
 import app.domain.shared.Constants;
-import app.ui.console.utils.Utils;
-import pt.isep.lei.esoft.auth.domain.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,8 +12,8 @@ import java.util.*;
 
 public class PerformanceOfCenterController {
 
-    private LocalTime OpeningHours=LocalTime.of(8,0);
-    private LocalTime ClosingHours=LocalTime.of(20,0);
+    private LocalTime OpeningHours=Constants.OPENING_TIME_LEGACY_SYSTEM;
+    private LocalTime ClosingHours=Constants.CLOSING_TIME_LEGACY_SYSTEM;
     private List<LocalDateTime> timeSlots = new ArrayList<>();
 
     private  int[] numberUsersAtFacility= new int[1];
@@ -75,10 +72,9 @@ public class PerformanceOfCenterController {
         if(validateArray(numberUsersAtFacility)) {
             List<String> performanceData = new ArrayList<>();
             List<Integer> data = performance();
-            performanceData.add(Arrays.toString(Arrays.copyOfRange(numberUsersAtFacility, data.get(0), data.get(1) + 1)));
             performanceData.add(String.valueOf(timeSlots.get(data.get(0)).format(Constants.DATE_TIME_FORMATTER_ALT)));
             performanceData.add(String.valueOf(timeSlots.get(data.get(1)+1).format(Constants.DATE_TIME_FORMATTER_ALT)));
-            performanceData.add(String.valueOf(data.get(2)));
+
             return performanceData;
         }
         throw new IllegalArgumentException("No vaccination administration records found");
@@ -86,20 +82,8 @@ public class PerformanceOfCenterController {
     }
 
     private List<Integer>  performance() throws Exception {
-        int[] temp=numberUsersAtFacility.clone();
         BruteForce bruteForce = new BruteForce();
-        Sum sum = new Sum();
-        long start = System.nanoTime();
         bruteForce.MaxSubArray(numberUsersAtFacility);
-        long end = System.nanoTime();
-        System.out.println("Brute force time: " + (end - start)  + " nano seconds");
-
-        start=System.nanoTime();
-        sum.Max(numberUsersAtFacility);
-        end=System.nanoTime();
-        System.out.println("Sum time: " + (end - start) + " nano seconds");
-
-
         return bruteForce.getResults();
     }
 

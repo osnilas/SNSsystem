@@ -59,12 +59,11 @@ public class PerformanceOfCenterUI implements Initializable {
         }
         try {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Input:\n" + data.get(0) + "\n");
-            stringBuilder.append("Sum:\n" + data.get(3) + "\n");
-            stringBuilder.append("Time interval :\n" + data.get(1) + " " + data.get(2) + "\n");
-            txtPerformance.setText(String.join("\n", stringBuilder.toString()));
+            stringBuilder.append("The vaccination facility was least effective between :\n" + data.get(0) + " " + data.get(1) + "\n");
+            txtPerformance.setText(stringBuilder.toString());
             txtMinutes.clear();
-        }catch (Exception ignored){
+        }catch (Exception  exception){
+            Utils.ExceptionWarning(exception);
         }
         ctrl.clear();
 
