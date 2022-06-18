@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1172px" preserveAspectRatio="none" style="width:775px;height:1172px;background:#FFFFFF;" version="1.1" viewBox="0 0 775 1172" width="775px" zoomAndPan="magnify"><defs/><g><g id="elem_SNSuser"><rect fill="#F1F1F1" height="117.6563" style="stroke:#181818;stroke-width:0.5;" width="137" x="521" y="1048"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="562" y="1064.5332">SNSuser</text><line style="stroke:#181818;stroke-width:0.5;" x1="522" x2="657" y1="1069.6094" y2="1069.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="529" y="1077.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="38" x="541" y="1088.1426">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="529" y="1095.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="541" y="1105.752">SNS user number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="529" y="1112.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="541" y="1123.3613">phone number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="529" y="1130.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="541" y="1140.9707">e-mail address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="529" y="1148.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="541" y="1158.5801">health conditions</text></g><g id="elem_Coordinator"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="89" x="247" y="220"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="254" y="236.5332">Coordinator</text><line style="stroke:#181818;stroke-width:0.5;" x1="248" x2="335" y1="241.6094" y2="241.6094"/></g><g id="elem_VaccinationFacility"><rect fill="#F1F1F1" height="188.0938" style="stroke:#181818;stroke-width:0.5;" width="262" x="160.5" y="336"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="233" y="352.5332">VaccinationFacility</text><line style="stroke:#181818;stroke-width:0.5;" x1="161.5" x2="421.5" y1="357.6094" y2="357.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="365.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="180.5" y="376.1426">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="383.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="180.5" y="393.752">address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="400.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="180.5" y="411.3613">phone number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="418.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="180.5" y="428.9707">e-mail address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="436.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="180.5" y="446.5801">fax number</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="453.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="180.5" y="464.1895">website address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="471.2656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="180.5" y="481.7988">opening and closing hours</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="488.875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="180.5" y="499.4082">slot duration</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="168.5" y="506.4844"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236" x="180.5" y="517.0176">maximum number of vaccines per slot</text></g><g id="elem_MassVaccinationCenter"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="163" x="7" y="602"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="14" y="618.5332">MassVaccinationCenter</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="169" y1="623.6094" y2="623.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="631.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="88" x="27" y="642.1426">TypeVaccine</text></g><g id="elem_HealthCareCenter"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="172" x="205.5" y="602"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="234.5" y="618.5332">HealthCareCenter</text><line style="stroke:#181818;stroke-width:0.5;" x1="206.5" x2="376.5" y1="623.6094" y2="623.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="213.5" y="631.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="146" x="225.5" y="642.1426">Several TypeVaccine</text></g><g id="elem_TypeVaccine"><rect fill="#F1F1F1" height="82.4375" style="stroke:#181818;stroke-width:0.5;" width="106" x="375.5" y="1066"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="387.5" y="1082.5332">TypeVaccine</text><line style="stroke:#181818;stroke-width:0.5;" x1="376.5" x2="480.5" y1="1087.6094" y2="1087.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="383.5" y="1095.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="55" x="395.5" y="1106.1426">disease</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="383.5" y="1113.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="35" x="395.5" y="1123.752">code</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="383.5" y="1130.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="80" x="395.5" y="1141.3613">description</text></g><g id="elem_Vaccine"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="64" x="412.5" y="606.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="419.5" y="623.0332">Vaccine</text><line style="stroke:#181818;stroke-width:0.5;" x1="413.5" x2="475.5" y1="628.1094" y2="628.1094"/></g><g id="elem_VaccineSchedule"><rect fill="#F1F1F1" height="47.2188" style="stroke:#181818;stroke-width:0.5;" width="123" x="466" y="923"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="473" y="939.5332">VaccineSchedule</text><line style="stroke:#181818;stroke-width:0.5;" x1="467" x2="588" y1="944.6094" y2="944.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="474" y="952.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="486" y="963.1426">Date and Time</text></g><g id="elem_VaccineAdministration"><rect fill="#F1F1F1" height="117.6563" style="stroke:#181818;stroke-width:0.5;" width="153" x="451" y="727"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="458" y="743.5332">VaccineAdministration</text><line style="stroke:#181818;stroke-width:0.5;" x1="452" x2="603" y1="748.6094" y2="748.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="459" y="756.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="471" y="767.1426">brand</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="459" y="774.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="471" y="784.752">doses</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="459" y="791.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="471" y="802.3613">dosage</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="459" y="809.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="471" y="819.9707">age range</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="459" y="827.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="471" y="837.5801">vaccine interval</text></g><g id="elem_Employees"><rect fill="#F1F1F1" height="135.2656" style="stroke:#181818;stroke-width:0.5;" width="115" x="234" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="257" y="23.5332">Employees</text><line style="stroke:#181818;stroke-width:0.5;" x1="235" x2="348" y1="28.6094" y2="28.6094"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="36.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="11" x="254" y="47.1426">id</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="54.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="254" y="64.752">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="71.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="254" y="82.3613">address</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="89.4375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="254" y="99.9707">phoneNumber</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="107.0469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="254" y="117.5801">email</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="242" y="124.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="254" y="135.1895">ccNumber</text></g><!--MD5=[11d34ca153820ce4e25c75f2bc09aa2d]
+link Employees to Coordinator--><g id="link_Employees_Coordinator"><path codeLine="60" d="M291.5,142.06 C291.5,170.29 291.5,200.96 291.5,219.83 " fill="none" id="Employees-Coordinator" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="296.5,186.1758,299.4389,177.1307,293.5611,177.1307,296.5,186.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49" x="305.5" y="186.4951">plays as</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="284.1172" y="163.8242">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="283.4281" y="209.118">1</text></g><!--MD5=[08268de2510803aa95b0ca231939767e]
+link Coordinator to VaccinationFacility--><g id="link_Coordinator_VaccinationFacility"><path codeLine="61" d="M291.5,258.12 C291.5,276.42 291.5,306.12 291.5,335.66 " fill="none" id="Coordinator-VaccinationFacility" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="296.5,302.1758,299.4389,293.1307,293.5611,293.1307,296.5,302.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="305.5" y="302.4951">manages</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="283.5594" y="279.0033">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="284.2211" y="325.0102">1</text></g><!--MD5=[15d6e7dd43f8efe1f71e9941f3fbc0fa]
+reverse link VaccinationFacility to MassVaccinationCenter--><g id="link_VaccinationFacility_MassVaccinationCenter"><path codeLine="62" d="M189.96,527.79 C160.97,555.42 131.99,583.04 112.47,601.65 " fill="none" id="VaccinationFacility-backto-MassVaccinationCenter" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="193.86,524.07,184.5845,527.3813,190.2397,527.5186,190.1023,533.1738,193.86,524.07" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="169.1193,559.726,160.5442,563.8393,164.5996,568.094,169.1193,559.726" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="174.5" y="568.4951">is a</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="178.8004" y="545.7091">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="112.9717" y="591.0006">*</text></g><!--MD5=[1017c7e737bc04cac85cb66958c5ebe1]
+reverse link VaccinationFacility to HealthCareCenter--><g id="link_VaccinationFacility_HealthCareCenter"><path codeLine="64" d="M291.5,529.14 C291.5,556.32 291.5,583.35 291.5,601.65 " fill="none" id="VaccinationFacility-backto-HealthCareCenter" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="291.5,524.07,287.5,533.07,291.5,529.07,295.5,533.07,291.5,524.07" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="296.5,558.1758,293.5611,567.2209,299.4389,567.2209,296.5,558.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="305.5" y="568.4951">is a</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="284.2211" y="545.7091">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="285.8594" y="591.0006">*</text></g><!--MD5=[cb4065228aab01a65cafb2a77fbb4342]
+link VaccinationFacility to Vaccine--><g id="link_VaccinationFacility_Vaccine"><path codeLine="65" d="M365.09,524.07 C389.74,555.24 414.79,586.93 429.99,606.15 " fill="none" id="VaccinationFacility-Vaccine" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="406.6012,567.0979,403.2965,558.1799,398.6858,561.8256,406.6012,567.0979" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="412.5" y="568.4951">can administer</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="365.755" y="545.7091">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="419.9933" y="595.7201">*</text></g><!--MD5=[9b883d3759ead800c8493fb91e0f381c]
+link VaccineSchedule to SNSuser--><g id="link_VaccineSchedule_SNSuser"><path codeLine="66" d="M536.38,970.21 C544.29,990.41 556.19,1020.84 566.72,1047.78 " fill="none" id="VaccineSchedule-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="561.3213,1013.8323,560.7636,1004.3381,555.2895,1006.4791,561.3213,1013.8323" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="568.5" y="1014.4951">created for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="533.0149" y="991.8478">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="556.5171" y="1037.1251">1</text></g><!--MD5=[9bd6858dc1902593544df99848a7a23f]
+link Vaccine to VaccineAdministration--><g id="link_Vaccine_VaccineAdministration"><path codeLine="67" d="M454.02,644.68 C464.5,664.69 481.87,697.86 497.09,726.93 " fill="none" id="Vaccine-VaccineAdministration" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="483.1805,683.7463,484.7729,693.1226,489.9801,690.3959,483.1805,683.7463" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="494.5" y="693.4951">of</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="448.6379" y="665.5795">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="488.0791" y="716.2933">*</text></g><!--MD5=[e740f77daf9cb494f8c5b1dda682ca82]
+link VaccineAdministration to SNSuser--><g id="link_VaccineAdministration_SNSuser"><path codeLine="68" d="M604.23,831.16 C618.87,843.37 632.2,858.02 640.5,875 C650.18,894.81 702.95,777.68 638.5,1018 C635.83,1027.96 631.78,1038.01 627.14,1047.57 " fill="none" id="VaccineAdministration-SNSuser" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="667.0264,951.648,668.9967,942.3438,663.1516,942.9626,667.0264,951.648" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="675.5" y="951.9951">administered on</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="612.0292" y="832.3473">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="624.0874" y="1037.3087">1</text></g><!--MD5=[26d93bb3364bc68050d04ccdf39ce109]
+link VaccineAdministration to VaccineSchedule--><g id="link_VaccineAdministration_VaccineSchedule"><path codeLine="69" d="M525.61,845.04 C525.32,860.62 525.2,877.45 525.5,893 C525.69,902.76 526.07,913.53 526.44,922.76 " fill="none" id="VaccineAdministration-VaccineSchedule" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="530.4466,879.1761,527.6044,888.252,533.482,888.1893,530.4466,879.1761" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96" x="539.5" y="889.4951">fulfilling //change</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="18" x="506.3508" y="866.3268">0,1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="518.2715" y="912.1388">1</text></g><!--MD5=[d3ea30674db0a421707393f66c3af609]
+link VaccineSchedule to TypeVaccine--><g id="link_VaccineSchedule_TypeVaccine"><path codeLine="70" d="M499.44,970.1 C489.99,978.72 479.96,989.11 472.5,1000 C458.75,1020.05 448.12,1045.06 440.75,1065.76 " fill="none" id="VaccineSchedule-TypeVaccine" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="474.8853,1013.4376,482.1204,1007.2648,477.1103,1004.191,474.8853,1013.4376" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="486.5" y="1014.4951">for taking</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="486.609" y="991.7096">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="437.3648" y="1055.0926">*</text></g><!--MD5=[00d619381c51d312bc8be262c06fa3f8]
+link Vaccine to TypeVaccine--><g id="link_Vaccine_TypeVaccine"><path codeLine="71" d="M441.99,644.61 C439.33,664.7 435.27,698.09 433.5,727 C425.96,850.32 426.79,996.61 427.77,1065.84 " fill="none" id="Vaccine-TypeVaccine" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="432.3313,889.1729,435.5737,880.2322,429.6992,880.0338,432.3313,889.1729" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="441.5" y="889.4951">is of</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="433.3748" y="665.4907">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="420.0694" y="1055.1859">1</text></g><!--MD5=[48e230b6547921c87de21bbf3bf11e93]
+@startuml
+'https://plantuml.com/object-diagram
+
+object SNSuser{
+-**name**
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object Coordinator
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+object MassVaccinationCenter{
+-**TypeVaccine**
+}
+object HealthCareCenter{
+-**Several TypeVaccine**
+}
+object TypeVaccine{
+-**disease**
+-**code**
+-**description**
+}
+
+object Vaccine
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object VaccineAdministration {
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
+}
+
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+
+
+
+Employees"1"- -"1" Coordinator: > plays as
+Coordinator"1" - -"1" VaccinationFacility: > manages
+VaccinationFacility"1"<- -"*" MassVaccinationCenter: < is a
+
+VaccinationFacility"1"<- -"*" HealthCareCenter: < is a
+VaccinationFacility "*"- -"*" Vaccine: > can administer
+VaccineSchedule"*" - - "1"SNSuser: > created for
+Vaccine"1" - - "*"VaccineAdministration: < of
+VaccineAdministration"*" - - "1"SNSuser: > administered on
+VaccineAdministration"0,1" - - "1"VaccineSchedule: < fulfilling //change
+VaccineSchedule"*" - - "*"TypeVaccine:> for taking
+Vaccine"1" - -"1" TypeVaccine:> is of
+
+
+@enduml
+
+@startuml
+
+object SNSuser{
+-**name**
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object Coordinator
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+object MassVaccinationCenter{
+-**TypeVaccine**
+}
+object HealthCareCenter{
+-**Several TypeVaccine**
+}
+object TypeVaccine{
+-**disease**
+-**code**
+-**description**
+}
+
+object Vaccine
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object VaccineAdministration {
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
+}
+
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+
+
+
+Employees"1"- -"1" Coordinator: > plays as
+Coordinator"1" - -"1" VaccinationFacility: > manages
+VaccinationFacility"1"<- -"*" MassVaccinationCenter: < is a
+
+VaccinationFacility"1"<- -"*" HealthCareCenter: < is a
+VaccinationFacility "*"- -"*" Vaccine: > can administer
+VaccineSchedule"*" - - "1"SNSuser: > created for
+Vaccine"1" - - "*"VaccineAdministration: < of
+VaccineAdministration"*" - - "1"SNSuser: > administered on
+VaccineAdministration"0,1" - - "1"VaccineSchedule: < fulfilling //change
+VaccineSchedule"*" - - "*"TypeVaccine:> for taking
+Vaccine"1" - -"1" TypeVaccine:> is of
+
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

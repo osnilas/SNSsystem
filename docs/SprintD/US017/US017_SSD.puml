@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+actor "Coordinator" as coord
+activate coord
+
+coord-> System : Ask to import data from a legacy system
+activate System
+System--> coord : requests data (file path/file name)
+coord-> System : Types requested data
+deactivate System
+System--> coord : requests to select order of sort
+activate System
+coord-> System : Selects requested data
+loop If the file doesnt have next line it stops
+System--> coord : imports and prints the sorted data and informs operation sucess
+deactivate System
+
+end
+@enduml

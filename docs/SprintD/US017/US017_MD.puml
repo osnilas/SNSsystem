@@ -1,0 +1,75 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object SNSuser{
+-**name**
+-SNS user number
+-phone number
+-e-mail address
+-health conditions
+}
+
+object Coordinator
+object VaccinationFacility{
+-name
+-address
+-phone number
+-e-mail address
+-fax number
+-website address
+-opening and closing hours
+-slot duration
+-maximum number of vaccines per slot
+}
+object MassVaccinationCenter{
+-**TypeVaccine**
+}
+object HealthCareCenter{
+-**Several TypeVaccine**
+}
+object TypeVaccine{
+-**disease**
+-**code**
+-**description**
+}
+
+object Vaccine
+
+object VaccineSchedule{
+-Date and Time
+}
+
+object VaccineAdministration {
+-brand
+-doses
+-dosage
+-age range
+-vaccine interval
+}
+
+object Employees{
+-id
+-name
+-address
+-phoneNumber
+-email
+-ccNumber
+}
+
+
+
+Employees"1"--"1" Coordinator: > plays as
+Coordinator"1" --"1" VaccinationFacility: > manages
+VaccinationFacility"1"<--"*" MassVaccinationCenter: < is a
+
+VaccinationFacility"1"<--"*" HealthCareCenter: < is a
+VaccinationFacility "*"--"*" Vaccine: > can administer
+VaccineSchedule"*" -- "1"SNSuser: > created for
+Vaccine"1" -- "*"VaccineAdministration: < of
+VaccineAdministration"*" -- "1"SNSuser: > administered on
+VaccineAdministration"0,1" -- "1"VaccineSchedule: < fulfilling //change
+VaccineSchedule"*" -- "*"TypeVaccine:> for taking
+Vaccine"1" --"1" TypeVaccine:> is of
+
+
+@enduml

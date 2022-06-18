@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="399px" preserveAspectRatio="none" style="width:520px;height:399px;background:#FFFFFF;" version="1.1" viewBox="0 0 520 399" width="520px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="215.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="55.5" y="92.6094"/><rect fill="#FFFFFF" height="60.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="469.5" y="114.9609"/><rect fill="#FFFFFF" height="86.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="469.5" y="206.0156"/><rect height="48.7031" style="stroke:#000000;stroke-width:1.5;fill:none;" width="504.5" x="10" y="251.3672"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="60" x2="60" y1="82.6094" y2="317.0703"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="474.5" x2="474.5" y1="82.6094" y2="317.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="20" y="79.5332">Coordinator</text><ellipse cx="60.5" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M60.5,21.5 L60.5,48.5 M47.5,29.5 L73.5,29.5 M60.5,48.5 L47.5,63.5 M60.5,48.5 L73.5,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="20" y="330.6035">Coordinator</text><ellipse cx="60.5" cy="342.1797" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M60.5,350.1797 L60.5,377.1797 M47.5,358.1797 L73.5,358.1797 M60.5,377.1797 L47.5,392.1797 M60.5,377.1797 L73.5,392.1797 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="60" x="444.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="451.5" y="71.5332">System</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="60" x="444.5" y="316.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="451.5" y="337.6035">System</text><rect fill="#FFFFFF" height="215.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="55.5" y="92.6094"/><rect fill="#FFFFFF" height="60.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="469.5" y="114.9609"/><rect fill="#FFFFFF" height="86.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="469.5" y="206.0156"/><polygon fill="#181818" points="457.5,110.9609,467.5,114.9609,457.5,118.9609,461.5,114.9609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="65.5" x2="463.5" y1="114.9609" y2="114.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="72.5" y="110.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236" x="83.5" y="110.1045">Ask to import data from a legacy system</text><polygon fill="#181818" points="76.5,141.3125,66.5,145.3125,76.5,149.3125,72.5,145.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="70.5" x2="468.5" y1="145.3125" y2="145.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="140.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="93.5" y="140.4561">requests data (file path/file name)</text><polygon fill="#181818" points="462.5,171.6641,472.5,175.6641,462.5,179.6641,466.5,175.6641" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="65.5" x2="468.5" y1="175.6641" y2="175.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="72.5" y="170.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="125" x="83.5" y="170.8076">Types requested data</text><polygon fill="#181818" points="76.5,202.0156,66.5,206.0156,76.5,210.0156,72.5,206.0156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="70.5" x2="468.5" y1="206.0156" y2="206.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="201.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="177" x="93.5" y="201.1592">requests to select order of sort</text><polygon fill="#181818" points="457.5,232.3672,467.5,236.3672,457.5,240.3672,461.5,236.3672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="65.5" x2="463.5" y1="236.3672" y2="236.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="72.5" y="231.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="134" x="83.5" y="231.5107">Selects requested data</text><path d="M10,251.3672 L83,251.3672 L83,259.7188 L73,269.7188 L10,269.7188 L10,251.3672 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="48.7031" style="stroke:#000000;stroke-width:1.5;" width="504.5" x="10" y="251.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="25" y="265.8623">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="222" x="98" y="264.7861">[If the file doesnt have next line it stops]</text><polygon fill="#181818" points="76.5,288.0703,66.5,292.0703,76.5,296.0703,72.5,292.0703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="70.5" x2="473.5" y1="292.0703" y2="292.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="287.2139">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="369" x="93.5" y="287.2139">imports and prints the sorted data and informs operation sucess</text><!--MD5=[05b65b73757f91716c699c0d127a0daf]
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+actor "Coordinator" as coord
+activate coord
+
+coord-> System : Ask to import data from a legacy system
+activate System
+System- -> coord : requests data (file path/file name)
+coord-> System : Types requested data
+deactivate System
+System- -> coord : requests to select order of sort
+activate System
+coord-> System : Selects requested data
+loop If the file doesnt have next line it stops
+System- -> coord : imports and prints the sorted data and informs operation sucess
+deactivate System
+
+end
+@enduml
+
+@startuml
+autonumber
+
+actor "Coordinator" as coord
+activate coord
+
+coord-> System : Ask to import data from a legacy system
+activate System
+System- -> coord : requests data (file path/file name)
+coord-> System : Types requested data
+deactivate System
+System- -> coord : requests to select order of sort
+activate System
+coord-> System : Selects requested data
+loop If the file doesnt have next line it stops
+System- -> coord : imports and prints the sorted data and informs operation sucess
+deactivate System
+
+end
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
