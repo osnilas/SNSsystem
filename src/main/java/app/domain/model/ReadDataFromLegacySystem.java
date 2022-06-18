@@ -26,11 +26,29 @@ public class ReadDataFromLegacySystem {
     ReadFileData readFileData= new ReadFileData();
     List<String> fileData = new ArrayList<>();
 
+
+    /**@author Filipe Magalhães
+     * Constructor
+     * @param file
+     * @param vaccineList
+     */
+
+
+
     public ReadDataFromLegacySystem(String file,List<Vaccine> vaccineList) throws IOException {
         this.file=file;
         this.vaccineList.addAll(vaccineList);
         this.fileData.addAll(readFileData.readFile(file));
     }
+
+
+
+    /**@author Filipe Magalhães
+     * @Description reads the file and copies the data into a list
+     * @return List<LegacySystemData> with the data from the legacy system file
+     */
+
+
 
     public List<LegacySystemData> copyDataFromLegacySystem () throws  Exception{
 
@@ -65,6 +83,16 @@ public class ReadDataFromLegacySystem {
 
         return appointmentsFromLegacySystem;
     }
+
+
+
+    /**@author Filipe Magalhães
+     * @Description translates the number of the dose , initially as a String, into the respective integer
+     * @param dose
+     * @return number of the dose (integer)
+     */
+
+
 
     private int parseDose(String dose){
         switch (dose){

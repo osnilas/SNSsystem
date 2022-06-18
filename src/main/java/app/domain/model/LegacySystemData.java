@@ -15,6 +15,22 @@ public class LegacySystemData {
     private LocalDateTime LeavingDateTime;
 
 
+
+    /**@author Filipe Magalhães
+     * Constructor
+     * @param SNSuserNumber
+     * @param vaccine
+     * @param dose
+     * @param lotNumber
+     * @param arrivalTime
+     * @param ScheduledDateTime
+     * @param NurseAdministrationDateTime
+     * @param LeavingDateTime
+     */
+
+
+
+
     public LegacySystemData(int SNSuserNumber,Vaccine vaccine,int dose,String lotNumber,LocalDateTime arrivalTime,LocalDateTime ScheduledDateTime,LocalDateTime NurseAdministrationDateTime,LocalDateTime LeavingDateTime){
         this.SNSuserNumber=SNSuserNumber;
         this.vaccine=vaccine;
