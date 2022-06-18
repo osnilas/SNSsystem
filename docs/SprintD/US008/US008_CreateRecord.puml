@@ -7,7 +7,7 @@
 
 
 autonumber
-->CTRL:createVaccinationAdminstration(recoryTime,lotNumber)
+->CTRL:createVaccinationAdminstration(lotNumber)
 activate CTRL
 create record
 CTRL->record:VaccinationAdminstrationRecord(SNSuserNumber, vaccine, dose, lotNumber, NurseAdministrationDateTime)

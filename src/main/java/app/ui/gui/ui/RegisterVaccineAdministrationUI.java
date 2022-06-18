@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.ui.gui.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,21 +16,21 @@ import java.util.logging.Logger;
 public class RegisterVaccineAdministrationUI {
     private final MainScene mainScene;
     private final NurseUI nurseUI;
-    private final RecordVaccineAdministrationController ctlr;
+    private final RegisterVaccineAdministrationController ctlr;
 
     private Stage popUpWindow=new Stage();
 
     public RegisterVaccineAdministrationUI(MainScene mainScene, NurseUI nurseUI) {
         this.mainScene = mainScene;
         this.nurseUI = nurseUI;
-        ctlr = new RecordVaccineAdministrationController();
+        ctlr = new RegisterVaccineAdministrationController();
     }
 
     public MainScene getMainScene() {
         return mainScene;
     }
 
-    public RecordVaccineAdministrationController getController() {
+    public RegisterVaccineAdministrationController getController() {
         return ctlr;
     }
 

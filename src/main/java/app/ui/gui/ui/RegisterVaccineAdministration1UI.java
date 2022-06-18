@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.ui.gui.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +20,7 @@ public class RegisterVaccineAdministration1UI implements Initializable {
     public Button btnNext;
     public Button btnCancel;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
-    private RecordVaccineAdministrationController vaccineAdministrationController;
+    private RegisterVaccineAdministrationController vaccineAdministrationController;
 
     public void setRegisterVaccineAdministrationUI(RegisterVaccineAdministrationUI registerVaccineAdministrationUI) {
         this.registerVaccineAdministrationUI = registerVaccineAdministrationUI;

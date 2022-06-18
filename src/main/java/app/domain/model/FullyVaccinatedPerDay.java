@@ -17,7 +17,7 @@ public class FullyVaccinatedPerDay implements Serializable {
     }
 
     public void updateTotalNumberOfFullyVaccinated () {
-        int temp = Integer.parseInt(String.valueOf(count));
+        count++;
     }
 
     public int getCount() {

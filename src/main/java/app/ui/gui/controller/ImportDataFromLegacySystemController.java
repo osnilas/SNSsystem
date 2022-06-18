@@ -1,8 +1,7 @@
 package app.ui.gui.controller;
 
 import algorithms.sort.BubleSort;
-import algorithms.sort.Merge;
-import algorithms.sort.QuickSort;
+import algorithms.sort.MergeSort;
 import app.controller.App;
 import app.domain.model.*;
 import app.domain.shared.Constants;
@@ -79,16 +78,10 @@ public class ImportDataFromLegacySystemController {
        String sortAlgorithm = Utils.ReadProppeties("Import.Arrival.Sort");
        switch (sortAlgorithm) {
            case "Bubble":
-               startTime= System.nanoTime();
                BubleSort.sortByArrivalTime(fileVaccinations);
-                endTime= System.nanoTime();
-               System.out.println("BubbleSort arrival: "+(endTime-startTime)+" nanoseconds");
                break;
-           case "Quick":
-                startTime= System.nanoTime();
-                Merge.sort(fileVaccinations,0,fileVaccinations.size()-1);
-                endTime= System.nanoTime();
-                System.out.println("QuickSort arrival: "+(endTime-startTime)+" nanoseconds");
+           case "Merge":
+              MergeSort.sort(fileVaccinations, 0, fileVaccinations.size()-1,1);
                break;
            default:
        }
@@ -100,8 +93,8 @@ public class ImportDataFromLegacySystemController {
            case "Bubble":
                BubleSort.sortByLeavingTime(fileVaccinations);
                break;
-           case "Quick":
-               Merge.sort(fileVaccinations, 0, fileVaccinations.size()-1);
+           case "Merge":
+               MergeSort.sort(fileVaccinations, 0, fileVaccinations.size()-1,2);
                break;
            default:
        }

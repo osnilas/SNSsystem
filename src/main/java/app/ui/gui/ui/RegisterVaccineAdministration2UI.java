@@ -1,8 +1,7 @@
 package app.ui.gui.ui;
 
-import app.ui.gui.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import app.ui.console.utils.Utils;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +23,7 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     public Button btnVaccine;
     public Button btnVaccineAdmin;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
-    private RecordVaccineAdministrationController vaccineAdministrationController;
+    private RegisterVaccineAdministrationController vaccineAdministrationController;
     public Button btnCancel;
 
     private boolean flag=false;

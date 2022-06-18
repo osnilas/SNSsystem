@@ -1,7 +1,7 @@
 package app.ui.gui.ui;
 
 import app.domain.shared.Constants;
-import app.ui.gui.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -19,7 +19,7 @@ public class RegisterVaccineAdministration4UI implements Initializable {
     public Button btnDone;
     private int flag=0;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
-    private RecordVaccineAdministrationController vaccineAdministrationController;
+    private RegisterVaccineAdministrationController vaccineAdministrationController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

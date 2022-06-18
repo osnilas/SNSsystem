@@ -1,6 +1,6 @@
 package app.ui.gui.ui;
 
-import app.ui.gui.controller.RecordVaccineAdministrationController;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import app.ui.console.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +16,7 @@ public class ResgisterVaccineAdministration3UI implements Initializable {
     public ComboBox<String> cmbVaccine;
     public Button btnNext;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;
-    private RecordVaccineAdministrationController controller;
+    private RegisterVaccineAdministrationController controller;
 
     public void RegisterVaccineAdministration3UI(RegisterVaccineAdministrationUI registerVaccineAdministrationUI){
         this.registerVaccineAdministrationUI = registerVaccineAdministrationUI;

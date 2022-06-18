@@ -184,7 +184,7 @@ public class Company {
 
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().add(new FullyVaccinatedPerDay());
         Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().get(0).updateTotalNumberOfFullyVaccinated();
-        fullyVaccinatedPerDayStore.updateFullyVaccinatedPerDay(Constants.VACCINATION_CENTER_TESTER);
+        Constants.VACCINATION_CENTER_TESTER.getFullyVaccinatedPerDayList().get(0).updateTotalNumberOfFullyVaccinated();
 
         SNSuserList.get(0).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER2);
         SNSuserList.get(1).getVaccineCards().add(Constants.VACCINATION_RECORD_TESTER);

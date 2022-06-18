@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class RecordVaccineAdministrationController {
+public class RegisterVaccineAdministrationController {
 
     private SNSuser snSuser;
     private VaccinationAppointment appointment;
@@ -24,7 +24,7 @@ public class RecordVaccineAdministrationController {
     private Company company;
     private App app;
 
-    public RecordVaccineAdministrationController(){
+    public RegisterVaccineAdministrationController(){
         this.company = App.getInstance().getCompany();
         this.app = App.getInstance();
     }
