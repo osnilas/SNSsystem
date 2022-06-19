@@ -97,7 +97,9 @@ public class Constants {
 
     public static final HealthCareCenter HEALTH_CARE_CENTER_TESTER = new HealthCareCenter("USF Maia", "Rua da Giesta", 229774710, "sns@email.com", 229774710, "www.USF.pt", OPENING_TIME_FOR_VACCINATION_FACILITY, CLOSING_TIME_FOR_VACCINATION_FACILITY, 60, 3, TYPE_VACCINE_LIST_TESTER);
 
-    public static final Coordinator COORDINATOR_TESTER = new Coordinator("Jodson Santos", "Rua das Palmeiras", 936547223, 16328635, "coor@lei.sem2.pt", ROLE_COR, VACCINATION_CENTER_TESTER);
+    public static final Coordinator COORDINATOR_TESTER = new Coordinator("Jodson Santos", "Rua das Palmeiras", 936547223, 16328635, "coorPorto@lei.sem2.pt", ROLE_COR, VACCINATION_CENTER_TESTER);
+    public static final Coordinator COORDINATOR_TESTER2 = new Coordinator("Tiago Filipe", "Rua da Areosa", 916089971, 16328655, "coorMaia@lei.sem2.pt", ROLE_COR, HEALTH_CARE_CENTER_TESTER);
+
     public static final TypeVaccine TYPE_VACCINE_RECOMMENDED = new TypeVaccine("Covid-19", "COVID-19 (coronavirus disease 2019) is a disease caused by a virus named SARS-CoV-2 and was discovered in December 2019 in Wuhan, China.", "covid", "Toxoid");
 
     public static final List<String> VACCINE_TECHNOLOGY = List.of("Live-attenuated", "Inactivated", "Subunit", "Toxoid", "Viral vector", "Messenger RNA");

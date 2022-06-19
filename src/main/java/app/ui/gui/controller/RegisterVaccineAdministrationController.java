@@ -238,11 +238,13 @@ public class RegisterVaccineAdministrationController {
     private void updateVaccineCard(){
         if(vaccineCard==null){
             snSuser.updateVaccinationRecord(vaccine,LocalDateTime.now());
+            getUserVaccineCard();
         }else {
-            vaccineCard.updateNumberDosesTaken();//US15
-            if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
-                company.updateTotalNumberOfFullyVaccinated(facility);
-            }
+            vaccineCard.updateNumberDosesTaken();
+        }
+        if (vaccineCard.getNumberDosesTaken() == vaccine.getVaccineAdministration().getDoses().get(vaccine.getAgeGroup(snSuser.getAge()))) {
+            System.out.println("updateVaccineCard");
+            facility.updateFullyVaccinatedPerDayList();
         }
     }
 

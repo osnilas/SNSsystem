@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainUI implements Initializable {
 
+    public Button btnMeet;
     private MainScene mainScene;
 
     @FXML
@@ -38,4 +39,10 @@ public class MainUI implements Initializable {
     }
 
 
+    public void meetPressed(ActionEvent event) throws Exception {
+        mainScene.setSCENE_WIDTH(590);
+        mainScene.setSCENE_HEIGHT(428);
+        MeetTheTeamUI meetTheTeamUI= (MeetTheTeamUI) this.mainScene.replaceSceneContent("/fxml/MeetTheTeam.fxml");
+        meetTheTeamUI.setMainScene(this.mainScene);
+    }
 }

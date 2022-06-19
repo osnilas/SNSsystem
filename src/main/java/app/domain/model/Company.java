@@ -177,6 +177,7 @@ public class Company {
 
         employeeList.add(Constants.EMPLOYEE_TESTER);
         employeeList.add(Constants.COORDINATOR_TESTER);
+        employeeList.add(Constants.COORDINATOR_TESTER2);
 
         SNSuserList.add(Constants.SN_SUSER_TESTER_FULL);
         SNSuserList.add(Constants.SNS_USER_TESTER_ONE);
@@ -217,9 +218,7 @@ public class Company {
                 fileWriter.append("Date;Vaccination Facility;Total of vaccinated users\n");
                 fileWriter.close();
             }
-            FileWriter fileWriter = new FileWriter(Constants.FILEPATH_REPORT, true);
             int count = 0;
-            List<String> list = new ArrayList<>();
             for (int i = 0; i < vaccinationFacilityList.size(); i++) {
                 count = 0;
                 for (int j = 0; j < vaccinationFacilityList.get(i).getVaccinationAdminstrationRecordList().size(); j++) {
@@ -229,9 +228,9 @@ public class Company {
                 }
                 sb = new StringBuilder();
 
-                fileWriter.append(LocalDate.now().format(Constants.FORMATTER) + ";" + vaccinationFacilityList.get(i).getName() + ";" + count+"\n");
+                sb.append(LocalDate.now().format(Constants.FORMATTER) + ";" + vaccinationFacilityList.get(i).getName() + ";" + count+"\n");
             }
-            fileWriter.close();
+               WriteToFile.write(Constants.FILEPATH_REPORT,sb);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -632,10 +631,5 @@ public class Company {
 
     public SNSuser snsUser(int j, int index) {
         return getWaitingList(index).get(j).getSnSuser();
-    }
-
-
-    public void updateTotalNumberOfFullyVaccinated(VaccinationFacility facility) {
-        facility.getFullyVaccinatedPerDayList().get(facility.getFullyVaccinatedPerDayList().size()).updateTotalNumberOfFullyVaccinated();
     }
 }

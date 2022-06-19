@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="428.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.ui.MeetTheTeamUI">
+   <children>
+      <ImageView fitHeight="167.0" fitWidth="313.0" layoutX="189.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/65.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="45.0" layoutY="214.0" prefHeight="45.0" prefWidth="600.0" text="Procrastinators is a team of students from ISEP determned to make a change in the world" />
+      <Label layoutX="29.0" layoutY="259.0" text="Comprised by João Veiga, Pedro Nogueira, Filipe Magallhães, Afonso Cunha and André Moreira" />
+      <Button fx:id="btnBack" layoutX="302.0" layoutY="357.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="45.0" prefWidth="86.0" text="Back" />
+   </children>
+</AnchorPane>

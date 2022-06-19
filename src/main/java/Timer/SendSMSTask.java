@@ -1,5 +1,6 @@
 package Timer;
 
+import app.domain.model.WriteToFile;
 import app.domain.shared.Constants;
 
 import java.io.File;
@@ -17,15 +18,10 @@ public class SendSMSTask extends TimerTask {
     public void run() {
         String path = Constants.TestDocs_Directory+"/SMS.txt";
         File file = new File(path);
-        System.out.println("path"+file.getAbsolutePath());;
-        PrintWriter out= null;
-        try {
-            out = new PrintWriter(file);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        out.println(message);
-        out.close();
+        System.out.println("path of SMS: "+file.getAbsolutePath());;
+        StringBuilder sb = new StringBuilder();
+        sb.append(message);
+        WriteToFile.write(path,sb);
     }
 
     public void setMessage(String message) {

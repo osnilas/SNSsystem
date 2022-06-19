@@ -1,0 +1,5 @@
+SNS number;VaccineName;Dose;LotNumber;ScheduledDateTime;ArrivalDateTime;NurseAdministrationDateTime;LeavingDateTime
+1615970;Pfizer;Primeira;21C16-05;/30/2022 18:15;5/30/2022 17:52;5/30/2022 18:36;5/30/2022 19:11
+165362;Pfizer;Primeira;21C16-05;5/30/2022 11:30;5/30/2022 11:27;5/30/2022 11:45;5/30/2022 12:20
+16159;Pfizer;Primeira;21C16-05;5/30/2022 16:45;5/30/2022 17:06;5/30/2022 17:46;5/30/2022 18:17
+193279;Pfizer;Primeira;21C16-05;5/30/2022 8:15;5/30/2022 8:38;5/30/2022 9:20;5/30/2022 9:58
