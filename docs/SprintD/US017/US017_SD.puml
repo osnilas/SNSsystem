@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+    actor "Coordinator" as coord
+
+    participant ":ImportDataFromLegacySystemUI" as UI
+    participant ":ImportDataFromLegacySystemController" as  CTRL
+    participant "Company" as COMP
+    participant "LegacySystemData" as LSD
+    participant "em:SNSuser" as SNS
+    participant "LegacySystemStore" as LSS
+    participant "Algorithms" as ALG
+    participant "Vaccine" as VAC
+    participant "TypeVaccine" as TVAC
+    participant "ReadDataFromLegacySystem" as RDFLS
+
+      activate coord
+      coord -> UI: Requests to import data from a legacy system
+       activate UI
+       UI --> coord: request data(file name or file path)
+       deactivate UI
+       UI <- coord: Types requested data
+
+       activate UI
+
+       group loop: [while CSV file has a line with valid information]
+       UI->CTRL:readData(String filePath)
+       activate UI
+       activate CTRL
+       CTRL -> RDFLS: ReadDataFromLegacySystem(String file,List<Vaccine> vaccineList)
+       activate RDFLS
+       deactivate RDFLS
+       CTRL -> LSD: getInfo()
+       activate LSD
+       deactivate CTRL
+       deactivate LSD
+       deactivate UI
+       end
+       UI--> coord:requests to select order of sorting (ascending or descending)
+       deactivate UI
+       coord -> UI: selects requested data
+       activate UI
+       UI->CTRL: sort()
+
+ opt if it is defined to be sorted by arrival time
+        activate CTRL
+         CTRL-> ALG: sortByArrival()
+        activate ALG
+        deactivate ALG
+        UI-->coord: prints sorted data by Arrival Time and informs (In)sucess of the operation
+
+ end
+ opt if it is defined to be sorted by center leaving time
+         activate CTRL
+          CTRL-> ALG: sortByLeaving()
+         activate ALG
+         deactivate ALG
+         UI-->coord: prints sorted data by center arrival time and informs (In)sucess of the operation
+         deactivate UI
+         deactivate CTRL
+
+  end
+
+
+@enduml
