@@ -1,0 +1,156 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+package UI{
+    package GUI{
+    Class ImportDataFromLegacySystemUI{
+    +Button btnBack;
+    -CoordinatorUI coordinatorUI
+    +Button btnFile;
+    +Button btnSave;
+    +ListView<String> listData;
+    +Button btnAsc;
+    +Button btnDesc;
+
+
+
+    +setCoordinatorUI(CoordinatorUI coordinatorUI)
+    +filePressed(ActionEvent event)
+    -updateList(List<String> data)
+    +savePressed(ActionEvent event)
+    +ascPressed(ActionEvent event)
+    +descPressed(ActionEvent event)
+    +backPressed(ActionEvent event)
+    }
+    }
+}
+
+package core{
+    package controller{
+
+Class ImportDataFromLegacySystemController{
+
+- App app
+
++readData(String filePath)
++save()
++getInfo()
++sort()
+-sortByArrival()
+-sortByLeaving()
+}
+}
+package domain{
+Class Company{
+-LegacySystemStore LegacySystemStore
+-List<Vaccine> vaccineList
+-List<SNSuser> SNSuserList
+
++getVaccineList()
++addLegacySystemDataToStore(List<LegacySystemData> list)
++SNSuserExistsNumber(int SNSnumber)
+}
+
+Class SNSuser{
+-String name
+-String residenceAddress
+-String email
+-int phoneNumber
+-int ccNumber
+-String sex
+-LocalDate birth
+-int SNSnumber
+-String password
+
++SNSnumberSame(int snsNumber)
+}
+
+
+Class Vaccine{
+
+-String name
+
++getName()
++getAgeGroup(age)
++getVaccineAdministration()
+}
+
+
+Class TypeVaccine{
+-String name;
+-String description;
+-String code;
+-String technology;
+}
+Class LegacySystemStore{
+-List<LegacySystemData> legacySystemDataList
+
++create(int SNSuserNumber,Vaccine vaccine,int dose,String lotNumber,LocalDateTime arrivalTime,LocalDateTime ScheduledDateTime,LocalDateTime NurseAdministrationDateTime,LocalDateTime LeavingDateTime)
++add(List<LegacySystemData> data)
++getAll()
+}
+Class LegacySystemData{
+-int SNSuserNumber;
+-Vaccine vaccine;
+-int dose;
+-String lotNumber;
+-LocalDateTime arrivalTime;
+-LocalDateTime  NurseAdministrationDateTime;
+-LocalDateTime LeavingDateTime
+
++getDose()
++getArrivalTime()
++getLeavingDateTime()
++getNurseAdministrationDateTime()
++getScheduledDateTime()
++getLotNumber()
++getVaccine()
++equals(Object obj)
+}
+
+Class ReadDataFromLegacySystem{
+
++ReadDataFromLegacySystem(String file,List<Vaccine> vaccineList)
++copyDataFromLegacySystem()
+-parseDose(String dose)
+-getVaccine(String vaccineName)
++validateDataFromLegacySystem(String[] line)
+-validateSNSuser(int snsNumber)
+}
+
+
+
+}
+package ConfigFile{
+Class BubbleSort{
+
++sortByArrivalTime(List<LegacySystemData> list)
++sortByLeavingTime(List<LegacySystemData> list)
+}
+
+Class MergeSort{
+
++mergeByArrival(List <LegacySystemData> legacySystemDataList, int left, int middle, int right)
++mergeByLeaving(List <LegacySystemData> legacySystemDataList, int left, int middle, int right)
+}
+}
+
+}
+
+
+ImportDataFromLegacySystemUI..> ImportDataFromLegacySystemController
+
+ImportDataFromLegacySystemController ..>Company
+ImportDataFromLegacySystemController ..>SNSuser
+ImportDataFromLegacySystemController ..>Vaccine
+ImportDataFromLegacySystemController ..>LegacySystemStore
+ImportDataFromLegacySystemController ..>LegacySystemData
+ImportDataFromLegacySystemController ..>ReadDataFromLegacySystem
+ImportDataFromLegacySystemController ..>BubbleSort
+ImportDataFromLegacySystemController ..>MergeSort
+Company"1" -->"*"SNSuser:"owns"
+Company"1" -->"1"LegacySystemStore:"has acess"
+Vaccine"1"-->"*"TypeVaccine:"has"
+
+@enduml
