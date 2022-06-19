@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class US017 {
 
@@ -47,7 +48,7 @@ class US017 {
         List<LegacySystemData> expected = setUp();
 
         //Assert
-        assertTrue(test.size() == expected.size() && expected.containsAll(test) && test.containsAll(expected));
+        assertIterableEquals(expected,test);
     }
 
     @Test
