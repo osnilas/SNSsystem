@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -256,6 +257,21 @@ public class Validate {
             try {
                 LocalDateTime test = Utils.parseDateTimeAmerican(scheduleDateTime);
             } catch (DateTimeException e) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validateDateInPast(String date){
+        if(date!=null) {
+            try {
+                LocalDate test = Utils.createDate(date);
+                if (LocalDate.now().isBefore(test)){
+                    return false;
+                }
+            } catch (Exception e) {
                 return false;
             }
             return true;
