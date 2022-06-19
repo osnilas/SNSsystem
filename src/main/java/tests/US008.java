@@ -1,9 +1,9 @@
 package tests;
 
 import app.controller.App;
-import app.ui.gui.controller.RecordVaccineAdministrationController;
 import app.domain.model.*;
 import app.domain.shared.Constants;
+import app.ui.gui.controller.RegisterVaccineAdministrationController;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class US008 {
 
-    RecordVaccineAdministrationController controller = new RecordVaccineAdministrationController();
+    RegisterVaccineAdministrationController controller = new RegisterVaccineAdministrationController();
 
     private static int SNSuserNumber=123456789;
 
@@ -50,7 +50,7 @@ public class US008 {
     }
     void clean() {
         Company company = App.getInstance().getCompany();
-        controller=new RecordVaccineAdministrationController();
+        controller=new RegisterVaccineAdministrationController();
         company.getVaccinationFacilityList().get(0).getVaccinationScheduleList().clear();
         company.getVaccinationFacilityList().get(0).getWaitingList().clear();
     }

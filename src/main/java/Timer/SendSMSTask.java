@@ -17,6 +17,7 @@ public class SendSMSTask extends TimerTask {
     public void run() {
         String path = Constants.TestDocs_Directory+"/SMS.txt";
         File file = new File(path);
+        System.out.println("path"+file.getAbsolutePath());;
         PrintWriter out= null;
         try {
             out = new PrintWriter(file);

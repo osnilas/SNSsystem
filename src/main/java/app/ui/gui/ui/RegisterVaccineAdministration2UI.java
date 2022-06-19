@@ -19,7 +19,7 @@ public class RegisterVaccineAdministration2UI implements Initializable {
     public TextArea txtReactions;
     public TextField txtVaccineName;
     public TextField txtVaccineDose;
-    public ComboBox CMBSNSuser;
+    public ComboBox<String> CMBSNSuser;
     public Button btnVaccine;
     public Button btnVaccineAdmin;
     private RegisterVaccineAdministrationUI registerVaccineAdministrationUI;

@@ -1,10 +1,8 @@
 package app.ui.console.utils;
 
-import app.domain.Store.FullyVaccinatedPerDayStore;
 import app.domain.model.TypeVaccine;
 import app.domain.model.VaccinationFacility;
 import app.domain.shared.Constants;
-import app.ui.console.ScheduleVaccinationUI;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -198,7 +196,7 @@ public class Utils {
         return result;
     }
 
-    static public List copyList(List store, List toBeCopied){
+    static public List<List> copyList(List<List> store, List toBeCopied){
         if(!store.isEmpty()&&!toBeCopied.isEmpty()) {
             for (int i = 0; i < toBeCopied.size(); i++) {
                 store.add(toBeCopied);
@@ -272,13 +270,10 @@ public class Utils {
         File ficheiro =new File(filePath);
         Object object=null;
         try {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(ficheiro));
-            try {
+            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(ficheiro))) {
                 object = in.readObject();
-            } finally {
-                in.close();
             }
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ignored) {
         }
         return object;
     }
@@ -294,7 +289,7 @@ public class Utils {
                 out.flush();
                 out.close();
             }
-        } catch (IOException ex) {
+        } catch (IOException ignored) {
         }
     }
 
@@ -358,11 +353,7 @@ public class Utils {
 
     public static boolean checkIfFileExists(String pathToFile){
         File file =new File(pathToFile);
-        if(file.exists()){
-            return true;
-        }else{
-            return false;
-        }
+        return file.exists();
     }
 
     public static void deleteFile(String pathToFile){
@@ -378,7 +369,7 @@ public class Utils {
             InputStream in = new FileInputStream(Constants.PARAMS_FILENAME);
             props.load(in);
             in.close();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         String value = props.getProperty(property);
         return value;

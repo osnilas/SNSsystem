@@ -88,6 +88,7 @@ public class ImportDataFromLegacySystemController {
                sortByLeaving();
                break;
            default:
+               throw new IllegalArgumentException("No sort option");
        }
    }
 
@@ -105,12 +106,16 @@ public class ImportDataFromLegacySystemController {
        String sortAlgorithm = Utils.ReadProppeties("Import.Arrival.Sort");
        switch (sortAlgorithm) {
            case "Bubble":
+               startTime= System.nanoTime();
                BubleSort.sortByArrivalTime(fileVaccinations);
+                endTime= System.nanoTime();
+               System.out.println("BubbleSort arrival: "+(endTime-startTime)+" nanoseconds");
                break;
            case "Merge":
-              MergeSort.sort(fileVaccinations, 0, fileVaccinations.size()-1,1);
+                MergeSort.sort(fileVaccinations, 0, fileVaccinations.size()-1, 1);
                break;
            default:
+               throw new IllegalArgumentException("No sort option");
        }
    }
 
@@ -133,6 +138,7 @@ public class ImportDataFromLegacySystemController {
                MergeSort.sort(fileVaccinations, 0, fileVaccinations.size()-1,2);
                break;
            default:
+               throw new IllegalArgumentException("No sort option");
        }
    }
 }

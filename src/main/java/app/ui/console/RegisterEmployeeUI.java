@@ -101,7 +101,7 @@ public class RegisterEmployeeUI implements Runnable {
         if (success) {
             ctlr.printEmployee();
 
-            if (Utils.confirm("Is it correct?(s/n)")) {
+            if (Utils.confirm("Is it correct?(y/n)")) {
                 success = ctlr.saveEmployee(dto);
             } else {
                 success = false;

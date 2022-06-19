@@ -34,6 +34,7 @@ public class LegacySystemStore {
         }
     }
 
+
     public boolean checkIfEmpty () {
         return legacySystemDataList.isEmpty() || legacySystemDataList == null;
     }

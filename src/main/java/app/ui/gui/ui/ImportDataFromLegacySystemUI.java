@@ -53,7 +53,9 @@ public class ImportDataFromLegacySystemUI implements Initializable {
                 try {
                     ctrl.sort();
                     updateList(ctrl.getInfo());
-                }catch (Exception IGNORE){}
+                }catch (Exception e){
+                    Utils.ExceptionWarning(e);
+                }
 
             }
         }
@@ -73,14 +75,21 @@ public class ImportDataFromLegacySystemUI implements Initializable {
     }
 
     public void ascPressed(ActionEvent event) {
-        updateList(ctrl.getInfo());
-
+        try {
+            updateList(ctrl.getInfo());
+        }catch (Exception e){
+            Utils.ExceptionWarning(e);
+        }
     }
 
     public void descPressed(ActionEvent event) {
-        List<String> data = ctrl.getInfo();
-        Collections.reverse(data);
-        updateList(data);
+        try {
+            List<String> data = ctrl.getInfo();
+            Collections.reverse(data);
+            updateList(data);
+        }catch (Exception e){
+            Utils.ExceptionWarning(e);
+        }
     }
 
     public void backPressed(ActionEvent event) {
