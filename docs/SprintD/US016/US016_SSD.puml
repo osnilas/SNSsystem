@@ -1,0 +1,30 @@
+@startuml
+autonumber
+actor "Center Coordinator" as cc
+
+activate cc
+
+
+cc -> ":System" : intends to do a performance analysis
+activate ":System"
+":System" --> cc : asks to type the day of the performance analysis
+deactivate ":System"
+
+cc -> ":System" : types requested data
+activate ":System"
+":System" --> cc : asks to type the time intervals
+deactivate ":System"
+
+cc -> ":System" : types requested data
+activate ":System"
+":System" --> cc : shows all data and requests confirmation
+deactivate ":System"
+
+cc -> ":System" : confirms the data
+activate ":System"
+":System" --> cc : shows the results of the performance analysis
+
+
+deactivate cc
+
+@enduml
