@@ -41,6 +41,9 @@ public class ReadDataFromLegacySystem {
         this.fileData.addAll(readFileData.readFile(file));
     }
 
+    public ReadDataFromLegacySystem() {
+
+    }
 
 
     /**@author Filipe Magalhães
